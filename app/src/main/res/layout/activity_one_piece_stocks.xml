@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.OnePieceStocksActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/itemNewColor"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tv_size_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/dp_40"
+                    android:text="@string/size"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+
+
+                <TextView
+                    android:id="@+id/tv_stocks_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/stocks"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/sp_16" />
+
+                <View style="@style/weight_1" />
+
+
+            </LinearLayout>
+
+            <View style="@style/divider_horizontal2" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ry_one_piece"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+
+
+</LinearLayout>

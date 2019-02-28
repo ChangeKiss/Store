@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.SelectFundModeActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/layout_order_Rollback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/divider_20dp"
+        android:layout_marginLeft="@dimen/divider_15dp"
+        android:layout_marginRight="@dimen/divider_15dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_select_fund_apply_background">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="74dp"
+            android:layout_marginLeft="@dimen/divider_25dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:src="@mipmap/order_backspacing_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:textSize="20sp"
+            android:text="订单退回"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/divider_35dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_into_icon"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/divider_20dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_directApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/divider_15dp"
+        android:layout_marginLeft="@dimen/divider_15dp"
+        android:layout_marginRight="@dimen/divider_15dp"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_select_fund_apply_background">
+
+        <ImageView
+            android:layout_width="74dp"
+            android:layout_height="74dp"
+            android:layout_marginLeft="@dimen/divider_25dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:src="@mipmap/direct_apply_for_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:textSize="20sp"
+            android:text="直接申请"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/divider_35dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_into_icon"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/divider_20dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_order_backspacing_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="订单回退: "
+        android:lineSpacingMultiplier="1.1"
+        android:layout_marginLeft="@dimen/divider_20dp"
+        android:layout_marginRight="@dimen/divider_20dp"
+        android:layout_marginTop="@dimen/divider_25dp"/>
+
+    <TextView
+        android:id="@+id/tv_direct_apply_for_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="订单回退: "
+        android:lineSpacingMultiplier="1.1"
+        android:layout_marginLeft="@dimen/divider_20dp"
+        android:layout_marginRight="@dimen/divider_20dp"
+        android:layout_marginTop="@dimen/divider_20dp"/>
+
+</LinearLayout>

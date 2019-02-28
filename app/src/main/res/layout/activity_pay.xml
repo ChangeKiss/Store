@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_order_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.PayActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/Rl_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/divider_10dp">
+
+                    <TextView
+                        android:id="@+id/tv_pay_people"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/medium_text_size"
+                        android:text=""
+                        android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+
+
+                    <TextView
+                        android:id="@+id/tv_pay_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="25dp"
+                        android:text=""
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/medium_text_size"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_adders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_pay_people"
+                        android:layout_toRightOf="@id/iv_icon"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/textColorBlack"
+                        android:text=""
+                        android:layout_marginTop="@dimen/drawablePadding_5dp"
+                        android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:layout_height="@dimen/divider_30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:text="@string/order_numbers"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_order_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:gravity="center"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:layout_height="@dimen/divider_30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:text="@string/order_type"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_order_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:gravity="center"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:layout_height="@dimen/divider_30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:text="@string/order_state"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_order_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:gravity="center"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:layout_height="@dimen/divider_30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:text="@string/order_count"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_order_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:gravity="center"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:layout_height="@dimen/divider_30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:text="@string/order_money"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_order_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:gravity="center"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:layout_height="@dimen/divider_30dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:text="@string/order_time"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <TextView
+                        android:id="@+id/tv_pay_order_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:gravity="center"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_30dp"
+                android:paddingLeft="@dimen/divider_15dp"
+                android:paddingRight="@dimen/divider_15dp"
+                android:gravity="center|left"
+                android:background="@color/placeholder_top"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="@color/windowBackground"
+                android:text="@string/pay_content"/>
+
+            <LinearLayout
+                android:id="@+id/layout_is_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_30dp"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp">
+
+                    <TextView
+                        android:id="@+id/tv_account_ok_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/buttombarText"
+                        android:gravity="center"
+                        android:text="账户可用余额:0.00"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <CheckBox
+                        android:id="@+id/cb_balance_pay"
+                        style="@style/checkBoxStyle"
+                        android:checked="false"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+                <TextView
+                    android:id="@+id/tv_gpfd_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_30dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:textColor="@color/buttombarText"
+                    android:textSize="@dimen/medium_text_size"
+                    android:text="还需付款:0.00"
+                    android:gravity="center|left"/>
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_pay_mode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_30dp"
+                android:background="@color/textColorWhite"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/divider_15dp"
+                android:paddingRight="@dimen/divider_15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/pay_mode"
+                    android:gravity="center"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/medium_text_size" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tv_order_pay_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:gravity="center"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/medium_text_size"/>
+
+                <ImageView
+                    android:id="@+id/iv_order_pay_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/grey_xjt_icon" />
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_plus_image"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_30dp"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:gravity="center|left"
+                    android:background="@color/placeholder_top"
+                    android:textSize="@dimen/medium_text_size"
+                    android:textColor="@color/windowBackground"
+                    android:text="@string/pay_images"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rl_pay_image"
+                    android:layout_marginLeft="@dimen/divider_10dp"
+                    android:layout_marginRight="@dimen/divider_10dp"
+                    android:layout_marginTop="@dimen/divider_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/click_pay_plus"
+                    android:textSize="@dimen/ysf_text_size_13"
+                    android:textColor="@color/redColorBackground"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="25dp"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:paddingLeft="@dimen/divider_15dp">
+
+
+
+        <TextView
+            android:id="@+id/tv_pay_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/redColorBackground"
+            android:textSize="@dimen/ysf_text_size_16"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/btn_pay_order"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/select_button_square"
+            android:gravity="center"
+            android:text="@string/pay"
+            android:enabled="false"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/ysf_text_size_15"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

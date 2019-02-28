@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:background="@color/windowBackground">
+
+        <CheckBox
+            android:id="@+id/order_back_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/orderBackCheck"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/divider_15dp"/>
+
+        <TextView
+            android:id="@+id/tv_back_money_hint"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textColor="#ea778d"
+            android:text="¥88888888"
+            android:textSize="20sp"
+            android:layout_toRightOf="@+id/order_back_checkbox"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginTop="@dimen/divider_25dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_text_size"
+            android:text="可提金额"
+            android:textColor="#999999"
+            android:layout_toRightOf="@+id/order_back_checkbox"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:layout_below="@+id/tv_back_money_hint"/>
+
+        <View
+            android:id="@+id/divide_line"
+            android:layout_width="1dp"
+            android:layout_height="70dp"
+            android:background="#eeeeee"
+            android:layout_toRightOf="@+id/tv_back_money_hint"
+            android:layout_marginTop="@dimen/divider_20dp"
+            android:layout_marginBottom="@dimen/divider_20dp"
+            android:layout_marginLeft="@dimen/divider_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_order_back_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="订单编号: "
+            android:layout_toRightOf="@+id/divide_line"
+            android:layout_marginLeft="@dimen/divider_15dp"
+            android:layout_marginTop="@dimen/divider_20dp"/>
+
+        <TextView
+            android:id="@+id/tv_order_back_money_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/small_text_size"
+            android:text="订单金额: "
+            android:layout_toRightOf="@+id/divide_line"
+            android:layout_below="@+id/tv_order_back_number"
+            android:layout_marginLeft="@dimen/divider_15dp"
+            android:layout_marginTop="7dp"/>
+
+        <TextView
+            android:id="@+id/tv_order_back_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/small_text_size"
+            android:layout_toRightOf="@+id/tv_order_back_money_hint"
+            android:layout_below="@+id/tv_order_back_number"
+            android:textColor="#f393a5"
+            android:text="¥0"
+            android:layout_marginTop="7dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_order_back_pay_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#999999"
+            android:background="@drawable/shape_select_fund_apply_background"
+            android:textSize="@dimen/small_text_size"
+            android:text="支付方式: 支付宝"
+            android:paddingLeft="@dimen/drawablePadding_5dp"
+            android:paddingRight="@dimen/drawablePadding_5dp"
+            android:layout_toRightOf="@+id/divide_line"
+            android:layout_below="@+id/tv_order_back_money_hint"
+            android:layout_marginLeft="@dimen/divider_15dp"
+            android:layout_marginTop="7dp"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

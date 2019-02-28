@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/windowBackground"
+    tools:context="com.Store.www.ui.activity.SubmitOrderActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textSize="@dimen/medium_text_size"
+                android:background="#fff4d8"
+                android:textColor="@color/redColorBackground"/>
+
+            <View
+                style="@style/divider_horizontal2"/>
+
+            <RelativeLayout
+                android:id="@+id/Rl_order_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/divider_10dp">
+
+                <ImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="@dimen/divider_10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_order_people"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/mediums_text_size"
+                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+
+
+                <ImageView
+                    android:id="@+id/iv_enter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/enter_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_order_phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/iv_enter"
+                    android:layout_marginRight="25dp"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/mediums_text_size"/>
+
+                <TextView
+                    android:id="@+id/tv_no_address_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_order_people"
+                    android:layout_toRightOf="@id/iv_icon"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/buttombarText"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_order_adders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_order_people"
+                    android:layout_toRightOf="@id/iv_icon"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/buttombarText"
+                    android:layout_marginLeft="@dimen/drawablePadding_5dp"
+                    android:layout_marginRight="@dimen/divider_10dp"/>
+
+            </RelativeLayout>
+
+
+            <View
+                style="@style/weight_10"/>
+
+            <View
+                style="@style/divider_horizontal2"/>
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rl_submit_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+
+            <View
+                style="@style/divider_horizontal2"/>
+
+            <View
+                style="@style/weight_10"/>
+
+            <LinearLayout
+                android:id="@+id/layout_cloud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:paddingLeft="@dimen/divider_10dp"
+                android:paddingRight="@dimen/divider_10dp"
+                android:paddingTop="@dimen/divider_10dp"
+                android:paddingBottom="@dimen/divider_10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/mediums_text_size"
+                    android:textColor="@color/textColorBlack"
+                    android:text="是否存入云库"
+                    android:gravity="center"
+                    android:layout_gravity="center"/>
+
+                <View
+                    style="@style/weight_1"/>
+
+                <com.Store.www.base.SwitchButton.SwitchButton
+                    android:id="@+id/switch_button"
+                    android:layout_width="46dp"
+                    android:layout_height="24dp"
+                    />
+
+               <RadioGroup
+                   android:layout_width="wrap_content"
+                   android:layout_height="@dimen/divider_30dp"
+                   android:layout_gravity="center"
+                   android:orientation="horizontal"
+                   android:visibility="gone">
+
+                   <RadioButton
+                       android:id="@+id/r_btn_normal"
+                       android:layout_width="90dp"
+                       android:layout_height="match_parent"
+                       android:button="@null"
+                       android:gravity="center"
+                       android:checked="true"
+                       android:textColor="@drawable/radiobutton_selector_text_color"
+                       android:layout_marginRight="@dimen/divider_10dp"
+                       android:text="正常发货"
+                       android:background="@drawable/radiobutton_selector_submit_track"/>
+
+                   <RadioButton
+                       android:id="@+id/r_btn_cloud"
+                       android:layout_width="90dp"
+                       android:layout_height="match_parent"
+                       android:button="@null"
+                       android:gravity="center"
+                       android:checked="false"
+                       android:text="存入云库"
+                       android:textColor="@drawable/radiobutton_selector_text_color"
+                       android:background="@drawable/radiobutton_selector_submit_track"/>
+
+               </RadioGroup>
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/vw_cloud_line"
+                style="@style/divider_horizontal2"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/layout_cloud_number_hint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/divider_10dp"
+                android:paddingRight="@dimen/divider_10dp"
+                android:layout_marginTop="@dimen/divider_10dp"
+                android:paddingBottom="@dimen/divider_10dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/mediums_text_size"
+                    android:textColor="@color/textColorBlack"
+                    android:text="上级云库存数量"/>
+
+                <View
+                    style="@style/weight_1"/>
+
+                <TextView
+                    android:id="@+id/tv_cloud_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/mediums_text_size"
+                    android:textColor="@color/textColorBlack"
+                    android:text="666"/>
+
+
+            </LinearLayout>
+
+
+
+            <View
+                style="@style/weight_10"
+                android:id="@+id/vw_cloud"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/divider_10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/remark"
+                    android:textSize="@dimen/ysf_text_size_15"
+                    android:textColor="@color/textColorBlack"
+                    android:layout_marginRight="@dimen/divider_10dp"
+                    android:layout_marginLeft="@dimen/divider_10dp"/>
+
+                <EditText
+                    android:id="@+id/et_submit_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@color/windowBackground"
+                    android:hint="@string/remark_hint"
+                    android:textSize="@dimen/ysf_text_size_13"
+                    android:layout_marginRight="@dimen/divider_10dp"
+                    android:layout_marginLeft="@dimen/divider_10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_submit_order"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/drawablePadding_5dp"
+                    android:background="@drawable/shape_button_orders"
+                    android:text="@string/submit_order"
+                    android:gravity="center"
+                    android:textColor="@color/windowBackground"
+                    android:textSize="@dimen/ysf_text_size_13"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</LinearLayout>

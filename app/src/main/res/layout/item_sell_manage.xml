@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/resultColor"
+            android:layout_height="@dimen/drawablePadding_5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_30dp"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingRight="@dimen/divider_15dp">
+
+            <TextView
+                android:id="@+id/tv_sell_hint_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/mediums_text_size"
+                android:textColor="@color/textColorBlack"
+                android:gravity="center"
+                android:text=""/>
+
+            <View
+                style="@style/weight_1"/>
+
+            <TextView
+                android:id="@+id/tv_sell_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:layout_marginTop="@dimen/drawablePadding_5dp"
+                android:text=""
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/mediums_text_size"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/divider_horizontal2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingRight="@dimen/divider_15dp"
+            android:paddingTop="@dimen/divider_10dp"
+            android:paddingBottom="@dimen/divider_10dp">
+
+            <ImageView
+                android:id="@+id/iv_sell_card"
+                android:layout_width="@dimen/divider_80dp"
+                android:layout_height="@dimen/divider_80dp"
+
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"/>
+
+
+
+            <TextView
+                android:id="@+id/tv_sell_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_sell_card"
+                android:layout_marginTop="@dimen/drawablePadding_3dp"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:text=""
+                android:textSize="@dimen/mediums_text_size"
+                android:textColor="@color/textColorBlack"/>
+
+            <TextView
+                android:id="@+id/tv_sell_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_sell_number"
+                android:layout_toRightOf="@+id/iv_sell_card"
+                android:layout_marginTop="@dimen/drawablePadding_3dp"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:textSize="@dimen/mediums_text_size"
+                android:textColor="@color/buttombarText"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/tv_sell_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_sell_name"
+                android:layout_toRightOf="@+id/iv_sell_card"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:layout_marginTop="@dimen/drawablePadding_3dp"
+                android:textSize="@dimen/mediums_text_size"
+                android:textColor="@color/buttombarText"/>
+
+            <TextView
+                android:id="@+id/tv_sell_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_sell_phone"
+                android:layout_toRightOf="@+id/iv_sell_card"
+                android:textSize="@dimen/mediums_text_size"
+                android:textColor="@color/textColorBlack"
+                android:layout_marginTop="@dimen/drawablePadding_3dp"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:layout_marginRight="@dimen/divider_10dp"
+                android:text=""/>
+
+
+
+
+
+
+        </RelativeLayout>
+
+        <View
+            style="@style/divider_horizontal2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp">
+
+            <TextView
+                android:id="@+id/tv_sell_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/mediums_text_size"
+                android:textColor="@color/textColorBlack"
+                android:gravity="center"
+                android:text="dsdsdsd"/>
+
+            <TextView
+                android:id="@+id/tv_sell_money"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/mediums_text_size"
+                android:text=""
+                android:textColor="@color/textColorBlack"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/divider_10dp"/>
+
+
+            <View
+                style="@style/weight_1"/>
+
+            <TextView
+                android:id="@+id/tv_sell_button"
+                style="@style/buttonInviteOrangeCircle"
+                android:layout_marginRight="@dimen/divider_10dp"
+                android:visibility="invisible"
+                android:text=""
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

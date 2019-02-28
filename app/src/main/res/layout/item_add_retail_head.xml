@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_select_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/divider_40dp"
+        android:text="请进入实体仓库选择商品"
+        android:textSize="@dimen/small_text_size"
+        android:textColor="@color/buttombarText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:gravity="center"/>
+
+    <View
+        style="@style/divider_horizontal2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_select_hint"/>
+
+</android.support.constraint.ConstraintLayout>

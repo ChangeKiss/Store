@@ -1,0 +1,66 @@
+<android.support.design.widget.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/toolbar_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:background="@color/placeholder_top"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        tools:ignore="Overdraw"
+        android:elevation="0dp">
+
+
+
+        <TextView
+            android:id="@+id/tv_toolbar_search"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/search"
+            android:textColor="@drawable/selector_search_text"
+            android:textSize="@dimen/ysf_text_size_15"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:id="@+id/et_toolbar_search"
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_search_white"
+                android:drawableLeft="@mipmap/search_grey_icon"
+                android:drawablePadding="5dp"
+                android:hint="@string/toolbar_search"
+                android:textColor="@color/dividerColorBrown"
+                android:textColorHint="#cdcdcd"
+                android:textSize="@dimen/ysf_text_size_13"/>
+
+            <ImageView
+                android:id="@+id/iv_toolbar_delete"
+                android:layout_width="32dp"
+                android:layout_height="28dp"
+                android:layout_alignRight="@id/et_toolbar_search"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="3dp"
+                android:scaleType="center"
+                android:clickable="false"
+                android:src="@mipmap/del_icon"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+</android.support.design.widget.AppBarLayout>

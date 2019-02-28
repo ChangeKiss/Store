@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/windowBackgroundWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/divider_10dp"
+        android:paddingBottom="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp">
+
+        <CheckBox
+            android:id="@+id/cb_pickup_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/checkBoxStyle"
+            android:checked="false"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_news_lading_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金薇呼吸款胸罩"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/buttombarText"
+            android:layout_gravity="center"/>
+
+
+
+        <TextView
+            android:id="@+id/tv_news_lading_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提货：0件"
+            android:textColor="@color/placeholder_top"
+            android:textSize="@dimen/mediums_text_size"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:layout_gravity="center"/>
+
+
+
+        <LinearLayout
+            android:id="@+id/layout_lading_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_news_lading_repertory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/buttombarText"
+                    android:text="库存：0件"
+                    android:layout_marginBottom="@dimen/drawablePadding_5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_news_lading_surplus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/small_text_size"
+                    android:layout_below="@+id/tv_news_lading_repertory"
+                    android:textColor="@color/buttombarText"
+                    android:text="剩余：0件"
+                    />
+
+
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/tv_news_lading_repertory"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:src="@mipmap/enter_icon"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+</LinearLayout>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/divider_20dp">
+
+    <TextView
+        android:id="@+id/tv_dialog_affirm_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:gravity="center"
+        android:text="您确定要出库吗?"
+        android:textColor="@color/textColorBlack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_retail_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/divider_20dp"
+        android:layout_marginRight="@dimen/divider_20dp"
+        android:text="若要出库给代理,请输入并查询,否则默认为顾客"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dialog_affirm_title" />
+
+    <!--<RadioGroup
+        android:id="@+id/select_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/divider_20dp"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/r_btn_client"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="顾客"/>
+
+        <RadioButton
+            android:id="@+id/r_btn_agent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="代理"/>
+
+    </RadioGroup>-->
+
+    <LinearLayout
+        android:id="@+id/layout_input_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/divider_20dp"
+        android:paddingRight="@dimen/divider_20dp"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_agent_number"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/divider_25dp"
+            android:hint="零售对象的代理编号或手机号"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
+            android:maxLines="1"
+            android:background="@drawable/shape_edit_text_background"
+            android:textSize="@dimen/small_text_size"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_query"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/divider_25dp"
+            android:textSize="@dimen/medium_text_size"
+            android:text="查询"
+            android:textColor="@color/windowBackground"
+            android:gravity="center"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
+            android:background="@drawable/shape_smallbutton_normal"
+            android:layout_alignParentRight="true"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/r_layout_agent_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/divider_20dp"
+        android:paddingRight="@dimen/divider_20dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_agent_head"
+            android:layout_width="@dimen/divider_50dp"
+            android:layout_height="@dimen/divider_50dp"
+            app:civ_border_color="#4b4640"
+            app:civ_border_width="0dp"
+            android:src="@mipmap/default_head"
+            android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+
+        <LinearLayout
+            android:id="@+id/layout_query_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/civ_agent_head"
+            android:layout_marginLeft="@dimen/divider_20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_subordinate_agent_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="@color/textColorBlack"
+                android:text="测试账号"
+                android:layout_toRightOf="@+id/civ_agent_head"
+                android:layout_marginTop="@dimen/divider_10dp" />
+
+            <TextView
+                android:id="@+id/tv_subordinate_agent_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="@color/textColorBlack"
+                android:text="jjgh8798789789"
+                android:layout_below="@+id/tv_subordinate_agent_name"
+                android:layout_toRightOf="@+id/civ_agent_head"
+                android:layout_marginTop="@dimen/divider_10dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_client_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/civ_agent_head"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="顾客"
+            android:layout_marginLeft="@dimen/divider_20dp"
+            android:layout_centerVertical="true"/>
+
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_remark"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_100dp"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:layout_marginLeft="@dimen/divider_20dp"
+        android:layout_marginRight="@dimen/divider_20dp"
+        android:layout_marginBottom="@dimen/divider_20dp"
+        android:background="@drawable/shape_text_frame"
+        android:gravity="start"
+        android:hint="请输入您的备注..."
+        android:padding="@dimen/drawablePadding_5dp"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_retail_hint" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/divider_20dp"
+        android:paddingRight="@dimen/divider_20dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/tv_cancel_come"
+            style="@style/buttonPopGold"
+            android:background="@drawable/selector_smallbutton_white"
+            android:text="@string/cancel"
+            android:textColor="@color/textColorLightGrey" />
+
+        <View
+            style="@style/weight_1"/>
+
+        <Button
+            android:id="@+id/tv_affirm_come"
+            style="@style/buttonPopGold"
+            android:background="@drawable/selector_smallbutton_gold"
+            android:text="@string/OK" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

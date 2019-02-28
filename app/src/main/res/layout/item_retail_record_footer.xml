@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/vw_record_line"
+        style="@style/divider_horizontal2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/record_remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small_text_size"
+        android:textColor="@color/buttombarText"
+        android:text=""
+        app:layout_constraintTop_toBottomOf="@+id/vw_record_line"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_10dp"/>
+
+
+    <View
+        style="@style/divider_horizontal2"
+        app:layout_constraintTop_toBottomOf="@+id/record_remark"
+        android:layout_marginTop="12dp"/>
+
+</android.support.constraint.ConstraintLayout>

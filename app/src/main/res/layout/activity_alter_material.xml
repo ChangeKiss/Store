@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.AlterMaterialActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <EditText
+        android:id="@+id/et_alter_pay"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/windowBackground"
+        android:padding="@dimen/drawablePadding_5dp"
+        android:hint="@string/pay_data_hint"
+        android:textColorHint="@color/redColorBackground"
+        android:textSize="@dimen/medium_text_size"
+        android:gravity="start"
+        android:maxLength="120"/>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+
+    <TextView
+        android:id="@+id/tv_save_pay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:background="@drawable/shape_button_orders"
+        android:layout_marginRight="@dimen/dp_40"
+        android:layout_marginLeft="@dimen/dp_40"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:text="@string/plus_pick_up_cart"
+        android:gravity="center"
+        android:textSize="@dimen/large_text_size"
+        android:textColor="@color/windowBackground"/>
+
+</LinearLayout>

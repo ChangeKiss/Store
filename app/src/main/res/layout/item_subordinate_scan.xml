@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/drawablePadding_5dp"
+    android:background="@color/windowBackground">
+
+    <ImageView
+        android:id="@+id/scan_commodity_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/jzz_img"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/divider_10dp"/>
+
+    <TextView
+        android:id="@+id/tv_scan_commodity_names"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium_text_size"
+        android:textColor="@color/textColorBlack"
+        android:text="商品: 爱瘦"
+        app:layout_constraintLeft_toRightOf="@+id/scan_commodity_image"
+        app:layout_constraintTop_toTopOf="@+id/scan_commodity_image"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="@dimen/divider_10dp"/>
+
+    <TextView
+        android:id="@+id/tv_scan_commodity_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium_text_size"
+        android:textColor="@color/textColorBlack"
+        android:text="件数: 0"
+        app:layout_constraintLeft_toRightOf="@+id/scan_commodity_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_scan_commodity_names"
+        android:layout_marginLeft="@dimen/divider_10dp"
+        android:layout_marginTop="@dimen/divider_10dp"/>
+
+    <TextView
+        android:id="@+id/tv_scan_ok_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium_text_size"
+        android:textColor="@color/textColorBlack"
+        android:text="已扫码件数: 0件"
+        app:layout_constraintTop_toTopOf="@+id/tv_scan_commodity_number"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/divider_10dp"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/layout_hint_come"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <RelativeLayout
+        android:id="@+id/popUpLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_35dp"
+        android:background="#f8f8f8">
+
+        <TextView
+            android:id="@+id/tv_clean_come_stocks"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@mipmap/clean_icon"
+            android:text="清空"
+            android:textSize="@dimen/medium_text_size"
+            android:gravity="center"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:drawablePadding="3dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="已选0件商品"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/medium_text_size"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"/>
+
+
+        <ImageView
+            android:id="@+id/iv_arrow_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/divider_10dp"
+            android:src="@mipmap/right_arrow_up"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+
+</LinearLayout>

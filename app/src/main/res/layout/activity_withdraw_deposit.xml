@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layoutContent"
+    android:background="@color/resultColor"
+    tools:context="com.Store.www.ui.activity.WithdrawDepositActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <TextView
+        android:id="@+id/tv_apply_money"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:textColor="@color/textColorBlack"
+        android:background="@color/windowBackground"
+        android:gravity="center|left"
+        android:text="申请金额: 0" />
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:background="@color/windowBackground"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp">
+
+        <TextView
+            android:id="@+id/tv_hint_card_name"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="@string/card_name"
+            android:gravity="center|left"/>
+
+        <EditText
+            android:id="@+id/et_card_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:textSize="@dimen/large_text_size"
+            android:hint="请输入持卡人姓名"
+            android:layout_toRightOf="@+id/tv_hint_card_name"
+            android:background="@color/windowBackground"/>
+
+
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divider_horizontal2"
+        android:layout_marginLeft="@dimen/divider_17dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:background="@color/windowBackground"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp">
+
+        <TextView
+            android:id="@+id/tv_hint_card_number"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="@string/card_number"
+            android:gravity="center|left"/>
+
+        <EditText
+            android:id="@+id/et_card_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:textSize="@dimen/large_text_size"
+            android:layout_marginRight="@dimen/divider_50dp"
+            android:hint="@string/please_input_you_bank_card"
+            android:layout_toRightOf="@+id/tv_hint_card_number"
+            android:inputType="number"
+            android:background="@color/windowBackground"/>
+
+        <ImageView
+            android:id="@+id/iv_scan_bank_card"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/scan_card_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/divider_10dp"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:layout_marginRight="@dimen/divider_10dp"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divider_horizontal2"
+        android:layout_marginLeft="@dimen/divider_17dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:background="@color/windowBackground"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp">
+
+        <TextView
+            android:id="@+id/tv_hint_identity_card"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="@string/identity_card"
+            android:gravity="center|left"/>
+
+        <EditText
+            android:id="@+id/et_open_bank_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:textSize="@dimen/large_text_size"
+            android:layout_marginRight="@dimen/divider_50dp"
+            android:layout_toRightOf="@+id/tv_hint_identity_card"
+            android:hint="@string/please_input_you_identity_card"
+            android:background="@color/windowBackground"/>
+
+        <ImageView
+            android:id="@+id/iv_scan_identity_card"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/scan_card_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="@dimen/divider_10dp"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:layout_marginRight="@dimen/divider_10dp"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divider_horizontal2"
+        android:layout_marginLeft="@dimen/divider_17dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:background="@color/windowBackground"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp">
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="@string/phone_number"
+            android:gravity="center|left"/>
+
+        <EditText
+            android:id="@+id/et_open_bank_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:textSize="@dimen/large_text_size"
+            android:hint="@string/please_input_you_phone"
+            android:inputType="number"
+            android:background="@color/windowBackground"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_30dp"
+
+        android:text="请核对扫描后卡号及身份证号,如有错误,请自行修改"
+        android:textColor="@color/redColorBackground"
+        android:textSize="@dimen/medium_text_size"
+        android:gravity="center"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_coupletNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/divider_17dp"
+            android:paddingRight="@dimen/divider_17dp"
+            android:background="@color/windowBackground">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/open_bank_number"
+                android:textSize="@dimen/mediums_text_size"
+                android:textColor="@color/textColorBlack"
+                android:gravity="center"/>
+
+
+            <EditText
+                android:id="@+id/et_coupletNumber"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:background="@color/windowBackground"
+                android:hint="请致电开户行或参照以下方式↓"
+                android:inputType="number"
+                android:maxLength="12"
+                android:textSize="@dimen/mediums_text_size"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/divider_horizontal2"
+            android:layout_marginLeft="@dimen/divider_10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/windowBackground"
+            android:paddingTop="@dimen/divider_10dp"
+            android:textSize="@dimen/mediums_text_size"
+            android:paddingLeft="@dimen/divider_17dp"
+            android:paddingRight="@dimen/divider_17dp"
+            android:textColor="@color/redColorBackground"
+            android:text="请认真填写联行号,便于加快资金申请进度!"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/windowBackground"
+            android:paddingLeft="@dimen/divider_17dp"
+            android:paddingRight="@dimen/divider_17dp"
+            android:autoLink="web"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="@string/couplet_number_query"
+            android:paddingBottom="@dimen/divider_10dp"/>
+
+        <View
+            style="@style/weight_10"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:id="@+id/btn_affirm_withdraw"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:layout_marginLeft="@dimen/divider_20dp"
+        android:layout_marginRight="@dimen/divider_20dp"
+        android:layout_marginTop="@dimen/divider_30dp"
+        android:textColor="@color/windowBackground"
+        android:text="@string/OK"
+        android:textSize="@dimen/large_text_size"
+        android:enabled="true"
+        android:background="@drawable/shape_button_orders"/>
+
+</LinearLayout>

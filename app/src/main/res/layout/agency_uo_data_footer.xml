@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/windowBackground">
+
+    <Button
+        android:id="@+id/btn_apply_for_upData"
+        android:background="@drawable/select_button_square"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:layout_margin="@dimen/divider_20dp"
+        android:textSize="@dimen/large_text_size"
+        android:textColor="@color/windowBackground"
+        android:gravity="center"
+        android:text="@string/apply_fof_upData"/>
+
+</LinearLayout>

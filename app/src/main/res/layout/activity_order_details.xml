@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.OrderDetailsActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/ry_order_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+    </LinearLayout>
+
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="@dimen/divider_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_money"
+            android:layout_gravity="center"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/ysf_text_size_15"/>
+
+        <TextView
+            android:id="@+id/tv_order_details_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/redColorBackground"
+            android:text=""
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:textSize="@dimen/ysf_text_size_15"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/btn_order_cancel_pay"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_button_pay_cancel"
+            android:gravity="center"
+            android:text="@string/order_no"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/ysf_text_size_15" />
+
+
+        <TextView
+            android:id="@+id/btn_order_details_pay"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_button_normal"
+            android:gravity="center"
+            android:text="@string/pay_order"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/ysf_text_size_15" />
+
+    </LinearLayout>
+
+</LinearLayout>

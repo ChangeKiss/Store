@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        style="@style/weight_10"/>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/divider_10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cv_circle_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:src="@mipmap/default_head"
+            app:civ_border_color="#4b4640"
+            app:civ_border_width="0dp"/>
+
+        <TextView
+            android:id="@+id/tv_circle_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cv_circle_head"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:text=""
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/textColorBlack"/>
+
+        <TextView
+            android:id="@+id/tv_share_wex"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:background="@drawable/shape_button_orders"
+            android:text="分享"
+            android:textSize="@dimen/medium_text_size"
+            android:gravity="center"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/tv_circle_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/cv_circle_head"
+            android:layout_below="@+id/tv_circle_name"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:text=""
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/redColorBackground"/>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_circle_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="@dimen/divider_10dp"
+        android:text=""
+        android:textSize="@dimen/large_text_size"
+        android:textColor="@color/textColorBlack"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_circle_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/drawablePadding_5dp"
+        android:layout_marginLeft="@dimen/drawablePadding_5dp"
+        android:layout_marginRight="@dimen/drawablePadding_5dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/layout_circle_praise"
+            style="@style/circlePraiseLayout">
+
+            <ImageView
+                android:id="@+id/iv_circle_praise"
+                android:layout_width="@dimen/family_praise_size"
+                android:layout_height="@dimen/family_praise_size"
+                android:src="@mipmap/family_dz_icon"/>
+            <TextView
+                android:id="@+id/tv_circle_praise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:text="(0)"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/circle_cut_off_line"/>
+
+        <LinearLayout
+            android:id="@+id/layout_circle_comment"
+            style="@style/circlePraiseLayout">
+
+            <ImageView
+                android:layout_width="@dimen/family_praise_size"
+                android:layout_height="@dimen/family_praise_size"
+                android:src="@mipmap/family_pl_icon"/>
+            <TextView
+                android:id="@+id/tv_circle_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:text="0"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/circle_cut_off_line"/>
+
+        <LinearLayout
+            android:id="@+id/layout_circle_report"
+            style="@style/circlePraiseLayout">
+
+            <ImageView
+                android:layout_width="@dimen/family_praise_size"
+                android:layout_height="@dimen/family_praise_size"
+                android:src="@mipmap/family_jb_icon"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:layout_gravity="center"
+                android:layout_marginLeft="3dp"
+                android:text="@string/report"/>
+
+        </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+</LinearLayout>

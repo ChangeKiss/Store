@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/divider_10dp"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_submit_no_selector" >
+
+    <TextView
+        android:id="@+id/tv_hint_vip"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:background="@drawable/shape_distribution_vip"
+        android:layout_gravity="center|left"/>
+
+    <TextView
+        android:id="@+id/tv_bar_chart_content_Vip"
+        android:layout_toRightOf="@+id/tv_hint_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="VIP客户:      "
+        android:visibility="visible"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:textColor="@color/placeholder_top" />
+
+    <TextView
+        android:id="@+id/tv_hint_dealer"
+        android:layout_below="@+id/tv_hint_vip"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_gravity="center|left"
+        android:background="@drawable/shape_distribution_dealer" />
+
+    <TextView
+        android:id="@+id/tv_bar_chart_content_dealer"
+        android:layout_toRightOf="@+id/tv_hint_dealer"
+        android:layout_below="@+id/tv_hint_vip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:layout_marginLeft="5dp"
+        android:text="经销商:          "
+        android:textSize="12sp"
+        android:textColor="@color/placeholder_top"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tv_hint_agent"
+        android:layout_below="@+id/tv_hint_dealer"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_gravity="center|left"
+        android:background="@drawable/shape_distribution_agent" />
+
+    <TextView
+        android:id="@+id/tv_bar_chart_content_agent"
+        android:layout_below="@+id/tv_hint_dealer"
+        android:layout_toRightOf="@+id/tv_hint_agent"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="代理商:          "
+        android:textSize="12sp"
+        android:textColor="@color/placeholder_top"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tv_hint_one_lv"
+        android:layout_below="@+id/tv_hint_agent"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_gravity="center|left"
+        android:background="@drawable/shape_distribution_one_lv" />
+
+    <TextView
+        android:id="@+id/tv_bar_chart_content_one_lv"
+        android:layout_toRightOf="@+id/tv_hint_one_lv"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:layout_below="@+id/tv_hint_agent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="一级代理:          "
+        android:textSize="12sp"
+        android:textColor="@color/placeholder_top"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tv_hint_diamond"
+        android:layout_below="@+id/tv_hint_one_lv"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:background="@drawable/shape_distribution_diamond"/>
+
+    <TextView
+        android:layout_below="@+id/tv_hint_one_lv"
+        android:layout_toRightOf="@+id/tv_hint_diamond"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:layout_marginLeft="@dimen/drawablePadding_5dp"
+        android:id="@+id/tv_bar_chart_content_diamond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="钻石代理:       "
+        android:textColor="@color/placeholder_top"
+        android:textSize="@dimen/small_text_size"/>
+
+</RelativeLayout>

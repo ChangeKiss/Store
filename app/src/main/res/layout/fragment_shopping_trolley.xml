@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:divider="@color/lightGreyColorBackground"
+    tools:context="com.Store.www.ui.fragment.ShoppingTrolleyFragment"
+    android:background="@color/windowBackground">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/placeholder_top"
+        android:paddingRight="@dimen/drawablePadding_5dp"
+        android:paddingLeft="@dimen/drawablePadding_5dp"
+        android:paddingTop="@dimen/divider_30dp"
+        android:paddingBottom="@dimen/divider_10dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="@dimen/divider_50dp"
+            android:layout_height="match_parent" />
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_cart_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cart"
+            android:gravity="center"
+            android:textSize="@dimen/title_text_size"
+            android:layout_marginLeft="@dimen/divider_20dp"
+            android:textColor="@color/windowBackground"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ljt_icon"
+            android:text="@string/delete_image"
+            android:enabled="false"
+            android:visibility="invisible"
+            android:textColor="@color/windowBackground"
+            android:layout_marginRight="@dimen/divider_10dp"
+            />
+    </LinearLayout>
+
+    <View
+       style="@style/divider_horizontal2" />
+
+    <include layout="@layout/layout_nodata"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ry_cart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/resultColor">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:id="@+id/layout_check"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/textColorWhite"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/drawablePadding_5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_trolley"
+                        style="@style/checkBoxStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_hint_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/buttombarText"
+                        android:text="全选"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/weight_1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_text"
+                    android:layout_marginLeft="@dimen/divider_10dp"
+                    android:textColor="@color/textColorLightBlack"
+                    android:textSize="@dimen/large_text_size" />
+
+                <TextView
+                    android:id="@+id/tv_cart_money_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="@dimen/divider_20dp"
+                    android:text="666"
+                    android:textColor="@color/redColorBackground"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_clearing"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/select_button_square"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/clearing"
+            android:textColor="@color/textColorWhite"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

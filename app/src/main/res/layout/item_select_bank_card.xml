@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/icon_height"
+        android:paddingLeft="@dimen/divider_17dp"
+        android:paddingRight="@dimen/divider_17dp"
+        android:background="@color/windowBackground"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_bank_card_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/large_text_size"
+                android:text="中国银行"/>
+
+            <TextView
+                android:id="@+id/tv_bank_card_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorGrey"
+                android:textSize="@dimen/medium_text_size"
+                android:layout_marginTop="@dimen/drawablePadding_5dp"
+                android:text="尾号2222储蓄卡"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/weight_1"/>
+
+        <ImageView
+            android:id="@+id/iv_select_card"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/select_card_ok"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+</LinearLayout>

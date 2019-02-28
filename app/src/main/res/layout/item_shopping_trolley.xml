@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp">
+        <TextView
+            android:id="@+id/tv_lose_efficacy_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/textColorBlack"
+            android:text=""
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ry_shopping_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/divider_10dp"
+        android:paddingBottom="@dimen/divider_10dp">
+
+        <CheckBox
+            android:id="@+id/cb_shopping_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/checkBoxStyle"
+            android:checked="false"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <ImageView
+            android:id="@+id/iv_shopping_image"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_toRightOf="@+id/cb_shopping_choose"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="@dimen/divider_6dp"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_shopping_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_toRightOf="@+id/iv_shopping_image"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/textColorBlack"
+            android:layout_marginLeft="@dimen/divider_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_shopping_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_shopping_name"
+            android:layout_toRightOf="@+id/iv_shopping_image"
+            android:text=""
+            android:layout_marginTop="8dp"
+            android:textColor="@color/redColorBackground"
+            android:layout_marginLeft="@dimen/divider_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_shopping_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text=""
+            android:layout_marginTop="@dimen/ysf_text_size_21"
+            android:layout_marginRight="@dimen/ysf_text_size_24"
+            android:textSize="@dimen/ysf_text_size_12"
+            android:textColor="@color/textColorBlack"/>
+
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+
+</LinearLayout>

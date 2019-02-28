@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.JDPayActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <View
+        style="@style/weight_10"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:background="@color/windowBackground">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/divider_40dp"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="还需支付"
+            android:gravity="center|left"/>
+
+        <TextView
+            android:id="@+id/tv_hint_pay_money"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/redColorBackground"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:text="￥999"
+            android:gravity="center|left"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_input_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_30dp"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/medium_text_size"
+                android:text="@string/please_input_you_real_data"
+                android:paddingLeft="@dimen/divider_10dp"
+                android:gravity="center|left"
+                android:background="@color/dividerColorGrey"/>
+
+            <LinearLayout
+                android:id="@+id/layout_select_card"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/icon_height"
+                android:paddingLeft="@dimen/divider_17dp"
+                android:paddingRight="@dimen/divider_17dp"
+                android:background="@color/windowBackground"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layout_default_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_default_card_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/large_text_size"
+                        android:text=""/>
+
+                    <TextView
+                        android:id="@+id/tv_default_card_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorGrey"
+                        android:textSize="@dimen/medium_text_size"
+                        android:layout_marginTop="@dimen/drawablePadding_5dp"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_no_card_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/large_text_size"
+                    android:text="您还没有银行卡，点击前往添加"
+                    android:visibility="gone"/>
+
+                <View
+                    style="@style/weight_1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/enter_icon"
+                    />
+
+            </LinearLayout>
+
+
+
+            <View
+                style="@style/divider_horizontal2"
+                android:layout_marginLeft="@dimen/divider_10dp"/>
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_credit_card_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View
+                    style="@style/divider_horizontal2"
+                    android:layout_marginLeft="@dimen/divider_10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_40dp"
+                    android:orientation="horizontal"
+                    android:background="@color/windowBackground">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="@color/textColorBlack"
+                        android:text="@string/security_code"
+                        android:gravity="center|left"
+                        android:layout_marginLeft="@dimen/divider_10dp"/>
+
+                    <EditText
+                        android:id="@+id/et_security_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/divider_10dp"
+                        android:background="@color/windowBackground"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="@color/textColorBlack"
+                        android:inputType="number"
+                        android:hint="信用卡背面签名栏的后三位数字"/>
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/divider_horizontal2"
+                    android:layout_marginLeft="@dimen/divider_10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_40dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_10dp"
+                    android:background="@color/windowBackground">
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="@color/textColorBlack"
+                        android:text="@string/period_of_validity"
+                        android:gravity="center|left"/>
+
+                    <EditText
+                        android:id="@+id/et_period_of_validity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/divider_10dp"
+                        android:background="@color/windowBackground"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="@color/textColorBlack"
+                        android:inputType="number"
+                        android:hint="如有效期至10/20,则填入2010"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/divider_horizontal2" />
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/btn_next_jd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_40dp"
+                android:layout_margin="@dimen/divider_40dp"
+                android:gravity="center"
+                android:textColor="@color/windowBackground"
+                android:text="@string/ssdk_sms_btn_next"
+                android:background="@drawable/select_button_square"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

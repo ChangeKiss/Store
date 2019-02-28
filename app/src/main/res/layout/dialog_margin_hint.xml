@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog_equity_background"
+    android:paddingBottom="@dimen/divider_20dp">
+
+    <TextView
+        android:id="@+id/tv_margin_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/dialog_equity_icon"
+        android:textSize="@dimen/title_text_size"
+        android:text="保证金"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/windowBackground" />
+
+    <TextView
+        android:id="@+id/tv_present_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/divider_20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_margin_title"
+        android:layout_marginLeft="@dimen/divider_10dp"
+        android:textSize="@dimen/mediums_text_size"
+        android:textColor="@color/textColorBlack"
+        android:text="当前保证金金额: 666"
+        android:layout_marginStart="@dimen/divider_10dp" />
+
+    <TextView
+        android:id="@+id/tv_margin_hint_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_present_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/divider_20dp"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp"
+        android:textColor="@color/textColorBlack"
+        android:textSize="@dimen/mediums_text_size"
+        android:gravity="center|left"
+        android:lineSpacingMultiplier="1.2"
+        android:text="您当前的塑身衣等级是XXX，需缴XXX保证金，请及时补缴保证金，以免影响正常提货。"/>
+
+    <LinearLayout
+        android:id="@+id/layout_margin_table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/divider_10dp"
+        android:layout_marginRight="@dimen/divider_10dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_margin_hint_content"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:visibility="gone">
+
+        <com.Store.www.base.TableView.TableView
+            android:id="@+id/table_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:dividerColor="#bbbbbb"
+            app:dividerWidth="3px"
+            app:headerColor="#00ffffff"
+            app:headerTextColor="#666666"
+            app:headerTextSize="11sp"
+            app:rowHeight="24dp"
+            app:textColor="#666666"
+            app:textSize="11sp"
+            app:unitColumnWidth="0dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_20dp"
+        android:paddingRight="@dimen/divider_20dp"
+        android:layout_marginTop="@dimen/divider_20dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/layout_margin_table"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_no_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/not_to_pay_icon"
+            android:textSize="16sp"
+            android:text="暂不支付"
+            android:textColor="#999999"
+            android:gravity="center"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_promptly_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即支付"
+            android:gravity="center"
+            android:textColor="@color/windowBackground"
+            android:textSize="16sp"
+            android:background="@mipmap/pay_now_icon"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_no_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/divider_20dp"
+        android:paddingRight="@dimen/divider_20dp"
+        android:layout_marginTop="@dimen/divider_20dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/layout_margin_table"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_i_know"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/i_now_icon"
+            android:textSize="16sp"
+            android:textColor="@color/windowBackground"
+            android:text="我知道了"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

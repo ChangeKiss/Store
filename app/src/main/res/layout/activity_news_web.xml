@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/windowBackground"
+    tools:context="com.Store.www.ui.activity.NewsWebActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <ProgressBar
+        android:id="@+id/news_pb_web"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:max="100"
+        android:progressDrawable="@drawable/progressbars"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_news_web_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:visibility="invisible"
+                        android:textColor="@color/textColorBlack"
+                        android:layout_marginTop="@dimen/divider_15dp"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/button_text_size"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/layout_time_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/divider_15dp"
+                    android:paddingRight="@dimen/divider_15dp"
+                    android:paddingTop="@dimen/divider_10dp"
+                    android:paddingBottom="@dimen/divider_20dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/new_cl_view"
+                        android:layout_width="37dp"
+                        android:layout_height="37dp"
+                        app:civ_border_color="#4b4640"
+                        android:src="@mipmap/new_head_icon"
+                        app:civ_border_width="0dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_news_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20180101"
+                        android:gravity="center"
+                        android:textColor="@color/guide_no_select"
+                        android:layout_below="@+id/tv_news_web_author"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:layout_marginLeft="@dimen/divider_10dp"
+                        android:layout_toRightOf="@+id/new_cl_view"/>
+
+
+                    <TextView
+                        android:id="@+id/tv_news_web_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kivie"
+                        android:gravity="center"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:layout_marginLeft="@dimen/divider_10dp"
+                        android:layout_toRightOf="@+id/new_cl_view"
+                        android:textColor="@color/textColorBlack"/>
+
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/divider_horizontal2"/>
+
+                <WebView
+                    android:id="@+id/wv_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                </WebView>
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_10dp"
+                    android:visibility="gone"
+                    android:background="@color/hintColor"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="@string/comment"
+                        android:gravity="center"
+                        android:textSize="@dimen/medium_text_size"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <View
+                        style="@style/divider_horizontal2"/>
+
+                    <com.github.jdsjlzx.recyclerview.LRecyclerView
+                        android:id="@+id/comment_Rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_news_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackgroundGrey"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/drawablePadding_5dp"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/drawablePadding_5dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_weight="1"
+            android:background="@drawable/shape_search_white"
+            android:gravity="left|center_vertical"
+            android:hint="@string/comment_write_hint"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:maxLength="120"
+            android:textColor="@color/textColorGold"
+            android:textColorHint="@color/textColorGold"
+            android:textSize="@dimen/medium_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_comment_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/select_button_square"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingBottom="@dimen/drawablePadding_5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/drawablePadding_5dp"
+            android:text="@string/send"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/medium_text_size"/>
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

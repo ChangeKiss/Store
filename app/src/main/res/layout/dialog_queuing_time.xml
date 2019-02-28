@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/divider_20dp"
+    android:paddingRight="@dimen/divider_20dp"
+    android:paddingTop="@dimen/divider_50dp"
+    android:paddingBottom="@dimen/divider_50dp"
+    android:background="@drawable/shape_dialog_equity_background">
+
+    <TextView
+        android:id="@+id/tv_count_down_hint"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_30dp"
+        android:textColor="@color/placeholder_top"
+        android:text="当前访问人数较多,请稍后再试"
+        android:maxLines="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="@dimen/large_text_size"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="@dimen/divider_80dp"
+        android:layout_height="@dimen/divider_30dp"
+        android:background="@drawable/shape_button_orders"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp"
+        android:textSize="@dimen/medium_text_size"
+        android:text="取消"
+        android:gravity="center"
+        android:textColor="@color/windowBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/tv_again_connect"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_again_connect"
+        android:layout_width="@dimen/divider_80dp"
+        android:layout_height="@dimen/divider_30dp"
+        android:background="@drawable/shape_button_orders"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp"
+        android:textSize="@dimen/medium_text_size"
+        android:text="再次访问"
+        android:gravity="center"
+        android:textColor="@color/windowBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tv_cancel"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone"/>
+
+</android.support.constraint.ConstraintLayout>

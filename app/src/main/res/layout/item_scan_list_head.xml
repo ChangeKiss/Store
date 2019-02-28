@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/drawablePadding_5dp"
+    android:background="@color/windowBackground">
+
+    <TextView
+        android:id="@+id/tv_scan_order_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium_text_size"
+        android:textColor="@color/textColorBlack"
+        android:text="订单编号: "
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/divider_15dp"/>
+
+    <TextView
+        android:id="@+id/tv_scan_order_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium_text_size"
+        android:textColor="@color/textColorBlack"
+        android:text=""
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="@dimen/ysf_text_size_15"/>
+
+    <View
+        style="@style/divider_horizontal2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_scan_order_number"
+        android:layout_marginLeft="@dimen/divider_15dp"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+
+</android.support.constraint.ConstraintLayout>

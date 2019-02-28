@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.RegardActivity">
+    <include layout="@layout/layout_toolbar"/>
+
+    <View
+        style="@style/divider_horizontal2"
+        />
+
+    <LinearLayout
+        android:id="@+id/layout_clear"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_item_height"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_text_frame"
+        android:layout_marginTop="5dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/divider_my_kivie"
+            android:drawableLeft="@mipmap/app_delete"
+            android:drawablePadding="@dimen/divider_my_kivie"
+            android:textColor="@color/textColorBlack"
+            android:text="@string/clean" />
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_apply_Cache"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableRight="@mipmap/enter_icon"
+            android:layout_marginRight="@dimen/divider_10dp"
+            android:drawablePadding="@dimen/divider_10dp"
+            android:textColor="@color/textColorBlack"
+            android:text="0.00k"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+
+        <TextView
+            style="@style/personalInformationText"
+            android:background="@drawable/shape_text_frame"
+            android:drawableLeft="@mipmap/app_update"
+            android:text="@string/app_update" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="@dimen/drawablePadding_5dp"
+        android:layout_marginRight="@dimen/drawablePadding_5dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:enabled="true"
+            android:background="@drawable/select_button_square"
+            android:textColor="@color/textColorWhite"
+            android:text="@string/quit_login"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

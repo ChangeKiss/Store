@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/divider_15dp">
+
+    <TextView
+        android:id="@+id/tv_record_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/textColorBlack"
+        android:textSize="@dimen/small_text_size"
+        android:layout_marginLeft="@dimen/divider_15dp"
+        android:layout_marginTop="10dp"
+        android:text="记录编号:"/>
+
+    <TextView
+        android:id="@+id/tv_hint_record_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="123456789"
+        android:textSize="@dimen/small_text_size"
+        android:textColor="@color/textColorBlack"
+        app:layout_constraintLeft_toRightOf="@+id/tv_record_number"
+        app:layout_constraintTop_toTopOf="@+id/tv_record_number"
+        android:layout_marginLeft="@dimen/divider_10dp"/>
+
+    <TextView
+        android:id="@+id/tv_record_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="记录时间:"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintTop_toBottomOf="@+id/tv_record_number"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_record_number"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+
+    <TextView
+        android:id="@+id/tv_hint_record_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20181012"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hint_record_number"
+        app:layout_constraintLeft_toRightOf="@+id/tv_record_time"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:layout_marginLeft="@dimen/divider_10dp"/>
+
+    <TextView
+        android:id="@+id/tv_record_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small_text_size"
+        android:text="零售对象:"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hint_record_time"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_record_number"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+
+    <View
+        style="@style/divider_horizontal2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_record_name"
+        android:layout_marginTop="10dp" />
+
+</android.support.constraint.ConstraintLayout>

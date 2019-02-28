@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/ll_root"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.AdvertisingDialogActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_advertising"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_advertising_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_message_popu"
+            android:layout_marginTop="@dimen/divider_30dp"
+            android:layout_marginRight="@dimen/divider_20dp"
+            android:text="@string/close"
+            android:textSize="@dimen/large_text_size"
+            android:paddingLeft="@dimen/divider_20dp"
+            android:paddingRight="@dimen/divider_20dp"
+            android:paddingBottom="@dimen/drawablePadding_5dp"
+            android:paddingTop="@dimen/drawablePadding_5dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

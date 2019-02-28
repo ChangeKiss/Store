@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.RetailRecordActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/lt_retail_record"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_50dp"
+        android:background="@color/windowBackground"
+        android:gravity="center"
+        android:paddingLeft="@dimen/divider_20dp"
+        android:paddingRight="@dimen/divider_20dp">
+
+        <Button
+            android:id="@+id/btn_add_retail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_35dp"
+            android:background="@drawable/select_button_square"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/large_text_size"
+            android:text="添加"/>
+
+    </LinearLayout>
+
+</LinearLayout>

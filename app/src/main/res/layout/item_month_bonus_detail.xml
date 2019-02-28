@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/drawablePadding_5dp">
+
+
+        <TextView
+            android:id="@+id/tv_month_bonus_detail_name"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/medium_text_size"
+            android:text="叉叉叉(JWD20180808564)"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_month_bonus_detail_bra"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/medium_text_size"
+            android:text="999"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_month_bonus_detail_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/medium_text_size"
+            android:text="898"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_month_bonus_detail_bonus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/medium_text_size"
+            android:text="899"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+</LinearLayout>

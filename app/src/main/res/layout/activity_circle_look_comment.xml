@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.CircleLookCommentActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/rv_circle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackgroundGrey"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/drawablePadding_5dp"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/drawablePadding_5dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:id="@+id/et_circle_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_weight="1"
+            android:background="@drawable/shape_search_white"
+            android:gravity="left|center_vertical"
+            android:hint="@string/comment_one"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:maxLength="120"
+            android:textColor="@color/textColorGold"
+            android:textColorHint="@color/textColorGold"
+            android:textSize="@dimen/medium_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_circle_comment_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/select_button_square"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingBottom="@dimen/drawablePadding_5dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/drawablePadding_5dp"
+            android:text="@string/send"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/medium_text_size"/>
+    </LinearLayout>
+
+
+</LinearLayout>

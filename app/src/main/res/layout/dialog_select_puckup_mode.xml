@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/divider_20dp"
+    android:paddingBottom="@dimen/divider_20dp"
+    android:background="@color/windowBackground">
+
+
+    <LinearLayout
+        android:id="@+id/layout_select_pickup_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/windowBackground">
+
+        <TextView
+            android:id="@+id/tv_pickup_oneself"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:layout_marginLeft="@dimen/divider_50dp"
+            android:layout_marginRight="@dimen/divider_50dp"
+            android:layout_marginTop="@dimen/divider_20dp"
+            android:background="@drawable/select_button_square"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/windowBackground"
+            android:text="直接提货"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:layout_marginLeft="@dimen/divider_50dp"
+            android:layout_marginRight="@dimen/divider_50dp"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="直接提货: 填写或选择收货地址，选择想要提货的商品。"/>
+
+        <TextView
+            android:id="@+id/tv_cloud_shift"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:layout_marginLeft="@dimen/divider_50dp"
+            android:layout_marginRight="@dimen/divider_50dp"
+            android:layout_marginTop="@dimen/divider_15dp"
+            android:background="@drawable/select_button_square"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/windowBackground"
+            android:text="云库转移"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:text="云库转移: 填写下级代理的代理编号，选择想要转移给下级的商品，库存直接转移到下级的云库。"
+            android:layout_marginLeft="@dimen/divider_50dp"
+            android:layout_marginRight="@dimen/divider_50dp"
+            android:textSize="@dimen/mediums_text_size"
+            android:layout_marginTop="@dimen/divider_10dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_select_agent_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/divider_10dp"
+        android:paddingBottom="@dimen/divider_10dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:paddingLeft="@dimen/divider_30dp"
+            android:paddingRight="@dimen/divider_30dp">
+
+            <EditText
+                android:id="@+id/et_input_agent_number"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/divider_30dp"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/mediums_text_size"
+                android:hint="请输入提货下级代理编号"
+                android:paddingLeft="@dimen/divider_15dp"
+                android:paddingRight="@dimen/divider_15dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_edit_text_background"/>
+
+            <View
+                style="@style/weight_1"/>
+
+            <TextView
+                android:id="@+id/tv_query_select_agent"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/divider_30dp"
+                android:textSize="@dimen/mediums_text_size"
+                android:text="查询"
+                android:textColor="@color/windowBackground"
+                android:gravity="center"
+                android:paddingLeft="@dimen/divider_15dp"
+                android:paddingRight="@dimen/divider_15dp"
+                android:background="@drawable/select_button_square" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_select_agent_head"
+                android:layout_width="@dimen/divider_60dp"
+                android:layout_height="@dimen/divider_60dp"
+                app:civ_border_color="#4b4640"
+                app:civ_border_width="0dp"
+                android:src="@mipmap/default_head"
+                android:layout_marginLeft="@dimen/divider_30dp"
+                android:layout_marginTop="@dimen/divider_15dp"/>
+
+            <TextView
+                android:id="@+id/tv_select_agent_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="@color/textColorBlack"
+                android:text=""
+                android:layout_toRightOf="@+id/civ_select_agent_head"
+                android:layout_marginTop="@dimen/divider_20dp"
+                android:layout_marginLeft="@dimen/divider_20dp"
+                android:layout_marginRight="@dimen/divider_30dp"/>
+
+            <TextView
+                android:id="@+id/tv_select_agent_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/medium_text_size"
+                android:text=""
+                android:layout_toRightOf="@+id/civ_select_agent_head"
+                android:layout_marginRight="@dimen/divider_30dp"
+                android:layout_below="@+id/tv_select_agent_name"
+                android:layout_marginLeft="@dimen/divider_20dp"
+                android:layout_marginTop="@dimen/divider_15dp"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cancel_select"
+                android:layout_width="@dimen/divider_100dp"
+                android:layout_height="@dimen/divider_30dp"
+                android:layout_marginTop="@dimen/divider_20dp"
+                android:paddingLeft="@dimen/divider_20dp"
+                android:paddingRight="@dimen/divider_20dp"
+                android:layout_marginRight="@dimen/divider_50dp"
+                android:background="@drawable/select_button_square"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/windowBackground"
+                android:text="取消"
+                android:gravity="center" />
+
+            <View
+                style="@style/weight_1"/>
+
+            <TextView
+                android:id="@+id/tv_next"
+                android:layout_width="@dimen/divider_100dp"
+                android:layout_height="@dimen/divider_30dp"
+                android:layout_marginTop="@dimen/divider_20dp"
+                android:layout_marginLeft="@dimen/divider_50dp"
+                android:paddingLeft="@dimen/divider_20dp"
+                android:paddingRight="@dimen/divider_20dp"
+                android:background="@drawable/select_button_square"
+                android:enabled="false"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/windowBackground"
+                android:text="下一步"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

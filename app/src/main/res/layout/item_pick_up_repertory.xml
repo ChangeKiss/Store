@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/windowBackground">
+
+
+        <TextView
+            android:id="@+id/tv_repertory_name"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/buttombarText"
+            android:textSize="@dimen/large_text_size"
+            android:text="冰绿111"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_repertory_stocks"
+            app:layout_constraintHorizontal_weight="2"/>
+
+
+        <TextView
+            android:id="@+id/tv_repertory_stocks"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="155"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_repertory_name"
+            app:layout_constraintRight_toLeftOf="@+id/layout_number_location"
+            app:layout_constraintHorizontal_weight="1"/>
+
+        <LinearLayout
+            android:id="@+id/layout_number_location"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_repertory_stocks"
+            app:layout_constraintHorizontal_weight="2">
+
+            <ImageView
+                android:id="@+id/iv_repertory_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/minus_icon"
+                />
+
+            <TextView
+                android:id="@+id/tv_repertory_number"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/buttombarText"
+                android:text="0"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/iv_repertory_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/plus_icon" />
+
+        </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

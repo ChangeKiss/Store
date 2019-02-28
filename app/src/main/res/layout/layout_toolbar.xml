@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:elevation="3dp">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/toolbar"
+        style="@style/ClubToolbar"
+        android:paddingTop="@dimen/divider_30dp"
+        android:paddingBottom="@dimen/divider_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/placeholder_top"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        tools:ignore="Overdraw">
+
+        <ImageView
+            android:id="@+id/iv_toolbar_left"
+            android:layout_width="@dimen/toolbar_image_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:scaleType="center"
+            android:src="@mipmap/back_icon"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_toolbar_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:gravity="center_horizontal"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/tab_text_size"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/title_text_size"/>
+
+        <ImageView
+            android:id="@+id/tv_toolbar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/tab_text_size"
+            android:src="@mipmap/head_cart"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/iv_toolbar_right_share"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/tab_text_size"
+            android:src="@mipmap/share"
+            android:layout_marginRight="15dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/iv_toolbar_right_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/divider_15dp"
+            android:layout_marginRight="@dimen/divider_15dp"
+            android:layout_gravity="right"
+            android:src="@mipmap/close_icon"
+            android:visibility="gone"/>
+
+
+        <TextView
+            android:id="@+id/iv_toolbar_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/tab_text_size"
+            android:layout_marginRight="15dp"
+            android:visibility="gone" />
+
+    </android.support.v7.widget.Toolbar>
+
+
+</android.support.design.widget.AppBarLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_submit_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/divider_10dp">
+
+        <ImageView
+            android:id="@+id/iv_submit_image"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_toRightOf="@+id/cb_shopping_choose"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_submit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金薇烧花款"
+            android:layout_toRightOf="@+id/iv_submit_image"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_submit_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_submit_name"
+            android:layout_toRightOf="@+id/iv_submit_image"
+            android:text=""
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:layout_marginTop="@dimen/drawablePadding_3dp"
+            android:textSize="@dimen/medium_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_submit_one_piece_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_submit_number"
+            android:layout_toRightOf="@+id/iv_submit_image"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:textColor="@color/redColorBackground"
+            android:text="￥55"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/medium_text_size"/>
+
+
+        <TextView
+            android:id="@+id/tv_submit_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text=""
+            android:layout_marginTop="@dimen/ysf_text_size_21"
+            android:layout_marginRight="@dimen/ysf_text_size_24"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/textColorBlack"/>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

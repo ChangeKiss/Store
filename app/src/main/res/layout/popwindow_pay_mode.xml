@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/textColorWhite">
+
+    <LinearLayout
+        android:id="@+id/layout_select_pay_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:showDividers="middle"
+        android:background="@color/dividerColorGrey">
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/pop_four_line"
+        style="@style/divider_horizontal2" />
+
+    <TextView
+        android:id="@+id/tv_payWay_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/cancel"
+        android:textSize="18sp"
+        android:textColor="@color/textColorBlack"
+        android:gravity="center" />
+</LinearLayout>

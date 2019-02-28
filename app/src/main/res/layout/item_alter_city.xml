@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_40">
+
+    <TextView
+        android:id="@+id/tv_alter_city"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:layout_marginRight="@dimen/drawablePadding_5dp"
+        android:drawableRight="@mipmap/enter_icon"
+        android:textSize="15sp"/>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+</LinearLayout>

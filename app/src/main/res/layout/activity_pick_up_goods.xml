@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.PickUpGoodsActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_pick_goods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground"
+        app:tabIndicatorColor="@color/itemNewColor"
+        app:tabSelectedTextColor="@color/itemNewColor"
+        app:tabTextColor="#555555"/>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <include layout="@layout/layout_no_data_two" />
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/ry_pick_goods"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/resultColor"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_add_pick_up"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/placeholder_top"
+            android:textColor="@color/windowBackgroundWhite"
+            android:text="@string/add_pick_up"
+            android:gravity="center"
+            android:textSize="@dimen/large_text_size"/>
+
+    </LinearLayout>
+
+</LinearLayout>

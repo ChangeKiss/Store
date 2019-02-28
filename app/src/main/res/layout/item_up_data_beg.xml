@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/windowBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/divider_15dp"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingTop="@dimen/divider_15dp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/divider_10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cv_beg_agency_head_portrait"
+                android:layout_width="@dimen/divider_30dp"
+                android:layout_height="@dimen/divider_30dp"
+                app:civ_border_color="@color/windowBackground"
+                app:civ_border_width="0dp"
+                android:src="@mipmap/default_head"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/drawablePadding_5dp">
+
+                <TextView
+                    android:id="@+id/tv_beg_agency_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/small_text_size"
+                    android:text="下级代理名称"
+                    android:gravity="center"
+                    android:textColor="@color/textColorBlack"/>
+
+
+
+
+                <TextView
+                    android:id="@+id/tv_beg_agency_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/smaller_text_size"
+                    android:text="K201803040822125"
+                    android:layout_marginTop="@dimen/drawablePadding_5dp"
+                    android:paddingLeft="@dimen/drawablePadding_5dp"
+                    android:paddingRight="@dimen/drawablePadding_5dp"
+                    android:background="@drawable/shape_beg_apply_for_line"
+                    android:gravity="center"/>
+
+
+            </LinearLayout>
+
+
+            <View
+                style="@style/weight_1"/>
+
+
+            <TextView
+                android:id="@+id/tv_beg_up_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/small_text_size"
+                android:text="2018-6-6 15:25"
+                android:layout_gravity="top"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingRight="@dimen/divider_15dp"
+            android:paddingTop="@dimen/divider_10dp"
+            android:paddingBottom="@dimen/divider_10dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_present_lv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/textColorBlack"
+                    android:text="一级代理"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/smaller_text_size"
+                    android:layout_marginTop="@dimen/divider_10dp"
+                    android:text="当前等级"/>
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/agency_updata"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/divider_15dp"
+                android:layout_marginRight="@dimen/divider_15dp"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_beg_up_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/redColorBackground"
+                    android:text="一级代理"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/smaller_text_size"
+                    android:layout_marginTop="@dimen/divider_10dp"
+                    android:text="升级至"/>
+
+            </LinearLayout>
+
+            <View
+                style="@style/weight_1"/>
+
+
+            <LinearLayout
+                android:id="@+id/layout_reject_consent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_beg_reject"
+                    android:layout_width="@dimen/divider_50dp"
+                    android:layout_height="@dimen/divider_25dp"
+                    android:background="@mipmap/reject_cion"
+                    android:textSize="@dimen/medium_text_size"
+                    android:text="拒绝"
+                    android:layout_marginRight="@dimen/drawablePadding_5dp"/>
+
+                <Button
+                    android:id="@+id/btn_beg_consent"
+                    android:layout_width="@dimen/divider_50dp"
+                    android:layout_height="@dimen/divider_25dp"
+                    android:background="@mipmap/reject_cion"
+                    android:textSize="@dimen/medium_text_size"
+                    android:text="同意" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_beg_reject_consent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="#5c3401"
+                android:inputType="textMultiLine"
+                android:text="已同意"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_10dp"
+        android:background="@color/balance_color"/>
+
+
+
+</LinearLayout>

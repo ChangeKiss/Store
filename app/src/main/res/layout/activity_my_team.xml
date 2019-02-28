@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.MyTeamActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/team_grade_background"/>
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/divider_25dp"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back_icon"
+            android:layout_marginTop="@dimen/divider_30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/title_text_size"
+            android:text="我的团队"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/divider_30dp"/>
+
+        <TextView
+            android:id="@+id/tv_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/large_text_size"
+            android:text="2018年10月"
+            android:layout_below="@+id/iv_back"
+            android:layout_marginTop="@dimen/divider_15dp"
+            android:layout_marginLeft="@dimen/divider_10dp"/>
+
+        <ImageView
+            android:id="@+id/iv_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_back"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:src="@mipmap/calendar_icon"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/drawablePadding_5dp"
+            android:layout_marginRight="@dimen/divider_15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_month"
+            android:layout_marginTop="@dimen/divider_20dp"
+            android:layout_marginLeft="@dimen/divider_15dp"
+            android:layout_marginRight="@dimen/divider_15dp"
+            android:paddingBottom="@dimen/divider_15dp"
+            android:background="@drawable/shape_team_white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cv_team_leader_head"
+                    android:layout_width="@dimen/divider_40dp"
+                    android:layout_height="@dimen/divider_40dp"
+                    android:src="@mipmap/default_head"
+                    app:civ_border_color="#4b4640"
+                    app:civ_border_width="0dp"
+                    android:layout_margin="@dimen/divider_10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_team_leader_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/mediums_text_size"
+                    android:text="   "
+                    android:layout_marginTop="24dp"/>
+
+                <TextView
+                    android:id="@+id/tv_team_people_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/mediums_text_size"
+                    android:textColor="#999999"
+                    android:text="总人数:0"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginLeft="@dimen/divider_10dp"/>
+
+
+                <com.Store.www.base.BubbleView.BubbleTextView
+                    android:id="@+id/tv_team_add_people"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:bb_arrowDirection = "Left"
+                    app:bb_arrowHeight="3dp"
+                    app:bb_arrowWidth="5dp"
+                    app:bb_borderColor="@color/placeholder_top"
+                    app:bb_borderWidth="1dp"
+                    app:bb_cornerRadius="2dp"
+                    app:bb_fillColor="@color/windowBackground"
+                    android:textColor="@color/placeholder_top"
+                    android:textSize="@dimen/smaller_text_size"
+                    android:text="↑0"
+                    android:layout_marginLeft="@dimen/drawablePadding_5dp"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:layout_marginTop="3dp"
+                    android:paddingTop="1dp"
+                    android:paddingBottom="1dp" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/divider_horizontal2"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/divider_15dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_bra_ok_check_grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:text="¥ 0.00"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="#999999"
+                        android:text="内衣已审核业绩"
+                        android:layout_marginTop="@dimen/divider_10dp"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="@dimen/divider_40dp"
+                    android:background="#eeeeee" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_bra_no_check_grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:text="¥ 0.00"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="#999999"
+                        android:text="内衣待审核业绩"
+                        android:layout_marginTop="@dimen/divider_10dp"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/divider_10dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="0.5dp"
+                    android:background="#eeeeee"
+                    />
+                <View
+                    style="@style/weight_1"/>
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="0.5dp"
+                    android:background="#eeeeee"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/divider_10dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_shapeWear_ok_check_grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:text="¥ 0.00"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="#999999"
+                        android:text="塑身衣已审核业绩"
+                        android:layout_marginTop="@dimen/divider_10dp"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="@dimen/divider_40dp"
+                    android:background="#eeeeee" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_shapeWear_no_check_grade"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:text="¥ 0.00"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/mediums_text_size"
+                        android:textColor="#999999"
+                        android:text="塑身衣待审核业绩"
+                        android:layout_marginTop="@dimen/divider_10dp"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_everyday_team_grade"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_35dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_15dp"
+        android:background="@color/windowBackground"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="@dimen/divider_15dp"
+            android:background="@color/placeholder_top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="每日团队业绩"
+            android:textColor="#999999"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_icon"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:id="@+id/layout_direct_subordinate_grade"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_35dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_15dp"
+        android:background="@color/windowBackground"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="@dimen/divider_15dp"
+            android:background="@color/placeholder_top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="直属下级团队业绩"
+            android:textColor="#999999"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_icon"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:id="@+id/layout_everyday_attract_people"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_35dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_15dp"
+        android:background="@color/windowBackground"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="@dimen/divider_15dp"
+            android:background="@color/placeholder_top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="每日招新人数"
+            android:textColor="#999999"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_icon"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:id="@+id/layout_direct_subordinate_team_status"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_35dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_15dp"
+        android:background="@color/windowBackground"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="@dimen/divider_15dp"
+            android:background="@color/placeholder_top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="直属下级各团队人员状况"
+            android:textColor="#999999"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_icon"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:id="@+id/layout_people_distribution"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_35dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_15dp"
+        android:background="@color/windowBackground"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="@dimen/divider_15dp"
+            android:background="@color/placeholder_top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="各等级人员分布"
+            android:textColor="#999999"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_icon"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:id="@+id/layout_subordinate_people_distribution"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_35dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_15dp"
+        android:background="@color/windowBackground"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="@dimen/divider_15dp"
+            android:background="@color/placeholder_top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="直属下级各团队等级人员分布"
+            android:textColor="#999999"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/enter_icon"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+</LinearLayout>

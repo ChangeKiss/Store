@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@android:id/background">
+
+        <shape>
+            <corners android:radius="0dp" />
+
+            <solid android:color="#e4e4e4" />
+
+        </shape>
+    </item>
+
+    <!--<item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <corners android:radius="10dip"/>
+                <gradient
+                    android:angle="90.0"
+                    android:centerY="0.75"
+                    android:endColor="@color/placeholder_top"
+                    android:startColor="@color/placeholder_top" />
+            </shape>
+        </clip>
+    </item>-->
+
+    <item android:id="@android:id/progress">
+        <!--clip是裁剪 这种进度条右侧回变成直角-->
+        <!--<clip>
+            <shape>
+                <corners android:radius="10dip"/>
+                <gradient
+                    android:angle="90.0"
+                    android:centerY="0.75"
+                    android:endColor="@color/placeholder_top"
+                    android:startColor="@color/placeholder_top" />
+            </shape>
+        </clip>-->
+        <!--scale是按比例 不会变成直角-->
+        <scale android:scaleWidth="100%"
+            android:drawable="@drawable/shape_wear_progressbar_ct"   />
+    </item>
+
+</layer-list>

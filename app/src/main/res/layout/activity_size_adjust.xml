@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.SizeAdjustActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+
+    <include layout="@layout/layout_no_data_two"/>
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/rl_size_adjust"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/resultColor">
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+
+    <LinearLayout
+        android:id="@+id/layout_size_adjust"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/placeholder_top"
+            android:textColor="@color/windowBackgroundWhite"
+            android:text="@string/plus_size_adjust"
+            android:gravity="center"
+            android:textSize="@dimen/large_text_size"/>
+
+    </LinearLayout>
+
+</LinearLayout>

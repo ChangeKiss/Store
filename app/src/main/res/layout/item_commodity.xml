@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/drawablePadding_5dp"
+    android:id="@+id/rl_ramble">
+
+    <LinearLayout
+        android:id="@+id/layout_item_commodity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@drawable/shape_layout_border">
+
+        <ImageView
+            android:id="@+id/iv_item_commodity"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:textColor="@color/textColorBlack"
+            android:text="@string/text_temp"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/drawablePadding_5dp"
+            android:layout_marginBottom="@dimen/drawablePadding_5dp"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_commodity_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/redColorBackground"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/tv_commodity_money_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="10sp"
+                android:layout_marginLeft="@dimen/drawablePadding_5dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

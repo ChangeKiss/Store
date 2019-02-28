@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/resultColor"
+    android:paddingTop="@dimen/drawablePadding_3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground">
+
+        <TextView
+            android:id="@+id/tv_results_order_number"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:gravity="center|left"
+            android:text="订单编号:DD2018080822012"
+            android:textColor="@color/textColorBlack"
+            android:layout_marginLeft="10dp"
+            android:textSize="@dimen/medium_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_results_money"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/medium_text_size"
+            android:layout_marginRight="10dp"
+            android:text="下单金额:98888888.00元"/>
+
+        <View
+            android:id="@+id/vi_horizontal_one"
+            android:layout_below="@+id/tv_results_order_number"
+            style="@style/divider_horizontal2"/>
+
+        <TextView
+            android:id="@+id/tv_agent_number"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:text="就搞定黄金分割"
+            android:layout_below="@+id/vi_horizontal_one"
+            android:textSize="@dimen/medium_text_size"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/textColorBlack" />
+
+        <TextView
+            android:id="@+id/tv_results_settle_money"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="@color/textColorBlack"
+            android:gravity="center"
+            android:layout_below="@+id/vi_horizontal_one"
+            android:layout_alignParentRight="true"
+            android:text="ssssss"
+            android:layout_marginRight="10dp"
+            android:textSize="@dimen/medium_text_size" />
+
+        <View
+            android:id="@+id/vi_horizontal_two"
+            android:layout_below="@+id/tv_agent_number"
+            style="@style/divider_horizontal2"/>
+
+        <TextView
+            android:id="@+id/tv_agent_number_mane"
+            android:layout_width="190dp"
+            android:layout_height="30dp"
+            android:text="454545454"
+            android:textSize="@dimen/medium_text_size"
+            android:gravity="center|left"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/vi_horizontal_two"
+            android:textColor="@color/textColorBlack" />
+
+        <TextView
+            android:id="@+id/tv_results_time"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:layout_below="@+id/vi_horizontal_two"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/textColorBlack"
+            android:layout_marginRight="10dp"
+            android:textSize="@dimen/medium_text_size"
+            android:text="20180808"/>
+
+        <View
+            android:id="@+id/vi_horizontal_three"
+            android:layout_below="@+id/tv_agent_number_mane"
+            style="@style/divider_horizontal2"/>
+
+        <ImageView
+            android:id="@+id/iv_results_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vi_horizontal_two"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:src="@mipmap/no_audit"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"/>
+
+        <View
+            android:id="@+id/vi_horizontal_four"
+            android:layout_below="@+id/vi_horizontal_three"
+            android:layout_marginTop="30dp"
+            style="@style/divider_horizontal2"/>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

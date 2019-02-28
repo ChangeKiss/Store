@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.AffirmShipmentsActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginRight="@dimen/divider_10dp"
+        android:layout_marginLeft="@dimen/divider_10dp"
+        android:background="@color/windowBackground"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/express_company"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/textColorBlack"/>
+
+        <EditText
+            android:id="@+id/et_express_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:background="@color/windowBackground"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginRight="@dimen/divider_10dp"
+        android:layout_marginLeft="@dimen/divider_10dp"
+        android:background="@color/windowBackground"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/express_number"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/textColorBlack"/>
+
+        <EditText
+            android:id="@+id/et_express_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:background="@color/windowBackground"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/tv_save_button"
+            android:background="@drawable/select_button_square"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginRight="@dimen/divider_10dp"
+            android:text="@string/save_number"
+            android:textColor="@color/windowBackground"/>
+
+    </LinearLayout>
+
+</LinearLayout>

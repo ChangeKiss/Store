@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.EveryDayGradeActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_everyDayGrade"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
+            android:visibility="invisible"/>
+
+        <include layout="@layout/layout_nodata"
+            android:id="@+id/layout_no_data"
+            android:visibility="visible"/>
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.RejectBegActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/windowBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/divider_15dp"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingTop="@dimen/divider_15dp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/divider_10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cv_reject_agency_head_portrait"
+                android:layout_width="@dimen/divider_30dp"
+                android:layout_height="@dimen/divider_30dp"
+                app:civ_border_color="@color/windowBackground"
+                app:civ_border_width="0dp"
+                android:src="@mipmap/default_head"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/drawablePadding_5dp">
+
+                <TextView
+                    android:id="@+id/tv_reject_agency_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/small_text_size"
+                    android:text="下级代理名称"
+                    android:gravity="center"
+                    android:textColor="@color/textColorBlack"/>
+
+
+
+
+                <TextView
+                    android:id="@+id/tv_reject_agency_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/smaller_text_size"
+                    android:text="K201803040822125"
+                    android:layout_marginTop="@dimen/drawablePadding_5dp"
+                    android:paddingLeft="@dimen/drawablePadding_5dp"
+                    android:paddingRight="@dimen/drawablePadding_5dp"
+                    android:background="@drawable/shape_beg_apply_for_line"
+                    android:gravity="center"/>
+
+
+            </LinearLayout>
+
+
+            <View
+                style="@style/weight_1"/>
+
+
+            <TextView
+                android:id="@+id/tv_beg_reject_up_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/small_text_size"
+                android:text="2018-6-6 15:25"
+                android:layout_gravity="top"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/divider_50dp"
+            android:paddingRight="@dimen/divider_50dp"
+            android:paddingTop="@dimen/divider_10dp"
+            android:paddingBottom="@dimen/divider_10dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_reject_present_lv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/textColorBlack"
+                    android:text="一级代理"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/smaller_text_size"
+                    android:layout_marginTop="@dimen/divider_10dp"
+                    android:text="当前等级"/>
+
+            </LinearLayout>
+
+            <View
+                style="@style/weight_1"/>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/agency_updata"
+                android:layout_gravity="center" />
+
+            <View
+                style="@style/weight_1"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_reject_beg_up_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/large_text_size"
+                    android:textColor="@color/redColorBackground"
+                    android:text="一级代理"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/smaller_text_size"
+                    android:layout_marginTop="@dimen/divider_10dp"
+                    android:text="升级至"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_10dp"
+            android:background="@color/balance_color"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_30dp"
+            android:textSize="@dimen/large_text_size"
+            android:text="拒绝理由"
+            android:gravity="center|left"
+            android:layout_marginLeft="@dimen/divider_15dp"/>
+
+        <View
+            style="@style/divider_horizontal2"/>
+
+        <EditText
+            android:id="@+id/et_reject_text"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@color/windowBackground"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:hint="请填写您拒绝的理由(必填)"
+            android:textSize="@dimen/large_text_size"
+            android:gravity="top"
+            android:paddingRight="@dimen/divider_15dp"/>
+
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:id="@+id/btn_reject_reason"
+        android:background="@drawable/select_button_square"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:layout_height="@dimen/divider_40dp"
+        android:layout_margin="@dimen/divider_20dp"
+        android:textSize="@dimen/large_text_size"
+        android:textColor="@color/windowBackground"
+        android:gravity="center"
+        android:text="@string/plus_adjust_cart"/>
+
+</LinearLayout>

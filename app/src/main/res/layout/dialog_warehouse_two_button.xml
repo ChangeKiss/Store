@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_dialog_white">
+
+    <ImageView
+        android:id="@+id/iv_warehouse_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bonus_close_icon"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp"
+        android:paddingTop="@dimen/divider_10dp"
+        android:paddingBottom="@dimen/divider_10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/iv_warehouse_close"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:textColor="@color/textColorBlack"
+            android:textSize="18sp"
+            android:text="修改或删除当前仓库"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Space style="@style/weight_1"/>
+
+            <Button
+                android:id="@+id/btn_dialog_alter"
+                style="@style/buttonPopGold"
+                android:layout_marginBottom="@dimen/dialog_margin"
+                android:layout_marginTop="@dimen/dialog_margin"
+                android:background="@drawable/selector_smallbutton_gold"
+                android:text="@string/alter"
+                />
+
+            <Space style="@style/weight_1"/>
+
+            <Button
+                android:id="@+id/btn_dialog_delete"
+                style="@style/buttonPopGold"
+                android:layout_marginBottom="@dimen/dialog_margin"
+                android:layout_marginTop="@dimen/dialog_margin"
+                android:background="@drawable/selector_smallbutton_white"
+                android:text="@string/delete"
+                android:textColor="@color/redColorBackground"/>
+
+            <Space style="@style/weight_1"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

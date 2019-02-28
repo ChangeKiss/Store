@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/windowBackground">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/app_up_data_background_icon"/>
+
+        <TextView
+            android:id="@+id/tv_app_upData_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/mediums_text_size"
+            android:padding="@dimen/divider_15dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/drawablePadding_5dp"
+            android:paddingRight="@dimen/drawablePadding_5dp">
+
+
+            <ProgressBar
+                android:id="@+id/pb_upData_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_15dp"
+                android:max="100"
+                android:visibility="invisible"
+                android:progressDrawable="@drawable/progressbars"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:gravity="center"
+            android:text=""/>
+
+        <Button
+            android:id="@+id/btn_go_on"
+            android:layout_width="@dimen/divider_80dp"
+            android:layout_height="@dimen/divider_30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:layout_marginBottom="@dimen/divider_30dp"
+            android:background="@drawable/shape_button_app_updata"
+            android:text="开始"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/medium_text_size"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

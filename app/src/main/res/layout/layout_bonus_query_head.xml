@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_people_month_grade"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_30dp"
+        android:textColor="@color/textColorBlack"
+        android:textSize="@dimen/medium_text_size"
+        android:text=""
+        android:gravity="center|left"
+        android:background="@color/hintColor"
+        android:paddingLeft="@dimen/divider_10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="分红总金额:"
+            android:gravity="center"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_bonus_total"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="¥ 0"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="当月内衣业绩:"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_bra_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="¥ 0.0"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="贡献率:"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_rate_of_contribution"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="10"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="个人分红:"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_people_moneys"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="¥ 0.0"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="历史内衣件数(件):"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_history_bra_number"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="0"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:paddingRight="@dimen/divider_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="团队分红:"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_team_bonus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="¥ 0.0"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_team_look_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/drawablePadding_5dp"
+            android:paddingLeft="@dimen/drawablePadding_5dp"
+            android:text="@string/look_detail"
+            android:gravity="center"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/blueTextColor"/>
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_10dp"
+        android:background="@color/hintColor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:paddingRight="@dimen/divider_10dp"
+        android:paddingLeft="@dimen/divider_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="历史分红总金额:"
+            android:gravity="center"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/tv_history_bonus_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="¥ 0.0"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/divider_10dp"
+        android:paddingLeft="@dimen/divider_10dp">
+
+        <com.Store.www.base.AnnularView
+            android:id="@+id/av_annular"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp" />
+
+
+
+            <TextView
+                android:id="@+id/tv_team_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/textColorBlack"
+                android:text="团队分红"
+                android:layout_toLeftOf="@+id/btn_team_money"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="@dimen/divider_10dp"/>
+
+            <Button
+                android:id="@+id/btn_team_money"
+                android:layout_width="@dimen/divider_10dp"
+                android:layout_height="@dimen/divider_10dp"
+                android:layout_alignParentRight="true"
+                android:background="@color/blueTextColor"
+                android:layout_marginTop="@dimen/divider_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_people_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/textColorBlack"
+            android:text="个人分红"
+            android:layout_toLeftOf="@+id/btn_people_money"
+            android:layout_marginRight="3dp"
+            android:layout_below="@+id/tv_team_money"
+            android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+
+        <Button
+            android:id="@+id/btn_people_money"
+            android:layout_width="@dimen/divider_10dp"
+            android:layout_height="@dimen/divider_10dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/redColorBackground"
+            android:layout_below="@+id/btn_team_money"
+            android:layout_marginTop="7dp"/>
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:textColor="@color/textColorBlack"
+        android:textSize="@dimen/mediums_text_size"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:text="历史记录"
+        android:gravity="center|left"
+        android:background="@color/hintColor"/>
+
+
+
+</LinearLayout>

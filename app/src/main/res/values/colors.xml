@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#f393a5</color>
+    <color name="colorPrimaryDark">#f393a5</color>
+    <color name="colorAccent">#f7b9c5</color>
+    <color name="colorTabLayout">#fe6e09</color>
+
+    <color name="colorLucency">#01000000</color>
+    <color name="transparent_black">#4D000000</color>
+    <color name="windowBackgroundWhite">#fff</color><!--白色-->
+    <color name="windowBackgroundCream">#fffaf0</color>
+    <color name="personage_background">#F3C5C5</color>  <!--粉色-->
+    <color name="windowBackgroundGrey">#efeded</color>
+    <color name="placeholder_top">#f393a5</color><!--顶部占位颜色-->
+    <color name="windowBackgroundLightGrey">#e8e8e8</color>
+    <color name="windowBackgroundDarkGrey">#3b3b3b</color>
+    <color name="lightGreyColorBackground">#f0f0f0</color>
+    <color name="agency_lv_btn">#ef6a83</color>
+    <color name="agency_lv_btn_no">#e6e6e6</color>
+
+    <color name="windowBackground">#ffffff</color>
+    <color name="textColorWhite">#fff</color>
+    <color name="textColorPrimary">#dbbea0</color>
+    <color name="textColorBlack">#404040</color>
+    <color name="textColorLightBlack">#332b2b</color>
+    <color name="textColorGrey">#afafb1</color>
+    <color name="textColorLightGrey">#999999</color>
+    <color name="textColorType">#888888</color>
+    <color name="textColorDarkGrey">#9d9d9e</color>
+    <color name="textColorGold">#997a5c</color>
+    <color name="lineColor">#EEEEEE</color>
+
+    <color name="dividerColorGrey">#d5d5d5</color>
+    <color name="dividerColorBrown">#605952</color>
+    <color name="dividerColorGold">#f0e4d8</color>
+    <color name="backgroundColorF4">#f4f4f4</color>
+    <color name="resultColor">#f1f1f1</color>
+
+    <color name="hintColor">#cdcdcd</color>
+    <color name="newColor">#f7c3cd</color>
+    <color name="guide_no_select">#979797</color>
+
+    <color name="itemNewColor">#F2AFBC</color>  <!--粉色-->
+    <color name="cancelColor">#F3C3CD</color>
+    <color name="guideGoldColor">#dbbea0</color>
+    <color name="guideLightGreyColor">#dcdcdc</color>
+    <color name="guideDarkGreyColor">#969696</color>
+    <color name="circulationColor">#fff4d8</color>
+    <color name="balance_color">#f7f7f7</color>
+    <color name="income_money_color">#eeb500</color>
+    <color name="expend_money_color">#EE2D1B</color>
+
+    <color name="buttombarText">#666666</color>
+    <color name="nearbySearchBackground">#fea86b</color>
+    <color name="textColorSort">#444444</color>
+    <color name="redColorBackground">#f72d2d</color>
+    <color name="message_count_color">#EE2D1B</color>
+    <color name="darkYellow">#ffa000</color>
+    <color name="yellow">#ffb330</color>
+    <color name="LightYellow">#fa954d</color>
+    <color name="blueTextColor">#6495ED</color>
+    <color name="blueColor">#0000FF</color>
+    <color name="yiJi">#4edee0</color>
+    <color name="diamond">#b6a2de</color>
+    <color name="daiLiShang">#5cabe3</color>
+    <color name="jinXiaoShang">#ffb980</color>
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.PickUpRepertoryActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <View
+        style="@style/divider_horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_pick_up_repertory_includ"/>
+
+            <View
+                style="@style/divider_horizontal2"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rl_pick_up_repertory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="@dimen/dp_40">
+
+        <TextView
+            android:id="@+id/tv_repertory_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/divider_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_my_stock_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/mediums_text_size"
+            android:text=""
+            android:layout_marginLeft="@dimen/divider_15dp"/>
+
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:id="@+id/btn_repertory_cart"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/select_button_square"
+            android:gravity="center"
+            android:text="@string/plus_pick_up_cart"
+            android:enabled="false"
+            android:textColor="@color/textColorWhite"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

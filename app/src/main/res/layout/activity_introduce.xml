@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.IntroduceActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+
+    <!--这是一个加载动画第三方库-->
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_marginTop="@dimen/divider_80dp"
+        android:visibility="gone"
+        app:indicatorName="BallSpinFadeLoaderIndicator"
+        app:indicatorColor="@color/placeholder_top"
+        />
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/lr_commodity_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+
+
+
+</LinearLayout>

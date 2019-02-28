@@ -1,0 +1,155 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+
+
+android {
+
+
+    signingConfigs {
+        release {
+            keyAlias 'Kivie'
+            keyPassword 'kivie123456'
+            storeFile file('D:/Kivie.jks')
+            storePassword 'kivie123456'
+        }
+    }
+
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.jinwei.kivie"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 40
+        versionName "2.7.3"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+
+    /*configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion '26.0.1'
+                }
+            }
+        }
+    }*/
+
+    defaultConfig {
+        applicationId "com.jinwei.kivie" //JPush上注册的包名.
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi-v7a', 'x86'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "419ace849ce1978a8dd0b150", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+    }
+
+
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true  //启动混淆
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //第三方开源库
+    //图片浏览
+    //MOB分享
+    implementation files('libs/MobCommons-2018.0201.2159.jar')
+    implementation files('libs/MobCommons-2018.0201.2159.jar')
+    implementation files('libs/MobTools-2018.0208.1223.jar')
+    implementation files('libs/ShareSDK-Wechat-3.1.3.jar')
+    implementation files('libs/ShareSDK-Wechat-Core-3.1.3.jar')
+    implementation files('libs/ShareSDK-Core-3.1.3.jar')
+    implementation files('libs/MobTools-2018.0208.1223.jar')
+    implementation files('libs/ShareSDK-Wechat-Favorite-3.1.3.jar')
+    implementation files('libs/ShareSDK-Wechat-Moments-3.1.3.jar')
+    implementation files('libs/ShareSDK-Wechat-3.1.3.jar')
+    /*api 'com.pingxx:pingpp-core:2.1.14'
+                        api 'com.pingxx:pingpp-alipay:2.1.14'*/
+    api files('libs/ocr-sdk.jar')
+    api project(path: ':ocr_ui')
+    api project(path: ':wx-share-java')
+    //api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'zlc.season:rxdownload3:1.2.7'
+    // 极光推送JPush 3.1.1 版。
+    // 极光推送JCore 1.1.9 版。
+    //二维码扫描的库
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    //api 'com.android.tools.build:gradle:3.2.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    implementation 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.yuyh.easyadapter:library:1.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    implementation 'com.android.support:support-v4:26.0.1'
+    implementation 'com.youth.banner:banner:1.4.9'
+    implementation 'com.xhb:xbanner:1.4.9'
+    implementation 'com.qiyukf.unicorn:unicorn:4.5.1'
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.3.0'
+    implementation 'com.github.chrisbanes:PhotoView:1.3.0'
+    implementation 'com.jaywei:compresstool:1.2.0'
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+    implementation 'cn.jiguang.sdk:jpush:3.1.6'
+    implementation 'cn.jiguang.sdk:jcore:1.2.5'
+    implementation 'liji.library.dev:imagezoom:1.3.0'
+    implementation 'com.dalong:marqueeview:1.0.0'
+    implementation 'com.wang.avi:library:2.1.3'
+    implementation 'com.contrarywind:Android-PickerView:4.1.3'
+    implementation 'com.yanzhenjie.zbar:camera:1.0.0'
+    implementation 'com.tencent.bugly:crashreport:2.6.6'
+    implementation 'com.android.support:multidex:1.0.2'
+    implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
+    testImplementation 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    implementation project(':wx-share-java')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+}
+
+repositories{
+    mavenCentral()
+}

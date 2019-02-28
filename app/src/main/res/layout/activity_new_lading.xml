@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.NewLadingActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <include layout="@layout/layout_nodata"/>
+
+    <LinearLayout
+        android:id="@+id/layout_Subordinate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/divider_10dp"
+        android:background="@color/windowBackground"
+        android:visibility="gone"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/divider_20dp"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="代理编号:"
+            android:layout_gravity="center"
+            android:textColor="@color/textColorBlack"/>
+
+        <TextView
+            android:id="@+id/tv_Subordinate_agent"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/divider_20dp"
+            android:layout_gravity="center"
+            android:textSize="@dimen/mediums_text_size"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:textColor="@color/textColorBlack"
+            android:background="@color/windowBackground"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/Rl_pick_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground"
+        android:visibility="gone"
+        android:padding="@dimen/divider_10dp">
+
+
+        <TextView
+            android:id="@+id/tv_take_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/mediums_text_size"
+            android:layout_toRightOf="@+id/iv_icon" />
+
+
+
+        <ImageView
+            android:id="@+id/iv_enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="@dimen/divider_10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/enter_icon"/>
+
+        <TextView
+            android:id="@+id/tv_pick_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/iv_enter"
+            android:layout_marginRight="@dimen/divider_15dp"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/mediums_text_size"/>
+
+
+        <TextView
+            android:id="@+id/tv_null_address_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/buttombarText"
+            android:text=""
+            android:visibility="gone"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tv_pick_adders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_take_people"
+            android:layout_toRightOf="@id/iv_icon"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/buttombarText"
+            android:layout_marginTop="@dimen/drawablePadding_5dp"
+            android:layout_marginRight="@dimen/divider_15dp"/>
+
+    </RelativeLayout>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <View
+        style="@style/weight_10"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rl_pick_up_goods"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/resultColor">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <View
+        style="@style/divider_horizontal2"/>
+
+    <LinearLayout
+        android:id="@+id/layout_submit_repertory"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_sum_pick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总提货：0件"
+            android:textColor="@color/placeholder_top"
+            android:textSize="@dimen/ysf_text_size_16"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/layout_repertory_surplus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/divider_10dp">
+
+            <TextView
+                android:id="@+id/tv_sum_repertory"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:text="总库存：0"
+
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/textColorBlack"/>
+
+
+
+            <TextView
+                android:id="@+id/tv_sum_surplus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:text="总剩余：0"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/textColorBlack"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/weight_1"/>
+
+
+
+        <TextView
+            android:id="@+id/btn_submit"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/select_button_square"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/large_text_size"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

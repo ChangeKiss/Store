@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/resultColor"
+            android:layout_height="@dimen/drawablePadding_5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_30dp"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingRight="@dimen/divider_15dp">
+
+            <TextView
+                android:id="@+id/tv_hint_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/textColorBlack"
+                android:text="失效时间"
+                />
+
+            <View
+                style="@style/weight_1"/>
+
+            <TextView
+                android:id="@+id/tv_orders_state"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="13sp"
+                android:text=""
+                android:textColor="@color/textColorBlack"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            style="@style/divider_horizontal2"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingRight="@dimen/divider_15dp"
+            android:paddingTop="@dimen/divider_10dp"
+            android:paddingBottom="@dimen/divider_10dp">
+
+            <ImageView
+                android:id="@+id/iv_orders_images"
+                android:layout_width="@dimen/divider_80dp"
+                android:layout_height="@dimen/divider_80dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tv_orders_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_orders_images"
+                android:text="DD1111111"
+                android:textSize="@dimen/small_text_size"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:textColor="@color/buttombarText"/>
+
+            <TextView
+                android:id="@+id/tv_orders_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv_orders_images"
+                android:layout_below="@+id/tv_orders_number"
+                android:text="安航三"
+                android:layout_marginTop="3dp"
+                android:textSize="@dimen/small_text_size"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:textColor="@color/buttombarText"/>
+
+
+            <TextView
+                android:id="@+id/tv_orders_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_orders_name"
+                android:layout_toRightOf="@+id/iv_orders_images"
+                android:text="1888888888"
+                android:textSize="@dimen/small_text_size"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/buttombarText"/>
+
+            <TextView
+                android:id="@+id/tv_orders_adders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_orders_phone"
+                android:text="你回复接电话"
+                android:layout_toRightOf="@+id/iv_orders_images"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="@dimen/divider_10dp"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/buttombarText"/>
+
+
+        </RelativeLayout>
+
+        <View
+            style="@style/divider_horizontal2"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingRight="@dimen/divider_15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_total_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vw_lines"
+                android:layout_marginLeft="@dimen/divider_10dp"
+                android:layout_marginTop="@dimen/drawablePadding_5dp"
+                android:textColor="@color/textColorBlack"
+                android:text="33"
+                android:textSize="@dimen/small_text_size"/>
+
+
+            <TextView
+                android:id="@+id/tv_pay_order"
+                style="@style/buttonInviteOrangeCircle"
+                android:layout_alignParentRight="true"
+                android:text="@string/pay_order"/>
+
+            <TextView
+                android:id="@+id/tv_cancel_order"
+                style="@style/buttonInviteOrangeCircle"
+                android:layout_toLeftOf="@+id/tv_pay_order"
+                android:layout_marginRight="@dimen/divider_10dp"
+                android:text="@string/order_no"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

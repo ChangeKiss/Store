@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/balance_color"
+    tools:context="com.Store.www.ui.activity.MyBalanceActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_131dp"
+            android:background="@color/placeholder_top"
+            android:paddingLeft="@dimen/divider_17dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="@dimen/divider_30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:textColor="@color/windowBackground"
+                android:text="当前余额（元）"/>
+
+            <TextView
+                android:id="@+id/tv_balance_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/divider_20dp"
+                android:textColor="@color/windowBackground"
+                android:textSize="@dimen/text_size_30sp"
+                android:text=""
+                android:layout_marginBottom="@dimen/divider_20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_usable_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/medium_text_size"
+                android:text="可用余额(元)  ¥0.00"
+                android:textColor="@color/buttombarText"
+                android:gravity="center"/>
+            <View
+                style="@style/circle_cut_off_line_02"/>
+
+            <TextView
+                android:id="@+id/tv_freeze_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/medium_text_size"
+                android:text="冻结余额(元)  ¥0.00"
+                android:textColor="@color/buttombarText"
+                android:gravity="center"/>
+
+
+
+        </LinearLayout>
+
+        <View
+            style="@style/divider_horizontal2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_withdraw_deposit_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/medium_text_size"
+                android:text="可提现余额(元)  ¥0.00"
+                android:textColor="@color/buttombarText"
+                android:gravity="center"/>
+            <View
+                style="@style/circle_cut_off_line_02"/>
+
+            <TextView
+                android:id="@+id/tv_no_usable_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/medium_text_size"
+                android:text="不可用余额(元)  ¥0.00"
+                android:textColor="@color/buttombarText"
+                android:gravity="center"/>
+
+
+        </LinearLayout>
+
+        <View
+            style="@style/weight_2"/>
+
+        <TextView
+            android:id="@+id/tv_income"
+            style="@style/personalInformationText"
+            android:drawableLeft="@mipmap/income_icon"
+            android:text="@string/income"/>
+
+        <View
+            style="@style/divider_horizontal2"/>
+
+
+        <TextView
+            android:id="@+id/tv_expend"
+            style="@style/personalInformationText"
+            android:drawableLeft="@mipmap/expend_icon"
+            android:text="@string/expend"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/placeholder_top">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_mine_icon"
+            android:layout_width="@dimen/divider_83dp"
+            android:layout_height="@dimen/divider_83dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/program_icon"
+            app:civ_border_color="#4b4640"
+            app:civ_border_width="0dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_user_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/divider_10dp">
+
+            <View style="@style/weight_1" />
+
+            <TextView
+                android:id="@+id/tv_personage_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/windowBackground"
+                android:textSize="@dimen/button_text_size"/>
+
+            <View
+                android:layout_width="@dimen/divider_10dp"
+                android:layout_height="@dimen/divider_10dp"/>
+
+            <TextView
+                android:id="@+id/tv_personage_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/windowBackground"
+                android:text=""
+                android:textSize="@dimen/large_text_size"/>
+
+            <View style="@style/weight_1" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/r_layout_shapewear_lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/divider_13dp"
+            android:layout_marginBottom="@dimen/divider_15dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_shapewear_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/divider_20dp"
+                android:textColor="@color/windowBackground"
+                android:textSize="@dimen/small_text_size"
+                android:text="ZS"
+                android:gravity="center"
+                android:paddingRight="@dimen/divider_13dp"
+                android:paddingLeft="@dimen/divider_25dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_my_kivie_grade"/>
+
+            <ImageView
+                android:id="@+id/iv_shapewear_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@mipmap/shapewear_grade_icon" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/divider_10dp">
+
+            <View style="@style/weight_1" />
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/windowBackground"
+                android:textSize="@dimen/large_text_size"
+                android:text="@string/click_login"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/drawablePadding_5dp"/>
+
+            <View style="@style/weight_1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bg_content"
+        android:layout_width="match_parent"
+        android:layout_height="120dp" />
+
+</FrameLayout>

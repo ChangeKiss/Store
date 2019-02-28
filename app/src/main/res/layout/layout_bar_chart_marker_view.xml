@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/divider_10dp"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_submit_no_selector" >
+
+
+        <TextView
+            android:id="@+id/tv_hint_every_day"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/shape_dot_noe"/>
+
+        <TextView
+            android:id="@+id/tv_bar_chart_content"
+            android:layout_toRightOf="@+id/tv_hint_every_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="已审核:          "
+            android:textSize="12sp"
+            android:textColor="@color/placeholder_top"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
+
+
+        <TextView
+            android:id="@+id/tv_hint_every_day_no"
+            android:layout_below="@+id/tv_hint_every_day"
+            android:layout_marginTop="12dp"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:background="@drawable/shape_dot_two"/>
+
+        <TextView
+            android:id="@+id/tv_bar_chart_content_two"
+            android:layout_toRightOf="@+id/tv_hint_every_day_no"
+            android:layout_below="@+id/tv_hint_every_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="未审核:          "
+            android:textSize="12sp"
+            android:textColor="@color/placeholder_top"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
+
+
+
+
+</RelativeLayout>

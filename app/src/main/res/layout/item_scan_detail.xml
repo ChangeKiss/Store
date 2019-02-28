@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/windowBackground">
+
+    <com.Store.www.base.RoundAngleImageView
+        android:id="@+id/riv_scan_detail"
+        android:layout_margin="@dimen/divider_15dp"
+        android:layout_width="@dimen/divider_40dp"
+        android:layout_height="@dimen/divider_40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@mipmap/jzz_img"/>
+
+    <TextView
+        android:id="@+id/tv_scan_commodity_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/mediums_text_size"
+        android:text="慕斯"
+        android:textColor="@color/textColorBlack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/riv_scan_detail"
+        android:layout_marginTop="@dimen/divider_15dp"
+        android:layout_marginLeft="@dimen/divider_10dp"/>
+
+    <TextView
+        android:id="@+id/tv_only_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#666666"
+        android:textSize="@dimen/mediums_text_size"
+        android:text="20181023666"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/riv_scan_detail"
+        app:layout_constraintTop_toBottomOf="@+id/tv_scan_commodity_name"
+        android:layout_marginLeft="@dimen/divider_10dp" />
+
+    <TextView
+        android:id="@+id/tv_scan_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/mediums_text_size"
+        android:textColor="#999999"
+        android:text="13:14"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@+id/tv_scan_commodity_name"
+        android:layout_marginRight="@dimen/divider_15dp"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="@color/lineColor"
+        app:layout_constraintTop_toBottomOf="@+id/tv_only_code"
+        android:layout_marginTop="@dimen/divider_15dp"
+        app:layout_constraintLeft_toRightOf="@+id/riv_scan_detail"/>
+
+</android.support.constraint.ConstraintLayout>

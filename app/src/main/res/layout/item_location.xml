@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/divider_10dp">
+
+
+            <TextView
+                android:id="@+id/tv_location_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sdsd"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/large_text_size"
+                android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+
+            <View
+                style="@style/weight_1"/>
+
+            <ImageView
+                android:id="@+id/iv_location_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/enter_icon"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_location_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_toLeftOf="@+id/tv_default_address_hint"
+                android:layout_marginRight="20dp"
+                android:textSize="@dimen/large_text_size"
+                android:textColor="@color/textColorBlack"/>
+
+            <TextView
+                android:id="@+id/tv_default_address_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="默认"
+                android:textColor="@color/windowBackground"
+                android:visibility="invisible"
+                android:layout_marginRight="@dimen/drawablePadding_5dp"
+                android:background="@drawable/shape_agency_lv_background"
+                android:textSize="@dimen/small_text_size"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/tv_location_adders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_location_name"
+                android:text=""
+                android:layout_marginTop="@dimen/drawablePadding_5dp"
+                android:layout_marginRight="@dimen/divider_10dp"
+                android:textColor="@color/buttombarText"
+                android:textSize="@dimen/small_text_size"/>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/item_delete"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#f72d2d"
+            android:text="删除"
+            android:textSize="@dimen/ysf_text_size_18"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal2" />
+
+
+
+</LinearLayout>

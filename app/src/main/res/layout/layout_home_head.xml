@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/windowBackgroundWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--自定义轮播图控件-->
+        <com.stx.xhb.xbanner.XBanner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            app:pointSelect="@drawable/shape_indicator_orange"
+            app:pointNormal="@drawable/shape_indicator_white"
+            app:AutoPlayTime="4000"
+            app:isClipChildrenMode="true"
+            app:clipChildrenLeftRightMargin="@dimen/divider_30dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:gravity="center">
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_one"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/commodity_manager_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_one"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/commodity_guanli"></TextView>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_two"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/my_order_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_two"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/my_order"></TextView>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_three"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/bonus_inquire_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_three"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/bonus_inquire"></TextView>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_four"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/pick_up_goods_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_four"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/pick_up"></TextView>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_type_two_server"
+            android:layout_width="match_parent"
+            android:layout_height="87dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_five"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/sell_manager_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_five"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/market_manage"></TextView>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_six"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/team_grade_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_six"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/team_grade"></TextView>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_seven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_seven"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/agency_inquire_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_seven"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/agency_query">
+                </TextView>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/layout_home_button_eight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/iv_home_button_eight"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/my_qr_code_icon"/>
+
+                <TextView
+                    android:id="@+id/tv_home_button_eight"
+                    style="@style/nearbyMiddleButtonText"
+                    android:text="@string/my_qr_code"></TextView>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/vw_home_lines_one"
+            style="@style/divider_horizontal2"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/layout_home_event_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginRight="@dimen/divider_10dp"
+            android:layout_marginTop="@dimen/drawablePadding_5dp">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/home_background_left"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_today_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动商品"
+                android:textSize="13sp"
+                android:gravity="center"/>
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/home_background_right"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_10dp"/>
+
+        <View
+            android:id="@+id/vw_home_lines_two"
+            style="@style/divider_horizontal2"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/resultColor"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/resultColor"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:paddingBottom="@dimen/drawablePadding_5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="@dimen/drawablePadding_5dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/shape_frame_pink_top"
+                android:paddingLeft="@dimen/divider_10dp"
+                android:paddingRight="@dimen/divider_10dp">
+
+                <TextView
+                    android:id="@+id/tv_results_year_month"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/divider_10dp"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="13sp"
+                    android:gravity="center"
+                    android:text="121212121"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:orientation="horizontal">
+
+                    <View
+                        style="@style/weight_1"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/tab_text_size"
+                        android:text="@string/total_results"
+                        android:layout_marginTop="@dimen/drawablePadding_3dp"/>
+
+
+
+                    <View
+                        style="@style/weight_1"/>
+
+                    <TextView
+                        android:id="@+id/tv_total_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/big_text_size"
+                        android:text=""
+                        android:textStyle="bold"/>
+
+                    <View
+                        style="@style/weight_1"/>
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/divider_10dp"
+                android:paddingRight="@dimen/divider_10dp"
+                android:background="@drawable/shape_frame_pink">
+
+                <View
+                    style="@style/weight_1"/>
+
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_audited_results_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/small_text_size"
+                        android:layout_gravity="center"
+                        android:text=""
+                        android:layout_marginTop="@dimen/drawablePadding_3dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="13sp"
+                        android:layout_gravity="center"
+                        android:text="@string/audited_results"
+                        android:layout_marginTop="@dimen/drawablePadding_3dp"/>
+
+
+                </LinearLayout>
+
+                <View
+                    style="@style/weight_1"/>
+
+                <View
+                    style="@style/circle_cut_off_line_30"/>
+
+                <View
+                    style="@style/weight_1"/>
+
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_no_audited_results_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="@dimen/small_text_size"
+                        android:layout_gravity="center"
+                        android:text=""
+                        android:layout_marginTop="@dimen/drawablePadding_3dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/textColorBlack"
+                        android:textSize="13sp"
+                        android:layout_gravity="center"
+                        android:text="@string/no_audited_results"
+                        android:layout_marginTop="@dimen/drawablePadding_3dp"/>
+
+
+                </LinearLayout>
+
+                <View
+                    style="@style/weight_1"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

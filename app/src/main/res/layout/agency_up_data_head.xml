@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/windowBackground"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_agency_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:background="@mipmap/agency_ud_bkgr"/>
+
+        <LinearLayout
+            android:id="@+id/layout_agency_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/divider_30dp"
+            android:paddingBottom="@dimen/divider_10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_left_back"
+                android:layout_width="@dimen/divider_25dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/back_icon"/>
+
+            <View
+                style="@style/weight_1"/>
+
+            <TextView
+                android:id="@+id/tv_agency_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/title_text_size"
+                android:textColor="@color/windowBackground"
+                android:text="Kivie"
+                android:layout_marginRight="@dimen/divider_25dp"/>
+
+            <View
+                style="@style/weight_1"/>
+
+        </LinearLayout>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/agency_cv_head"
+            android:layout_width="@dimen/divider_60dp"
+            android:layout_height="@dimen/divider_60dp"
+            app:civ_border_color="@color/windowBackground"
+            app:civ_border_width="0dp"
+            android:layout_below="@+id/layout_agency_head"
+            android:src="@mipmap/default_head"
+            android:layout_marginTop="@dimen/divider_15dp"
+            android:layout_marginLeft="@dimen/divider_15dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_agency_up_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/windowBackground"
+            android:text="代理商姓名"
+            android:layout_below="@+id/layout_agency_head"
+            android:layout_toRightOf="@+id/agency_cv_head"
+            android:layout_marginTop="@dimen/divider_20dp"
+            android:layout_marginLeft="@dimen/divider_20dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_agency_lv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_agency_lv_background"
+            android:textColor="@color/windowBackground"
+            android:textSize="@dimen/mediums_text_size"
+            android:text="VIP"
+            android:layout_below="@+id/tv_agency_up_name"
+            android:layout_toRightOf="@+id/agency_cv_head"
+            android:layout_marginTop="@dimen/divider_8dp"
+            android:layout_marginLeft="@dimen/divider_20dp"/>
+
+
+        <LinearLayout
+            android:id="@+id/layout_agency_lv_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/agency_cv_head"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_1dp"
+            android:layout_below="@+id/layout_agency_lv_btn"
+            android:background="@color/placeholder_top"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:layout_marginLeft="@dimen/divider_15dp"
+            android:layout_marginRight="@dimen/divider_15dp"/>
+
+        <LinearLayout
+            android:id="@+id/layout_agency_lv_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_below="@+id/layout_agency_lv_btn"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:paddingRight="@dimen/divider_15dp"
+            android:layout_marginTop="2dp">
+
+
+            <ImageView
+                android:id="@+id/iv_agency_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:visibility="invisible"
+                android:src="@mipmap/agency_lv_hint"
+                android:layout_marginLeft="@dimen/divider_20dp"/>
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+    <!--<com.jinwei.kivie.base.MyLinearLayout
+        android:id="@+id/layout_agency_equity_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/divider_15dp"
+        android:layout_gravity="center"
+        app:grivate="left"
+        app:isFull="false"
+        app:vertical_Space="10dp">
+
+    </com.jinwei.kivie.base.MyLinearLayout>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_agency_equity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/divider_15dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <View
+        style="@style/divider_horizontal2"
+        android:layout_marginTop="@dimen/divider_15dp"
+        android:layout_marginLeft="@dimen/divider_15dp"
+        android:layout_marginRight="@dimen/divider_15dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_15dp"
+        android:paddingRight="@dimen/divider_15dp"
+        android:layout_marginTop="@dimen/divider_20dp">
+
+        <TextView
+            android:layout_width="@dimen/drawablePadding_3dp"
+            android:layout_height="@dimen/divider_15dp"
+            android:background="@color/placeholder_top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/large_text_size"
+            android:text="级别要求"
+            android:textColor="@color/textColorBlack"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

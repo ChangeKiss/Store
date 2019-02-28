@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/divider_15dp"
+    android:background="#fff9e2">
+
+    <TextView
+        android:layout_width="57dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/shape_button_orders"
+        android:text="小提示:"
+        android:gravity="center"
+        android:textColor="@color/windowBackground"
+        android:textSize="@dimen/medium_text_size"/>
+
+    <TextView
+        android:id="@+id/fund_order_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/drawablePadding_5dp"
+        android:textSize="@dimen/medium_text_size"
+        android:textColor="@color/textColorBlack"
+        android:text="提示内容"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        />
+
+
+</LinearLayout>

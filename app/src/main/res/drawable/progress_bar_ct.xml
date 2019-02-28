@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--自定义进度条的填充色以及圆角进度-->
+    <!-- solid指定形状的填充色，只有android:color一个属性 -->
+    <solid android:color="#f393a5" />
+    <!-- corners设置圆角，只适用于rectangle -->
+    <corners android:radius="10dip"/>
+</shape>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.SubordinateGradeActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_everyDayGrade"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"/>
+
+        <include layout="@layout/layout_nodata"
+            android:id="@+id/layout_no_data"
+            android:visibility="visible"/>
+
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/left_circle_enter"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:padding="3dp"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/right_circle_enter"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:padding="3dp"
+            android:layout_marginRight="@dimen/drawablePadding_5dp"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

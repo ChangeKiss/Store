@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/layout_select_month"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_30dp"
+        android:background="@color/windowBackground">
+
+        <TextView
+            android:id="@+id/tv_select_month"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/month"
+            android:paddingLeft="@dimen/divider_17dp"
+            android:textColor="@color/buttombarText"
+            android:gravity="center"
+            android:textSize="@dimen/large_text_size"
+            android:drawablePadding="@dimen/drawablePadding_5dp"
+            android:drawableRight="@mipmap/select_month"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_30dp"
+        android:background="@color/balance_color"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_balance_detail_month"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/buttombarText"
+            android:textSize="@dimen/large_text_size"
+            android:text=""
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/divider_17dp"/>
+
+        <TextView
+            android:id="@+id/tv_this_month_money"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/buttombarText"
+            android:gravity="center"
+            android:textSize="@dimen/medium_text_size"
+            android:text="收入¥0.00"
+            android:layout_marginLeft="@dimen/divider_15dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

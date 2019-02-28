@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/divider_15dp">
+
+        <com.Store.www.base.RoundAngleImageView
+            android:id="@+id/iv_retail_icon"
+            android:layout_width="@dimen/divider_50dp"
+            android:layout_height="@dimen/divider_50dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/welcome_one"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="@dimen/divider_15dp" />
+
+        <TextView
+            android:id="@+id/tv_retail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="金薇玲珑烧花款内衣"
+            app:layout_constraintLeft_toRightOf="@+id/iv_retail_icon"
+            app:layout_constraintTop_toTopOf="@+id/iv_retail_icon"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginTop="7dp"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/mediums_text_size"/>
+
+        <TextView
+            android:id="@+id/tv_retail_size_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="红色|70B"
+            app:layout_constraintLeft_toRightOf="@+id/iv_retail_icon"
+            app:layout_constraintTop_toBottomOf="@+id/tv_retail_name"
+            android:layout_marginTop="@dimen/divider_10dp"
+            android:textSize="@dimen/small_text_size"
+            android:layout_marginLeft="@dimen/divider_10dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_retail_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/mediums_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="x66"
+            app:layout_constraintTop_toTopOf="@+id/tv_retail_name"
+            android:layout_marginTop="@dimen/divider_10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/divider_10dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/windowBackgroundLightGrey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_money_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/divider_10dp"
+                android:textSize="@dimen/ysf_text_size_15"
+                android:textColor="@color/textColorBlack"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_refresh_pay"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/refresh_pay"
+                android:textSize="@dimen/ysf_text_size_15"
+                android:textColor="@color/windowBackgroundWhite"
+                android:background="@drawable/shape_circle_textview"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:text="@string/alipay_over"
+                android:textColor="@color/textColorBlack"/>
+
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_pay_issue"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/LightYellow"
+            android:textColor="@color/windowBackgroundWhite"
+            android:text="@string/pay_issue"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/divider_10dp"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

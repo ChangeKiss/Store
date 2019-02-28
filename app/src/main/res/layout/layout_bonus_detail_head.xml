@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_30dp"
+        android:orientation="horizontal"
+        android:background="@color/hintColor"
+        android:paddingLeft="@dimen/drawablePadding_5dp"
+        android:paddingRight="@dimen/drawablePadding_5dp">
+
+        <TextView
+            android:id="@+id/tv_bonus_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="姓名编号"
+            android:textSize="@dimen/smaller_text_size"
+            android:gravity="center"
+            android:textColor="@color/textColorBlack"/>
+
+        <TextView
+            android:id="@+id/tv_bonus_detail_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="内衣业绩/月"
+            android:textSize="@dimen/smaller_text_size"
+            android:gravity="center"
+            android:textColor="@color/textColorBlack"/>
+
+        <TextView
+            android:id="@+id/tv_bonus_detail_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="结算费率"
+            android:textSize="@dimen/smaller_text_size"
+            android:gravity="center"
+            android:textColor="@color/textColorBlack"/>
+
+        <TextView
+            android:id="@+id/tv_bonus_detail_bonus"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="贡献分红"
+            android:textSize="@dimen/smaller_text_size"
+            android:gravity="center"
+            android:textColor="@color/textColorBlack"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

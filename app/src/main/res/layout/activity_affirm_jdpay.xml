@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.AffirmJDPayActivity">
+
+    <include layout="@layout/layout_toolbar"/>
+
+    <View
+        style="@style/weight_10"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/divider_10dp"
+        android:background="@color/windowBackground">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/divider_40dp"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="还需支付"
+            android:gravity="center|left"/>
+
+        <TextView
+            android:id="@+id/tv_hint_affirm_pay_money"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/redColorBackground"
+            android:layout_marginLeft="@dimen/drawablePadding_5dp"
+            android:text="￥999"
+            android:gravity="center|left"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_affirm_jdpay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            style="@style/weight_10"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/windowBackground">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="@dimen/divider_40dp"
+                android:paddingLeft="@dimen/divider_10dp"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/large_text_size"
+                android:text="@string/verify_code"
+                android:gravity="center|left"/>
+
+            <EditText
+                android:id="@+id/et_verify_code_jd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/windowBackground"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/textColorBlack"
+                android:hint="请填写您收到的验证码"
+                android:textSize="@dimen/mediums_text_size"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_affirm_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_40dp"
+            android:layout_margin="@dimen/divider_40dp"
+            android:gravity="center"
+            android:enabled="true"
+            android:textColor="@color/windowBackground"
+            android:text="@string/affirm_pay"
+            android:background="@drawable/select_button_square"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

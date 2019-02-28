@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/ll_root"
+    android:orientation="vertical"
+    tools:context="com.Store.www.ui.activity.DialogActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/ll_dialog"
+        android:gravity="center_horizontal"
+        android:background="@drawable/dialog_activity"
+        android:layout_height="wrap_content">
+
+
+        <com.Store.www.base.RoundAngleImageView
+            android:id="@+id/iv_message_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            />
+
+
+
+      </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_message_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_message_popu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/divider_10dp"
+        android:src="@mipmap/message_close_icon"/>
+
+
+
+
+</LinearLayout>

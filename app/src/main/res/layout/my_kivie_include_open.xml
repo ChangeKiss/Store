@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:background="@color/placeholder_top">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/drawablePadding_5dp"
+            android:paddingRight="@dimen/drawablePadding_5dp"
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginTop="@dimen/gudieview_height"
+            android:gravity="center"
+            android:drawableLeft="@mipmap/set_icon"
+            android:text="@string/setting"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/windowBackground"
+            android:drawablePadding="@dimen/drawablePadding_3dp"/>
+
+        <View style="@style/weight_1" />
+
+        <ImageView
+            android:id="@+id/iv_qr_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/drawablePadding_5dp"
+            android:paddingRight="@dimen/drawablePadding_5dp"
+            android:layout_marginRight="@dimen/divider_10dp"
+            android:layout_marginTop="@dimen/gudieview_height"
+            android:src="@mipmap/qr_code" />
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bg_toolbar_open"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
