@@ -35,7 +35,7 @@ public class MyApplication extends Application{
     private List<Activity> mActivityList = new ArrayList<>();
     private static MyApplication instance;
 
-    private static String mDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Kivie";
+    private static String mDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Store";
 
     public static Context getmContext() {
         return mContext;

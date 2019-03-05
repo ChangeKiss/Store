@@ -3,12 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="30dp"
+    android:layout_height="40dp"
     android:background="@color/placeholder_top">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -18,7 +19,6 @@
             android:paddingLeft="@dimen/drawablePadding_5dp"
             android:paddingRight="@dimen/drawablePadding_5dp"
             android:layout_marginLeft="@dimen/divider_10dp"
-            android:layout_marginTop="@dimen/gudieview_height"
             android:gravity="center"
             android:drawableLeft="@mipmap/set_icon"
             android:text="@string/setting"
@@ -35,7 +35,6 @@
             android:paddingLeft="@dimen/drawablePadding_5dp"
             android:paddingRight="@dimen/drawablePadding_5dp"
             android:layout_marginRight="@dimen/divider_10dp"
-            android:layout_marginTop="@dimen/gudieview_height"
             android:src="@mipmap/qr_code" />
 
 

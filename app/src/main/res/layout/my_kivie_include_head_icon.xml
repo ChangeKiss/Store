@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="@dimen/divider_40dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_mine_icon"
@@ -114,6 +115,6 @@
     <View
         android:id="@+id/bg_content"
         android:layout_width="match_parent"
-        android:layout_height="120dp" />
+        android:layout_height="155dp" />
 
 </FrameLayout>

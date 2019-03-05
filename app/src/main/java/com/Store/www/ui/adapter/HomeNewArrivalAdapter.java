@@ -16,6 +16,10 @@ import com.Store.www.entity.HomeNewArrivalResponse;
 import com.Store.www.utils.ActivityUtils;
 import com.Store.www.utils.LogUtils;
 import com.Store.www.utils.UserPrefs;
+import com.stx.xhb.xbanner.XBanner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,8 +32,8 @@ import butterknife.ButterKnife;
 public class HomeNewArrivalAdapter extends BaseRecyclerViewAdapter<HomeNewArrivalResponse.DataBean,HomeNewArrivalAdapter.ViewHolder>{
 
     OnNewArrivalClickListener mListener;
-    LinearLayout.LayoutParams params;
-    LinearLayout.LayoutParams paramsTwo;
+    private List<String> bannerUrl ;
+
     public HomeNewArrivalAdapter(Context context,OnNewArrivalClickListener listener) {
         super(context);
         mListener = listener;
@@ -44,57 +48,33 @@ public class HomeNewArrivalAdapter extends BaseRecyclerViewAdapter<HomeNewArriva
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final HomeNewArrivalResponse.DataBean dataBean = mDataList.get(position);
-        params = (LinearLayout.LayoutParams) holder.mIvHomeNewImage.getLayoutParams();
-        paramsTwo = (LinearLayout.LayoutParams) holder.mVwHomePageLine.getLayoutParams();
-        params.width = UserPrefs.getInstance().getWidth()/360*320;
-        params.height = UserPrefs.getInstance().getWidth()/360*79*2;
-        holder.mIvHomeNewImage.setLayoutParams(params);
-        paramsTwo.width = UserPrefs.getInstance().getWidth()/360*320;
-        holder.mVwHomePageLine.setLayoutParams(paramsTwo);
-        if (mDataList.get(position).getImages()!=null){
-            Glide.with(mContext)
-                    .load(dataBean.getImages().get(0).getUrl())
-                    .error(R.mipmap.jzz_img)
-                    .into(holder.mIvHomeNewImage);
-        }else {
-            Glide.with(mContext)
-                    .load(R.mipmap.jzz_img)
-                    .error(R.mipmap.jzz_img)
-                    .into(holder.mIvHomeNewImage);
-        }
+        bannerUrl = new ArrayList<>();
+        bannerUrl.clear();
+        bannerUrl.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/66e3a4b4-9079-411d-9165-2a43d24e3b9c.png");
+        bannerUrl.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/b725935a-a9f5-4fda-9a84-3979928adf50.png");
 
-        LogUtils.d("图片控件的宽=="+holder.mIvHomeNewImage.getWidth());
-        holder.mTvHomeNewName.setText(dataBean.getName());
-        holder.mTvHomeNewMoney.setText("￥"+ActivityUtils.changeMoneys(dataBean.getRetailSale())); //零售价
-        holder.mTvHomeNewMoneyTwo.setText("￥"+ActivityUtils.changeMoneys(dataBean.getPrice()));  //原价
-        holder.mTvHomeNewMoneyTwo.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);  //给原价画一条线
-        holder.mTvHomeNewMoneyTwo.getPaint().setAntiAlias(true);
+        final HomeNewArrivalResponse.DataBean dataBean = mDataList.get(position);
+
+        holder.mHomeBanners.setData(bannerUrl,null);
+        holder.mTvHomeHintTitle.setText("公告");
+        holder.mHomeBanners.loadImage((banner, model, view, position1) -> {
+            Glide.with(mContext).load((String) model).into((ImageView) view);
+        });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.OnItemClickListener(position,dataBean.getProductId());
             }
         });
-        if (position==mDataList.size()-1){
-            holder.mVwHomePageLine.setVisibility(View.GONE);
-            holder.mVwHomePageView.setVisibility(View.VISIBLE);
-        }
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.iv_home_new_image)
-        ImageView mIvHomeNewImage;  //商品图片
-        @BindView(R.id.tv_home_new_name)
-        TextView mTvHomeNewName; //商品名
-        @BindView(R.id.tv_home_new_money)
-        TextView mTvHomeNewMoney; //商品最新价
-        @BindView(R.id.tv_home_new_money_two)
-        TextView mTvHomeNewMoneyTwo; //商品原价
-        @BindView(R.id.vw_homePage_line)
-        View mVwHomePageLine;  //底部的线
-        @BindView(R.id.vw_homePage_view)
-        View mVwHomePageView;  //最底部的占位布局
+        @BindView(R.id.home_banners)
+        XBanner mHomeBanners;       // 轮播图
+        @BindView(R.id.tv_home_hint_title)
+        TextView mTvHomeHintTitle;  // 首页标题
 
         public ViewHolder(View itemView) {
             super(itemView);

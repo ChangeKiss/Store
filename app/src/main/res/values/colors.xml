@@ -11,12 +11,14 @@
     <color name="windowBackgroundCream">#fffaf0</color>
     <color name="personage_background">#F3C5C5</color>  <!--粉色-->
     <color name="windowBackgroundGrey">#efeded</color>
-    <color name="placeholder_top">#f393a5</color><!--顶部占位颜色-->
+    <color name="placeholder_top">#FFCA93</color><!--顶部占位颜色--> <!--主色调-->
     <color name="windowBackgroundLightGrey">#e8e8e8</color>
     <color name="windowBackgroundDarkGrey">#3b3b3b</color>
     <color name="lightGreyColorBackground">#f0f0f0</color>
     <color name="agency_lv_btn">#ef6a83</color>
     <color name="agency_lv_btn_no">#e6e6e6</color>
+    <color name="home_text_no_select">#898989</color>
+    <color name="home_text_select">#FFCA93</color>
 
     <color name="windowBackground">#ffffff</color>
     <color name="textColorWhite">#fff</color>

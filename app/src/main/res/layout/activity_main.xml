@@ -69,20 +69,21 @@
             android:id="@+id/tv_tab_five"
             style="@style/bottomBar"
             android:text="@string/circle"
-            android:drawableTop="@mipmap/circle_no"/>
+            android:drawableTop="@mipmap/circle_no"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_tab_three"
             style="@style/bottomBar"
             android:text="@string/tab_three"
-            android:drawableTop="@mipmap/shopping_cart_no"/>
+            android:drawableTop="@mipmap/product_no"/>
 
 
         <TextView
             android:id="@+id/tv_tab_four"
             style="@style/bottomBar"
             android:text="@string/tab_four"
-            android:drawableTop="@mipmap/my_kivie_no"/>
+            android:drawableTop="@mipmap/user_no"/>
 
 
 

@@ -107,7 +107,6 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener,
         mActivityUtils = new ActivityUtils(this);
         initHeader();
         getShielding();
-        setViewWidth();
         IntentFilter filter = new IntentFilter();
         filter.addAction("homePage");
         getActivity().registerReceiver(new HomeNetWork(), filter);
@@ -229,29 +228,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener,
     private void initHeader() {
         mHeaderView = new CommonHeader(mContext, R.layout.layout_home_head);
         mBanner = (XBanner) mHeaderView.findViewById(R.id.banner);
-        mLayoutOne = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_one);
-        mLayoutTwo = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_two);
-        mLayoutThree = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_three);
-        mLayoutFour = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_four);
-        mLayoutFive = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_five);
-        mLayoutSix = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_six);
-        mLayoutSeven = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_seven);
-        mLayoutEight = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_eight);
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_one));
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_two));
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_three));
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_four));
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_five));
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_six));
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_seven));
-        mHomeButtonLayout.add((LinearLayout) mHeaderView.findViewById(R.id.layout_home_button_eight));
-        //mTvTodayNew = (TextView) mHeaderView.findViewById(R.id.tv_today_new);
-        mLayoutHomeEventHint = (LinearLayout) mHeaderView.findViewById(R.id.layout_home_event_hint);
-        mVwHomeLinesOne = mHeaderView.findViewById(R.id.vw_home_lines_one);
         mVwHomeLinesTwo = mHeaderView.findViewById(R.id.vw_home_lines_two);
-        for (int i = 0; i < mHomeButtonLayout.size(); i++) {
-            mHomeButtonLayout.get(i).setOnClickListener(this);
-        }
         initAdapter();
     }
 
@@ -272,7 +249,7 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener,
     }
 
 
-    //请求下方数据
+    //请求新闻活动圈子数据
     private void getNewArrival() {
         RetrofitClient.getInstances().getNewArrival(userId, token).enqueue(new UICallBack<HomeNewArrivalResponse>() {
             @Override
@@ -284,22 +261,13 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener,
             public void OnRequestSuccess(HomeNewArrivalResponse bean) {
                 switch (bean.getReturnValue()) {
                     case 1:
-                        LogUtils.d("新品上线");
                         nweNumber = bean.getData().size();
-                        LogUtils.d("新品上线bean.getData().size()==" + bean.getData().size());
                         //mTvTodayNew.setText("今日上新"+nweNumber+"款促销");
                         if (bean.getData().size() != 0) {
-                            mLayoutHomeEventHint.setVisibility(View.VISIBLE);
-                            mVwHomeLinesOne.setVisibility(View.VISIBLE);
-                            mVwHomeLinesTwo.setVisibility(View.VISIBLE);
                             mAdapter.getDataList().clear();
                             mAdapter.addAll(bean.getData());
                             mLry.refreshComplete(mCountPerPage); //加载完成
                             mAdapter.notifyDataSetChanged();
-                        } else {
-                            mLayoutHomeEventHint.setVisibility(View.GONE);
-                            mVwHomeLinesOne.setVisibility(View.GONE);
-                            mVwHomeLinesTwo.setVisibility(View.GONE);
                         }
                         break;
                     default:
@@ -450,65 +418,65 @@ public class HomeFragment extends BaseFragment implements OnRefreshListener,
     //首页中间按钮的点击事件
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.layout_home_button_one://商品管理
+
+             //商品管理
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     mActivityUtils.startActivity(CommodityActivity.class);
                 }
-                break;
-            case R.id.layout_home_button_two://我的订单
+
+             //我的订单
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     mActivityUtils.startActivity(MyOrderActivity.class);
                 }
-                break;
-            case R.id.layout_home_button_three://分红查询
+
+             //分红查询
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     mActivityUtils.startActivity(BonusQueryActivity.class);
                 }
-                break;
-            case R.id.layout_home_button_four://提货管理
+
+             //提货管理
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     mActivityUtils.startActivity(PickUpGoodsActivity.class);
                 }
-                break;
-            case R.id.layout_home_button_five://销售管理
+
+             //销售管理
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     mActivityUtils.startActivity(SellManageActivity.class);
                 }
-                break;
-            case R.id.layout_home_button_six: //团队业绩
+
+             //团队业绩
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     mActivityUtils.startActivity(ResultsActivity.class);
                 }
-                break;
-            case R.id.layout_home_button_seven: //代理查询
+
+             //代理查询
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     mActivityUtils.startActivity(AgencyListActivity.class);
                 }
-                break;
-            case R.id.layout_home_button_eight: //我的二维码
+
+             //我的二维码
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
                     mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                 } else {
                     //mActivityUtils.startActivity(SellManageActivity.class);
                     getQRCode(mUserId);
                 }
-                break;
-        }
+
+
     }
 
     //获取当前手机屏幕宽高

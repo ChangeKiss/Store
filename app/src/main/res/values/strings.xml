@@ -1,10 +1,13 @@
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
     <!--导航栏-->
-    <string name="app_name">Kivie</string>
+    <string name="app_name">Store</string>
     <string name="tab_noe">首页</string>
-    <string name="tab_two">新闻</string>
-    <string name="tab_three">购物车</string>
-    <string name="tab_four">我的金薇</string>
+    <string name="tab_two">讯息</string>
+    <string name="tab_three">产品</string>
+    <string name="tab_four">我的</string>
     <string name="circle">圈子</string>
     <string name="hint_net_fail">网络无连接</string>
     <string name="hint_service">网络连接异常,请稍后再试...</string>
@@ -215,7 +218,7 @@
     <string name="please_correct_password">请输入正确的密码</string>
     <string name="new_former_password">新旧密码一致哦,换一个新密码呗!</string>
     <string name="two_new_password">两次新密码不一致,请重新输入!</string>
-    <string name="again_exit">再按一次退出金薇</string>
+    <string name="again_exit">再按一次退出应用</string>
     <string name="no_data">没有正确的换货数据</string>
     <string name="no_address">还没有地址,快去添加一个吧</string>
     <string name="no_default">没有默认地址,快去选择一个地址吧</string>
@@ -383,6 +386,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
 </resources>
+

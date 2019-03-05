@@ -194,7 +194,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     public void initView() {
         ActivityCollector.addActivity(this);
         UserPrefsFirst.getInstance().setCodeNma(ActivityUtils.getVersionName(mContext));  //将版本编号存入本地仓库
-        setTabState(mTvTabOne, R.mipmap.home_ok, 0xfff67f96);
+        setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
         if (mHomeFragment == null) {
             mHomeFragment = new HomeFragment();
         }
@@ -505,7 +505,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 mLayoutBottombar.setVisibility(View.VISIBLE);
             }
             resetTabState();
-            setTabState(mTvTabOne, R.mipmap.home_ok, 0xfff67f96);
+            //setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
             mTvTabOne.setSelected(true);
             if (mHomeFragment == null) {
                 mHomeFragment = new HomeFragment();
@@ -537,11 +537,11 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
      * 重置所有tab的颜色
      */
     private void resetTabState() {
-        setTabState(mTvTabOne, R.mipmap.home_ok, 0xfff67f96);
-        setTabState(mTvTabTwo, R.mipmap.news_no, 0xff666666);
-        setTabState(mTvTabThree, R.mipmap.shopping_cart_no, 0xff666666);
-        setTabState(mTvTabFour, R.mipmap.my_kivie_no, 0xff666666);
-        setTabState(mTvTabFive,R.mipmap.circle_no,0xff666666);
+        setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
+        setTabState(mTvTabTwo, R.mipmap.news_no, 0xff898989);
+        setTabState(mTvTabThree, R.mipmap.product_no, 0xff898989);
+        setTabState(mTvTabFour, R.mipmap.user_no, 0xff898989);
+        //setTabState(mTvTabFive,R.mipmap.circle_no,0xff666666);
     }
 
 
@@ -603,11 +603,11 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         LogUtils.d("mCurrentTab=" + mCurrentTab);
         switch (view.getId()) {
             case R.id.tv_tab_one:  //首页
-                setTabState(mTvTabOne, R.mipmap.home_ok, 0xfff67f96);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff979797);
-                setTabState(mTvTabThree,R.mipmap.shopping_cart_no,0xff979797);
-                setTabState(mTvTabFour,R.mipmap.my_kivie_no,0xff979797);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff979797);
+                setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
+                setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
+                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
+                setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
+                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
                 if (mHomeFragment==null){
                     mHomeFragment = new HomeFragment();
                 }
@@ -615,11 +615,11 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 mCurrentTab = mTvTabOne;
                 break;
             case R.id.tv_tab_two:  //新闻资讯
-                setTabState(mTvTabTwo,R.mipmap.news_ok,0xfff67f96);
-                setTabState(mTvTabOne, R.mipmap.home_no, 0xff979797);
-                setTabState(mTvTabThree,R.mipmap.shopping_cart_no,0xff979797);
-                setTabState(mTvTabFour,R.mipmap.my_kivie_no,0xff979797);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff979797);
+                setTabState(mTvTabTwo,R.mipmap.news_ok,0xffffca93);
+                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
+                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
+                setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
+                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
                 if (mNewsFragment==null) {
                     mNewsFragment = new NewsFragment();
                 }
@@ -630,11 +630,11 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())){
                     mActivityUtils.startActivity(LoginActivity.class,"login","login");
                 }else {
-                    setTabState(mTvTabThree,R.mipmap.shopping_cart_ok,0xfff67f96);
-                    setTabState(mTvTabOne, R.mipmap.home_no, 0xff979797);
-                    setTabState(mTvTabTwo,R.mipmap.news_no,0xff979797);
-                    setTabState(mTvTabFour,R.mipmap.my_kivie_no,0xff979797);
-                    setTabState(mTvTabFive,R.mipmap.circle_no,0xff979797);
+                    setTabState(mTvTabThree,R.mipmap.product_ok,0xffffca93);
+                    setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
+                    setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
+                    setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
+                    setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
                     if (mShoppingTrolleyFragment==null) {
                         mShoppingTrolleyFragment = new ShoppingTrolleyFragment();
                     }
@@ -644,11 +644,11 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
 
                 break;
             case R.id.tv_tab_four:  //个人中心
-                setTabState(mTvTabFour,R.mipmap.my_kivie_ok,0xfff67f96);
-                setTabState(mTvTabOne, R.mipmap.home_no, 0xff979797);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff979797);
-                setTabState(mTvTabThree,R.mipmap.shopping_cart_no,0xff979797);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff979797);
+                setTabState(mTvTabFour,R.mipmap.user_ok,0xffffca93);
+                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
+                setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
+                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
+                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
                 if (mMyKivieFragment ==null) {
                     mMyKivieFragment = new MyKivieFragment();
                 }
@@ -656,11 +656,11 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 mCurrentTab = mTvTabFour;
                 break;
             case R.id.tv_tab_five:  //圈子
-                setTabState(mTvTabFive,R.mipmap.circle_ok,0xff979797);
-                setTabState(mTvTabFour,R.mipmap.my_kivie_no,0xfff67f96);
-                setTabState(mTvTabOne, R.mipmap.home_no, 0xff979797);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff979797);
-                setTabState(mTvTabThree,R.mipmap.shopping_cart_no,0xff979797);
+                setTabState(mTvTabFive,R.mipmap.circle_ok,0xffffca93);
+                setTabState(mTvTabFour,R.mipmap.my_kivie_no,0xff898989);
+                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
+                setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
+                setTabState(mTvTabThree,R.mipmap.shopping_cart_no,0xff898989);
                 if (mCircleFragment ==null) {
                     mCircleFragment = new CircleFragment();
                 }
