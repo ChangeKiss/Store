@@ -20,7 +20,7 @@
             android:id="@+id/layout_alter_content"
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:background="@color/itemNewColor"
+            android:background="@color/placeholder_top"
             android:layout_height="@dimen/divider_40dp"
             android:visibility="invisible">
 

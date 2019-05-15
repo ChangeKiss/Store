@@ -8,7 +8,9 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.Store.www.base.BaseLazyLoadFragment;
+import com.Store.www.ui.activity.LoginActivity;
+import com.Store.www.utils.TransCodingUtils;
+import com.Store.www.utils.UserPrefs;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -57,9 +63,7 @@ import cn.sharesdk.wechat.moments.WechatMoments;
  * 圈子碎片
  */
 
-public class CircleFragment extends BaseFragment implements OnRefreshListener,OnLoadMoreListener,CircleAdapter.OnclickListener{
-    @BindView(R.id.iv_publish_circle)
-    ImageView mIvPublishCircle;  //发布按钮
+public class CircleFragment extends BaseLazyLoadFragment implements OnRefreshListener,OnLoadMoreListener,CircleAdapter.OnclickListener{
     @BindView(R.id.circle_lR)
     LRecyclerView mCircleLr;  //展示圈子的列表
     @BindView(R.id.nodata)
@@ -73,24 +77,35 @@ public class CircleFragment extends BaseFragment implements OnRefreshListener,On
     private List<File> files = new ArrayList<>(); //文件集合 用来分享图片的
     private List<Bitmap> imageList = new ArrayList<>(); //图片集合 用来分享图片的
     // 待分享图片。
-    private static List<String> mImageList = new ArrayList<>();
+    private  List<String> mImageList = new ArrayList<>();
     private Bitmap bitmap = null;
     private String shareContent; //分享的文本内容
     private ProgressDialog dialog;
     private String shareType = "share";
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+    public void onLazyLoad() {
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())){
+            mActivityUtils.startActivity(LoginActivity.class,"login", "login");
+        }else {
+            initAdapter();
+        }
+    }
+
+    @Override
+    public View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
         View view = inflater.inflate(R.layout.fragment_circle,container,false);
         unbinder = ButterKnife.bind(this,view);
-        mActivityUtils = new ActivityUtils(this);
-        initAdapter();
-        getCircleList(mUserId,0,mCountPerPage,mPageIndex);
-        MobSDK.init(mContext,"245a466822227","a7a415e1869609aaeac6d8cdc08b7411");  //初始化MOB分享*****
-        requestStoragePermission();
         return view;
-
     }
+
+    @Override
+    public void initEvent() {
+        requestStoragePermission();
+        MobSDK.init(mContext,"245a466822227","a7a415e1869609aaeac6d8cdc08b7411");  //初始化MOB分享*****
+    }
+
 
     /**
      * 申请内存权限
@@ -111,6 +126,7 @@ public class CircleFragment extends BaseFragment implements OnRefreshListener,On
         mCircleLr.setAdapter(viewAdapter);
         mCircleLr.setOnRefreshListener(this); //下拉刷新
         mCircleLr.setOnLoadMoreListener(this);  //上拉加载
+        getCircleList(mUserId,0,mCountPerPage,mPageIndex);
     }
 
     //请求圈子列表数据
@@ -132,10 +148,11 @@ public class CircleFragment extends BaseFragment implements OnRefreshListener,On
                     case 1:
                         mAdapter.addAll(bean.getData());
                         mAdapter.notifyDataSetChanged();
-                        mCircleLr.refreshComplete(mCountPerPage); //显示10条时提示加载完成
+                        mCircleLr.refreshComplete(mCountPerPage);
                         break;
                     case 8:
                         mCircleLr.setNoMore(true);
+                        mPageIndex = 1;
                         break;
                     default:
                         break;
@@ -148,22 +165,12 @@ public class CircleFragment extends BaseFragment implements OnRefreshListener,On
     public void onResume() {
         super.onResume();
         LogUtils.d("圈子的Resume");
-        //imageList.clear(); //将图片集合清空
+        imageList.clear(); //将图片集合清空
+        mImageList.clear();
         if (shareType.equals("loadingWeChar")&& dialog!=null&& dialog.isShowing()){ //分享类型为微信
             dialog.dismiss();
         }
 
-    }
-
-
-
-    @OnClick({R.id.iv_publish_circle})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.iv_publish_circle:  //发布圈子的点击事件
-                mActivityUtils.startActivity(PublishCircleActivity.class);
-                break;
-        }
     }
 
     //上拉加载
@@ -199,7 +206,7 @@ public class CircleFragment extends BaseFragment implements OnRefreshListener,On
                         mAdapter.getDataList().get(position).setIsLike(1);
                         mAdapter.getDataList().get(position).setLikeCount(myCount);
                         praiseImageView.setImageResource(R.mipmap.family_dz_hover_icon);
-                        praiseTextView.setText("("+myCount+")");
+                        praiseTextView.setText(myCount+"");
                         showToast("~Thanks♪(･ω･)ﾉ~");
                         break;
                 }
@@ -254,49 +261,25 @@ public class CircleFragment extends BaseFragment implements OnRefreshListener,On
 
     }
 
-    //评论的点击事件
-    @Override
-    public void CommentClickListener(int position, int circleId) {
-       Intent intent = new Intent(getActivity(),CircleLookCommentActivity.class);
-        intent.putExtra("circleId",circleId);
-        startActivity(intent);
-    }
 
     //分享的点击事件
     @Override
     public void ShareClickListener(int position, List<CircleResponse.DataBean.ImagesBean> Images,String content) {
-        shareContent = content;
+        shareContent = TransCodingUtils.Decode(content);
         if (mAdapter.getDataList().get(position).getImages()==null){ //如果没有图片
             showShareContext();  //分享纯文本
         }else {//否则 调自定义多图分享至微信
-            /*for (int i=0;i<Images.size();i++){
-                //imageList.add(Images.get(i).getUrl());
+            for (int i=0;i<Images.size();i++){
                 mImageList.add(Images.get(i).getUrl());
-            }*/
-            mImageList.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/822151_1548471319339_circleImage_8.jpg");
-            mImageList.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/822151_1548471319335_circleImage_7.jpg");
-            mImageList.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/822151_1548471319327_circleImage_6.jpg");
-            mImageList.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/822151_1548471319319_circleImage_5.jpg");
-            mImageList.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/822151_1548471319317_circleImage_4.jpg");
-            new Thread(new Runnable() {  //此处获取BitMap对象必须在异步线程中否则会报错
-                @Override
-                public void run() {
-                    for (String url : mImageList){
-                        imageList.add(ActivityUtils.getBitMBitmap(url));
-                        LogUtils.d("bitmap=="+ActivityUtils.getBitMBitmap(url));
-                    }
+            }
+            //此处获取BitMap对象必须在异步线程中否则会报错
+            new Thread(() -> {
+                for (String url : mImageList){
+                    imageList.add(ActivityUtils.getBitMBitmap(url));
+//                        LogUtils.d("bitmap=="+ActivityUtils.getBitMBitmap(url));
                 }
             }).start();
-            loadImage(new OnLoadImageEndCallback() {
-                @Override
-                public void onEnd(List<Bitmap> bitmapList) {
-                    shareToTimeline(imageList);
-                }
-            });
-            /*shareType = "loadingWeChar";
-            shareToTimeline(imageList);*/
-            /*dialog = ProgressDialog.show(mContext,"","正在进入微信，请稍后..");
-            dialog.setCancelable(false);*/
+            loadImage(bitmapList -> shareToTimeline(imageList));
         }
 
     }
@@ -345,22 +328,14 @@ public class CircleFragment extends BaseFragment implements OnRefreshListener,On
         final ProgressDialog dialog = new ProgressDialog(mContext);
         dialog.setMessage("正在加载图片...");
         dialog.show();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                List<Bitmap> bitmapList = new ArrayList<>();
-                for (String imageResId : mImageList) {
-                    /*bitmapList.add(returnBitMap(imageResId));
-                    LogUtils.d("bitmap=="+returnBitMap(imageResId));*/
-                }
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        dialog.cancel();
-                    }
-                });
-                callback.onEnd(bitmapList);
+        new Thread(() -> {
+            List<Bitmap> bitmapList = new ArrayList<>();
+            for (String imageResId : mImageList) {
+                bitmapList.add(ActivityUtils.getBitMBitmap(imageResId));
+//                    LogUtils.d("bitmap=="+ActivityUtils.getBitMBitmap(imageResId));
             }
+            getActivity().runOnUiThread(() -> dialog.cancel());
+            callback.onEnd(bitmapList);
         }).start();
     }
 

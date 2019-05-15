@@ -9,7 +9,13 @@ import java.net.URLEncoder;
  */
 
 public class TransCodingUtils {
-    public static String Encode(String content){  //将特殊字符编码
+
+    /**
+     * 将特殊字符编码
+     * @param content
+     * @return
+     */
+    public static String Encode(String content){
         try {
             return URLEncoder.encode(content,"UTF-8");
         } catch (UnsupportedEncodingException e) {
@@ -17,7 +23,12 @@ public class TransCodingUtils {
         }
     }
 
-    public static String Decode(String content){  //将特殊字符解码
+    /**
+     * 将特殊字符解码
+     * @param content
+     * @return
+     */
+    public static String Decode(String content){
         try {
             return URLDecoder.decode(content,"UTF-8");
         } catch (UnsupportedEncodingException e) {

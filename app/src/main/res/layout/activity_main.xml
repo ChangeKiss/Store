@@ -13,7 +13,7 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="52dp">
+        android:layout_marginBottom="46dp">
     </FrameLayout>
 
     <LinearLayout
@@ -29,13 +29,15 @@
             android:id="@+id/tv_tab_one"
             style="@style/bottomBar"
             android:text="@string/tab_noe"
-            android:drawableTop="@mipmap/home_ok"/>
+            android:drawableTop="@mipmap/home_ok"
+            android:drawablePadding="2dp"/>
 
         <TextView
             android:id="@+id/tv_tab_two"
             style="@style/bottomBar"
             android:text="@string/tab_two"
-            android:drawableTop="@mipmap/news_no"/>
+            android:drawableTop="@mipmap/news_no"
+            android:drawablePadding="2dp"/>
 
         <RelativeLayout
             android:layout_width="55dp"
@@ -70,20 +72,23 @@
             style="@style/bottomBar"
             android:text="@string/circle"
             android:drawableTop="@mipmap/circle_no"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:drawablePadding="3dp"/>
 
         <TextView
             android:id="@+id/tv_tab_three"
             style="@style/bottomBar"
             android:text="@string/tab_three"
-            android:drawableTop="@mipmap/product_no"/>
+            android:drawableTop="@mipmap/product_no"
+            android:drawablePadding="2dp"/>
 
 
         <TextView
             android:id="@+id/tv_tab_four"
             style="@style/bottomBar"
             android:text="@string/tab_four"
-            android:drawableTop="@mipmap/user_no"/>
+            android:drawableTop="@mipmap/user_no"
+            android:drawablePadding="2dp"/>
 
 
 

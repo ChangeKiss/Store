@@ -8,14 +8,148 @@
 
 package com.Store.www.wxapi;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.widget.Toast;
-import cn.sharesdk.wechat.utils.WXAppExtendObject;
-import cn.sharesdk.wechat.utils.WXMediaMessage;
-import cn.sharesdk.wechat.utils.WechatHandlerActivity;
+
+import com.Store.www.MyApplication;
+import com.Store.www.entity.LoginResponse;
+import com.Store.www.entity.WeChartAccessTokenResponse;
+import com.Store.www.entity.WeChartLoginRequest;
+import com.Store.www.entity.WeChartLoginUserInfoResponse;
+import com.Store.www.net.RetrofitClient;
+import com.Store.www.net.UICallBack;
+import com.Store.www.ui.activity.LoginActivity;
+import com.Store.www.ui.activity.MainActivity;
+import com.Store.www.utils.ActivityUtils;
+import com.Store.www.utils.LogUtils;
+import com.Store.www.utils.UserPrefs;
+import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.mm.opensdk.modelbase.BaseReq;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
+
 
 /** 微信客户端回调activity示例 */
-public class WXEntryActivity extends WechatHandlerActivity {
+public class WXEntryActivity  extends Activity implements IWXAPIEventHandler {
+
+	//ERR_OK = 0(用户同意) ERR_AUTH_DENIED = -4（用户拒绝授权） ERR_USER_CANCEL = -2（用户取消）
+	private final static int WE_CHART_ERR_OK = 0;
+	private final static int WE_CHART_ERR_AUTH_DENIED = -4;
+	private final static int WE_CHART_ERR_USER_CANCEL = -2;
+	private static final String SECRET = "f3d6406c0d6ed8e4fdd4d738ce217322";
+	private ActivityUtils mActivityUtils;
+
+	@Override
+	protected void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		MyApplication.mWxApi.handleIntent(getIntent(),this);
+		mActivityUtils = new ActivityUtils(this);
+	}
+
+	@Override
+	public void onReq(BaseReq baseReq) {
+
+	}
+
+	// 第三方应用发送到微信的请求处理后的响应结果，会回调到该方法
+	//app发送消息给微信，处理返回消息的回调
+	@Override
+	public void onResp(BaseResp baseResp) {
+		LogUtils.d("错误码返回值=="+baseResp.errCode);
+		if (baseResp instanceof SendAuth.Resp){
+			SendAuth.Resp resp = (SendAuth.Resp)baseResp;
+			if (resp.errCode ==0){  //用户同意登录授权
+				//就在这个地方，用网络库什么的或者自己封的网络api，发请求去咯，注意是get请求
+				LogUtils.d("code=="+resp.code);
+				getAccessToken(MyApplication.APP_ID,SECRET,resp.code,"authorization_code");
+			}else {  //用户取消登录授权
+				mActivityUtils.startActivity(LoginActivity.class);  //打开登录界面
+			}
+		}
+	}
+
+	/**
+	 * 获取微信登录的accessToken 以及RefreshToken
+	 * @param appId
+	 * @param secret
+	 * @param code
+	 * @param grant_type
+	 */
+	private void getAccessToken(String appId,String secret, String code,String grant_type){
+		RetrofitClient.getApiWeChart().getWeChartAccessToken(appId,secret,code,grant_type).enqueue(new UICallBack<WeChartAccessTokenResponse>() {
+			@Override
+			public void OnRequestFail(String msg) {
+
+			}
+
+			@Override
+			public void OnRequestSuccess(WeChartAccessTokenResponse bean) {
+				LogUtils.d("id=="+bean.getOpenid());
+				LogUtils.d("Access_token=="+bean.getAccess_token());
+				LogUtils.d("refresh_token=="+bean.getRefresh_token());
+				LogUtils.d("errcode=="+bean.getErrcode());
+				UserPrefs.getInstance().setWeChartRefreshToken(bean.getRefresh_token());
+				getWeChartLoginUserInfo(bean.getAccess_token(),bean.getOpenid());
+			}
+		});
+	}
+
+	/**
+	 * 获取用户信息
+	 * @param accessToken
+	 * @param openId
+	 */
+	private void getWeChartLoginUserInfo(String accessToken,String openId){
+		RetrofitClient.getApiWeChart().getWeChartLoginUserInfo(accessToken,openId).enqueue(new UICallBack<WeChartLoginUserInfoResponse>() {
+			@Override
+			public void OnRequestFail(String msg) {
+
+			}
+
+			@Override
+			public void OnRequestSuccess(WeChartLoginUserInfoResponse bean) {
+				requestWeChartLogin(bean.getHeadimgurl(),bean.getNickname(),bean.getUnionid());
+			}
+		});
+	}
+
+	/**
+	 * 根据微信返回信息发起微信登录
+	 */
+	private void requestWeChartLogin(String headImageUrl,String nickName,String unionid){
+		WeChartLoginRequest request = new WeChartLoginRequest(headImageUrl,nickName,unionid);
+		RetrofitClient.getInstances().requestWeChartLogin(request).enqueue(new UICallBack<LoginResponse>() {
+			@Override
+			public void OnRequestFail(String msg) {
+
+			}
+
+			@Override
+			public void OnRequestSuccess(LoginResponse bean) {
+				switch (bean.getReturnValue()){
+					case 1:
+						Intent intent = new Intent();
+						intent.setAction("weChartLogin");
+						sendBroadcast(intent);
+						UserPrefs.getInstance().setLoginToken(bean.getData().getLoginToken());
+						UserPrefs.getInstance().setLoginInfo(bean);
+						CrashReport.setUserId(String.valueOf(bean.getData().getAgentId())); //设置BugLy的用户ID方便查看
+						mActivityUtils.startActivity(MainActivity.class);
+						finish();
+						break;
+					default:
+
+						break;
+				}
+			}
+		});
+	}
 
 	/**
 	 * 处理微信发出的向第三方应用请求app message

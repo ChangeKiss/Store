@@ -1,11 +1,13 @@
 package com.Store.www.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.Store.www.R;
+import com.Store.www.ui.activity.MainActivity;
 import com.Store.www.utils.LogUtils;
 
 
@@ -157,6 +159,10 @@ public abstract class BaseToolbarActivity extends BaseActivity implements View.O
                 mListener.setOnToolBarRightClickListener();
                 break;
             case R.id.iv_toolbar_right_close:
+                Intent intent = new Intent();
+                intent.setAction("toHome");
+                sendBroadcast(intent);
+                mActivityUtils.startActivity(MainActivity.class);
                 finish();
                 break;
             case R.id.iv_toolbar_right:

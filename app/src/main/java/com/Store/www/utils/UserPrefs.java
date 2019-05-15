@@ -41,6 +41,7 @@ public class UserPrefs {
     private String CODE_NAME = "codeName";  //APP的版本编号
     private String ADVERTISING_PICTURE;  //请求下来的广告图片
     private String CORSETLEVELNAME;   //塑身衣等级
+    private String WE_CHART_REFRESH_TOKEN;
 
 
     private UserPrefs(Context context) {
@@ -219,6 +220,13 @@ public class UserPrefs {
 
     public String getCorsetLevelName(){
         return preferences.getString(CORSETLEVELNAME,null);
+    }
+
+    public String getWeChartRefreshToken(){
+        return preferences.getString(WE_CHART_REFRESH_TOKEN,null);
+    }
+    public void setWeChartRefreshToken(String WeChartRefreshToken){
+        preferences.edit().putString(WE_CHART_REFRESH_TOKEN,WeChartRefreshToken).commit();
     }
 
     //退出时清空用户信息

@@ -134,7 +134,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -435,9 +436,11 @@
                 android:id="@+id/tv_personage_scan"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/scan_icon"
-                android:text="@string/scan"/>
+                android:text="@string/scan"
+                android:visibility="gone"/>
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal2"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/layout_personage_apply_for_beg"
@@ -445,7 +448,8 @@
                 android:layout_height="@dimen/login_item_height"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/dp_14"
-                android:paddingRight="@dimen/divider_10dp">
+                android:paddingRight="@dimen/divider_10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -479,7 +483,8 @@
             </LinearLayout>
 
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal2"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tv_personage_sell_manager"
@@ -536,7 +541,17 @@
                 android:id="@+id/tv_personage_retail_recort"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/retail_record_icon"
-                android:text="@string/retail_record" />
+                android:text="@string/retail_record"
+                android:visibility="gone"/>
+
+            <View style="@style/divider_horizontal2"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_personage_agency_query"
+                style="@style/personalInformationText"
+                android:drawableLeft="@mipmap/agency_query_icon"
+                android:text="@string/agency_query" />
 
 
         </LinearLayout>
@@ -552,9 +567,11 @@
                 android:id="@+id/tv_personage_company"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/system"
-                android:text="@string/company_system" />
+                android:text="@string/company_system"
+                android:visibility="gone"/>
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal2"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tv_personage_feedback"

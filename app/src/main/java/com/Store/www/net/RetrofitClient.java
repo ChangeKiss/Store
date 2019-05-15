@@ -27,12 +27,13 @@ public class RetrofitClient {
     public static Api mApiTwo;
     public static Api mApiThree;
     public static Api mApiLongConnection;
+    public static Api mApiWeChart;
 
     //正式的服务器地址  ****
-    public static final String BASE_URL = "http://sys.kivie.com/webapi_v2/webapi/";
+    public static final String BASE_URL = "http://47.96.152.157:8088/webapi_v2/webapi/";
 
     //正式服的订单模块 和购物车模块  *****
-    public static final String Base_URL_THREE = "http://sys.kivie.com/webapi_v2/webapi/";
+    public static final String Base_URL_THREE = "http://47.96.152.157:8088/webapi_v2/webapi/";
 
     //正式服务器地址  暂时作废
     //public static final String BASE_URL = "http://sys.kivie.com/webapi_v3/webapi/";
@@ -40,6 +41,9 @@ public class RetrofitClient {
     //支付宝支付的服务器地址
     //public static final String BASE_URL_TWO = "http://sys.kivie.com/webapi_v2/webapi/";
     public static final String BASE_URL_TWO = "http://121.43.59.111:9005/";
+
+    //请求微信access_token服务器地址
+    public static final String WE_CHART_URL ="https://api.weixin.qq.com/";
 
    /* //韩迪测试服务器地址
     public static final String BASE_URL = "http://7.7.2.82:8083/";
@@ -212,6 +216,28 @@ public class RetrofitClient {
         return mApiLongConnection;
     }
 
+    /**
+     * 微信登录网络请求
+     * @return
+     */
+    public static Api createWeChartConnection(){
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(okHttpClient)
+                .baseUrl(WE_CHART_URL)
+                //给Retrofit添加Gson的转换器
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        mApiWeChart = retrofit.create(Api.class);
+        return mApiWeChart;
+    }
+
+
     public static synchronized Api getInstances(){  //正式的API
         if (mApi == null) {
             mApi = create();
@@ -242,6 +268,17 @@ public class RetrofitClient {
             mApiLongConnection = createApiLongConnection();
         }
         return mApiLongConnection;
+    }
+
+    /**
+     * 微信登录
+     * @return
+     */
+    public static synchronized Api getApiWeChart(){
+        if (mApiWeChart==null){
+            mApiWeChart = createWeChartConnection();
+        }
+        return mApiWeChart;
     }
 
 

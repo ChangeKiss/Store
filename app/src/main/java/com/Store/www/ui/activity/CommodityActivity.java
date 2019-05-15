@@ -24,8 +24,8 @@ import com.Store.www.utils.LogUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-//商品管理界面
-public class CommodityActivity extends BaseToolbarActivity implements OnLoadMoreListener,
+//活动商品/集 管理界面
+public class CommodityActivity extends BaseToolbarActivity implements
         OnRefreshListener, CommodityAdapter.OnOrderButtonClickListener {
     @BindView(R.id.ry_commodity)
     LRecyclerView mRyCommodity;
@@ -33,6 +33,7 @@ public class CommodityActivity extends BaseToolbarActivity implements OnLoadMore
     ImageView mIvToolbarRight;
     CommodityAdapter mAdapter;
     LRecyclerViewAdapter mLRecyclerViewAdapter;
+    private int mChartId;
 
 
     @Override
@@ -49,7 +50,8 @@ public class CommodityActivity extends BaseToolbarActivity implements OnLoadMore
     @Override
     public void initView() {
         ActivityCollector.addActivity(this);
-        initToolbar(this, true, R.string.commodity_guanli);
+        initToolbar(this, true, "活动商品");
+        mChartId = getIntent().getIntExtra("id",0);
         mIvToolbarRight.setVisibility(View.VISIBLE);
         mAdapter = new CommodityAdapter(this);
         mAdapter.setListener(this);
@@ -59,11 +61,12 @@ public class CommodityActivity extends BaseToolbarActivity implements OnLoadMore
         mRyCommodity.setLayoutManager(layoutManager);
         mRyCommodity.setAdapter(mLRecyclerViewAdapter);
         mRyCommodity.setOnRefreshListener(this);
-        mRyCommodity.setOnLoadMoreListener(this);
+        mRyCommodity.setLoadMoreEnabled(false);
         mRyCommodity.setHeaderViewColor(R.color.redColorBackground, R.color.textColorBlack, R.color.colorLucency);
         mRyCommodity.setFooterViewColor(R.color.redColorBackground, R.color.textColorBlack, R.color.colorLucency);
         mRyCommodity.setFooterViewHint("正在加载", "我是有底线的", "网络没了..");
-        getCommodity(mPageIndex);
+        getHuoDongCommodity(mChartId);
+        //getCommodity(mPageIndex);
     }
 
     //获取购物车中是否有商品
@@ -82,8 +85,10 @@ public class CommodityActivity extends BaseToolbarActivity implements OnLoadMore
                     case 1:
                         if (isTop){
                             if (bean.getData().isIsCartHaveCommodity()){
+                                isCart = false;
                                 mIvToolbarRight.setImageResource(R.mipmap.cart_no_null);
                             }else {
+                                isCart = true;
                                 mIvToolbarRight.setImageResource(R.mipmap.cart_no);
                             }
                         }
@@ -135,6 +140,40 @@ public class CommodityActivity extends BaseToolbarActivity implements OnLoadMore
         });
     }
 
+    /**
+     * 获取活动商品集商品
+     */
+    private void getHuoDongCommodity(int chartId){
+        DialogLoading.shows(mContext,R.string.hint_loading);
+        RetrofitClient.getInstances().getProductList(chartId).enqueue(new UICallBack<CommodityManagerResponse>() {
+            @Override
+            public void OnRequestFail(String msg) {
+                if (isTop)checkNet();
+            }
+
+            @Override
+            public void OnRequestSuccess(CommodityManagerResponse bean) {
+                if (isTop){
+                    switch (bean.getReturnValue()){
+                        case 1:
+                            if (bean.getData().size() == 0) {
+                                mRyCommodity.setNoMore(true);
+                            } else {
+                                mAdapter.addAll(bean.getData());
+                                mRyCommodity.refreshComplete(mCountPerPage);//设置一页加载数量为10
+                                mAdapter.notifyDataSetChanged();
+                            }
+                            break;
+                        default:
+                            showToast(bean.getErrMsg());
+                            break;
+                    }
+                }
+            }
+        });
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -154,17 +193,14 @@ public class CommodityActivity extends BaseToolbarActivity implements OnLoadMore
         finish();
     }
 
-    @Override
-    public void onLoadMore() {
-        mPageIndex++;
-        getCommodity(mPageIndex);
-    }
+
 
     @Override
     public void onRefresh() {
         mAdapter.getDataList().clear();
         mPageIndex = 1;
-        getCommodity(mPageIndex);
+        //getCommodity(mPageIndex);
+        getHuoDongCommodity(mChartId);
         getCartWhetherIsNull();
         mLRecyclerViewAdapter.notifyDataSetChanged();
     }
@@ -183,10 +219,12 @@ public class CommodityActivity extends BaseToolbarActivity implements OnLoadMore
     public void onViewClicked(View view) {
         switch (view.getId()){
             case R.id.tv_toolbar_right:
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.putExtra("toFragment", "cart");
-                startActivity(intent);
-                finish();
+                if (isCart){  //没有商品
+                    showToast("购物车空空如也");
+                }else {
+                    mActivityUtils.startActivity(ShoppingCartActivity.class);
+                    finish();
+                }
                 break;
 
         }

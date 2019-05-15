@@ -3,7 +3,7 @@ package com.Store.www.entity;
 import java.util.List;
 
 /**
- * 商品管理响应体
+ * 活动商品管理响应体
  */
 
 public class CommodityManagerResponse extends BaseBean{

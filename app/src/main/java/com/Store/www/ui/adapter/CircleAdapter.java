@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.Store.www.utils.ActivityUtils;
 import com.bumptech.glide.Glide;
 import com.Store.www.R;
 import com.Store.www.base.BaseRecyclerViewAdapter;
@@ -62,10 +63,8 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleResponse.DataBe
 
         holder.mTvCircleContent.setText(TransCodingUtils.Decode(dataBean.getContent())); //圈子内容（需要将特殊符号或表情解码显示）
 
-        holder.mTvCircleComment.setText(""+dataBean.getCommentCount()+""); //评论数量
-        long thisTime = System.currentTimeMillis()/1000;  //当前系统毫秒数
-        long getTime = dataBean.getTime()/1000;  //服务器返回的毫秒数
-        long time = thisTime-getTime;  //我要的时间
+        holder.mTvCircleComment.setText(""+dataBean.getReadNum()+""); //阅读数量
+        long time = System.currentTimeMillis()/1000-dataBean.getTime()/1000;  //我要的时间 = 当前系统时间 - 服务器返回的时间
         LogUtils.d("Time="+time);
         int myTime=0;
         if (time<60){
@@ -82,7 +81,11 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleResponse.DataBe
         }else {
             //显示天数
             myTime = (int) (time/3600/24);
-            holder.mTvCircleTime.setText(myTime+"天前");
+            if (myTime<=7){
+                holder.mTvCircleTime.setText(myTime+"天前");
+            }else {
+                holder.mTvCircleTime.setText(ActivityUtils.YMDTime(dataBean.getTime()));
+            }
         }
         if (dataBean.getLikeCount()>0&&dataBean.getIsLike()==1){
             holder.mIvCirclePraise.setImageResource(R.mipmap.family_dz_hover_icon);
@@ -108,13 +111,6 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleResponse.DataBe
         });
 
 
-        //评论的点击事件
-        holder.mLayoutCircleComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.CommentClickListener(position,dataBean.getCircleId());
-            }
-        });
 
         //分享的点击事件
         holder.mTvShare_wex.setOnClickListener(new View.OnClickListener() {
@@ -168,7 +164,6 @@ public class CircleAdapter extends BaseRecyclerViewAdapter<CircleResponse.DataBe
     public interface OnclickListener{
         void PraiseClickListener(int position,ImageView imageView,TextView textView,int like,int circleId,int likeCount);
         void ReportClickListener(int position,int circleId);
-        void CommentClickListener(int position,int circleId);
         void ShareClickListener(int position, List<CircleResponse.DataBean.ImagesBean> Images,String content);
     }
 

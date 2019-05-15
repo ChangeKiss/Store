@@ -68,9 +68,9 @@ public class CommodityAdapter extends BaseRecyclerViewAdapter<CommodityManagerRe
                 mListener.setItemButtonClickListener(position,dataBean.getProductId());
             }
         });
-        holder.mTvCommodityMoneyTwo.setText(dataBean.getCurrency()+ActivityUtils.changeMoneys(dataBean.getSalePrice()));
+        /*holder.mTvCommodityMoneyTwo.setText(dataBean.getCurrency()+ActivityUtils.changeMoneys(dataBean.getSalePrice()));
         holder.mTvCommodityMoneyTwo.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG); //从这里开始下面都是给原价设置斜线
-        holder.mTvCommodityMoneyTwo.getPaint().setAntiAlias(true);
+        holder.mTvCommodityMoneyTwo.getPaint().setAntiAlias(true);*/
 
     }
 
@@ -81,8 +81,6 @@ public class CommodityAdapter extends BaseRecyclerViewAdapter<CommodityManagerRe
         TextView mTvItemName;
         @BindView(R.id.tv_commodity_money)
         TextView mTvCommodityMoney;
-        @BindView(R.id.tv_commodity_money_two)
-        TextView mTvCommodityMoneyTwo;
         @BindView(R.id.layout_item_commodity)
         LinearLayout mLayoutItemCommodity;
 

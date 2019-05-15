@@ -86,7 +86,7 @@ public class RegardActivity extends BaseToolbarActivity {
     @Override
     public void initView() {
         ActivityCollector.addActivity(this);
-        initToolbar(this, true, R.string.regard_kivie);
+        initToolbar(this, true, R.string.seting);
         mKey = getIntent().getStringExtra("key");
         code = ActivityUtils.getVersionCode(RegardActivity.this);
         getNewApp();  //获取版本信息
@@ -108,7 +108,7 @@ public class RegardActivity extends BaseToolbarActivity {
         super.onResume();
         isTop = true;
         try {
-            CacheSize = DataCleanManager.getTotalCacheSize(mContext);
+            CacheSize = DataCleanManager.getTotalCacheSize(this);
             mTvApplyCache.setText(CacheSize);
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,23 +173,20 @@ public class RegardActivity extends BaseToolbarActivity {
     //弹出更新升级对话框
     private void showUpData(final String url,String upDataHint){
         View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_app_updata,null);
-        mTvAppUpDataHint = (TextView) view.findViewById(R.id.tv_app_upData_hint);
-        mProgressBar = (ProgressBar) view.findViewById(R.id.pb_upData_progress);  //下载进度条
-        mTvProgressBar = (TextView) view.findViewById(R.id.tv_progress);  //下载进度文字
-        mBtnGoOn = (Button) view.findViewById(R.id.btn_go_on);  //暂停、继续的按钮
+        mTvAppUpDataHint =  view.findViewById(R.id.tv_app_upData_hint);
+        mProgressBar =  view.findViewById(R.id.pb_upData_progress);  //下载进度条
+        mTvProgressBar =  view.findViewById(R.id.tv_progress);  //下载进度文字
+        mBtnGoOn =  view.findViewById(R.id.btn_go_on);  //暂停、继续的按钮
         mDialog = new AlertDialog.Builder(mContext).setView(view).create();
         setProgressBarIndeterminateVisibility(true);
-        mDialog.setCancelable(false);  //设置点击外部不消失
+        mDialog.setCancelable(true);  //设置点击外部不消失
         mDialog.show();
         mTvAppUpDataHint.setText(upDataHint);
         mDialog.getWindow().setLayout(UserPrefs.getInstance().getWidth()-100, WindowManager.LayoutParams.WRAP_CONTENT);  //设置弹窗的宽高
-        mBtnGoOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onCreateRxDownload();  //初始化
-                mProgressBar.setVisibility(View.VISIBLE);
-                dispatchClick(url);
-            }
+        mBtnGoOn.setOnClickListener(v -> {
+            onCreateRxDownload();  //初始化
+            mProgressBar.setVisibility(View.VISIBLE);
+            dispatchClick(url);
         });
 
     }

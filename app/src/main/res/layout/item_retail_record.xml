@@ -15,7 +15,7 @@
             android:layout_height="@dimen/divider_50dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/welcome_one"
+            android:src="@mipmap/welcome_two"
             android:scaleType="fitXY"
             android:layout_marginLeft="@dimen/divider_15dp" />
 

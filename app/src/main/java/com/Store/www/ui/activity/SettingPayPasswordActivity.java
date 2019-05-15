@@ -59,6 +59,18 @@ public class SettingPayPasswordActivity extends BaseToolbarActivity implements T
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        isTop = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isTop = true;
+    }
+
+    @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
     }

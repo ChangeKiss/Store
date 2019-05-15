@@ -101,9 +101,6 @@ public class ChangePhoneActivity extends BaseToolbarActivity implements TextWatc
         mVerifyCode = mEtVerifyCode.getText().toString();
         mNewPhone = mEtInputNewPhone.getText().toString();
         mNewVerifyCode = mEtAlterPhoneVerifyCode.getText().toString();
-        LogUtils.d("旧的手机验证码==" + mVerifyCode);
-        LogUtils.d("新的手机号码==" + mNewPhone);
-        LogUtils.d("新的手机验证码==" + mNewVerifyCode);
     }
 
     /**
@@ -275,9 +272,13 @@ public class ChangePhoneActivity extends BaseToolbarActivity implements TextWatc
                 requestOldVerifyCode(UserPrefs.getInstance().getPhone(),mVerifyCode);
                 break;
             case R.id.layout_contact_service:  //联系客服
-                initQiYuService();   //打开客服
+                //initQiYuService();   //打开客服
                 break;
             case R.id.btn_change_new_phone_code:  //获取新的验证码
+                if (TextUtils.isEmpty(mNewPhone)){
+                    showToast("请输入手机号");
+                    return;
+                }
                 mVerifyType = "newCode";
                 getOldVerifyCode(mNewPhone);
                 break;

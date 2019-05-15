@@ -32,8 +32,10 @@ import com.Store.www.permisson.RequestPermissionActivity;
 import com.Store.www.ui.commom.DialogHint;
 import com.Store.www.ui.fragment.CircleFragment;
 import com.Store.www.ui.fragment.HomeFragment;
+import com.Store.www.ui.fragment.MessageFragment;
 import com.Store.www.ui.fragment.MyKivieFragment;
 import com.Store.www.ui.fragment.NewsFragment;
+import com.Store.www.ui.fragment.ProductFragment;
 import com.Store.www.ui.fragment.ShoppingTrolleyFragment;
 import com.Store.www.utils.ActivityCollector;
 import com.Store.www.utils.ActivityUtils;
@@ -80,6 +82,8 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     private String mToFragment; //判断是否需要切换fragment
     HomeFragment mHomeFragment;
     NewsFragment mNewsFragment;
+    MessageFragment mMessageFragment;
+    ProductFragment mProductFragment;  //产品碎片
     ShoppingTrolleyFragment mShoppingTrolleyFragment;
     MyKivieFragment mMyKivieFragment;
     CircleFragment mCircleFragment;
@@ -110,10 +114,11 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         requestPermission();
         code = ActivityUtils.getVersionCode(mContext);
         service(); //客服
-        getNewApp();  //获取APP更新信息
+        //getNewApp();  //获取APP更新信息
         if (!TextUtils.isEmpty(userId))CrashReport.setUserId(userId);
         IntentFilter filter = new IntentFilter();
         filter.addAction(SHOW_ACTION);
+        filter.addAction("toHome");
         mMessage = new messageWork();
         registerReceiver(mMessage,filter);
     }
@@ -225,6 +230,10 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                     Intent dialogIntent = new Intent(MainActivity.this,DialogActivity.class);
                     dialogIntent.putExtra("img_url",MyReceive.ad_img);
                     startActivity(dialogIntent);
+                }else if (intent.getAction().equals("toHome")){
+                    LogUtils.d("toHome");
+                    mToFragment = "home";
+                    dumpFragment();
                 }
             }
         }
@@ -268,8 +277,9 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         mAppUpDataDialog.show();
     }
 
-
-    //获取是否有最新版APP  以及检查APK文件是否存在
+    /**
+     * 获取是否有最新版APP  以及检查APK文件是否存在
+     */
     private void getNewApp(){
         RetrofitClient.getInstances().getAppUpData().enqueue(new UICallBack<AppUpDataResponse>() {
             @Override
@@ -421,6 +431,19 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 switchFragmentByShow(mMyKivieFragment);
                 mCurrentTab = mTvTabFour;
                 break;
+            case "home":
+                LogUtils.d("跳转到讯息");
+                setTabState(mTvTabTwo,R.mipmap.news_ok,0xffffca93);
+                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
+                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
+                setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
+                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
+                if (mMessageFragment==null) {
+                    mMessageFragment = new MessageFragment();
+                }
+                switchFragmentByShow(mMessageFragment);
+                mCurrentTab = mTvTabTwo;
+                break;
         }
     }
 
@@ -481,9 +504,14 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         if (mHomeFragment != null) {
             mHomeFragment = null;
         }
-        if (mNewsFragment != null) {
-            mNewsFragment = null;
+        if (mMessageFragment != null) {
+            mMessageFragment = null;
         }
+
+        if(mProductFragment !=null){
+            mProductFragment = null;
+        }
+
         if (mShoppingTrolleyFragment != null) {
             mShoppingTrolleyFragment = null;
         }
@@ -620,10 +648,10 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
                 setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
                 setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
-                if (mNewsFragment==null) {
-                    mNewsFragment = new NewsFragment();
+                if (mMessageFragment==null) {
+                    mMessageFragment = new MessageFragment();
                 }
-                switchFragmentByShow(mNewsFragment);
+                switchFragmentByShow(mMessageFragment);
                 mCurrentTab = mTvTabTwo;
                 break;
             case R.id.tv_tab_three:  //购物车
@@ -634,11 +662,10 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                     setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
                     setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
                     setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
-                    setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
-                    if (mShoppingTrolleyFragment==null) {
-                        mShoppingTrolleyFragment = new ShoppingTrolleyFragment();
+                    if (mProductFragment==null) {
+                        mProductFragment = new ProductFragment();
                     }
-                    switchFragmentByShow(mShoppingTrolleyFragment);
+                    switchFragmentByShow(mProductFragment);
                     mCurrentTab = mTvTabThree;
                 }
 
@@ -648,7 +675,6 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
                 setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
                 setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
                 if (mMyKivieFragment ==null) {
                     mMyKivieFragment = new MyKivieFragment();
                 }

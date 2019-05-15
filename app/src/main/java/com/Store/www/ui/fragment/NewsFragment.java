@@ -3,6 +3,7 @@ package com.Store.www.ui.fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.Store.www.base.BaseLazyLoadFragment;
+import com.Store.www.ui.commom.DialogLoading;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -32,14 +35,10 @@ import butterknife.Unbinder;
  */
 
 //
-public class NewsFragment extends BaseFragment implements NewsTitleAdapter.OnItemClickListener, OnRefreshListener {
+public class NewsFragment extends BaseLazyLoadFragment implements NewsTitleAdapter.OnItemClickListener, OnRefreshListener {
 
     @BindView(R.id.lv_news)
     LRecyclerView mLvNews;
-    @BindView(R.id.tv_title_toolbar)
-    TextView mTvToolbarTitle;
-    @BindView(R.id.tv_circle)
-    TextView mTvCircle;  //圈子按钮
     @BindView(R.id.nodata)
     RelativeLayout mNodata;
     Unbinder unbinder;
@@ -50,14 +49,25 @@ public class NewsFragment extends BaseFragment implements NewsTitleAdapter.OnIte
     private FragmentManager manager;
     private FragmentTransaction transaction;
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onLazyLoad() {
+        initAdapter();
+    }
+
+    @Override
+    public View initView(LayoutInflater inflater, @Nullable ViewGroup container) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         unbinder = ButterKnife.bind(this, view);
         manager = getFragmentManager();
-        initAdapter();
         return view;
     }
+
+    @Override
+    public void initEvent() {
+
+    }
+
 
 
     //初始化适配器
@@ -73,6 +83,7 @@ public class NewsFragment extends BaseFragment implements NewsTitleAdapter.OnIte
 
     //网络请求资讯新闻
     private void getNews() {
+        DialogLoading.shows(mContext,R.string.hint_loading);
         RetrofitClient.getInstances().getNewsList().enqueue(new UICallBack<NewsResponse>() {
             @Override
             public void OnRequestFail(String msg) {
@@ -89,8 +100,8 @@ public class NewsFragment extends BaseFragment implements NewsTitleAdapter.OnIte
                         case 1:
                             mAdapterTitle.getDataList().clear();
                             mAdapterTitle.addAll(bean.getData());
-                            mLvNews.refreshComplete(bean.getData().size());
                             mAdapterTitle.notifyDataSetChanged();
+                            mLvNews.refreshComplete(bean.getData().size());
                             break;
                         default:
                             showToast(bean.getErrMsg());

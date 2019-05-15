@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.ShoppingCartActivity">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <include layout="@layout/layout_nodata"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ry_cart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/resultColor">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:id="@+id/layout_check"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/textColorWhite"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/drawablePadding_5dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:id="@+id/cb_trolley"
+                        style="@style/checkBoxStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_hint_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/buttombarText"
+                        android:text="全选"/>
+
+                </LinearLayout>
+
+                <View
+                    style="@style/weight_1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_text"
+                    android:layout_marginLeft="@dimen/divider_10dp"
+                    android:textColor="@color/textColorLightBlack"
+                    android:textSize="@dimen/large_text_size" />
+
+                <TextView
+                    android:id="@+id/tv_cart_money_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="@dimen/divider_20dp"
+                    android:text=""
+                    android:textColor="@color/redColorBackground"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_clearing"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/select_cart_button_square"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/clearing"
+            android:textColor="@color/textColorWhite"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

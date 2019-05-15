@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="@dimen/divider_20dp"
-                    android:text="666"
+                    android:text=""
                     android:textColor="@color/redColorBackground"
                     android:textSize="15sp" />
             </LinearLayout>

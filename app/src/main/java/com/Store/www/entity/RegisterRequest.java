@@ -15,16 +15,14 @@ public class RegisterRequest {
 
     private String user;
     private String mobile;
-    private String introducer;
+    private String code;
     private String password;
-    private String areaCode;
 
-    public RegisterRequest(String user, String mobile, String introducer, String password, String areaCode) {
+    public RegisterRequest(String user, String mobile, String code, String password) {
         this.user = user;
         this.mobile = mobile;
-        this.introducer = introducer;
+        this.code = code;
         this.password = password;
-        this.areaCode = areaCode;
     }
 
     public String getUser() {
@@ -43,12 +41,12 @@ public class RegisterRequest {
         this.mobile = mobile;
     }
 
-    public String getIntroducer() {
-        return introducer;
+    public String getCode() {
+        return code;
     }
 
-    public void setIntroducer(String introducer) {
-        this.introducer = introducer;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getPassword() {
@@ -59,11 +57,4 @@ public class RegisterRequest {
         this.password = password;
     }
 
-    public String getAreaCode() {
-        return areaCode;
-    }
-
-    public void setAreaCode(String areaCode) {
-        this.areaCode = areaCode;
-    }
 }

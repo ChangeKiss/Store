@@ -130,7 +130,8 @@
                 android:paddingLeft="@dimen/divider_10dp"
                 android:paddingRight="@dimen/divider_10dp"
                 android:paddingTop="@dimen/divider_10dp"
-                android:paddingBottom="@dimen/divider_10dp">
+                android:paddingBottom="@dimen/divider_10dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -226,7 +227,8 @@
 
             <View
                 style="@style/weight_10"
-                android:id="@+id/vw_cloud"/>
+                android:id="@+id/vw_cloud"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

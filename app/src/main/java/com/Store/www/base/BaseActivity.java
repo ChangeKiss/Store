@@ -53,6 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity{
     public Context mContext;
     public int token = 2;
     public String netWork = " ";  //网络连接类型
+    public boolean isCart = false;  //购物车是否有商品
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

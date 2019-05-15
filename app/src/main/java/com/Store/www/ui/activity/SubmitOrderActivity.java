@@ -100,7 +100,7 @@ public class SubmitOrderActivity extends BaseToolbarActivity implements TextWatc
     private Network  network;
     private String mCurrency,mPayContent; //货币符号,上级的收款资料
     WindowManager.LayoutParams params;  //用来动态设置AlertDialog的宽
-    private int isPutCloud = 0;  //是否存入云库默认0  0正常发货  1存入云库
+    private int isPutCloud = 1;  //是否存入云库默认0  0正常发货  1存入云库
     private List<SuperiorsCloudKcRequest.ProductsBean> Bean = new  ArrayList();
     SuperiorsCloudKcRequest.ProductsBean productsBean = new SuperiorsCloudKcRequest.ProductsBean();
     private AlertDialog mDialog;
@@ -129,13 +129,13 @@ public class SubmitOrderActivity extends BaseToolbarActivity implements TextWatc
         initData();
         getLocation();
         mIsShow = getIntent().getIntExtra("isShow",0);  //是否显示存入云库布局
-        if (mIsShow !=1){
+        /*if (mIsShow !=1){
             mLayoutCloud.setVisibility(View.VISIBLE);
             mVwCloud.setVisibility(View.VISIBLE);
         }else {
             mLayoutCloud.setVisibility(View.GONE);
 
-        }
+        }*/
         IntentFilter intentFilter = new IntentFilter(); // 注册广播接收器
         intentFilter.addAction("lock");
         network = new Network();
@@ -164,8 +164,7 @@ public class SubmitOrderActivity extends BaseToolbarActivity implements TextWatc
             if(networkInfo != null && networkInfo.isAvailable()){
                 mSelectAddress = intent.getStringExtra("address");
                 getLocation();
-            }
-            else{
+            } else{
                 Toast.makeText(context, "network is unavailable", Toast.LENGTH_SHORT).show();
             }
         }

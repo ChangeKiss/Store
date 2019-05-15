@@ -393,7 +393,6 @@ public class PayActivity extends BaseToolbarActivity implements AgentApplyAdapte
         RetrofitClient.getInstances().getMyBalance(mUserId).enqueue(new UICallBack<BalanceResponse>() {
             @Override
             public void OnRequestFail(String msg) {
-                LogUtils.d("获取余额");
                 if (isTop)checkNet();
             }
 

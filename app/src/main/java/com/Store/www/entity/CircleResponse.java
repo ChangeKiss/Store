@@ -63,6 +63,7 @@ public class CircleResponse {
         private int circleId;
         private long time;
         private int type;
+        private int readNum;
         private String content;
         private int commentCount;
         private List<ImagesBean> images;
@@ -121,6 +122,14 @@ public class CircleResponse {
 
         public void setType(int type) {
             this.type = type;
+        }
+
+        public int getReadNum() {
+            return readNum;
+        }
+
+        public void setReadNum(int readNum) {
+            this.readNum = readNum;
         }
 
         public String getContent() {

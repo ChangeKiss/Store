@@ -65,6 +65,7 @@ public class LoginResponse extends BaseBean{
         private String account;
         private int isAlipay;
         private String loginToken;
+        private String password;
 
         public String getAgentNum() {
             return agentNum;
@@ -192,6 +193,14 @@ public class LoginResponse extends BaseBean{
 
         public void setLoginToken(String loginToken) {
             this.loginToken = loginToken;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
         }
     }
 }

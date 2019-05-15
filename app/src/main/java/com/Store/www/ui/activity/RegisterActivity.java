@@ -25,7 +25,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 注册界面
+ * 注册界面  已经作废
  */
 public class RegisterActivity extends BaseToolbarActivity implements TextWatcher,DialogHint.OnDialogOneButtonClickListener {
     @BindView(R.id.et_user_name)
@@ -150,7 +150,7 @@ public class RegisterActivity extends BaseToolbarActivity implements TextWatcher
 
     //发起注册请求
     private void requestRegister(){
-        RegisterRequest request = new RegisterRequest(user,mobile,introducer,password,agentCode);
+        RegisterRequest request = new RegisterRequest(user,mobile,introducer,password);
         RetrofitClient.getInstances().requestRegister(request).enqueue(new UICallBack<BaseBenTwo>() {
             @Override
             public void OnRequestFail(String msg) {

@@ -207,8 +207,10 @@ public class IntroduceActivity extends BaseToolbarActivity {
                     case 1:
                         if (isTop){
                             if (bean.getData().isIsCartHaveCommodity()){
+                                isCart = false;
                                 mIvToolbarRight.setImageResource(R.mipmap.cart_no_null);
                             }else {
+                                isCart = true;
                                 mIvToolbarRight.setImageResource(R.mipmap.cart_no);
                             }
                         }
@@ -238,10 +240,14 @@ public class IntroduceActivity extends BaseToolbarActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_toolbar_right:  //右上角跳转到购物车
-                Intent intentCart = new Intent(this, MainActivity.class);
-                intentCart.putExtra("toFragment", "cart");
-                startActivity(intentCart);
-                finish();
+                if (isCart){  //购物车中没有商品
+                    showToast("购物车空空如也");
+                }else {
+                    Intent intentCart = new Intent(this, ShoppingCartActivity.class);
+                    intentCart.putExtra("toFragment", "cart");
+                    startActivity(intentCart);
+                    finish();
+                }
                 break;
         }
     }

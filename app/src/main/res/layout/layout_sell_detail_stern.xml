@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/divider_30dp"
             android:orientation="horizontal"
-            android:background="@color/cancelColor">
+            android:background="@color/placeholder_top">
 
             <TextView
                 android:layout_width="wrap_content"

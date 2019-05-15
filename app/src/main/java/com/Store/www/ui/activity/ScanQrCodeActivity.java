@@ -100,7 +100,7 @@ public class ScanQrCodeActivity extends BaseToolbarActivity implements DialogHin
                         mCpScan.stop();
                         startPayHintMusic();
                         mIvScanCartoon.setVisibility(View.INVISIBLE);
-                        DialogHint.showDialogWithOneButton(ScanQrCodeActivity.this,"扫描只支持金薇商品",ScanQrCodeActivity.this);
+                        DialogHint.showDialogWithOneButton(ScanQrCodeActivity.this,"扫描不支持该商品",ScanQrCodeActivity.this);
                     }
                 }else if (!TextUtils.isEmpty(mScanType) && mScanType.equals("ENTER")){  //入库扫描
                     LogUtils.d("截取结果=="+code);
@@ -113,7 +113,7 @@ public class ScanQrCodeActivity extends BaseToolbarActivity implements DialogHin
                         mCpScan.stop();
                         startPayHintMusic();
                         mIvScanCartoon.setVisibility(View.INVISIBLE);
-                        DialogHint.showDialogWithOneButton(ScanQrCodeActivity.this,"扫描只支持金薇商品",ScanQrCodeActivity.this);
+                        DialogHint.showDialogWithOneButton(ScanQrCodeActivity.this,"扫描不支持该商品",ScanQrCodeActivity.this);
                     }
                 }
             }

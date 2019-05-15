@@ -1,8 +1,13 @@
 package com.Store.www.ui.activity;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.TabLayout;
@@ -17,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.Store.www.MyApplication;
 import com.Store.www.R;
 import com.Store.www.base.BaseToolbarActivity;
 import com.Store.www.entity.BaseBenTwo;
@@ -29,11 +35,13 @@ import com.Store.www.net.UICallBack;
 import com.Store.www.ui.commom.DialogHint;
 import com.Store.www.utils.ActivityCollector;
 import com.Store.www.utils.ActivityUtils;
+import com.Store.www.utils.CountDownTimerUtils;
 import com.Store.www.utils.LogUtils;
 import com.Store.www.utils.RegexUtils;
 import com.Store.www.utils.UserPrefs;
 import com.Store.www.utils.UserPrefsFirst;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
 
 import java.util.Set;
 
@@ -67,8 +75,6 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
     LinearLayout mLayoutLogin; //登录布局
     @BindView(R.id.tab_login)
     TabLayout mTabLogin;
-    @BindView(R.id.et_user_name)
-    EditText mEtUserName;
     @BindView(R.id.et_user_phone)
     EditText mEtUserPhone;
     @BindView(R.id.et_user_password)
@@ -77,14 +83,14 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
     EditText mEtUserPasswordTwo;
     @BindView(R.id.et_user_referrer)
     EditText mEtUserReferrer;
+    @BindView(R.id.btn_code)
+    Button mBtnCode;  //获取验证码验证按钮
     @BindView(R.id.btn_register)
     Button mBtnRegister;
     @BindView(R.id.agency_verify_name)
     TextView mTvAgencyVerifyName;
     @BindView(R.id.cb_remember_password)
     CheckBox mCbRememberPassword;  //记住密码复选框
-    @BindView(R.id.tv_this_area_number)
-    TextView mTvThisAreaNumber;  //当前地区编号
 
 
     private String loginNumber, loginPassword,mLoginPassword;
@@ -93,7 +99,7 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
     private String mLogin;
     private int screenWidth;  //屏幕的宽
     private int screenHeight;   //屏幕的高
-    private String user,mobile,introducer,password,passwordTwo,mPassword,mPasswords;
+    private String user,mobile,code,password,passwordTwo,mPassword,mPasswords;
     boolean buttonEnable;
     private String mAlias;
     protected static final int SELECT_AREA = 2;
@@ -115,19 +121,42 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
         mLogin = getIntent().getStringExtra("login");
         initToolbar(this, true, "");
         initTab();
+        if (!TextUtils.isEmpty(mLogin)){
+            showToast("请先登录");
+        }
         UserPrefsFirst.getInstance().setCodeNma(ActivityUtils.getVersionName(mContext));  //将版本编号存入本地仓库
         mLayoutLogin.setVisibility(View.VISIBLE);
         mIvToolbarLeft.setVisibility(View.GONE);
         mIvToolbarRightClose.setVisibility(View.VISIBLE);
         mEtAccountNumber.addTextChangedListener(this);
         mEtImportPassword.addTextChangedListener(this);
-        mEtUserName.addTextChangedListener(this);
         mEtUserPhone.addTextChangedListener(this);
         mEtUserPassword.addTextChangedListener(this);
         mEtUserPasswordTwo.addTextChangedListener(this);
         mEtUserReferrer.addTextChangedListener(this);
         getShielding();
         initOut();  //取出数据
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("codeLogin");
+        filter.addAction("weChartLogin");
+        registerReceiver(new bordCast(),filter);
+    }
+
+    class bordCast extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+            if (networkInfo!=null && networkInfo.isAvailable()){
+                if (intent.getAction().equals("codeLogin")){
+                    finish();
+                }else if (intent.getAction().equals("weChartLogin")){
+                    showToast("登录成功");
+                    finish();
+                }
+            }
+        }
     }
 
     //初始化tab布局
@@ -146,8 +175,6 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
         mBtnLogin.setEnabled(mRegisterEnable);
     }
 
-
-
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -162,13 +189,17 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
     //输入文本框的监听
     @Override
     public void afterTextChanged(Editable s) {
+        if (!TextUtils.isEmpty(mEtUserPassword.getText().toString().trim()) && !TextUtils.isEmpty(mEtUserPasswordTwo.getText().toString())){
+            mBtnRegister.setText("注册");
+        }else {
+            mBtnRegister.setText("免密码注册");
+        }
         loginNumber = mEtAccountNumber.getText().toString().trim();
         loginPassword = mActivityUtils.Md5Password(mEtImportPassword.getText().toString());
         mLoginPassword = mEtImportPassword.getText().toString();
         //LogUtils.d("加盐后密码==="+loginPassword);
-        user = mEtUserName.getText().toString().trim();
         mobile = mEtUserPhone.getText().toString().trim();
-        introducer = mEtUserReferrer.getText().toString().trim();
+        code = mEtUserReferrer.getText().toString().trim();  //验证码
         mPassword = mEtUserPassword.getText().toString().trim();
         mPasswords = mEtUserPasswordTwo.getText().toString().trim();
         password = ActivityUtils.Md5Password(mEtUserPassword.getText().toString().trim());
@@ -178,18 +209,19 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
     @Override
     protected void onResume() {
         super.onResume();
-        if (!mAreaCode.equals("0")){
-            mAreaCode = areaCode;
-            mTvThisAreaNumber.setText(areaCode);
-        }else {
-            mAreaCode = areaCode;
-            mTvThisAreaNumber.setText(areaCode);
-        }
+        isTop = true;
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isTop = false;
     }
 
     //按钮的点击事件
     @OnClick({R.id.btn_login, R.id.cb_login_policy,R.id.tv_login_protocol, R.id.tv_find,R.id.iv_toolbar_left,R.id.btn_code, R.id.btn_register,
-    R.id.layout_nation_area})
+    R.id.tv_we_chart_login,R.id.tv_code_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_login: //登录
@@ -204,6 +236,12 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
                 mBtnLogin.setEnabled(false);
                 requestLogin(loginNumber,loginPassword);   //发起登录请求
                 break;
+            case R.id.tv_we_chart_login:  //微信登录
+                weChartLogin();
+                break;
+            case R.id.tv_code_login: //验证码登录
+                mActivityUtils.startActivity(RetrievePasswordActivity.class,"type","code_login");
+                break;
             case R.id.cb_login_policy: //用户协议复选框
                 mCbRegisterPolicyChecked = mCbLoginPolicy.isChecked();
                 if (!mCbRegisterPolicyChecked){
@@ -214,7 +252,7 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
                 }
                 break;
             case R.id.tv_login_protocol: //用户注册协议
-                String mUrl = "http://sys.kivie.com/AppDownload/xiyi5.0.html";
+                String mUrl = "http://47.96.152.157:9061/042710501793.html";
                 //CommonWebActivity.startWebActivity(this,"金薇协议",mUrl);
                 Intent intent = new Intent(LoginActivity.this,CommonWebActivity.class);
                 intent.putExtra("url",mUrl);
@@ -223,7 +261,7 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
                 startActivity(intent);
                 break;
             case R.id.tv_find: //找回密码
-                mActivityUtils.startActivity(RetrievePasswordActivity.class);
+                mActivityUtils.startActivity(RetrievePasswordActivity.class,"type","retrieve_password");
                 break;
             case R.id.iv_toolbar_left:
                 if (mLogin.equals("login")){
@@ -233,12 +271,12 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
             case R.id.iv_toolbar_right_close:
                 finish();
                 break;
-            case R.id.btn_code:  //验证推荐人
-                if (TextUtils.isEmpty(introducer)){
+            case R.id.btn_code:  //获取验证码
+                if (TextUtils.isEmpty(mobile)){
                     showToast(R.string.verify_null);
                     return;
                 }
-                getReferrerPeople();
+                getVerifyCode(mobile);
                 break;
             case R.id.btn_register:  //  注册
                 if (RegexUtils.verifyPhoneNumber(mobile)!= RegexUtils.VERIFY_SUCCESS){
@@ -249,20 +287,64 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
                     showToast(R.string.two_password);
                     return;
                 }
-                if (RegexUtils.verifyPassword(mPassword)!= RegexUtils.VERIFY_SUCCESS && RegexUtils.verifyPassword(mPasswords)!=RegexUtils.VERIFY_SUCCESS){
+                /*if (RegexUtils.verifyPassword(mPassword)!= RegexUtils.VERIFY_SUCCESS && RegexUtils.verifyPassword(mPasswords)!=RegexUtils.VERIFY_SUCCESS){
                     DialogHint.showDialogWithOneButton(this,R.string.dialog_password);
+                    return;
+                }*/
+                if (TextUtils.isEmpty(code)){
+                    showToast("请输入验证码");
                     return;
                 }
                 mBtnRegister.setEnabled(false);  //发起注册后设置注册按钮不可点击
                 requestRegister();
                 break;
-            case R.id.layout_nation_area:  //选择国家或地区
+            /*case R.id.layout_nation_area:  //选择国家或地区
                 Intent areaIntent = new Intent(this,SelectCountryAreaActivity.class);
                 startActivityForResult(areaIntent,SELECT_AREA);
-                break;
+                break;*/
         }
     }
 
+    @Override
+    public void onBackPressed() { //重写系统返回键
+        super.onBackPressed();
+        if (!TextUtils.isEmpty(mLogin) && mLogin.equals("login")){
+            Intent intent = new Intent();
+            intent.setAction("toHome");
+            sendBroadcast(intent);
+            mActivityUtils.startActivity(MainActivity.class);
+            finish();
+        }else {
+            finish();
+        }
+    }
+
+    //获取验证码
+    private void getVerifyCode(String phoneNumber){
+        RetrofitClient.getInstances().getVerifyCode(phoneNumber).enqueue(new UICallBack<BaseBenTwo>() {
+            @Override
+            public void OnRequestFail(String msg) {
+                if (isTop)checkNet();
+            }
+
+            @Override
+            public void OnRequestSuccess(BaseBenTwo bean) {
+                if (isTop){
+                    switch (bean.getReturnValue()){
+                        case 1:
+                            //设置验证码获取成功，修改密码的确认按钮可用
+                            showToast(R.string.verify_code_ok);
+                            CountDownTimerUtils timerUtils = new CountDownTimerUtils(mBtnCode,60000,1000);
+                            timerUtils.start();
+                            break;
+                        default:
+                            showToast(bean.getErrMsg());
+                            break;
+                    }
+                }
+            }
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -271,7 +353,7 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
             case SELECT_AREA:
                 if (resultCode==6){
                     areaCode = data.getStringExtra("areaCode");
-                    mTvThisAreaNumber.setText(areaCode);
+                    //mTvThisAreaNumber.setText(areaCode);
                 }
                 break;
             default:
@@ -313,7 +395,19 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
         });
     }
 
-
+    //微信登录
+    private void weChartLogin(){
+        if (!MyApplication.mWxApi.isWXAppInstalled()){
+            showToast("请先安装微信");
+            return;
+        }
+        final SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo";
+        req.state = "fuatee_wx_login";
+        //req.state = "pedometer_binding";
+        MyApplication.mWxApi.sendReq(req);
+        finish();
+    }
 
     //存储数据
     private void initPut(){
@@ -435,35 +529,10 @@ public class LoginActivity extends BaseToolbarActivity implements TextWatcher ,D
     }
 
 
-    //验证推荐人信息
-    private void getReferrerPeople(){
-        RetrofitClient.getInstances().getReferrer(introducer).enqueue(new UICallBack<VerifyPeopleResponse>() {
-            @Override
-            public void OnRequestFail(String msg) {
-                checkNet();
-            }
-
-            @Override
-            public void OnRequestSuccess(VerifyPeopleResponse bean) {
-                switch (bean.getReturnValue()){
-                    case 1:
-                        showToast(R.string.verify_ok);
-                        LogUtils.d("代理人编号=="+introducer+" "+bean.getJsrAgent().getCode());
-                        mTvAgencyVerifyName.setVisibility(View.VISIBLE);
-                        mTvAgencyVerifyName.setText(bean.getJsrAgent().getName());
-                        mBtnRegister.setEnabled(true);
-                        break;
-                    default:
-                        showToast(bean.getErrMsg());
-                        break;
-                }
-            }
-        });
-    }
 
     //发起注册请求
     private void requestRegister(){
-        RegisterRequest request = new RegisterRequest(user,mobile,introducer,password,areaCode);
+        RegisterRequest request = new RegisterRequest(user,mobile,code,password);
         RetrofitClient.getInstances().requestRegister(request).enqueue(new UICallBack<BaseBenTwo>() {
             @Override
             public void OnRequestFail(String msg) {

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.Store.www.ui.activity.ChangePhoneActivity"
+    android:background="@color/windowBackground"
     android:orientation="vertical">
 
     <include layout="@layout/layout_toolbar"/>
@@ -17,7 +18,9 @@
         android:orientation="vertical"
         android:layout_marginTop="@dimen/divider_10dp"
         android:paddingLeft="@dimen/divider_15dp"
-        android:background="@color/windowBackground">
+        android:paddingBottom="@dimen/divider_20dp"
+        android:background="@color/windowBackground"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +28,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/this_phone"
                 android:gravity="center|left"
@@ -112,7 +115,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/divider_20dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -141,8 +145,8 @@
         android:orientation="vertical"
         android:layout_marginTop="@dimen/divider_10dp"
         android:paddingLeft="@dimen/divider_15dp"
-        android:background="@color/windowBackground"
-        android:visibility="gone">
+        android:paddingBottom="@dimen/divider_50dp"
+        android:background="@color/windowBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,9 +154,9 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/this_phone"
+                android:text="手机号码"
                 android:gravity="center"
                 android:textColor="@color/textColorBlack"
                 android:textSize="@dimen/mediums_text_size"/>
@@ -165,6 +169,7 @@
                 android:textSize="@dimen/mediums_text_size"
                 android:textColor="@color/textColorBlack"
                 android:hint="请输入新的手机号码"
+                android:inputType="number"
                 android:background="@color/windowBackground"
                 android:layout_marginLeft="@dimen/divider_30dp"/>
 
@@ -180,11 +185,12 @@
             android:paddingRight="@dimen/divider_15dp">
 
             <TextView
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center|left"
                 android:textColor="@color/textColorBlack"
                 android:textSize="@dimen/mediums_text_size"
+                android:paddingRight="@dimen/divider_15dp"
                 android:text="@string/verify_code"/>
 
 
@@ -195,6 +201,7 @@
                 android:background="@color/windowBackground"
                 android:layout_marginLeft="@dimen/divider_30dp"
                 android:textSize="@dimen/mediums_text_size"
+                android:inputType="number"
                 android:hint="@string/please_verify_code"/>
 
             <View

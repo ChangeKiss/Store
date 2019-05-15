@@ -1,6 +1,7 @@
 package com.Store.www.ui.activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -9,10 +10,12 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.Store.www.R;
 import com.Store.www.base.BaseToolbarActivity;
 import com.Store.www.entity.BaseBenTwo;
+import com.Store.www.entity.CodeLoginRequest;
 import com.Store.www.entity.FindAlterPasswordRequest;
 import com.Store.www.entity.LoginRequest;
 import com.Store.www.entity.LoginResponse;
@@ -48,9 +51,19 @@ public class RetrievePasswordActivity extends BaseToolbarActivity implements Tex
     EditText mEtPasswordFindTwo;
     @BindView(R.id.btn_affirm)
     Button mBtnAffirm;
+    @BindView(R.id.layout_password_one)
+    LinearLayout mLayoutPasswordOne;  //新密码输入布局
+    @BindView(R.id.line_one)
+    View mLineOne;
+    @BindView(R.id.layout_password_two)
+    LinearLayout mLayoutPasswordTwo;  //重复密码输入布局
+    @BindView(R.id.line_two)
+    View mLineTwo;
 
     private String passwordOne,nwePassword,phoneNumber,code,mPassword;
     private boolean buttonEnable;
+    private String mType = "";
+    private String mDialogType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +79,17 @@ public class RetrievePasswordActivity extends BaseToolbarActivity implements Tex
     @Override
     public void initView() {
         ActivityCollector.addActivity(this);
-        initToolbar(this, true, R.string.find_password);
+        mType = getIntent().getStringExtra("type");
+        if (mType.equals("code_login")){
+            initToolbar(this, true, "验证码登录");
+            mBtnAffirm.setText("登录");
+            mLayoutPasswordOne.setVisibility(View.GONE);
+            mLineOne.setVisibility(View.GONE);
+            mLayoutPasswordTwo.setVisibility(View.GONE);
+            mLineTwo.setVisibility(View.GONE);
+        }else if (mType.equals("retrieve_password")){
+            initToolbar(this, true, R.string.find_password);
+        }
         mEtUserPhoneTwo.addTextChangedListener(this);
         mEeVerityCode.addTextChangedListener(this);
         mEtPasswordFin.addTextChangedListener(this);
@@ -114,17 +137,66 @@ public class RetrievePasswordActivity extends BaseToolbarActivity implements Tex
 
                 break;
             case R.id.btn_affirm: //确认
-                if (RegexUtils.verifyPassword(mPassword)!= RegexUtils.VERIFY_SUCCESS){
-                    DialogHint.showDialogWithOneButton(this,R.string.dialog_password);
-                    return;
+                if (mType.equals("code_login")){  //验证码登录
+                    if (TextUtils.isEmpty(code)){
+                        showToast("请输入验证码");
+                        return;
+                    }
+                    requestCodeLogin(phoneNumber,code);
+                }else if (mType.equals("retrieve_password")){
+                    if (RegexUtils.verifyPassword(mPassword)!= RegexUtils.VERIFY_SUCCESS){
+                        DialogHint.showDialogWithOneButton(this,R.string.dialog_password);
+                        mDialogType = "password_error";
+                        return;
+                    }
+                    if (!passwordOne.equals(nwePassword)){
+                        showToast(R.string.two_password);
+                        break;
+                    }
+                    requestFindAlter();
                 }
-                if (!passwordOne.equals(nwePassword)){
-                    showToast(R.string.two_password);
-                    break;
-                }
-                requestFindAlter();
                 break;
         }
+    }
+
+
+    /**
+     * 发起验证码登录
+     */
+    private void requestCodeLogin(String phone,String code){
+        CodeLoginRequest request = new CodeLoginRequest(phone,code);
+        RetrofitClient.getInstances().requestCodeLogin(request).enqueue(new UICallBack<LoginResponse>() {
+            @Override
+            public void OnRequestFail(String msg) {
+                if (isTop) checkNet();
+            }
+
+            @Override
+            public void OnRequestSuccess(LoginResponse bean) {
+                if (isTop){
+                    switch (bean.getReturnValue()){
+                        case 1:
+                            showToast(R.string.login_ok);
+                            String model=android.os.Build.MODEL; // 手机型号
+                            String release=android.os.Build.VERSION.RELEASE; // android系统版本号
+                            //JPushInterface.setAlias(mContext,1,"ID"+bean.getData().getAgentId());  //设置极光推送用户标签  ***作废
+                            setAlias("ID"+bean.getData().getLoginToken());  //设置极光推送用户标签
+                            UserPrefs.getInstance().setLoginToken(bean.getData().getLoginToken());
+                            UserPrefs.getInstance().setLoginInfo(bean);
+                            Intent intent = new Intent();
+                            intent.setAction("codeLogin");
+                            sendBroadcast(intent);
+                            DialogHint.showDialogWithOneButton(mContext,"默认密码为: "+bean.getData().getPassword()+",请及时修改",RetrievePasswordActivity.this);
+                            mDialogType = "password_error";
+                            break;
+                        default:
+                            showToast(bean.getErrMsg());
+                            mBtnAffirm.setEnabled(true);
+                            break;
+                    }
+                }
+            }
+        });
     }
 
 
@@ -296,6 +368,7 @@ public class RetrievePasswordActivity extends BaseToolbarActivity implements Tex
     //单个确认按钮的弹窗  标题传String
     @Override
     public void setOnDialogOkButtonClickListener(AlertDialog dialog, String titleId) {
-
+        mActivityUtils.startActivity(MainActivity.class);
+        finish();
     }
 }

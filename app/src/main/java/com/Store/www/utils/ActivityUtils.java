@@ -445,6 +445,16 @@ public class ActivityUtils {
         activity.startActivity(intent);
     }
 
+    // 跳转页面
+    public void startActivity(Class<? extends Activity> clazz, String idName, String id,String valueName,int value) {
+        Activity activity = getActivity();
+        if (activity == null) return;
+        Intent intent = new Intent(activity, clazz);
+        intent.putExtra(idName, id);
+        intent.putExtra(valueName,value);
+        activity.startActivity(intent);
+    }
+
 
 
     private static final int DECIMAL_DIGITS=2;  //小数的位数

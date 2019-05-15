@@ -25,8 +25,8 @@
 #-renamesourcefileattribute SourceFile
 #-------------------------------------------定制化区域----------------------------------------------
 #---------------------------------1.实体类---------------------------------
--keep class com.jinwei.kivie.entity.**{*;}
--keep class com.jinwei.kivie.ui.imageManager.bean.**{*;}
+-keep class com.Store.www.entity.**{*;}
+-keep class com.Store.www.ui.imageManager.bean.**{*;}
 #-------------------------------------------------------------------------
 #---------------------------------2.第三方包-------------------------------
 -dontnote retrofit2.Platform
@@ -52,7 +52,7 @@
 }
 
 -keep class com.yanzhenjie.zbar.** { *;}
--keep class com.jinwei.kivie.base.SwitchButton.**{*;}
+-keep class com.Store.www.base.SwitchButton.**{*;}
 
 ##---------------Gson混淆  ----------
 # Gson uses generic type information stored in a class file when working with fields. Proguard
@@ -79,7 +79,7 @@
 -dontwarn com.qiyukf.**
 -keep class com.qiyukf.** {*;}
 
-##MOB ShareSDK跳过混淆
+##MOB ShareSD混淆
 -keep class cn.sharesdk.**{*;}
 -keep class com.sina.**{*;}
 -keep class **.R$* {*;}
@@ -90,6 +90,7 @@
 -dontwarn com.sina.**
 -dontwarn com.mob.**
 -dontwarn **.R$*
+
 
 ##百度ORC混淆
 -keep class com.baidu.ocr.sdk.**{*;}
@@ -164,6 +165,19 @@
 #BugLy混淆
 -dontwarn com.tencent.bugly.**
 -keep public class com.tencent.bugly.**{*;}
+
+#微信登录混淆
+-keep class com.tencent.mm.opensdk.** {
+    *;
+}
+
+-keep class com.tencent.wxop.** {
+    *;
+}
+
+-keep class com.tencent.mm.sdk.** {
+    *;
+}
 
 #-------------------------------------------------------------------------
 #---------------------------------3.与js互相调用的类------------------------

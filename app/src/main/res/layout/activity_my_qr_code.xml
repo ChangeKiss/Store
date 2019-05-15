@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/windowBackground"
             android:layout_marginTop="@dimen/divider_10dp"
-            android:text="扫一扫注册金薇会员"
+            android:text="扫一扫注册会员"
             android:textSize="30sp"
             android:gravity="center"
             android:visibility="invisible"/>
@@ -49,10 +49,6 @@
             android:layout_height="@dimen/divider_0dp"
             android:layout_weight="1"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/my_qr_code_bottom"/>
 
 
     </LinearLayout>

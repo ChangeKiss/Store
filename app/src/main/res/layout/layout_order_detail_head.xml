@@ -311,7 +311,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="@color/cancelColor">
+        android:background="@color/placeholder_top">
 
         <TextView
             android:layout_width="wrap_content"
@@ -428,7 +428,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="@color/cancelColor">
+        android:background="@color/placeholder_top">
 
         <TextView
             android:layout_width="wrap_content"

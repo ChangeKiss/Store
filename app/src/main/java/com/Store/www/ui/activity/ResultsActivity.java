@@ -110,27 +110,29 @@ public class ResultsActivity extends BaseToolbarActivity implements TabLayout.On
 
             @Override
             public void OnRequestSuccess(SumResultsResponse bean) {
-                switch (bean.getReturnValue()) {
-                    case 1:
-                        if (isTop) {
+                if (isTop){
+                    switch (bean.getReturnValue()) {
+                        case 1:
+
                             mRy.setVisibility(View.VISIBLE);
                             mViLine.setVisibility(View.VISIBLE);
                             mTabResults.setVisibility(View.VISIBLE);
                             mNodata.setVisibility(View.GONE);
                             mAdapter.addAll(bean.getData());
                             mAdapter.notifyDataSetChanged();
-                        }
-                        break;
-                    case 5:
-                        if (isTop) {
+
+                            break;
+                        case 5:
+
                             mNodata.setVisibility(View.VISIBLE);
                             mTabResults.setVisibility(View.INVISIBLE);
                             showToast(bean.getErrMsg());
-                        }
-                        break;
-                    default:
-                        if (isTop) showToast(bean.getErrMsg());
-                        break;
+
+                            break;
+                        default:
+                            showToast(bean.getErrMsg());
+                            break;
+                    }
                 }
             }
         });

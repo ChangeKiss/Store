@@ -112,8 +112,8 @@ public class MyTeamActivity extends BaseToolbarActivity {
                             mTvTeamAddPeople.setText("↑"+bean.getData().getNewNumber());  //新增人数
                             mTvBraOkCheckGrade.setText("¥ "+ActivityUtils.changeMoneys(bean.getData().getAuditedMoney()));  //内衣已审核
                             mTvBraNoCheckGrade.setText("¥ "+ActivityUtils.changeMoneys(bean.getData().getUnauditedMoney())); //内衣未审核
-                            mTvShapeWearOkCheckGrade.setText("¥ "+ActivityUtils.changeMoneys(bean.getData().getAuditedCorsetMoney()));  //塑身衣已审核
-                            mTvShapeWearOkCheckGrade.setText("¥ "+ActivityUtils.changeMoneys(bean.getData().getUnauditedCorsetMoney()));  //塑身衣未审核
+                            //mTvShapeWearOkCheckGrade.setText("¥ "+ActivityUtils.changeMoneys(bean.getData().getAuditedCorsetMoney()));  //塑身衣已审核
+                            //mTvShapeWearOkCheckGrade.setText("¥ "+ActivityUtils.changeMoneys(bean.getData().getUnauditedCorsetMoney()));  //塑身衣未审核
                             break;
                         default:
                             showToast(bean.getErrMsg());

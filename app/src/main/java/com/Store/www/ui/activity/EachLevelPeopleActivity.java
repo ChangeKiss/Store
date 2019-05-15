@@ -55,10 +55,10 @@ public class EachLevelPeopleActivity extends BaseToolbarActivity {
     @Override
     public void initView() {
         initToolbar(this,true,"各等级人员分布");
-        params = (LinearLayout.LayoutParams) mPieChartOne.getLayoutParams();
-        params.height = UserPrefs.getInstance().getHeight()/2-90;
+        //params = (LinearLayout.LayoutParams) mPieChartOne.getLayoutParams();
+        //params.height = UserPrefs.getInstance().getHeight()/2-90;
         initPieChartOne();
-        initPieChartTwo();
+        //initPieChartTwo();
     }
 
     @Override
@@ -75,7 +75,7 @@ public class EachLevelPeopleActivity extends BaseToolbarActivity {
 
     //初始化内衣饼图
     private void initPieChartOne(){
-        mPieChartOne.setLayoutParams(params);
+        //mPieChartOne.setLayoutParams(params);  //设置饼状图的高
         //折现饼状图
         mPieChartOne.setUsePercentValues(true);
         mPieChartOne.getDescription().setEnabled(false);
@@ -108,6 +108,7 @@ public class EachLevelPeopleActivity extends BaseToolbarActivity {
 
     //获取内衣代理等级分布
     private void getBraEachLevelPeople(int agentId){
+        DialogLoading.shows(this,"加载中...");
         RetrofitClient.getInstances().getEachLevelPeople(agentId).enqueue(new UICallBack<BraEachLevelPeopleResponse>() {
             @Override
             public void OnRequestFail(String msg) {
@@ -216,7 +217,7 @@ public class EachLevelPeopleActivity extends BaseToolbarActivity {
 
     //获取塑身衣代理分布
     private void getShapeWearEachLevelPeople(int agentId){
-        DialogLoading.shows(this,"加载中...");
+
         RetrofitClient.getInstances().getShapeWearEachLevelPeople(agentId).enqueue(new UICallBack<ShapeWearEachLevelPeopleResponse>() {
             @Override
             public void OnRequestFail(String msg) {

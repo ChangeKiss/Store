@@ -15,6 +15,7 @@ import com.Store.www.utils.ActivityCollector;
 import com.Store.www.utils.LogUtils;
 import com.Store.www.utils.PictureUtil;
 import com.Store.www.utils.UserPrefs;
+import com.mob.MobSDK;
 
 import java.util.HashMap;
 
@@ -55,7 +56,7 @@ public class MyQrCodeActivity extends BaseToolbarActivity {
         ShareUrl = getIntent().getStringExtra("shareUrl");
         mTitle = getIntent().getStringExtra("title");
         mContext = getIntent().getStringExtra("context");
-        LogUtils.d("二维码="+CodeImageUrl);
+        MobSDK.init(this,"245a466822227","a7a415e1869609aaeac6d8cdc08b7411");  //初始化MOB分享*****
         //动态设置图片的宽高
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -68,8 +69,6 @@ public class MyQrCodeActivity extends BaseToolbarActivity {
                 paramsTwo.width = UserPrefs.getInstance().getWidth()/2;
                 mTvQrCodeHint.setLayoutParams(paramsTwo);  //设置文本框的宽
                 mIvMyCode.setLayoutParams(params);
-                LogUtils.d("宽="+params.width);
-                LogUtils.d("高="+params.height);
                 Glide.with(MyQrCodeActivity.this).load(CodeImageUrl).into(mIvMyCode);
                 mTvQrCodeHint.setVisibility(View.VISIBLE);
             }
@@ -111,17 +110,17 @@ public class MyQrCodeActivity extends BaseToolbarActivity {
         oks.setCallback(new PlatformActionListener() {
             @Override
             public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-                LogUtils.d("回调成功");
+                showToast("分享成功");
             }
 
             @Override
             public void onError(Platform platform, int i, Throwable throwable) {
-                LogUtils.d("回调失败");
+                showToast("分享失败");
             }
 
             @Override
             public void onCancel(Platform platform, int i) {
-                LogUtils.d("回调取消");
+                showToast("取消分享");
             }
         });
         // 启动分享GUI

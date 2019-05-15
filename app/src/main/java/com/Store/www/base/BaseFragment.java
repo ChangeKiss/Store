@@ -28,6 +28,7 @@ public abstract class BaseFragment extends Fragment{
     public int mPageIndex = 1;
     public int mCountPerPage = 10;
     public Fragment mCurrentFragment;
+    public int token = 2;
     public boolean mIsGetData = false; //是否重新请求数据
     public boolean mIsTopShow = false; //true在顶部显示
     public boolean mCanLoadMore = true;

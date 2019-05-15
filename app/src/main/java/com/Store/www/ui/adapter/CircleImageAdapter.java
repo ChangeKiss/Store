@@ -55,7 +55,9 @@ public class CircleImageAdapter extends BaseRecyclerViewAdapter<CircleResponse.D
         params.height = UserPrefs.getInstance().getWidth()/3; //设置高=屏幕宽的3分之一
         params.width = UserPrefs.getInstance().getWidth()/3;  //设置宽=屏幕宽的3分之一
         holder.mIvSellImage.setLayoutParams(params);  //给布局的高赋值
-        Glide.with(mContext).load(bean.getUrl()).into(holder.mIvSellImage);
+        Glide.with(mContext).
+                load(bean.getUrl())
+                .into(holder.mIvSellImage);
         if (bean.getUrl()!=null){
             for (int i=0;i<1;i++){
                 imageUrl.add(bean.getUrl());

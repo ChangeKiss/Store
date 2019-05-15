@@ -35,7 +35,9 @@ import butterknife.BindView;
  * 我的仓库界面
  */
 public class MyWarehouseActivity extends BaseToolbarActivity implements WarehouseAdapter.OnItemClickListener,
-WarehouseHeadAdapter.OnItemClickListener{
+    WarehouseHeadAdapter.OnItemClickListener,BaseToolbarActivity.OnToolBarRightClickListener{
+    @BindView(R.id.iv_toolbar_right)
+    TextView mTvToolbarRight;  //右上角的添加按钮
     @BindView(R.id.ry_warehouse)
     LRecyclerView mRy;
     @BindView(R.id.nodata)
@@ -43,7 +45,6 @@ WarehouseHeadAdapter.OnItemClickListener{
     RecyclerView mRvHead;  //仓库的头布局列表
     LinearLayout mLayoutAddWarehouse;  //添加仓库按钮布局
     TextView mTvUserWarehouseName;  //用户仓库名
-    TextView mTvAddWarehouse; //添加仓库
     TextView mTvAgencyNameHint;  //代理云仓库名
     LRecyclerViewAdapter viewAdapter;
     WarehouseAdapter mAdapter;  //主适配器
@@ -66,19 +67,20 @@ WarehouseHeadAdapter.OnItemClickListener{
     @Override
     public void initView() {
         ActivityCollector.addActivity(this);
-        initToolbar(this,true,R.string.my_warehouse);
+        initToolbar(this,true,R.string.my_warehouse,this);
+        mTvToolbarRight.setVisibility(View.VISIBLE);
+        mTvToolbarRight.setText("添加");
+        mTvToolbarRight.setOnClickListener(this);
         initHead();
     }
 
     //初始化头布局
     private void initHead(){
         mCommonHeader = new CommonHeader(mContext,R.layout.layout_warehouse_head);
-        mTvAgencyNameHint = (TextView) mCommonHeader.findViewById(R.id.tv_agent_yun_warehouse_name);
-        mRvHead = (RecyclerView) mCommonHeader.findViewById(R.id.rv_wh_head);
-        mLayoutAddWarehouse = (LinearLayout) mCommonHeader.findViewById(R.id.layout_add_warehouse);
-        mTvUserWarehouseName = (TextView) mCommonHeader.findViewById(R.id.tv_user_warehouse_name);
-        mTvAddWarehouse = (TextView) mCommonHeader.findViewById(R.id.tv_add_warehouse);
-        mTvAddWarehouse.setOnClickListener(this);
+        mTvAgencyNameHint =  mCommonHeader.findViewById(R.id.tv_agent_yun_warehouse_name);
+        mRvHead =  mCommonHeader.findViewById(R.id.rv_wh_head);
+        mLayoutAddWarehouse =  mCommonHeader.findViewById(R.id.layout_add_warehouse);
+        mTvUserWarehouseName =  mCommonHeader.findViewById(R.id.tv_user_warehouse_name);
         initAdapter();
     }
 
@@ -191,17 +193,7 @@ WarehouseHeadAdapter.OnItemClickListener{
         showDialog(repId,name,province,city,area,address);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.tv_add_warehouse:
-                mActivityUtils.startActivity(AddWarehouseActivity.class);
-                break;
-            case R.id.iv_toolbar_left:
-                finish();
-                break;
-        }
-    }
+
 
     //云仓库item的点击事件
     @Override
@@ -278,4 +270,9 @@ WarehouseHeadAdapter.OnItemClickListener{
         });
     }
 
+    //右上角添加的点击事件
+    @Override
+    public void setOnToolBarRightClickListener() {
+        mActivityUtils.startActivity(AddWarehouseActivity.class);
+    }
 }

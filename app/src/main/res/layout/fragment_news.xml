@@ -9,39 +9,6 @@
     tools:context="com.Store.www.ui.fragment.NewsFragment">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/placeholder_top"
-        android:paddingTop="@dimen/divider_30dp"
-        android:paddingBottom="@dimen/divider_10dp">
-
-        <TextView
-            android:id="@+id/tv_title_toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/news_name"
-            android:gravity="center"
-            android:textSize="@dimen/title_text_size"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/windowBackground"/>
-
-        <TextView
-            android:id="@+id/tv_circle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/windowBackground"
-            android:textSize="@dimen/title_text_size"
-            android:text="圈子"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/divider_20dp"
-            android:paddingLeft="@dimen/divider_10dp"
-            android:paddingRight="@dimen/divider_10dp"
-            android:visibility="gone"/>
-
-    </RelativeLayout>
-
-
 
     <com.github.jdsjlzx.recyclerview.LRecyclerView
         android:id="@+id/lv_news"

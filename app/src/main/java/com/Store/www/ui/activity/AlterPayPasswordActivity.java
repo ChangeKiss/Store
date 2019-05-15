@@ -80,16 +80,20 @@ public class AlterPayPasswordActivity extends BaseToolbarActivity implements Tex
             case R.id.btn_confirm_alter_password:  //修改密码
                 yes = false;
                 Alter = true;
-                if (mNewPassword.length()<6){
-                    showToast("密码长度不足");
-                }else if (!compareValue(mNewPassword)){
-                    showToast("不能设置六位相同的数字");
-                }else if (compareValues(mNewPassword)){
-                    showToast("不能设置六位连续的数字");
-                }else if (!mNewPassword.equals(mAgainPassword)){
-                    showToast("两次输入的密码不一致");
+                if (mNewPassword!=null){
+                    if (mNewPassword.length()<6){
+                        showToast("密码长度不足");
+                    }else if (!compareValue(mNewPassword)){
+                        showToast("不能设置六位相同的数字");
+                    }else if (compareValues(mNewPassword)){
+                        showToast("不能设置六位连续的数字");
+                    }else if (!mNewPassword.equals(mAgainPassword)){
+                        showToast("两次输入的密码不一致");
+                    }else {
+                        requestAlterPayPassword(mPhone, ActivityUtils.Md5Password(mNewPassword),mVerifyCode);  //将密码加密
+                    }
                 }else {
-                    requestAlterPayPassword(mPhone, ActivityUtils.Md5Password(mNewPassword),mVerifyCode);  //将密码加密
+                    showToast("请输入有效的密码");
                 }
                 break;
         }

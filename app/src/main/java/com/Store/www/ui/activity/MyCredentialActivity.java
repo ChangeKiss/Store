@@ -212,7 +212,7 @@ public class MyCredentialActivity extends BaseToolbarActivity implements DialogH
     public void saveImageToGallery(Context context, Bitmap bmp) {
         // 首先保存图片
         File appDir = new File(Environment.getExternalStorageDirectory(),
-                "/Kivie");
+                "/Fuatee");
         if (!appDir.exists()) {
             appDir.mkdir();
         }

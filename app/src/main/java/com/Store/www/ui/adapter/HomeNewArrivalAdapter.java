@@ -2,6 +2,7 @@ package com.Store.www.ui.adapter;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ import butterknife.ButterKnife;
  * */
 
 public class HomeNewArrivalAdapter extends BaseRecyclerViewAdapter<HomeNewArrivalResponse.DataBean,HomeNewArrivalAdapter.ViewHolder>{
-
+    ConstraintLayout.LayoutParams params;
     OnNewArrivalClickListener mListener;
     private List<String> bannerUrl ;
 
@@ -48,6 +49,9 @@ public class HomeNewArrivalAdapter extends BaseRecyclerViewAdapter<HomeNewArriva
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        params = (ConstraintLayout.LayoutParams) holder.mHomeBanners.getLayoutParams();
+        params.height = UserPrefs.getInstance().getWidth()*184/414;
+        holder.mHomeBanners.setLayoutParams(params);
         bannerUrl = new ArrayList<>();
         bannerUrl.clear();
         bannerUrl.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/66e3a4b4-9079-411d-9165-2a43d24e3b9c.png");

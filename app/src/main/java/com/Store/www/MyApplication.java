@@ -2,7 +2,10 @@ package com.Store.www;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.multidex.MultiDex;
@@ -17,6 +20,9 @@ import com.qiyukf.unicorn.api.StatusBarNotificationConfig;
 import com.qiyukf.unicorn.api.Unicorn;
 import com.qiyukf.unicorn.api.YSFOptions;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.tencent.mm.opensdk.constants.ConstantsAPI;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +40,12 @@ public class MyApplication extends Application{
     private static boolean mAppIsTop = false;
     private List<Activity> mActivityList = new ArrayList<>();
     private static MyApplication instance;
+    //微信开发平台的AppId
+    public final static String APP_ID  = "wx9b0e1d8112423f5e";
+    //IWXAPI 是第三方app和微信通信的openApi接口
+    public static IWXAPI mWxApi;
 
-    private static String mDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Store";
+    private static String mDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Fuatee";
 
     public static Context getmContext() {
         return mContext;
@@ -63,6 +73,7 @@ public class MyApplication extends Application{
         super.onCreate();
         UserPrefs.init(getApplicationContext());  //初始化用户信息仓库
         UserPrefsFirst.init(getApplicationContext());  //初始化 存储是否第一次打开APP的数据仓库
+        registerWx();
         Unicorn.init(this, "8636c1c78a1a64d370a970a03dfa1766", options(), new GlideLoader(getApplicationContext()));
         mContext = getApplicationContext();
         //LeakCanary.install(this);  //检测内存泄露
@@ -78,7 +89,7 @@ public class MyApplication extends Application{
                 .addExtension(ApkInstallExtension.class)
                 .addExtension(ApkOpenExtension.class);
         DownloadConfig.INSTANCE.init(builder);
-        CrashReport.initCrashReport(getApplicationContext(),"1200017a9b",true);  //初始化BugLy
+        CrashReport.initCrashReport(getApplicationContext(),"774422dd40",true);  //初始化BugLy
     }
 
     @Override
@@ -86,6 +97,21 @@ public class MyApplication extends Application{
         super.attachBaseContext(base);
         MultiDex.install(this);
 
+    }
+
+    //注册微信登录
+    private void registerWx(){
+        mWxApi = WXAPIFactory.createWXAPI(this,APP_ID,true);
+        mWxApi.registerApp(APP_ID);
+        //建议动态监听微信启动广播进行注册到微信
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                // 将该app注册到微信
+                mWxApi.registerApp(APP_ID);
+            }
+        }, new IntentFilter(ConstantsAPI.ACTION_REFRESH_WXAPP));
     }
 
 

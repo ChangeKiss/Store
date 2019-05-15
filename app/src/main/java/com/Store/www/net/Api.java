@@ -1,14 +1,16 @@
 package com.Store.www.net;
 
+
 import com.Store.www.entity.*;
 
-
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by www on 2017/12/14.
@@ -756,5 +758,99 @@ public interface Api {
      */
     @GET("api/transfer/getRemind")
     Call<PickUpRemindResponse> getPickUpRemind();
+
+    /**
+     * 获取相册
+     */
+    @GET("api/album/getAlbumList")
+    Call<CompanyPhotoResponse> getPhotoAlbum(@Query("pageIndex")int pageIndex,
+                                             @Query("countPerPage")int countPerPage);
+
+    /**
+     * 获取相册的照片
+     */
+    @GET("api/album/getPhotosByAlbumId")
+    Call<PhotoAlbumPictureResponse> getPhotoAlbumPicture(@Query("albumId")int albumId,
+                                                         @Query("pageIndex")int pageIndex,
+                                                         @Query("countPerPage")int countPerPage);
+
+    /**
+     * 获取我的圈子
+     */
+    @GET("api/circle/getMyCircleList")
+    Call<MyCircleResponse> getMyCircles(@Query("countPerPage")int countPerPage,
+                                        @Query("pageIndex")int pageIndex,
+                                        @Query("type") int type,
+                                        @Query("userId")int userId);
+
+    /**
+     * 获取首页新闻
+     */
+    @GET("api/newsNotice/getNewsNoticeList")
+    Call<HomeNewsResponse> getHomeNews(@Query("pageIndex")int pageIndex,
+                                       @Query("countPerPage")int countPerPage);
+
+
+    /**
+     * 获取首页活动
+     */
+    @GET("api/activityNotice/getActivityNoticeList")
+    Call<HomeActivityResponse> getHomeNotice(@Query("pageIndex")int pageIndex,
+                                             @Query("countPerPage")int countPerPage);
+
+    /**
+     * 获取首页圈子
+     */
+    @GET("api/circle/getCircleNoticeList")
+    Call<HomeCircleResponse> getHomeCircle();
+
+    /**
+     * 获取热门圈子
+     */
+    @GET("api/circle/getPopularCircleList")
+    Call<MyCircleResponse> getHotCircle(@Query("pageIndex")int pageIndex,
+                                        @Query("countPerPage")int countPerPage,
+                                        @Query("userId")int userId);
+
+    /**
+     * 获取产品轮播
+     */
+    @GET("api/product/productChartList")
+    Call<ProductBannerResponse> getProductBanner();
+
+    /**
+     * 获取活动商品集
+     */
+    @GET("api/product/getChartProduct")
+    Call<CommodityManagerResponse> getProductList(@Query("chartId") int chartId);
+
+    /**
+     * 获取微信登录的access_token
+     */
+    @GET("sns/oauth2/access_token")
+    Call<WeChartAccessTokenResponse> getWeChartAccessToken(@Query("appid")String appid,
+                                                           @Query("secret")String secret,
+                                                           @Query("code")String code,
+                                                           @Query("grant_type") String grant_type);
+
+    /**
+     * 获取微信登录成功的用户信息
+     */
+    @GET("sns/userinfo")
+    Call<WeChartLoginUserInfoResponse> getWeChartLoginUserInfo(@Query("access_token")String access_token,
+                                                               @Query("openid") String openid);
+
+    /**
+     * 验证码登录
+     */
+    @POST("api/agent/codeLogin")
+    Call<LoginResponse> requestCodeLogin(@Body CodeLoginRequest requestBody);
+
+    /**
+     * 微信登录成功后服务器通知
+     */
+    @POST("api/agent/wxLogin")
+    Call<LoginResponse> requestWeChartLogin(@Body WeChartLoginRequest requestBody);
+
 
 }
