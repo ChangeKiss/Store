@@ -82,7 +82,7 @@ public class AgencyUpDataActivity extends BaseToolbarActivity implements DialogH
     AgencyEquityAdapter mAgencyAdapter;  //代理权益图标的适配器
     List<AgencyUpDataResponse.DataBean.AllListBean> allListBeen = new ArrayList<>();
     private AgencyUpDataResponse.DataBean dataBean;
-
+    private LinearLayout.LayoutParams bottomParams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -232,13 +232,13 @@ public class AgencyUpDataActivity extends BaseToolbarActivity implements DialogH
             LogUtils.d("当前屏幕的宽=="+UserPrefs.getInstance().getWidth());
             if (UserPrefs.getInstance().getWidth()==480){
                 LinearLayout.LayoutParams params =
-                        new LinearLayout.LayoutParams((UserPrefs.getInstance().getWidth() / mAgencyLvBtn.length) - (60 / mAgencyLvBtn.length),
-                                WindowManager.LayoutParams.WRAP_CONTENT);
+                        new LinearLayout.LayoutParams((UserPrefs.getInstance().getWidth() / mAgencyLvBtn.length) - (120 / mAgencyLvBtn.length),
+                                120);
                 mLayoutAgencyLvBtn.addView(mAgencyLvBtn[i],params);
             }else {
                 LinearLayout.LayoutParams params =
-                        new LinearLayout.LayoutParams((UserPrefs.getInstance().getWidth() / mAgencyLvBtn.length) - (60 / mAgencyLvBtn.length),
-                                WindowManager.LayoutParams.WRAP_CONTENT);
+                        new LinearLayout.LayoutParams((UserPrefs.getInstance().getWidth() / mAgencyLvBtn.length) - (120 / mAgencyLvBtn.length),
+                                120);
                 mLayoutAgencyLvBtn.addView(mAgencyLvBtn[i],params);
             }
             mAgencyLvBtn[i].setTextColor(Color.GRAY);

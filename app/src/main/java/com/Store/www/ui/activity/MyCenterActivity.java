@@ -127,11 +127,11 @@ public class MyCenterActivity extends BaseToolbarActivity implements DialogHint.
                 .transform(new GlideCircleTransform(this))
                 .into(mIvAlterIcon);
         mTvMyWxi.setText(UserPrefs.getInstance().getWxi());
-        if (UserPrefs.getInstance().getCorsetLevelName()!=null){
+        /*if (UserPrefs.getInstance().getCorsetLevelName()!=null){
             mTvShapeWearGrade.setText(UserPrefs.getInstance().getCorsetLevelName());
         }else {
             mTvShapeWearGrade.setText("暂无塑身衣等级");
-        }
+        }*/
         getMyPay();
     }
 

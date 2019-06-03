@@ -321,7 +321,7 @@ public class CircleFragment extends BaseLazyLoadFragment implements OnRefreshLis
 
     // 分享到朋友圈。
     private void shareToTimeline(List<Bitmap> bitmapList) {
-        WXShareMultiImageHelper.shareToTimeline(getActivity(), bitmapList,"请输入你想要表达的内容...");
+        WXShareMultiImageHelper.shareToTimeline(getActivity(), bitmapList,shareContent);
     }
 
     private void loadImage(final OnLoadImageEndCallback callback) {

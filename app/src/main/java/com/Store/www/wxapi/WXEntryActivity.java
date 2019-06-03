@@ -45,6 +45,9 @@ public class WXEntryActivity  extends Activity implements IWXAPIEventHandler {
 	private static final String SECRET = "f3d6406c0d6ed8e4fdd4d738ce217322";
 	private ActivityUtils mActivityUtils;
 
+	//****** 回调Activity要在Manifest.mxl里面设置Theme android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+	//这样下面关闭页面时用户体验会好很多
+
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,7 +72,9 @@ public class WXEntryActivity  extends Activity implements IWXAPIEventHandler {
 				LogUtils.d("code=="+resp.code);
 				getAccessToken(MyApplication.APP_ID,SECRET,resp.code,"authorization_code");
 			}else {  //用户取消登录授权
-				mActivityUtils.startActivity(LoginActivity.class);  //打开登录界面
+				finish();  //取消授权此页面会显示在最上层 先把页面关掉再跳转到登录界面
+				Intent intent = new Intent(this,LoginActivity.class);
+				startActivity(intent);
 			}
 		}
 	}

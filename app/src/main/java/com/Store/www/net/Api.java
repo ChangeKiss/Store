@@ -542,6 +542,10 @@ public interface Api {
     @POST("api/logistics/getLogisticsInfoByOrder")
     Call<LookLogisticsResponse> requestLookLogistics(@Body LookLogisticsRequest requestBody);
 
+    //查看提货物流
+    @POST("api/logistics/getLogisticsInfoByTHOrder")
+    Call<LookLogisticsResponse> requestPickUpLookLogistics(@Body LookLogisticsRequest requestBody);
+
     //获取APP升级信息
     @GET("api/versionController/getVersionInfo.json")
     Call<AppUpDataResponse> getAppUpData();

@@ -26,6 +26,8 @@ import com.Store.www.utils.ActivityCollector;
 import com.Store.www.utils.ActivityUtils;
 import com.Store.www.utils.LogUtils;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -39,11 +41,15 @@ public class WithdrawMoneyInputActivity extends BaseToolbarActivity implements T
     TextView mTvOkWithdrawMoney;  //显示可提现金额
     @BindView(R.id.btn_withdraw)
     Button mBtnWithdraw;   //提现按钮
+    @BindView(R.id.tv_tax_hint)
+    TextView mTvTaxHint;  //扣税的提示
 
     private String money;
     private String mType;
     private int mBalanceMoney;
     private int mMoney;
+    private double mTaxMoney;  //税额
+    DecimalFormat mFormat = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +63,11 @@ public class WithdrawMoneyInputActivity extends BaseToolbarActivity implements T
 
     @Override
     public void initView() {
-        initToolbar(this, true, "资金申请");
+        initToolbar(this, true, "奖励提取");
         ActivityCollector.addActivity(this);
         mBalanceMoney = getIntent().getIntExtra("balance",0);
         mType = "default";
-        mTvOkWithdrawMoney.setText("可申请金额"+ActivityUtils.changeMoneys(mBalanceMoney)+"元");
+        mTvOkWithdrawMoney.setText("可提取金额"+ActivityUtils.changeMoneys(mBalanceMoney)+"元");
         mEtWithdrawMoney.addTextChangedListener(this);  //添加输入监听
         ActivityUtils.setPoint(mEtWithdrawMoney); //设置可输入提现金额只能包含两位小数
         IntentFilter intentFilter = new IntentFilter();
@@ -113,15 +119,24 @@ public class WithdrawMoneyInputActivity extends BaseToolbarActivity implements T
         switch (view.getId()) {
             case R.id.tv_all_withdraw:
                 mType = "all";
-                mEtWithdrawMoney.setText(ActivityUtils.changeMoneys(mBalanceMoney));
+                mEtWithdrawMoney.setText(ActivityUtils.changeMoney(mBalanceMoney));
                 break;
             case R.id.btn_withdraw:
                 if (!TextUtils.isEmpty(mType)){
                     mBtnWithdraw.setEnabled(false);
                     if (!TextUtils.isEmpty(money)){
+
                         if (mType.equals("edit")){
-                            float moneys = Float.parseFloat(money)*100;
+                            int moneys = Math.round(Float.parseFloat(money)*100);
+                            LogUtils.d("提现金额=="+moneys);
+                            if (moneys <= 350){
+                                mTaxMoney = 10;
+                            }else {
+                                mTaxMoney =  ActivityUtils.formatDouble(((moneys/100)*0.03)*100); //税额
+                            }
+                            //LogUtils.d("手续费=="+moneys/100*0.03);
                             mMoney = (int) moneys;
+                            //LogUtils.d("扣除手续费后金额=="+(mMoney-mTaxMoney));
                         }
                         LogUtils.d("输入的金额转换为分="+mMoney);
                         if (mMoney>mBalanceMoney){
@@ -135,7 +150,13 @@ public class WithdrawMoneyInputActivity extends BaseToolbarActivity implements T
                             return;
                         }
                         //LogUtils.d("money=="+mMoney);
-                       getTaiWanAgent(mUserId);
+                       //getTaiWanAgent(mUserId);
+                        //LogUtils.d("不扣手续费金额=="+mMoney);
+                        LogUtils.d("手续费==分"+mTaxMoney);
+                        LogUtils.d("计算前金额=="+(mMoney-mTaxMoney));
+                        int a = (int) Math.round( mMoney-mTaxMoney);
+                        mActivityUtils.startActivity(WithdrawDepositActivity.class,"applyMoney",a); //
+                        LogUtils.d("计算后金额=="+a);
                     }else {
                         mBtnWithdraw.setEnabled(true);
                         showToast("请输入有效的金额");
@@ -186,6 +207,34 @@ public class WithdrawMoneyInputActivity extends BaseToolbarActivity implements T
     public void afterTextChanged(Editable s) {
         mType = "edit";
         money = mEtWithdrawMoney.getText().toString();
+        if (!TextUtils.isEmpty(money)){  //
+            String str = money.substring(money.length()-1);money.length();  //截取出字符串最后一位
+                if (!money.contains(".") && !str.equals(".")){  //如果输入的是整数 并且最后一位数不是小数点
+                    int m = Integer.parseInt(money);
+                    if (m <=3.5){
+                        mTvTaxHint.setText("代扣税额: "+0.1+"元");
+                    }else {
+                        mTvTaxHint.setText("代扣税额: "+mFormat.format((m*0.03))+"元");
+                    }
+                }else if (money.contains(".")&&!str.equals(".")){  //如果是小数 并且  最后一位不是小数点
+                    float m = Float.parseFloat(money);
+                    if (m <=3.5){
+                        mTvTaxHint.setText("代扣税额: "+0.1+"元");
+                    }else {
+                        mTvTaxHint.setText("代扣税额: "+mFormat.format((m*0.03))+"元");
+                    }
+                }else if (str.equals(".")){  //如果最后一位是小数点
+                    int m = Integer.parseInt(money.substring(0,money.length()-1));
+                    if (m <=3.5){
+                        mTvTaxHint.setText("代扣税额: "+0.1+"元");
+                    }else {
+                        mTvTaxHint.setText("代扣税额: "+mFormat.format((m*0.03))+"元");
+                    }
+                }
+
+        }else {
+            mTvTaxHint.setText("代扣税额: 0.00元");
+        }
         LogUtils.d("输入的金额=="+money);
     }
 }

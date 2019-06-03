@@ -16,36 +16,22 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/divider_10dp"
             android:paddingTop="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
             android:background="@drawable/shape_agent_item_top"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="27dp"
-                android:layout_marginRight="@dimen/divider_10dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/cv_agency_head"
-                    android:layout_width="@dimen/preview_image"
-                    android:layout_height="@dimen/preview_image"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/default_head"
-                    app:civ_border_color="#4b4640"
-                    app:civ_border_width="0dp" />
-
-            </LinearLayout>
 
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/divider_10dp"
+                android:layout_marginLeft="@dimen/divider_20dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -171,6 +157,25 @@
                         android:textColor="@color/textColorBlack"/>
 
                 </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                style="@style/weight_1"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/divider_30dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cv_agency_head"
+                    android:layout_width="@dimen/preview_image"
+                    android:layout_height="@dimen/preview_image"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/default_head"
+                    app:civ_border_color="#4b4640"
+                    app:civ_border_width="0dp" />
 
             </LinearLayout>
 

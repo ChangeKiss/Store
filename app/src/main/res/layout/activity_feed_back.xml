@@ -51,7 +51,6 @@
             android:layout_width="300dp"
             android:layout_height="45dp"
             android:gravity="center"
-            android:enabled="false"
             android:background="@drawable/selector_smallbutton_gold"
             android:textColor="@color/windowBackground"
             android:textSize="@dimen/large_text_size"

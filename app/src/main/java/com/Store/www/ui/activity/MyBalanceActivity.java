@@ -98,10 +98,10 @@ public class MyBalanceActivity extends BaseToolbarActivity implements BaseToolba
                         case 1:
                             BalanceMoney = bean.getData().getUsableBalance();  //可用金额 用于提现
                             mTvBalanceMoney.setText(ActivityUtils.changeMoneys(bean.getData().getCurrentBalance()) + "");
-                            mTvUsableBalance.setText("可用余额(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getUsableBalance()));
-                            mTvNoUsableBalance.setText("不可用余额(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getDisableBalance()));
-                            mTvWithdrawDepositBalance.setText("可提现余额(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getWithdrawBalance()));
-                            mTvFreezeBalance.setText("冻结余额(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getFreezeBalance()));
+                            mTvUsableBalance.setText("可用奖金(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getUsableBalance()));
+                            mTvNoUsableBalance.setText("不可用奖金(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getDisableBalance()));
+                            mTvWithdrawDepositBalance.setText("可提现奖金(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getWithdrawBalance()));
+                            mTvFreezeBalance.setText("冻结奖金(元) ¥" + ActivityUtils.changeMoneys(bean.getData().getFreezeBalance()));
                             break;
                         default:
 

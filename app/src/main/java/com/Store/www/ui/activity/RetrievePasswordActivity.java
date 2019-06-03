@@ -142,6 +142,7 @@ public class RetrievePasswordActivity extends BaseToolbarActivity implements Tex
                         showToast("请输入验证码");
                         return;
                     }
+                    mBtnAffirm.setEnabled(false);
                     requestCodeLogin(phoneNumber,code);
                 }else if (mType.equals("retrieve_password")){
                     if (RegexUtils.verifyPassword(mPassword)!= RegexUtils.VERIFY_SUCCESS){
@@ -153,6 +154,7 @@ public class RetrievePasswordActivity extends BaseToolbarActivity implements Tex
                         showToast(R.string.two_password);
                         break;
                     }
+                    mBtnAffirm.setEnabled(false);
                     requestFindAlter();
                 }
                 break;
@@ -214,7 +216,6 @@ public class RetrievePasswordActivity extends BaseToolbarActivity implements Tex
                     switch (bean.getReturnValue()){
                         case 1:
                             //设置验证码获取成功，修改密码的确认按钮可用
-                            setEnable(true);
                             showToast(R.string.verify_code_ok);
                             CountDownTimerUtils timerUtils = new CountDownTimerUtils(mBtnVerifyCode,60000,1000);
                             timerUtils.start();

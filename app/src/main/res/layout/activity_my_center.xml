@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/windowBackgroundGrey"
     tools:context="com.Store.www.ui.activity.MyCenterActivity">
 
     <include layout="@layout/layout_toolbar"/>
@@ -13,8 +14,12 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_user_background"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp">
 
         <LinearLayout
             android:id="@+id/layout_alter_icon"
@@ -120,7 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginRight="@dimen/divider_10dp"
-            android:layout_marginLeft="@dimen/divider_10dp">
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -141,8 +147,6 @@
 
         </LinearLayout>
 
-        <View
-            style="@style/divider_horizontal2"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,8 +173,20 @@
 
         </LinearLayout>
 
-        <View
-            style="@style/divider_horizontal2"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_user_background"
+        android:layout_margin="6dp">
+
+
+
 
         <LinearLayout
             android:id="@+id/layout_phone_number"
@@ -313,8 +329,6 @@
 
         </LinearLayout>
 
-        <View
-            style="@style/divider_horizontal2"/>
 
 
     </LinearLayout>

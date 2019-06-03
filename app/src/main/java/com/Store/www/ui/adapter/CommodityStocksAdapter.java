@@ -2,6 +2,7 @@ package com.Store.www.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.Store.www.R;
 import com.Store.www.base.BaseRecyclerViewAdapter;
 import com.Store.www.entity.CommodityStocksResponse;
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +39,13 @@ public class CommodityStocksAdapter extends BaseRecyclerViewAdapter<CommoditySto
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final CommodityStocksResponse.DataBean bean = mDataList.get(position);
+        if (!TextUtils.isEmpty(bean.getImage())){
+            holder.mIvStocksImage.setVisibility(View.VISIBLE);
+            Glide.with(mContext)
+                    .load(bean.getImage())
+                    .error(R.mipmap.jzz_img)
+                    .into(holder.mIvStocksImage);
+        }
         holder.mIvEnter.setVisibility(View.INVISIBLE);
         holder.mTvStocksName.setText(bean.getName());
         holder.mTvStocksNumber.setText(bean.getSum()+"件");  //显示总数
@@ -50,6 +59,8 @@ public class CommodityStocksAdapter extends BaseRecyclerViewAdapter<CommoditySto
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.stocks_image)
+        ImageView mIvStocksImage;  //库存商品图片
         @BindView(R.id.tv_stocks_name)
         TextView mTvStocksName;
         @BindView(R.id.tv_stocks_number)

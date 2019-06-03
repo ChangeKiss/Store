@@ -10,6 +10,15 @@
         android:layout_marginLeft="@dimen/divider_10dp"
         android:layout_marginRight="@dimen/divider_10dp">
 
+        <ImageView
+            android:id="@+id/stocks_image"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@mipmap/jzz_img"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/divider_10dp"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/tv_stocks_name"
             android:layout_width="wrap_content"

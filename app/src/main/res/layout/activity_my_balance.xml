@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/medium_text_size"
                 android:textColor="@color/windowBackground"
-                android:text="当前余额（元）"/>
+                android:text="当前奖金（元）"/>
 
             <TextView
                 android:id="@+id/tv_balance_money"
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/medium_text_size"
-                android:text="可用余额(元)  ¥0.00"
+                android:text="可用奖金(元)  ¥0.00"
                 android:textColor="@color/buttombarText"
                 android:gravity="center"/>
             <View
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/medium_text_size"
-                android:text="冻结余额(元)  ¥0.00"
+                android:text="冻结奖金(元)  ¥0.00"
                 android:textColor="@color/buttombarText"
                 android:gravity="center"/>
 
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/medium_text_size"
-                android:text="可提现余额(元)  ¥0.00"
+                android:text="可提现奖金(元)  ¥0.00"
                 android:textColor="@color/buttombarText"
                 android:gravity="center"/>
             <View
@@ -99,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/medium_text_size"
-                android:text="不可用余额(元)  ¥0.00"
+                android:text="不可用奖金(元)  ¥0.00"
                 android:textColor="@color/buttombarText"
                 android:gravity="center"/>
 

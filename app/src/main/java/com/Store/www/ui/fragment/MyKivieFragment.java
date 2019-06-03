@@ -577,7 +577,7 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
     //点击事件
     @OnClick({R.id.tv_click_login,R.id.tv_set,R.id.tv_settings,R.id.iv_mine_icon, R.id.tv_personage_grade, R.id.tv_personage_address,
             R.id.tv_stay_pay,R.id.tv_stay_shipments,R.id.tv_shipments_loading,R.id.tv_order_over,R.id.tv_personage_bankCard,
-            R.id.tv_personage_password, R.id.tv_personage_apply, R.id.layout_my_order,R.id.layout_my_balance,
+            R.id.tv_personage_apply, R.id.layout_my_order,R.id.layout_my_balance,
             R.id.tv_personage_sell_manager,R.id.tv_personage_performance, R.id.tv_personage_warehouse, R.id.tv_personage_pickup,
             R.id.tv_personage_size, R.id.tv_personage_certificate, R.id.iv_qr_code,R.id.layout_personage_apply_for_beg,
             R.id.tv_personage_centre,R.id.tv_personage_company, R.id.tv_personage_feedback,R.id.tv_personage_retail_recort,
@@ -609,9 +609,9 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
             case R.id.tv_personage_address: //收货地址
                 mActivityUtils.startActivity(LocationManagerActivity.class);
                 break;
-            case R.id.tv_personage_password: //修改密码
+           /* case R.id.tv_personage_password: //修改密码
                 mActivityUtils.startActivity(SelectAlterPasswordActivity.class);  //***可以选择修改支付密码还是登录密码
-                break;
+                break;*/
             case R.id.tv_personage_bankCard:  //我的银行卡
                 mActivityUtils.startActivity(SelectBankCardActivity.class,"type","no");
                 break;

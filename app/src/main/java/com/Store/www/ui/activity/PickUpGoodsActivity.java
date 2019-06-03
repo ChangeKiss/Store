@@ -410,7 +410,7 @@ public class PickUpGoodsActivity extends BaseToolbarActivity implements TabLayou
     @Override
     public void OnButtonClickListener(int position, String orderNumber) {
         //CommonWebActivity.startWebActivity(this,"物流详情","http://121.43.59.111:9005/suiwap/mobile/Kdniao/"+orderNumber);
-        mActivityUtils.startActivity(LogisticsLookOver.class,"orderNumber",orderNumber);  //查看物流
+        mActivityUtils.startActivity(LogisticsLookOver.class,"orderNumber",orderNumber,"type","Th");  //查看物流
     }
 
     //取消订单的点击事件

@@ -115,20 +115,20 @@ public class OrderDetailsActivity extends BaseToolbarActivity implements OrderDe
         mLayoutOrderImage = (LinearLayout) mCommonFooter.findViewById(R.id.layout_order_image);  //尾布局显示图片的布局
         mOrderDetailsRv = (RecyclerView) mCommonFooter.findViewById(R.id.order_details_rv);  //尾布局图片列表
         mCommonHeader = new CommonHeader(mContext,R.layout.layout_order_detail_head);
-        mTvDetailsName = (TextView) mCommonHeader.findViewById(R.id.tv_details_name);  //收件人
-        mTvDetailsPhone = (TextView) mCommonHeader.findViewById(R.id.tv_details_phone);  //联系电话
-        mTvDetailsAddress = (TextView) mCommonHeader.findViewById(R.id.tv_details_address);  //收货地址
-        mTvOrderDetailsNumber = (TextView) mCommonHeader.findViewById(R.id.tv_order_details_number);  //订单编号
-        mTvOrderDetailsType = (TextView) mCommonHeader.findViewById(R.id.tv_order_details_type);  //订单类型
-        mTvOrderDetailsState = (TextView) mCommonHeader.findViewById(R.id.tv_order_details_state);  //订单状态
-        mTvOrderDetailsCount = (TextView) mCommonHeader.findViewById(R.id.tv_order_details_count);  //订单数量
-        mTvOrderDetailsMoney = (TextView) mCommonHeader.findViewById(R.id.tv_order_details_money);  //订单金额
-        mTvOrderDetailsTime = (TextView) mCommonHeader.findViewById(R.id.tv_order_details_time);   //下单时间
-        mLayoutBalanceDeduction = (LinearLayout) mCommonHeader.findViewById(R.id.layout_balance_deduction); //余额抵扣布局
-        mTvBalanceDeduction = (TextView) mCommonHeader.findViewById(R.id.tv_order_details_balance);  //余额抵扣
-        mTvAgentName = (TextView) mCommonHeader.findViewById(R.id.tv_agent_name);  //代理姓名
-        mTvAgentNumber = (TextView) mCommonHeader.findViewById(R.id.tv_agent_number);  //代理编号
-        mTvAgentPhone = (TextView) mCommonHeader.findViewById(R.id.tv_agent_phone);  //代理电话
+        mTvDetailsName = (TextView) mCommonFooter.findViewById(R.id.tv_details_name);  //收件人
+        mTvDetailsPhone = (TextView) mCommonFooter.findViewById(R.id.tv_details_phone);  //联系电话
+        mTvDetailsAddress = (TextView) mCommonFooter.findViewById(R.id.tv_details_address);  //收货地址
+        mTvOrderDetailsNumber = (TextView) mCommonFooter.findViewById(R.id.tv_order_details_number);  //订单编号
+        mTvOrderDetailsType = (TextView) mCommonFooter.findViewById(R.id.tv_order_details_type);  //订单类型
+        mTvOrderDetailsState = (TextView) mCommonFooter.findViewById(R.id.tv_order_details_state);  //订单状态
+        mTvOrderDetailsCount = (TextView) mCommonFooter.findViewById(R.id.tv_order_details_count);  //订单数量
+        mTvOrderDetailsMoney = (TextView) mCommonFooter.findViewById(R.id.tv_order_details_money);  //订单金额
+        mTvOrderDetailsTime = (TextView) mCommonFooter.findViewById(R.id.tv_order_details_time);   //下单时间
+        mLayoutBalanceDeduction = (LinearLayout) mCommonFooter.findViewById(R.id.layout_balance_deduction); //余额抵扣布局
+        mTvBalanceDeduction = (TextView) mCommonFooter.findViewById(R.id.tv_order_details_balance);  //余额抵扣
+        mTvAgentName = (TextView) mCommonFooter.findViewById(R.id.tv_agent_name);  //代理姓名
+        mTvAgentNumber = (TextView) mCommonFooter.findViewById(R.id.tv_agent_number);  //代理编号
+        mTvAgentPhone = (TextView) mCommonFooter.findViewById(R.id.tv_agent_phone);  //代理电话
         initAdapter();
     }
 

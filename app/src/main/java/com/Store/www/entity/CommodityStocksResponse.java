@@ -60,6 +60,7 @@ public class CommodityStocksResponse extends BaseBean{
          * productId : 1
          * count : 29
          * name : 金薇呼吸款胸罩
+         * image
          */
 
         private int sum;
@@ -68,6 +69,7 @@ public class CommodityStocksResponse extends BaseBean{
         private int count;
         private int mCount;
         private String name;
+        private String image;
 
         public int getSum() {
             return sum;
@@ -115,6 +117,14 @@ public class CommodityStocksResponse extends BaseBean{
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
         }
     }
 }

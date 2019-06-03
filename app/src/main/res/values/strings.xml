@@ -283,8 +283,8 @@
     <string name="total_results">总业绩</string>
     <string name="no_audited_results">未审核业绩</string>
     <string name="look_all_order">查看全部订单</string>
-    <string name="balance">余额</string>
-    <string name="withdraw_deposit">资金申请</string>
+    <string name="balance">奖金</string>
+    <string name="withdraw_deposit">奖金提取</string>
     <string name="income">收入</string>
     <string name="expend">支出</string>
     <string name="month">月份</string>
@@ -335,7 +335,7 @@
     <string name="logistics_number">物流单号:</string>
     <string name="logistics_message">物流信息:</string>
     <string name="couplet_number_hint">联行号必须为12位,可致电银行获取</string>
-    <string name="couplet_number_query">联行号查询方式:\n(1).前往http://www.lianhanghao.com 输入相关信息，自主查询该银行卡的开户行对应的联行号 \n(2).致电该卡银行的客服热线，如工商银行致电95588</string>
+    <string name="couplet_number_query">联行号查询方式:\n前往http://www.lianhanghao.com 输入相关信息，自主查询该银行卡的开户行对应的联行号。</string>
     <string name="apply_fof_upData">申请升级</string>
     <string name="apply_for_beg">升级请求</string>
     <string name="reject_up_beg">拒绝升级请求</string>

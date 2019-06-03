@@ -2,6 +2,7 @@ package com.Store.www.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -31,6 +32,7 @@ public class LogisticsLookOver extends BaseToolbarActivity {
     LRecyclerViewAdapter viewAdapter;
     LogisticsAdapter mAdapter;
     private String mOrderNumber;
+    private String lookType;  //查看类型
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class LogisticsLookOver extends BaseToolbarActivity {
     public void initView() {
         initToolbar(this,true,R.string.look_adders);
         ActivityCollector.addActivity(this);
+        lookType = getIntent().getStringExtra("type");
         mOrderNumber = getIntent().getStringExtra("orderNumber");
         initAdapter();
     }
@@ -69,7 +72,41 @@ public class LogisticsLookOver extends BaseToolbarActivity {
         mLrLook.setLayoutManager(new LinearLayoutManager(this));  //设置布局管理器
         mLrLook.setAdapter(viewAdapter);  //绑定适配器
         mLrLook.setPullRefreshEnabled(false);  //关闭下拉刷新
-        getLogisticsMessage(mOrderNumber);
+        if (!TextUtils.isEmpty(lookType) && lookType.equals("Th")){
+            getPickUpLogistics(mOrderNumber);
+        }else {
+            getLogisticsMessage(mOrderNumber);
+        }
+    }
+
+    //获取提货物流信息
+    private void getPickUpLogistics(String orderNumber){
+        LookLogisticsRequest request = new LookLogisticsRequest(orderNumber);
+        RetrofitClient.getInstances().requestPickUpLookLogistics(request).enqueue(new UICallBack<LookLogisticsResponse>() {
+            @Override
+            public void OnRequestFail(String msg) {
+                if (isTop){
+                    checkNet();
+                }
+            }
+
+            @Override
+            public void OnRequestSuccess(LookLogisticsResponse bean) {
+                if (isTop){
+                    switch (bean.getReturnValue()){
+                        case 1:
+                            mNodata.setVisibility(View.GONE);
+                            mAdapter.setDataList(bean.getData());
+                            mAdapter.notifyDataSetChanged();
+                            break;
+                        default:
+                            mNodata.setVisibility(View.VISIBLE);
+                            break;
+                    }
+                }
+            }
+        });
+
     }
 
     //获取物流信息

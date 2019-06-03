@@ -54,8 +54,9 @@
                 android:textColor="@color/windowBackground"
                 android:visibility="invisible"
                 android:layout_marginRight="@dimen/drawablePadding_5dp"
+                android:layout_marginTop="@dimen/drawablePadding_5dp"
                 android:background="@drawable/shape_agency_lv_background"
-                android:textSize="@dimen/small_text_size"
+                android:textSize="9sp"
                 android:layout_alignParentRight="true"/>
 
             <TextView

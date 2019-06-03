@@ -116,7 +116,6 @@
         android:layout_marginLeft="@dimen/divider_20dp"
         android:layout_marginRight="@dimen/divider_20dp"
         android:textSize="@dimen/large_text_size"
-        android:enabled="false"
         android:textColor="@color/windowBackground"
         android:text="保存"/>
 

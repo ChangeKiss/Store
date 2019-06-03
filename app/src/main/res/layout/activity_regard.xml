@@ -64,6 +64,28 @@
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/layout_alter_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+
+        <TextView
+            android:id="@+id/tv_personage_password"
+            android:background="@drawable/shape_text_frame"
+            style="@style/personalInformationText"
+            android:drawableLeft="@mipmap/password"
+            android:text="@string/change_password" />
+
+    </LinearLayout>
+
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

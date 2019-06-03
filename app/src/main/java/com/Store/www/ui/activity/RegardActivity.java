@@ -56,6 +56,8 @@ public class RegardActivity extends BaseToolbarActivity {
     LinearLayout mLayoutClear;
     @BindView(R.id.tv_apply_Cache)
     TextView mTvApplyCache;   //显示App缓存控件
+    @BindView(R.id.layout_alter_password)
+    LinearLayout mLayoutAlterPassword;  //修改密码
     @BindView(R.id.btn_exit)
     Button mBtnExit;
 
@@ -116,7 +118,7 @@ public class RegardActivity extends BaseToolbarActivity {
     }
 
     //点击事件
-    @OnClick({R.id.layout_clear, R.id.btn_exit,R.id.layout_update})
+    @OnClick({R.id.layout_clear, R.id.btn_exit,R.id.layout_update,R.id.layout_alter_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.layout_clear:  //清理缓存
@@ -131,6 +133,9 @@ public class RegardActivity extends BaseToolbarActivity {
                 }else {  //没有更新
                     showToast("当前已是最新版");
                 }
+                break;
+            case R.id.layout_alter_password:  //修改密码
+                mActivityUtils.startActivity(SelectAlterPasswordActivity.class);  //***可以选择修改支付密码还是登录密码
                 break;
             case R.id.btn_exit:  //退出登录
                 requestOut(userId);

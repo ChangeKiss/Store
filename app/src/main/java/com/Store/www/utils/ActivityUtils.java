@@ -27,6 +27,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.MessageDigest;
@@ -37,6 +39,7 @@ import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 /**
  * 封装了一些工具：弹吐司，跳转页面，获取屏幕宽高，隐藏显示软键盘，从Uri获取真实路径。。。
@@ -221,6 +224,24 @@ public class ActivityUtils {
         return str.substring(str.indexOf(strStart) + strStart.length(), str.indexOf(strEnd));
     }
 
+    /**
+     * 四舍五入保留两位
+     * @param d
+     * @return
+     */
+    public static double formatDouble(double d) {
+        // 旧方法，已经不再推荐使用
+//        BigDecimal bg = new BigDecimal(d).setScale(2, BigDecimal.ROUND_HALF_UP);
+
+
+        // 新方法，如果不需要四舍五入，可以使用RoundingMode.DOWN
+        BigDecimal bg = new BigDecimal(d).setScale(2, RoundingMode.UP);
+
+
+        return bg.doubleValue();
+    }
+
+
 
     /**
      * 验证是否有安装招行app
@@ -251,7 +272,6 @@ public class ActivityUtils {
             return true;
         }
     }
-
 
     //把分为单位的int转换为一位String
 
@@ -447,6 +467,16 @@ public class ActivityUtils {
 
     // 跳转页面
     public void startActivity(Class<? extends Activity> clazz, String idName, String id,String valueName,int value) {
+        Activity activity = getActivity();
+        if (activity == null) return;
+        Intent intent = new Intent(activity, clazz);
+        intent.putExtra(idName, id);
+        intent.putExtra(valueName,value);
+        activity.startActivity(intent);
+    }
+
+    // 跳转页面
+    public void startActivity(Class<? extends Activity> clazz, String idName, String id,String valueName,String value) {
         Activity activity = getActivity();
         if (activity == null) return;
         Intent intent = new Intent(activity, clazz);

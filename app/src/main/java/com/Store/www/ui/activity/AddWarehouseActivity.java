@@ -97,13 +97,13 @@ public class AddWarehouseActivity extends BaseToolbarActivity implements TextWat
 
     @Override
     public void afterTextChanged(Editable s) {
-        if (!TextUtils.isEmpty(mEtWarehouseName.getText().toString())
+        /*if (!TextUtils.isEmpty(mEtWarehouseName.getText().toString())
                 && !TextUtils.isEmpty(mEtDetailLocation.getText().toString())
                 && !TextUtils.isEmpty(mTvSelectArea.getText().toString())){
             mBtnWarehouseLocationSave.setEnabled(true);
         }else {
             mBtnWarehouseLocationSave.setEnabled(false);
-        }
+        }*/
         mWarehouseName = mEtWarehouseName.getText().toString();
         mAddress = mEtDetailLocation.getText().toString();
     }
@@ -149,6 +149,12 @@ public class AddWarehouseActivity extends BaseToolbarActivity implements TextWat
                 startActivityForResult(intent,SELECT_AREA);
                 break;
             case R.id.btn_warehouse_location_save:  //保存仓库地址
+                if (TextUtils.isEmpty(mEtWarehouseName.getText().toString())
+                        && TextUtils.isEmpty(mEtDetailLocation.getText().toString())
+                        && TextUtils.isEmpty(mTvSelectArea.getText().toString())){
+                    showToast("请输入完整信息");
+                    return;
+                }
                 mBtnWarehouseLocationSave.setEnabled(false);  //点击提交之后 关闭按钮点击事件以免多次重复提交
                 if (mType!=null && mType.equals("alter")){  //修改仓库
                     requestAlterWarehouse(mUserId,repId,mProvince,mCity,mArea,mAddress,mWarehouseName);

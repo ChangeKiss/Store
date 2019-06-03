@@ -50,6 +50,7 @@ public class SubordinateTeamPeopleDistributionActivity extends BaseToolbarActivi
     DecimalFormat mFormat = new DecimalFormat("##0");
     List<SubordinateTeamPeopleDistributionResponse.DataListBean.SmallBean> Bean = new ArrayList<>();
     SubordinateTeamPeopleDistributionResponse.DataListBean.SmallBean smallBean;
+    private float[] valuesFloat ;
     DistributionBarCharMarkerView markerView;
     public static ArrayList<BarEntry> mEntry = new ArrayList<>();
 
@@ -130,37 +131,28 @@ public class SubordinateTeamPeopleDistributionActivity extends BaseToolbarActivi
                             mIvRightDistribution.setVisibility(View.VISIBLE);
                             XAxis xAxis = mDistributionChart.getXAxis();
                             ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
-                            final String[] values = new String[bean.getDataList().size()];
-                            final String[] hintValue = new String[bean.getDataList().size()];
                             //LogUtils.d("外层数据长度01==" + bean.getDataList().size());
                             //LogUtils.d("外层数据长度02==" + bean.getDataList().get(0).getSmall().size());
                             if (bean.getDataList().size()==0){
                                 showToast("没有更多数据了");
                                 return;
                             }else {
-                                smallBean = new SubordinateTeamPeopleDistributionResponse.DataListBean.SmallBean();
-                                Bean.clear(); // 先把数据清空一下
-                                for (int i = 0; i < bean.getDataList().size(); i++) {
-                                    values[i] = bean.getDataList().get(i).getAgentName();
-                                    for (int k = 0; k < bean.getDataList().get(i).getSmall().size(); k++) {
-                                        smallBean.setCount(bean.getDataList().get(i).getSmall().get(k).getCount());
-                                        smallBean.setLevelName(bean.getDataList().get(i).getSmall().get(k).getLevelName());
-                                    }
-                                    Bean.add(smallBean);
-                                }
+                                final String[] values = new String[bean.getDataList().size()];
+                                final String[] hintValue = new String[bean.getDataList().get(0).getSmall().size()];
 
                                 for (int a = 0; a < bean.getDataList().get(0).getSmall().size(); a++) {
                                     hintValue[a] = bean.getDataList().get(0).getSmall().get(a).getLevelName();
                                 }
-                                LogUtils.d("数据长度==" + Bean.size());
-                                for (int j = 0; j < Bean.size(); j++) {
-                                    float val1 = bean.getDataList().get(j).getSmall().get(0).getCount();
-                                    float val2 = bean.getDataList().get(j).getSmall().get(1).getCount();
-                                    float val3 = bean.getDataList().get(j).getSmall().get(2).getCount();
-                                    float val4 = bean.getDataList().get(j).getSmall().get(3).getCount();
-                                    float val5 = bean.getDataList().get(j).getSmall().get(4).getCount();
-                                    yVals.add(new BarEntry(j, new float[]{val1, val2, val3, val4, val5}));
+
+                                for (int k =0;k<bean.getDataList().size();k++){
+                                    values[k] = bean.getDataList().get(k).getAgentName();
+                                    valuesFloat = new float[hintValue.length];
+                                    for (int s=0;s<hintValue.length;s++){
+                                        valuesFloat[s] = bean.getDataList().get(k).getSmall().get(s).getCount();
+                                    }
+                                    yVals.add(new BarEntry(k,valuesFloat));
                                 }
+
                                 mEntry = yVals;
                                 xAxis.setValueFormatter(new MyXFormatter(values));
                                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);

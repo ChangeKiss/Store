@@ -365,7 +365,7 @@
                     android:layout_height="match_parent"
                     android:textSize="@dimen/large_text_size"
                     android:textColor="@color/textColorBlack"
-                    android:text="@string/my_balance"
+                    android:text="我的奖金"
                     android:gravity="center"
                     android:drawableLeft="@mipmap/my_balance"
                     android:drawablePadding="@dimen/divider_my_kivie"/>
@@ -393,24 +393,24 @@
                 android:id="@+id/tv_personage_address"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/location"
-                android:text="@string/shipping_address" />
+                android:text="地址管理" />
 
             <View style="@style/divider_horizontal2" />
 
 
-            <TextView
+           <!-- <TextView
                 android:id="@+id/tv_personage_password"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/password"
                 android:text="@string/change_password" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal2" />-->
 
             <TextView
                 android:id="@+id/tv_personage_bankCard"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/bank_card_icon"
-                android:text="@string/my_bank" />
+                android:text="银行卡号管理" />
 
             <View style="@style/divider_horizontal2" />
 

@@ -90,8 +90,11 @@ public class FeedBackActivity extends BaseToolbarActivity implements TextWatcher
 
     @OnClick(R.id.btn_feed_back) //提交的点击事件
     public void onViewClicked() {
+        if (TextUtils.isEmpty(content)){
+            showToast("内容无效");
+            return;
+        }
         if (mType.equals("feedback")){
-            showToast("意见反馈");
             requestFeedBack();
         }else if (mType.equals("report")){
             requestReport(mUserId,CircleId,content,reportType);

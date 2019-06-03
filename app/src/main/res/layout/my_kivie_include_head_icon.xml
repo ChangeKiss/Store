@@ -34,20 +34,23 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_personage_grade"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/windowBackground"
-                android:text=""
-                android:textSize="@dimen/large_text_size"/>
-
-            <TextView
                 android:id="@+id/tv_personage_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textColor="@color/windowBackground"
                 android:textSize="@dimen/button_text_size"/>
+
+            <TextView
+                android:id="@+id/tv_personage_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/windowBackground"
+                android:text=""
+                android:textSize="@dimen/large_text_size"
+                android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+
+
 
         </LinearLayout>
 
