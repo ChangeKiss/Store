@@ -308,7 +308,7 @@ class MyCircleActivity : KtBaseToolbarActivity() {
     // 分享到朋友圈。
     private fun shareToTimeline(bitmapList: List<Bitmap>) {
         LogUtils.d("数据长度=="+bitmapList.size)
-        WXShareMultiImageHelper.shareToTimeline(this, bitmapList, shareContent)
+        WXShareMultiImageHelper.shareToTimeline(this, bitmapList, shareContent)  //动态获取分享内容
     }
 
     /**
