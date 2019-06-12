@@ -308,7 +308,7 @@ class MyCircleActivity : KtBaseToolbarActivity() {
     // 分享到朋友圈。
     private fun shareToTimeline(bitmapList: List<Bitmap>) {
         LogUtils.d("数据长度=="+bitmapList.size)
-        WXShareMultiImageHelper.shareToTimeline(this, bitmapList, "请输入你想要表达的内容...")
+        WXShareMultiImageHelper.shareToTimeline(this, bitmapList, shareContent)
     }
 
     /**
