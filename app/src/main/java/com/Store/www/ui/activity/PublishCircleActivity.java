@@ -68,10 +68,10 @@ public class PublishCircleActivity extends BaseToolbarActivity implements BaseTo
     AgentApplyAdapter mAdapter;
     List<String> mImageData = new ArrayList<>();    //本地图片集合
     List<String> mImagePostData = new ArrayList<>();    //上传到OSS的图片集合
-    private static String endpoint = "http://oss-cn-shanghai.aliyuncs.com";
-    private static String accessKeyId = "LTAIbM4qrWdSwCVw";
-    private static String accessKeySecret = "GpUH1RaNphDi6U2vMqioHnHzDQHmrv";
-    private static String bucketName = "jwbucket";
+    private static String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
+    private static String accessKeyId = "LTAIuLid3ovvgdGR";
+    private static String accessKeySecret = "H5wC17dWuciVtLYjjx5SRoaucyRMbI";
+    private static String bucketName = "fuatee";
     private String mDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/compress";
 
     @Override

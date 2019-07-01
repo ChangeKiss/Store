@@ -211,7 +211,8 @@
                         android:text="微信登录"
                         android:textColor="@color/buttombarText"
                         android:textSize="@dimen/smaller_text_size"
-                        android:paddingRight="@dimen/drawablePadding_5dp"/>
+                        android:paddingRight="@dimen/drawablePadding_5dp"
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/tv_code_login"

@@ -88,7 +88,7 @@ public class ShoppingTrolleyAdapter extends BaseRecyclerViewAdapter<ShoppingCart
         }
 
         Glide.with(mContext)
-                .load("http://jwbucket.oss-cn-shanghai.aliyuncs.com/"+dataBean.getProductImg())
+                .load(dataBean.getProductImg())
                 .error(R.mipmap.jzz_img)
                 .into(holder.mIvShoppingImage);
         holder.mTvShoppingName.setText(dataBean.getProductName());

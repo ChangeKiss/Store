@@ -94,10 +94,10 @@ public class MyCredentialActivity extends BaseToolbarActivity implements DialogH
     static final int ICON_ALBUM = 1;
     static final int ICON_CAMERA = 2;
     static final int CROP_CAMERA = 4;
-    private static String endpoint = "http://oss-cn-shanghai.aliyuncs.com";
-    private static String accessKeyId = "LTAIbM4qrWdSwCVw";
-    private static String accessKeySecret = "GpUH1RaNphDi6U2vMqioHnHzDQHmrv";
-    private static String bucketName = "jwbucket";
+    private static String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
+    private static String accessKeyId = "LTAIuLid3ovvgdGR";
+    private static String accessKeySecret = "H5wC17dWuciVtLYjjx5SRoaucyRMbI";
+    private static String bucketName = "fuatee";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

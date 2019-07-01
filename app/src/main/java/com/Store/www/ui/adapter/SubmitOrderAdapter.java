@@ -45,7 +45,7 @@ public class SubmitOrderAdapter extends BaseRecyclerViewAdapter<ShoppingCartResp
     public void onBindViewHolder(ViewHolder holder, int position) {
         ShoppingCartResponse.DataBean bean = mDataList.get(position);
         Glide.with(mContext)
-                .load("http://jwbucket.oss-cn-shanghai.aliyuncs.com/"+bean.getProductImg())
+                .load(bean.getProductImg())
                 .error(R.mipmap.jzz_img)
                 .into(holder.mIvSubmitImage);
         holder.mTvSubmitName.setText(bean.getProductName()); //商品名称
