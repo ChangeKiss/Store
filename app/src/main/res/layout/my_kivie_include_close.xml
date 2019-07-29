@@ -4,32 +4,34 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="@color/placeholder_top">
+    android:background="@color/top_color">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+
+    <TextView
+        android:id="@+id/tv_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/drawablePadding_5dp"
+        android:paddingRight="@dimen/drawablePadding_5dp"
+        android:layout_marginRight="@dimen/divider_10dp"
         android:gravity="center"
-        android:orientation="horizontal">
-
-        <View style="@style/weight_1" />
-
-        <TextView
-            android:id="@+id/tv_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/drawablePadding_5dp"
-            android:paddingRight="@dimen/drawablePadding_5dp"
-            android:layout_marginRight="@dimen/divider_10dp"
-            android:gravity="center"
-            android:drawableLeft="@mipmap/set_icon"
-            android:text="@string/setting"
-            android:textSize="@dimen/large_text_size"
-            android:textColor="@color/windowBackground"
-            android:drawablePadding="@dimen/drawablePadding_3dp"/>
+        android:drawableLeft="@mipmap/set_icon"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/windowBackground"
+        android:drawablePadding="@dimen/drawablePadding_3dp"/>
 
 
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_text_size"
+        android:textColor="@color/windowBackground"
+        android:text="我 的"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+
 
     <View
         android:id="@+id/bg_toolbar_close"

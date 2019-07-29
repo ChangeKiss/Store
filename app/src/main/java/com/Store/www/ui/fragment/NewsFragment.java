@@ -68,8 +68,6 @@ public class NewsFragment extends BaseLazyLoadFragment implements NewsTitleAdapt
 
     }
 
-
-
     //初始化适配器
     private void initAdapter() {
         mAdapterTitle = new NewsTitleAdapter(mContext, this);
@@ -83,7 +81,7 @@ public class NewsFragment extends BaseLazyLoadFragment implements NewsTitleAdapt
 
     //网络请求资讯新闻
     private void getNews() {
-        DialogLoading.shows(mContext,R.string.hint_loading);
+        DialogLoading.shows(mContext, R.string.hint_loading);
         RetrofitClient.getInstances().getNewsList().enqueue(new UICallBack<NewsResponse>() {
             @Override
             public void OnRequestFail(String msg) {

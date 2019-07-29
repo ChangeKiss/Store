@@ -5,87 +5,141 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:background="@color/windowBackground"
+        android:visibility="invisible"
+        android:paddingBottom="@dimen/drawablePadding_5dp">
 
         <ImageView
             android:id="@+id/iv_introduce_image"
-            android:layout_width="130dp"
-            android:layout_height="130dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/commodity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/large_text_size"
+            android:layout_below="@+id/iv_introduce_image"
+            android:textColor="@color/textColorBlack"
+            android:text=""
+            android:layout_marginLeft="@dimen/divider_10dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"/>
+
+        <TextView
+            android:id="@+id/tv_introduce_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="666"
+            android:textSize="@dimen/large_text_size"
+            android:textColor="@color/commodity_price_text_color"
+            android:layout_below="@+id/commodity_name"
+            android:layout_marginLeft="10dp"/>
+
+
+
+
+        <TextView
+            android:id="@+id/tv_place_an_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/commodity_name"
+            android:gravity="center"
+            android:background="@mipmap/place_an_order_icon"
+            android:text="@string/introduce"
+            android:textColor="@color/windowBackground"
+            android:layout_marginRight="@dimen/divider_10dp"
+            android:textSize="@dimen/mediums_text_size"/>
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_describe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/windowBackground"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
+        android:padding="@dimen/divider_8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+        <View
+            style="@style/weight_1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_commodity_introduce"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+            android:text="分类"
+            android:textSize="@dimen/medium_text_size"/>
 
         <TextView
             android:id="@+id/tv_classify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:layout_toRightOf="@+id/iv_introduce_image"
-            android:textSize="@dimen/ysf_text_size_13"
-            android:layout_marginLeft="15dp"/>
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/textColorBlack"
+            android:layout_marginLeft="5dp"/>
+        <View
+            style="@style/weight_1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_commodity_introduce"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+            android:text="款式"
+            android:textSize="@dimen/medium_text_size"/>
 
         <TextView
             android:id="@+id/tv_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:layout_toRightOf="@+id/iv_introduce_image"
-            android:layout_below="@id/tv_classify"
-            android:layout_marginTop="@dimen/divider_10dp"
-            android:textSize="@dimen/ysf_text_size_13"
-            android:layout_marginLeft="15dp"/>
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/textColorBlack"
+            android:layout_marginLeft="5dp"/>
 
-        <TextView
-            android:id="@+id/tv_introduce_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_toRightOf="@+id/iv_introduce_image"
-            android:layout_below="@+id/tv_style"
-            android:layout_marginTop="@dimen/divider_10dp"
-            android:layout_marginLeft="15dp"/>
+        <View
+            style="@style/weight_1"/>
 
-        <LinearLayout
-            android:id="@+id/layout_place_an_order"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/tv_introduce_price"
-            android:layout_marginTop="@dimen/divider_10dp"
-            android:visibility="invisible"
-            android:layout_marginLeft="50dp">
 
-            <TextView
-                android:id="@+id/tv_place_an_order"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/shape_button_orders"
-                android:text="@string/introduce"
-                android:textColor="@color/windowBackground"
-                android:textSize="@dimen/ysf_text_size_13"/>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_commodity_detail"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:background="@color/windowBackground"
         android:gravity="center"
+        android:layout_marginTop="@dimen/drawablePadding_5dp"
         android:visibility="invisible">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/commodity_details"
             android:gravity="center"
-            android:background="@color/backgroundColorF4"
+            android:drawableLeft="@mipmap/all_product_left"
+            android:drawableRight="@mipmap/all_product_right"
+            android:drawablePadding="3dp"
             android:textColor="@color/textColorBlack"
             android:textSize="@dimen/ysf_text_size_15"/>
 

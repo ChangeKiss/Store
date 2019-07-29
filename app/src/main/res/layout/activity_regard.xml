@@ -9,16 +9,49 @@
     tools:context="com.Store.www.ui.activity.RegardActivity">
     <include layout="@layout/layout_toolbar"/>
 
+
+    <LinearLayout
+        android:id="@+id/layout_alter_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+
+        <TextView
+            android:id="@+id/tv_personage_password"
+            style="@style/personalInformationText"
+            android:text="@string/change_password" />
+
+    </LinearLayout>
+
+
     <View
-        style="@style/divider_horizontal2"
-        />
+        style="@style/divider_horizontal" />
+
+
+    <LinearLayout
+        android:id="@+id/layout_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+
+        <TextView
+            style="@style/personalInformationText"
+            android:text="@string/app_update" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/divider_horizontal" />
 
     <LinearLayout
         android:id="@+id/layout_clear"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_item_height"
         android:orientation="horizontal"
-        android:background="@drawable/shape_text_frame"
         android:layout_marginTop="5dp">
 
 
@@ -27,7 +60,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_marginLeft="@dimen/divider_my_kivie"
-            android:drawableLeft="@mipmap/app_delete"
             android:drawablePadding="@dimen/divider_my_kivie"
             android:textColor="@color/textColorBlack"
             android:text="@string/clean" />
@@ -48,62 +80,30 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layout_update"
+    <View
+        style="@style/divider_horizontal" />
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+
+    <Button
+        android:id="@+id/btn_exit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp">
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/divider_30dp"
+        android:layout_marginRight="@dimen/divider_30dp"
+        android:layout_marginBottom="@dimen/divider_30dp"
+        android:enabled="true"
+        android:background="@drawable/shape_submit_order_button"
+        android:textColor="@color/textColorWhite"
+        android:text="@string/quit_login"/>
 
 
-        <TextView
-            style="@style/personalInformationText"
-            android:background="@drawable/shape_text_frame"
-            android:drawableLeft="@mipmap/app_update"
-            android:text="@string/app_update" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/layout_alter_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="5dp">
-
-
-        <TextView
-            android:id="@+id/tv_personage_password"
-            android:background="@drawable/shape_text_frame"
-            style="@style/personalInformationText"
-            android:drawableLeft="@mipmap/password"
-            android:text="@string/change_password" />
-
-    </LinearLayout>
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="@dimen/drawablePadding_5dp"
-        android:layout_marginRight="@dimen/drawablePadding_5dp"
-        android:layout_gravity="center">
-
-        <Button
-            android:id="@+id/btn_exit"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:enabled="true"
-            android:background="@drawable/select_button_square"
-            android:textColor="@color/textColorWhite"
-            android:text="@string/quit_login"/>
-
-    </LinearLayout>
 
 
 

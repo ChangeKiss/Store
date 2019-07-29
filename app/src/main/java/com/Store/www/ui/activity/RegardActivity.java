@@ -64,11 +64,11 @@ public class RegardActivity extends BaseToolbarActivity {
     private int code;
     private String CacheSize;  //缓存大小
     protected ProgressBar mProgressBar;  //下载进度条
-    protected TextView mTvProgressBar,mTvAppUpDataHint;  //下载进度文字  app升级内容提示
+    protected TextView mTvProgressBar, mTvAppUpDataHint;  //下载进度文字  app升级内容提示
     protected Button mBtnGoOn;    //暂停、继续的按钮
     protected AlertDialog mDialog;  //弹窗
     private Disposable disposable;
-    private String mDownLoadUrl,mUpDataHint;  //下载链接    升级提示
+    private String mDownLoadUrl, mUpDataHint;  //下载链接    升级提示
     private int mNewCode;  //最新的Code版本
     private Status currentStatus = new Status();
     private static final int MSG_COUNT = 10;
@@ -91,10 +91,10 @@ public class RegardActivity extends BaseToolbarActivity {
         initToolbar(this, true, R.string.seting);
         mKey = getIntent().getStringExtra("key");
         code = ActivityUtils.getVersionCode(RegardActivity.this);
-        getNewApp();  //获取版本信息
+//        getNewApp();  //获取版本信息
         if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
             mBtnExit.setVisibility(View.GONE);
-        }else {
+        } else {
             mBtnExit.setVisibility(View.VISIBLE);
         }
     }
@@ -118,7 +118,7 @@ public class RegardActivity extends BaseToolbarActivity {
     }
 
     //点击事件
-    @OnClick({R.id.layout_clear, R.id.btn_exit,R.id.layout_update,R.id.layout_alter_password})
+    @OnClick({R.id.layout_clear, R.id.btn_exit, R.id.layout_update, R.id.layout_alter_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.layout_clear:  //清理缓存
@@ -128,9 +128,9 @@ public class RegardActivity extends BaseToolbarActivity {
                 break;
             case R.id.layout_update:  //版本更新
                 //checkUpdate(0, null);
-                if (code<mNewCode){  //如果当前版本号小于最新的版本号  有更新
-                    showUpData(mDownLoadUrl,mUpDataHint);
-                }else {  //没有更新
+                if (code < mNewCode) {  //如果当前版本号小于最新的版本号  有更新
+                    showUpData(mDownLoadUrl, mUpDataHint);
+                } else {  //没有更新
                     showToast("当前已是最新版");
                 }
                 break;
@@ -145,25 +145,25 @@ public class RegardActivity extends BaseToolbarActivity {
 
 
     //获取是否有最新版APP
-    private void getNewApp(){
+    private void getNewApp() {
         RetrofitClient.getInstances().getAppUpData().enqueue(new UICallBack<AppUpDataResponse>() {
             @Override
             public void OnRequestFail(String msg) {
-                if (isTop)checkNet();
+                if (isTop) checkNet();
             }
 
             @Override
             public void OnRequestSuccess(AppUpDataResponse bean) {
-                if (isTop){
-                    LogUtils.d("当前版本号=="+code);
-                    LogUtils.d("最新版本号=="+bean.getVersionCode());
+                if (isTop) {
+                    LogUtils.d("当前版本号==" + code);
+                    LogUtils.d("最新版本号==" + bean.getVersionCode());
                     mDownLoadUrl = bean.getUrl();
                     mUpDataHint = bean.getContent();
                     mNewCode = bean.getVersionCode();
                     File file = new File(MyApplication.getmDirPath());
                     //LogUtils.d("当前APK 路径=="+file.getPath());
-                    if (mKey!=null && mKey.equals("StartNow")){  //如果更新的key 是首页过来的立即更新  就直接开始下载
-                        showUpData(mDownLoadUrl,mUpDataHint);
+                    if (mKey != null && mKey.equals("StartNow")) {  //如果更新的key 是首页过来的立即更新  就直接开始下载
+                        showUpData(mDownLoadUrl, mUpDataHint);
                         onCreateRxDownload();  //初始化
                         mProgressBar.setVisibility(View.VISIBLE);
                         dispatchClick(mDownLoadUrl);
@@ -174,20 +174,19 @@ public class RegardActivity extends BaseToolbarActivity {
     }
 
 
-
     //弹出更新升级对话框
-    private void showUpData(final String url,String upDataHint){
-        View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_app_updata,null);
-        mTvAppUpDataHint =  view.findViewById(R.id.tv_app_upData_hint);
-        mProgressBar =  view.findViewById(R.id.pb_upData_progress);  //下载进度条
-        mTvProgressBar =  view.findViewById(R.id.tv_progress);  //下载进度文字
-        mBtnGoOn =  view.findViewById(R.id.btn_go_on);  //暂停、继续的按钮
+    private void showUpData(final String url, String upDataHint) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.dialog_app_updata, null);
+        mTvAppUpDataHint = view.findViewById(R.id.tv_app_upData_hint);
+        mProgressBar = view.findViewById(R.id.pb_upData_progress);  //下载进度条
+        mTvProgressBar = view.findViewById(R.id.tv_progress);  //下载进度文字
+        mBtnGoOn = view.findViewById(R.id.btn_go_on);  //暂停、继续的按钮
         mDialog = new AlertDialog.Builder(mContext).setView(view).create();
         setProgressBarIndeterminateVisibility(true);
         mDialog.setCancelable(true);  //设置点击外部不消失
         mDialog.show();
         mTvAppUpDataHint.setText(upDataHint);
-        mDialog.getWindow().setLayout(UserPrefs.getInstance().getWidth()-100, WindowManager.LayoutParams.WRAP_CONTENT);  //设置弹窗的宽高
+        mDialog.getWindow().setLayout(UserPrefs.getInstance().getWidth() - 100, WindowManager.LayoutParams.WRAP_CONTENT);  //设置弹窗的宽高
         mBtnGoOn.setOnClickListener(v -> {
             onCreateRxDownload();  //初始化
             mProgressBar.setVisibility(View.VISIBLE);
@@ -197,7 +196,7 @@ public class RegardActivity extends BaseToolbarActivity {
     }
 
     //初始化RxDownload
-    private void onCreateRxDownload(){
+    private void onCreateRxDownload() {
         disposable = RxDownload.INSTANCE.create(mDownLoadUrl, true)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Status>() {
@@ -288,13 +287,13 @@ public class RegardActivity extends BaseToolbarActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //7.0以上安装
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Uri apkUri = FileProvider.getUriForFile(mContext, "com.jinwei.kivie.fileprovider", file);
             //Granting Temporary Permissions to a URI
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
 
-        }else {
+        } else {
             intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         }
         startActivity(intent);
@@ -302,18 +301,18 @@ public class RegardActivity extends BaseToolbarActivity {
 
 
     //退出登录
-    private void requestOut(String userId){
-        LoginOutRequest  request = new LoginOutRequest(userId);
+    private void requestOut(String userId) {
+        LoginOutRequest request = new LoginOutRequest(userId);
         RetrofitClient.getInstances().requestLoginOut(request).enqueue(new UICallBack<BaseBenTwo>() {
             @Override
             public void OnRequestFail(String msg) {
-                if (isTop)checkNet();
+                if (isTop) checkNet();
             }
 
             @Override
             public void OnRequestSuccess(BaseBenTwo bean) {
-                if (isTop){
-                    switch (bean.getReturnValue()){
+                if (isTop) {
+                    switch (bean.getReturnValue()) {
                         case 1:
                             UserPrefs.getInstance().clearUser(); //退出时清空本地仓库 并跳转到登录界面
                             Unicorn.logout();//清空客服端资料
@@ -321,7 +320,7 @@ public class RegardActivity extends BaseToolbarActivity {
                             UserPrefsFirst.getInstance().setNetWork(ActivityUtils.getNetWorkStatus(mContext));  //退出登录时把网络连接方式也存一下 否则会报空指针
                             UserPrefsFirst.getInstance().setCodeNma(ActivityUtils.getVersionName(mContext));  //退出登录时把版本名称再存一次 否则会报空指针
                             UserPrefsFirst.getInstance().setFirst(ActivityUtils.getVersionCode(RegardActivity.this));  //退出登录的时候把当前版本号再存一次，以免被清掉 否则会报空指针
-                            mActivityUtils.startActivity(LoginActivity.class,"login","login");
+                            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
                             Intent intent = new Intent();
                             intent.setAction("homePage");
                             sendBroadcast(intent);

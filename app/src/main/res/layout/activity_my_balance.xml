@@ -14,33 +14,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/windowBackground"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/divider_30dp"
+            android:textSize="@dimen/medium_text_size"
+            android:textColor="@color/windowBackground"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:background="@color/buttombarText"
+            android:text="可提现（元）"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/divider_131dp"
-            android:background="@color/placeholder_top"
-            android:paddingLeft="@dimen/divider_17dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_marginTop="@dimen/divider_30dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/medium_text_size"
-                android:textColor="@color/windowBackground"
-                android:text="当前奖金（元）"/>
+            android:layout_height="wrap_content"
+            android:background="@color/buttombarText"
+            android:paddingLeft="@dimen/divider_15dp"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/divider_25dp">
 
             <TextView
                 android:id="@+id/tv_balance_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/divider_20dp"
                 android:textColor="@color/windowBackground"
                 android:textSize="@dimen/text_size_30sp"
-                android:text=""
-                android:layout_marginBottom="@dimen/divider_20dp"/>
+                android:text="0.00"
+                android:layout_marginTop="@dimen/divider_10dp" />
+
+            <View
+                style="@style/weight_1"/>
+
+            <TextView
+                android:id="@+id/tv_deposit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/tixian_icon"
+                android:textSize="17sp"
+                android:gravity="center"
+                android:textColor="@color/windowBackground"
+                android:text="去提现  》" />
 
         </LinearLayout>
 
@@ -48,7 +62,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/divider_40dp"
             android:orientation="horizontal"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_usable_balance"

@@ -50,7 +50,7 @@ public class SubmitOrderAdapter extends BaseRecyclerViewAdapter<ShoppingCartResp
                 .into(holder.mIvSubmitImage);
         holder.mTvSubmitName.setText(bean.getProductName()); //商品名称
         holder.mTvSubmitNumber.setText(bean.getProductCode()); //商品编号
-        holder.mTvSubmitOnePieceMoney.setText(getmCurrency()+" "+ActivityUtils.changeMoneys(bean.getPrice()));  //商品单价
+        holder.mTvSubmitOnePieceMoney.setText(getmCurrency()+""+ActivityUtils.changeMoneys(bean.getPrice()));  //商品单价
         holder.mTvSubMitAmount.setText("x"+bean.getCount()); //商品总数量
 
     }

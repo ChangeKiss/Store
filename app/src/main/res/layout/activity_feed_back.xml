@@ -48,10 +48,12 @@
 
         <Button
             android:id="@+id/btn_feed_back"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="@dimen/divider_30dp"
+            android:layout_marginRight="@dimen/divider_30dp"
             android:gravity="center"
-            android:background="@drawable/selector_smallbutton_gold"
+            android:background="@drawable/shape_submit_order_button"
             android:textColor="@color/windowBackground"
             android:textSize="@dimen/large_text_size"
             android:text="@string/plus_adjust_cart"/>

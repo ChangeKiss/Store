@@ -192,6 +192,7 @@
             android:id="@+id/layout_phone_number"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:gravity="center"
             android:layout_marginRight="@dimen/divider_10dp"
             android:layout_marginLeft="@dimen/divider_10dp">
 
@@ -293,8 +294,8 @@
             android:id="@+id/layout_pay_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/divider_10dp"
-            android:layout_marginLeft="@dimen/divider_10dp"
+            android:paddingLeft="@dimen/divider_10dp"
+            android:paddingRight="@dimen/divider_10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -309,7 +310,7 @@
 
             <TextView
                 android:id="@+id/tv_my_pay"
-                android:layout_width="260dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/textColorBlack"
                 android:gravity="center|right"

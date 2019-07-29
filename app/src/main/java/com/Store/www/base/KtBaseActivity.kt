@@ -136,7 +136,7 @@ import com.Store.www.utils.UserPrefs
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = Color.rgb(255, 202, 147)  //设置系统状态栏 颜色
+            window.statusBarColor = Color.rgb(27, 26, 32)  //设置系统状态栏 颜色
         } else if (Build.VERSION.SDK_INT >= 19) {//19表示4.4//
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             //虚拟键盘也透明 //

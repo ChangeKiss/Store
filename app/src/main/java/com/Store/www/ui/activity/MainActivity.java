@@ -62,7 +62,7 @@ import butterknife.Unbinder;
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 
-public class MainActivity extends RequestPermissionActivity implements PermissionListener ,DialogHint.OnDialogOneButtonClickListener{
+public class MainActivity extends RequestPermissionActivity implements PermissionListener, DialogHint.OnDialogOneButtonClickListener {
     @BindView(R.id.layout_bottombar)
     LinearLayout mLayoutBottombar;
     @BindView(R.id.tv_tab_one)
@@ -94,9 +94,8 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     private AlertDialog mAppUpDataDialog;  //APP升级弹窗
     public static final String SHOW_ACTION = "messageDialog";  //注册的广播名
     private messageWork mMessage;
-    private int code,mNewCode,mCoerceUpData;  //当前版本号 ,最新的版本号,  强制更新 0正常更新 1强制更新
+    private int code, mNewCode, mCoerceUpData;  //当前版本号 ,最新的版本号,  强制更新 0正常更新 1强制更新
     private String mApkName;
-
 
 
     @Override
@@ -104,27 +103,27 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         super.onCreate(savedInstanceState);
         unbinder = ButterKnife.bind(this);
         //JPushInterface.setAlias(mContext,1,"ID"+UserPrefs.getInstance().getUserId());  //设置极光推送用户标签
-        if (UserPrefs.getInstance().getLoginToken()==null){ //如果一开始loginToken 为空
+        if (UserPrefs.getInstance().getLoginToken() == null) { //如果一开始loginToken 为空
             UserPrefs.getInstance().setLoginToken("0");  //先默认设置一个loginToken为0  避免报错
         }
         UserPrefsFirst.getInstance().setNetWork(ActivityUtils.getNetWorkStatus(mContext));
-        LogUtils.d("当前网络类型="+UserPrefsFirst.getInstance().getNetWork());
-        setAlias("ID"+UserPrefs.getInstance().getLoginToken());  //设置极光推送用户标签
+        LogUtils.d("当前网络类型=" + UserPrefsFirst.getInstance().getNetWork());
+        setAlias("ID" + UserPrefs.getInstance().getLoginToken());  //设置极光推送用户标签
         getDataTime();
         requestPermission();
         code = ActivityUtils.getVersionCode(mContext);
         service(); //客服
         //getNewApp();  //获取APP更新信息
-        if (!TextUtils.isEmpty(userId))CrashReport.setUserId(userId);
+        if (!TextUtils.isEmpty(userId)) CrashReport.setUserId(userId);
         IntentFilter filter = new IntentFilter();
         filter.addAction(SHOW_ACTION);
         filter.addAction("toHome");
         mMessage = new messageWork();
-        registerReceiver(mMessage,filter);
+        registerReceiver(mMessage, filter);
     }
 
     //设置极光别名
-    private void setAlias(String alias){
+    private void setAlias(String alias) {
         // 调用 Handler 来异步设置别名
         mHandler.sendMessage(mHandler.obtainMessage(MSG_SET_ALIAS, alias));
 
@@ -136,7 +135,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
             switch (code) {
                 case 0:
                     LogUtils.d("设置成功");
-                    LogUtils.d("成功的别名="+alias);
+                    LogUtils.d("成功的别名=" + alias);
                     // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
                     break;
                 case 6002:
@@ -178,12 +177,12 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         service(); //客服
     }
 
-    private void service(){
+    private void service() {
         Intent intent = getIntent();
         if (intent.hasExtra(NimIntent.EXTRA_NOTIFY_CONTENT)) {
             LogUtils.d("打开客服窗口");
             // 打开客服窗口
-            Unicorn.openServiceActivity(mContext,"金薇客服",new ConsultSource("", "App", "custom information string"));
+            Unicorn.openServiceActivity(mContext, "金薇客服", new ConsultSource("", "App", "custom information string"));
             // 最好将intent清掉，以免从堆栈恢复时又打开客服窗口
             setIntent(new Intent());
         }
@@ -199,7 +198,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     public void initView() {
         ActivityCollector.addActivity(this);
         UserPrefsFirst.getInstance().setCodeNma(ActivityUtils.getVersionName(mContext));  //将版本编号存入本地仓库
-        setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
+        setTabState(mTvTabOne, R.mipmap.home_ok, R.color.buttombarTextYellow);
         if (mHomeFragment == null) {
             mHomeFragment = new HomeFragment();
         }
@@ -215,22 +214,21 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     }
 
 
-
     //接收广播
-    class messageWork extends BroadcastReceiver{
+    class messageWork extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-            if (networkInfo!=null&&networkInfo.isAvailable()){
-                if (TextUtils.equals(intent.getAction(),SHOW_ACTION)){
+            if (networkInfo != null && networkInfo.isAvailable()) {
+                if (TextUtils.equals(intent.getAction(), SHOW_ACTION)) {
                     LogUtils.d("接收到广播弹出提示框");
                     //弹出系统悬浮窗
-                    LogUtils.d("弹窗图片？=="+MyReceive.ad_img);
-                    Intent dialogIntent = new Intent(MainActivity.this,DialogActivity.class);
-                    dialogIntent.putExtra("img_url",MyReceive.ad_img);
+                    LogUtils.d("弹窗图片？==" + MyReceive.ad_img);
+                    Intent dialogIntent = new Intent(MainActivity.this, DialogActivity.class);
+                    dialogIntent.putExtra("img_url", MyReceive.ad_img);
                     startActivity(dialogIntent);
-                }else if (intent.getAction().equals("toHome")){
+                } else if (intent.getAction().equals("toHome")) {
                     LogUtils.d("toHome");
                     mToFragment = "home";
                     dumpFragment();
@@ -240,15 +238,15 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     }
 
     //弹出APP更新弹窗
-    private void showAppUpDataDialog(){
-        if (mCoerceUpData==0){
+    private void showAppUpDataDialog() {
+        if (mCoerceUpData == 0) {
             mAppUpDataDialog = new AlertDialog.Builder(MainActivity.this)
                     .setTitle("APP更新")
                     .setMessage("有新的版本,请立即更新")
                     .setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            mActivityUtils.startActivity(RegardActivity.class,"key","StartNow");
+                            mActivityUtils.startActivity(RegardActivity.class, "key", "StartNow");
                             dialog.dismiss();
                         }
                     })
@@ -260,14 +258,14 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                     })
                     .setCancelable(false)  //设置dialog点击外部消失
                     .create();
-        }else if (mCoerceUpData == 1 ){
+        } else if (mCoerceUpData == 1) {
             mAppUpDataDialog = new AlertDialog.Builder(MainActivity.this)
                     .setTitle("APP更新")
                     .setMessage("此版本为重要版本,请立即更新")
                     .setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            mActivityUtils.startActivity(RegardActivity.class,"key","StartNow");
+                            mActivityUtils.startActivity(RegardActivity.class, "key", "StartNow");
                             dialog.dismiss();
                         }
                     })
@@ -280,7 +278,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     /**
      * 获取是否有最新版APP  以及检查APK文件是否存在
      */
-    private void getNewApp(){
+    private void getNewApp() {
         RetrofitClient.getInstances().getAppUpData().enqueue(new UICallBack<AppUpDataResponse>() {
             @Override
             public void OnRequestFail(String msg) {
@@ -289,23 +287,23 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
 
             @Override
             public void OnRequestSuccess(AppUpDataResponse bean) {
-                LogUtils.d("当前版本号=="+code);
-                LogUtils.d("最新版本号=="+bean.getVersionCode());
+                LogUtils.d("当前版本号==" + code);
+                LogUtils.d("最新版本号==" + bean.getVersionCode());
                 mNewCode = bean.getVersionCode();
                 mApkName = bean.getApkName();
                 mCoerceUpData = bean.getForceUpdate();
-                LogUtils.d("是否强制更新APP 0正常 1强制=="+mCoerceUpData);
-                if (code<mNewCode) {  //如果当前版本号小于最新的版本号  有更新
+                LogUtils.d("是否强制更新APP 0正常 1强制==" + mCoerceUpData);
+                if (code < mNewCode) {  //如果当前版本号小于最新的版本号  有更新
                     showAppUpDataDialog(); //弹出对话框
-                }else {  //没有更新检查是否有下载过的APK文件
-                    File apkFile = new File(MyApplication.getmDirPath(),mApkName);
-                    if (apkFile.exists()){  //如果文件存在就删除文件
+                } else {  //没有更新检查是否有下载过的APK文件
+                    File apkFile = new File(MyApplication.getmDirPath(), mApkName);
+                    if (apkFile.exists()) {  //如果文件存在就删除文件
                         try {
                             FileUtils.deleteFile(apkFile);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    }else {
+                    } else {
                         return;
                     }
                 }
@@ -346,8 +344,6 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     }
 
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == OVERDRAW_PERMISSION_REQUEST) {
@@ -377,28 +373,28 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     @Override
     protected void onResume() {
         super.onResume();  //接收推送通知跳转页面
-        if (hasNotification==1){
-            hasNotification=0;
-            if (MyReceive.from!=null){
-                if (MyReceive.from.equals("1")){  //1 APPg更新升级
+        if (hasNotification == 1) {
+            hasNotification = 0;
+            if (MyReceive.from != null) {
+                if (MyReceive.from.equals("1")) {  //1 APPg更新升级
                     mActivityUtils.startActivity(RegardActivity.class);
-                }else if (MyReceive.from.equals("2")){  //2 问卷调查或者是其他的链接类型的推送
+                } else if (MyReceive.from.equals("2")) {  //2 问卷调查或者是其他的链接类型的推送
                     Intent intent = new Intent();   //调用系统自带的 浏览器打开链接
                     intent.setAction("android.intent.action.VIEW");
                     Uri content_url = Uri.parse(MyReceive.url);
                     intent.setData(content_url);
                     startActivity(intent);
                 }
-            }else if (MyReceive.messageCodeId==1001){  //接收到自定义消息  收到自定义消息说明此账号已在其他设备登录  将这台设备的账号做登出处理
+            } else if (MyReceive.messageCodeId == 1001) {  //接收到自定义消息  收到自定义消息说明此账号已在其他设备登录  将这台设备的账号做登出处理
                 UserPrefs.getInstance().setLoginToken("0");
                 UserPrefsFirst.getInstance().setNetWork(ActivityUtils.getNetWorkStatus(mContext));
                 UserPrefsFirst.getInstance().setCodeNma(ActivityUtils.getVersionName(mContext));
-                LogUtils.d("清空资料后存入的版本编号=="+UserPrefsFirst.getInstance().getCodeName());
+                LogUtils.d("清空资料后存入的版本编号==" + UserPrefsFirst.getInstance().getCodeName());
                 UserPrefsFirst.getInstance().setFirst(ActivityUtils.getVersionCode(MainActivity.this));  //退出登录的时候把当前版本号再存一次，以免被清掉
-                DialogHint.showDialogWithOneButton(mContext,MyReceive.customMessage,this);  //弹出对提示话框
-            }else if (!MyApplication.ismAppIsTop()&&MyReceive.messageCode!=0){   //如果当前APP处于前台运行并且有收到过广播消息   ***作废了
-                MyReceive.messageCode =0;
-            }else if (MyReceive.messageCodeId==1008){
+                DialogHint.showDialogWithOneButton(mContext, MyReceive.customMessage, this);  //弹出对提示话框
+            } else if (!MyApplication.ismAppIsTop() && MyReceive.messageCode != 0) {   //如果当前APP处于前台运行并且有收到过广播消息   ***作废了
+                MyReceive.messageCode = 0;
+            } else if (MyReceive.messageCodeId == 1008) {
                 mToFragment = "mykivie";
                 dumpFragment();
             }
@@ -408,24 +404,24 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     private void dumpFragment() {  //切换Fragment
         switch (mToFragment) {
             case "cart":
-                setTabState(mTvTabThree,R.mipmap.shopping_cart_ok,0xfff67f96);
+                setTabState(mTvTabThree, R.mipmap.shopping_cart_ok, 0xfff67f96);
                 setTabState(mTvTabOne, R.mipmap.home_no, 0xff979797);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff979797);
-                setTabState(mTvTabFour,R.mipmap.my_kivie_no,0xff979797);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff979797);
-                if (mShoppingTrolleyFragment==null) {
+                setTabState(mTvTabTwo, R.mipmap.news_no, 0xff979797);
+                setTabState(mTvTabFour, R.mipmap.my_kivie_no, 0xff979797);
+                setTabState(mTvTabFive, R.mipmap.circle_no, 0xff979797);
+                if (mShoppingTrolleyFragment == null) {
                     mShoppingTrolleyFragment = new ShoppingTrolleyFragment();
                 }
                 mCurrentTab = mTvTabThree;
                 switchFragmentByShow(mShoppingTrolleyFragment);
                 break;
             case "mykivie":
-                setTabState(mTvTabFour,R.mipmap.my_kivie_ok,0xfff67f96);
+                setTabState(mTvTabFour, R.mipmap.my_kivie_ok, 0xfff67f96);
                 setTabState(mTvTabOne, R.mipmap.home_no, 0xff979797);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff979797);
-                setTabState(mTvTabThree,R.mipmap.shopping_cart_no,0xff979797);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff979797);
-                if (mMyKivieFragment ==null) {
+                setTabState(mTvTabTwo, R.mipmap.news_no, 0xff979797);
+                setTabState(mTvTabThree, R.mipmap.shopping_cart_no, 0xff979797);
+                setTabState(mTvTabFive, R.mipmap.circle_no, 0xff979797);
+                if (mMyKivieFragment == null) {
                     mMyKivieFragment = new MyKivieFragment();
                 }
                 switchFragmentByShow(mMyKivieFragment);
@@ -433,12 +429,12 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 break;
             case "home":
                 LogUtils.d("跳转到讯息");
-                setTabState(mTvTabTwo,R.mipmap.news_ok,0xffffca93);
-                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
-                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
-                setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
-                if (mMessageFragment==null) {
+                setTabState(mTvTabTwo, R.mipmap.news_ok, R.color.buttombarTextYellow);
+                setTabState(mTvTabOne, R.mipmap.home_no, R.color.buttombarTextGary);
+                setTabState(mTvTabThree, R.mipmap.product_no, R.color.buttombarTextGary);
+                setTabState(mTvTabFour, R.mipmap.user_no, R.color.buttombarTextGary);
+                setTabState(mTvTabFive, R.mipmap.circle_no, R.color.buttombarTextGary);
+                if (mMessageFragment == null) {
                     mMessageFragment = new MessageFragment();
                 }
                 switchFragmentByShow(mMessageFragment);
@@ -448,16 +444,16 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     }
 
     //每次进入首页都获取一次获取当前时间
-    private void getDataTime(){
+    private void getDataTime() {
         Calendar calendar = Calendar.getInstance();
         UserPrefs.getInstance().setYear(calendar.get(Calendar.YEAR));
-        LogUtils.d("当前年="+calendar.get(Calendar.YEAR));
-        UserPrefs.getInstance().setMonth(String.valueOf(calendar.get(Calendar.MONTH)+1)+"");
-        LogUtils.d("当前月="+UserPrefs.getInstance().getMonth());
-        LogUtils.d("当前时="+calendar.get(Calendar.HOUR_OF_DAY));
-        LogUtils.d("当前分="+calendar.get(Calendar.MINUTE));
-        LogUtils.d("当前秒="+calendar.get(Calendar.SECOND));
-        LogUtils.d("agentCode="+UserPrefs.getInstance().getAgentCode());
+        LogUtils.d("当前年=" + calendar.get(Calendar.YEAR));
+        UserPrefs.getInstance().setMonth(String.valueOf(calendar.get(Calendar.MONTH) + 1) + "");
+        LogUtils.d("当前月=" + UserPrefs.getInstance().getMonth());
+        LogUtils.d("当前时=" + calendar.get(Calendar.HOUR_OF_DAY));
+        LogUtils.d("当前分=" + calendar.get(Calendar.MINUTE));
+        LogUtils.d("当前秒=" + calendar.get(Calendar.SECOND));
+        LogUtils.d("agentCode=" + UserPrefs.getInstance().getAgentCode());
     }
 
 
@@ -508,7 +504,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
             mMessageFragment = null;
         }
 
-        if(mProductFragment !=null){
+        if (mProductFragment != null) {
             mProductFragment = null;
         }
 
@@ -518,7 +514,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         if (mMyKivieFragment != null) {
             mMyKivieFragment = null;
         }
-        if (mCircleFragment!=null){
+        if (mCircleFragment != null) {
             mCircleFragment = null;
         }
         super.onDestroy();
@@ -533,7 +529,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 mLayoutBottombar.setVisibility(View.VISIBLE);
             }
             resetTabState();
-            //setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
+            //setTabState(mTvTabOne, R.mipmap.home_ok, R.color.buttombarTextYellow);
             mTvTabOne.setSelected(true);
             if (mHomeFragment == null) {
                 mHomeFragment = new HomeFragment();
@@ -541,12 +537,12 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
             switchFragmentByShow(mHomeFragment);
             mCurrentTab = mTvTabOne;
             return;
-        }else {
+        } else {
             // 是首页。，退到后台运行
 //        moveTaskToBack(true);
-            if(System.currentTimeMillis() - mExitTime > 2000) {
+            if (System.currentTimeMillis() - mExitTime > 2000) {
                 //2.保存当前时间
-                mExitTime  = System.currentTimeMillis();
+                mExitTime = System.currentTimeMillis();
                 //3.提示
                 showToast(R.string.again_exit);
             } else {
@@ -560,15 +556,14 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     }
 
 
-
     /**
      * 重置所有tab的颜色
      */
     private void resetTabState() {
-        setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
-        setTabState(mTvTabTwo, R.mipmap.news_no, 0xff898989);
-        setTabState(mTvTabThree, R.mipmap.product_no, 0xff898989);
-        setTabState(mTvTabFour, R.mipmap.user_no, 0xff898989);
+        setTabState(mTvTabOne, R.mipmap.home_ok, R.color.buttombarTextYellow);
+        setTabState(mTvTabTwo, R.mipmap.news_no, R.color.buttombarTextGary);
+        setTabState(mTvTabThree, R.mipmap.product_no, R.color.buttombarTextGary);
+        setTabState(mTvTabFour, R.mipmap.user_no, R.color.buttombarTextGary);
         //setTabState(mTvTabFive,R.mipmap.circle_no,0xff666666);
     }
 
@@ -583,7 +578,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
             nav_up.setBounds(0, 0, nav_up.getMinimumWidth(), nav_up.getMinimumHeight());
             textView.setCompoundDrawables(null, null, nav_up, null);
         }
-        textView.setTextColor(color);
+        textView.setTextColor(getResources().getColor(color));
     }
 
     //6.0以上的系统要获取权限
@@ -623,7 +618,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     }
 
     //导航栏底部按钮的点击事件
-    @OnClick({R.id.tv_tab_one, R.id.tv_tab_two, R.id.tv_tab_three, R.id.tv_tab_four,R.id.tv_tab_five})
+    @OnClick({R.id.tv_tab_one, R.id.tv_tab_two, R.id.tv_tab_three, R.id.tv_tab_four, R.id.tv_tab_five})
     public void onViewClicked(View view) {
         if (view == mCurrentTab) {
             return;
@@ -631,38 +626,38 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
         LogUtils.d("mCurrentTab=" + mCurrentTab);
         switch (view.getId()) {
             case R.id.tv_tab_one:  //首页
-                setTabState(mTvTabOne, R.mipmap.home_ok, 0xffffca93);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
-                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
-                setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
-                if (mHomeFragment==null){
+                setTabState(mTvTabOne, R.mipmap.home_ok, R.color.buttombarTextYellow);
+                setTabState(mTvTabTwo, R.mipmap.news_no, R.color.buttombarTextGary);
+                setTabState(mTvTabThree, R.mipmap.product_no, R.color.buttombarTextGary);
+                setTabState(mTvTabFour, R.mipmap.user_no, R.color.buttombarTextGary);
+                setTabState(mTvTabFive, R.mipmap.circle_no, R.color.buttombarTextGary);
+                if (mHomeFragment == null) {
                     mHomeFragment = new HomeFragment();
                 }
                 switchFragmentByShow(mHomeFragment);
                 mCurrentTab = mTvTabOne;
                 break;
             case R.id.tv_tab_two:  //新闻资讯
-                setTabState(mTvTabTwo,R.mipmap.news_ok,0xffffca93);
-                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
-                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
-                setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
-                setTabState(mTvTabFive,R.mipmap.circle_no,0xff898989);
-                if (mMessageFragment==null) {
+                setTabState(mTvTabTwo, R.mipmap.news_ok, R.color.buttombarTextYellow);
+                setTabState(mTvTabOne, R.mipmap.home_no, R.color.buttombarTextGary);
+                setTabState(mTvTabThree, R.mipmap.product_no, R.color.buttombarTextGary);
+                setTabState(mTvTabFour, R.mipmap.user_no, R.color.buttombarTextGary);
+                setTabState(mTvTabFive, R.mipmap.circle_no, R.color.buttombarTextGary);
+                if (mMessageFragment == null) {
                     mMessageFragment = new MessageFragment();
                 }
                 switchFragmentByShow(mMessageFragment);
                 mCurrentTab = mTvTabTwo;
                 break;
-            case R.id.tv_tab_three:  //购物车
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())){
-                    mActivityUtils.startActivity(LoginActivity.class,"login","login");
-                }else {
-                    setTabState(mTvTabThree,R.mipmap.product_ok,0xffffca93);
-                    setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
-                    setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
-                    setTabState(mTvTabFour,R.mipmap.user_no,0xff898989);
-                    if (mProductFragment==null) {
+            case R.id.tv_tab_three:  //产品
+                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+                } else {
+                    setTabState(mTvTabThree, R.mipmap.product_ok, R.color.buttombarTextYellow);
+                    setTabState(mTvTabOne, R.mipmap.home_no, R.color.buttombarTextGary);
+                    setTabState(mTvTabTwo, R.mipmap.news_no, R.color.buttombarTextGary);
+                    setTabState(mTvTabFour, R.mipmap.user_no, R.color.buttombarTextGary);
+                    if (mProductFragment == null) {
                         mProductFragment = new ProductFragment();
                     }
                     switchFragmentByShow(mProductFragment);
@@ -671,23 +666,23 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
 
                 break;
             case R.id.tv_tab_four:  //个人中心
-                setTabState(mTvTabFour,R.mipmap.user_ok,0xffffca93);
-                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
-                setTabState(mTvTabThree,R.mipmap.product_no,0xff898989);
-                if (mMyKivieFragment ==null) {
+                setTabState(mTvTabFour, R.mipmap.user_ok, R.color.buttombarTextYellow);
+                setTabState(mTvTabOne, R.mipmap.home_no, R.color.buttombarTextGary);
+                setTabState(mTvTabTwo, R.mipmap.news_no, R.color.buttombarTextGary);
+                setTabState(mTvTabThree, R.mipmap.product_no, R.color.buttombarTextGary);
+                if (mMyKivieFragment == null) {
                     mMyKivieFragment = new MyKivieFragment();
                 }
                 switchFragmentByShow(mMyKivieFragment);
                 mCurrentTab = mTvTabFour;
                 break;
             case R.id.tv_tab_five:  //圈子
-                setTabState(mTvTabFive,R.mipmap.circle_ok,0xffffca93);
-                setTabState(mTvTabFour,R.mipmap.my_kivie_no,0xff898989);
-                setTabState(mTvTabOne, R.mipmap.home_no, 0xff898989);
-                setTabState(mTvTabTwo,R.mipmap.news_no,0xff898989);
-                setTabState(mTvTabThree,R.mipmap.shopping_cart_no,0xff898989);
-                if (mCircleFragment ==null) {
+                setTabState(mTvTabFive, R.mipmap.circle_ok, R.color.buttombarTextYellow);
+                setTabState(mTvTabFour, R.mipmap.my_kivie_no, R.color.buttombarTextGary);
+                setTabState(mTvTabOne, R.mipmap.home_no, R.color.buttombarTextGary);
+                setTabState(mTvTabTwo, R.mipmap.news_no, R.color.buttombarTextGary);
+                setTabState(mTvTabThree, R.mipmap.shopping_cart_no, R.color.buttombarTextGary);
+                if (mCircleFragment == null) {
                     mCircleFragment = new CircleFragment();
                 }
                 switchFragmentByShow(mCircleFragment);
@@ -695,9 +690,6 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
                 break;
         }
     }
-
-
-
 
 
     //一个按钮的弹窗确认的点击事件  提示内容传int
@@ -709,7 +701,7 @@ public class MainActivity extends RequestPermissionActivity implements Permissio
     //弹窗确认的点击事件  提示内容传String
     @Override
     public void setOnDialogOkButtonClickListener(AlertDialog dialog, String titleId) {
-        mActivityUtils.startActivity(LoginActivity.class,"login","login");
+        mActivityUtils.startActivity(LoginActivity.class, "login", "login");
         dialog.dismiss();
     }
 }

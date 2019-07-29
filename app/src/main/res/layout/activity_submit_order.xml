@@ -72,8 +72,8 @@
                     android:id="@+id/tv_order_phone_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/iv_enter"
-                    android:layout_marginRight="25dp"
+                    android:layout_toRightOf="@+id/tv_order_people"
+                    android:layout_marginLeft="@dimen/divider_20dp"
                     android:textColor="@color/textColorBlack"
                     android:textSize="@dimen/mediums_text_size"/>
 
@@ -97,6 +97,7 @@
                     android:textSize="@dimen/small_text_size"
                     android:textColor="@color/buttombarText"
                     android:layout_marginLeft="@dimen/drawablePadding_5dp"
+                    android:layout_marginTop="@dimen/divider_10dp"
                     android:layout_marginRight="@dimen/divider_10dp"/>
 
             </RelativeLayout>
@@ -116,10 +117,9 @@
             </android.support.v7.widget.RecyclerView>
 
             <View
-                style="@style/divider_horizontal2"/>
+                style="@style/divider_horizontal2"
+                android:layout_marginTop="@dimen/divider_10dp"/>
 
-            <View
-                style="@style/weight_10"/>
 
             <LinearLayout
                 android:id="@+id/layout_cloud"
@@ -260,19 +260,20 @@
             <LinearLayout
                 android:id="@+id/layout_submit_order"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center">
+                android:gravity="center">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/drawablePadding_5dp"
-                    android:background="@drawable/shape_button_orders"
+                    android:layout_marginLeft="@dimen/divider_20dp"
+                    android:layout_marginRight="@dimen/divider_20dp"
+                    android:background="@drawable/shape_submit_order_button"
                     android:text="@string/submit_order"
                     android:gravity="center"
                     android:textColor="@color/windowBackground"
-                    android:textSize="@dimen/ysf_text_size_13"/>
+                    android:textSize="@dimen/mediums_text_size"/>
 
             </LinearLayout>
 

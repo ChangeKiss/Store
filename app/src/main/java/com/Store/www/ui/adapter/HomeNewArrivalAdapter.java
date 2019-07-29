@@ -54,8 +54,8 @@ public class HomeNewArrivalAdapter extends BaseRecyclerViewAdapter<HomeNewArriva
         holder.mHomeBanners.setLayoutParams(params);
         bannerUrl = new ArrayList<>();
         bannerUrl.clear();
-        bannerUrl.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/66e3a4b4-9079-411d-9165-2a43d24e3b9c.png");
-        bannerUrl.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/b725935a-a9f5-4fda-9a84-3979928adf50.png");
+        bannerUrl.add("http://fuatee.oss-cn-hangzhou.aliyuncs.com/66e3a4b4-9079-411d-9165-2a43d24e3b9c.png");
+        bannerUrl.add("http://fuatee.oss-cn-hangzhou.aliyuncs.com/b725935a-a9f5-4fda-9a84-3979928adf50.png");
 
         final HomeNewArrivalResponse.DataBean dataBean = mDataList.get(position);
 

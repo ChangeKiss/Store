@@ -6,9 +6,9 @@
     </corners>
     <stroke
         android:width="@dimen/divider_half_dp"
-        android:color="@color/placeholder_top">
+        android:color="@color/new_text_color">
     </stroke>
     <solid
-        android:color="@color/placeholder_top">
+        android:color="@color/new_text_color">
     </solid>
 </shape>

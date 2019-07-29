@@ -3,28 +3,26 @@ package com.Store.www.net;
 
 import com.Store.www.entity.*;
 
-import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 
 /**
  * Created by www on 2017/12/14.
  */
-    //API接口
+//API接口
 public interface Api {
 
     //资讯新闻
     @GET("api/cms/indexList")
-    Call<NewsResponse>getNewsList();
+    Call<NewsResponse> getNewsList();
 
     //新闻资讯更多
     @POST("api/cms/typeList")
-    Call<NewsMoreResponse>  requestNewsMore(@Body NewsMoreRequest requestBody);
+    Call<NewsMoreResponse> requestNewsMore(@Body NewsMoreRequest requestBody);
 
     //新闻详情
     @POST("api/cms/cmsInfo")
@@ -40,15 +38,15 @@ public interface Api {
 
     //全部的商品管理
     @GET("api/product/allProductList")
-    Call<CommodityManagerResponse> getCommodity(@Query("userId")int userId,
-                                                @Query("countPerPage")int countPerPage,
-                                                @Query("pageIndex")int pageIndex,
-                                                @Query("token")int token);
+    Call<CommodityManagerResponse> getCommodity(@Query("userId") int userId,
+                                                @Query("countPerPage") int countPerPage,
+                                                @Query("pageIndex") int pageIndex,
+                                                @Query("token") int token);
 
     //获取商品详情
     @GET("api/product/info")
-    Call<IntroduceResponse>getIntroduce(@Query("userId")int userId,
-                                        @Query("productId")int productId);
+    Call<IntroduceResponse> getIntroduce(@Query("userId") int userId,
+                                         @Query("productId") int productId);
 
     //加入购物车
     @POST("api/order/addShoppingCart")
@@ -56,7 +54,7 @@ public interface Api {
 
     //获取购物车信息
     @GET("api/order/getCartList")
-    Call<ShoppingCartResponse> getCart(@Query("userId")int userId);
+    Call<ShoppingCartResponse> getCart(@Query("userId") int userId);
 
     //删除商品
     @POST("api/order/delShoppingCart")
@@ -68,60 +66,61 @@ public interface Api {
 
     //获取我的订单
     @GET("api/v2/order/getOrderList")
-    Call<MyOrderResponse> getOrderList(@Query("userId")int userId,
-                                       @Query("status")int status,
-                                       @Query("countPerPage")int countPerPage,
-                                       @Query("pageIndex")int pageIndex);
+    Call<MyOrderResponse> getOrderList(@Query("userId") int userId,
+                                       @Query("status") int status,
+                                       @Query("countPerPage") int countPerPage,
+                                       @Query("pageIndex") int pageIndex);
 
     //获取订单详情
     @GET("api/order/getOrderInfo")
-    Call<OrderDetailsResponse> getOrderDetails(@Query("orderNo")String orderNo,
+    Call<OrderDetailsResponse> getOrderDetails(@Query("orderNo") String orderNo,
                                                @Query("userId") int userId);
 
     //获取我的仓库
     @GET("api/repository/getAllRepositoryInfo")
-    Call<MyWarehouseResponse> getWarehouse(@Query("agentCode")String agentCode);
+    Call<MyWarehouseResponse> getWarehouse(@Query("agentCode") String agentCode);
 
     //获取商品库存
     @GET("api/repository/getAllProductCount")
-    Call<CommodityStocksResponse> getStocks(@Query("repositoryId")int repositoryId,
-                                            @Query("type")int type);
+    Call<CommodityStocksResponse> getStocks(@Query("repositoryId") int repositoryId,
+                                            @Query("type") int type);
+
     //获取仓库商品库存
     @GET("api/repository/getProductRepositorySku")
-    Call<WarehouseStocksResponse> getWarehouse(@Query("repositoryId")int repositoryId,
-                                               @Query("type")int type,
-                                               @Query("productNo")String productNo);
+    Call<WarehouseStocksResponse> getWarehouse(@Query("repositoryId") int repositoryId,
+                                               @Query("type") int type,
+                                               @Query("productNo") String productNo);
 
 
     //获取单件商品的库存
     @GET("api/repository/getProductRepositorySkuByChangeBill")
-    Call<OnePieceStocksResponse> getOnePiece(@Query("repositoryId")int repositoryId,
-                                             @Query("type")int type,
-                                             @Query("productNo")String productNo);
+    Call<OnePieceStocksResponse> getOnePiece(@Query("repositoryId") int repositoryId,
+                                             @Query("type") int type,
+                                             @Query("productNo") String productNo);
 
     //获取内衣业绩***新
     @GET("api/achievement/getOwnAchievement")
-    Call<SumResultsResponse> getSumResults(@Query("agentId")int agentId);
+    Call<SumResultsResponse> getSumResults(@Query("agentId") int agentId);
 
     //获取塑身衣业绩
     @GET("api/achievement/getOwnCorsetAchievement")
-    Call<SumResultsResponse> getShapeWearResults(@Query("agentId")int agentId);
+    Call<SumResultsResponse> getShapeWearResults(@Query("agentId") int agentId);
 
     //获取业绩明细  ***新
     @GET("api/achievement/getTeamAchievement")
-    Call<TeamResultsResponse> getTeamResults(@Query("agentId")int agentId);
+    Call<TeamResultsResponse> getTeamResults(@Query("agentId") int agentId);
 
     //获取内衣业绩明细  ***新
     @GET("api/achievement/getAchievementDetails")
-    Call<MyResultsDetailsResponse> getMyResultsDetail(@Query("agentId")int agentId,
-                                                      @Query("month")String month,
+    Call<MyResultsDetailsResponse> getMyResultsDetail(@Query("agentId") int agentId,
+                                                      @Query("month") String month,
                                                       @Query("year") int year);
 
     //获取塑身衣业绩明细
     @GET("api/achievement/getCorsetAchievementDetails")
     Call<MyResultsDetailsResponse> getMyShapeWearResults(@Query("agentId") int agentId,
-                                                         @Query("month")String month,
-                                                         @Query("year")int year);
+                                                         @Query("month") String month,
+                                                         @Query("year") int year);
 
     //发起修改密码
     @POST("api/agent/changePassword ")
@@ -133,7 +132,7 @@ public interface Api {
 
     //获取验证码 -->找回密码时用  找回支付密码时用
     @GET("api/v2/agent/sendModifyPasswordVerificationCode")
-    Call<BaseBenTwo> getVerifyCode(@Query("mobilephone")String mobilephone);
+    Call<BaseBenTwo> getVerifyCode(@Query("mobilephone") String mobilephone);
 
     //(找回密码)修改密码
     @POST("api/v2/agent/modifyPassword")
@@ -145,8 +144,7 @@ public interface Api {
 
     //验证推荐人
     @GET("api/agent/JSRAgent")
-    Call<VerifyPeopleResponse>getReferrer(@Query("jsrCode")String jsrCode);
-
+    Call<VerifyPeopleResponse> getReferrer(@Query("jsrCode") String jsrCode);
 
 
     //取消提货定单
@@ -155,14 +153,14 @@ public interface Api {
 
     //新增提货篮
     @GET("api/repository/getBillIndexList")
-    Call<NewBillResponse> getBill(@Query("userId")int userId,
-                                  @Query("isNew")int isNew);
+    Call<NewBillResponse> getBill(@Query("userId") int userId,
+                                  @Query("isNew") int isNew);
 
     //提货时获取单件商品的库存
     @GET("api/repository/getProductRepositorySkuByBillV2")
-    Call<PickUpRepertoryResponse> getRepertory(@Query("repositoryId")int repositoryId,
-                                               @Query("type")int type,
-                                               @Query("productNo")String productNo);
+    Call<PickUpRepertoryResponse> getRepertory(@Query("repositoryId") int repositoryId,
+                                               @Query("type") int type,
+                                               @Query("productNo") String productNo);
 
     //加入提货篮
     @POST("api/repository/addBillCart")
@@ -199,8 +197,8 @@ public interface Api {
 
     //获取支付类型，对公还是对私
     @GET("api/pay/getPayType")
-    Call<GetPayTypeResponse> getPayType(@Query("token")int token,
-                                        @Query("userId")int userId);
+    Call<GetPayTypeResponse> getPayType(@Query("token") int token,
+                                        @Query("userId") int userId);
 
     //发起支付宝支付请求获取支付链接  老接口     *********post请求的时候 向API中间插入值方法 ********
     @POST("zsyhpayApp/zhpay/{id}/getPayInfoPage")
@@ -228,16 +226,16 @@ public interface Api {
 
     //我的提货单
     @GET("api/v2/bill/getBillOrderList")
-    Call<PickUpGoodsResponse> getLading(@Query("userId")int userId,
-                                        @Query("countPerPage")int countPerPage,
-                                        @Query("pageIndex")int pageIndex,
-                                        @Query("status")int status);
+    Call<PickUpGoodsResponse> getLading(@Query("userId") int userId,
+                                        @Query("countPerPage") int countPerPage,
+                                        @Query("pageIndex") int pageIndex,
+                                        @Query("status") int status);
 
     //获取尺码调整单
     @GET("api/change/getChangList")
-    Call<SizeAdjustResponse> getSizeBill(@Query("userId")int userId,
-                                         @Query("countPerPage")int countPerPage,
-                                         @Query("pageIndex")int pageIndex);
+    Call<SizeAdjustResponse> getSizeBill(@Query("userId") int userId,
+                                         @Query("countPerPage") int countPerPage,
+                                         @Query("pageIndex") int pageIndex);
 
     //提交尺码调整单
     @POST("api/change/submitChangeList")
@@ -245,8 +243,8 @@ public interface Api {
 
     //获取上线新款
     @GET("api/product/getActivityProductList")
-    Call<HomeNewArrivalResponse> getNewArrival(@Query("userId")String userId,
-                                               @Query("token")int token);
+    Call<HomeNewArrivalResponse> getNewArrival(@Query("userId") String userId,
+                                               @Query("token") int token);
 
     //获取帮助中心内容
     @GET("api/cms/problemlist")
@@ -271,7 +269,7 @@ public interface Api {
     //选择地址
     @GET("api/city/list")
     Call<AlterAddressResponse> getProvince(@Query("type") int type,
-                                           @Query("id")int id);
+                                           @Query("id") int id);
 
     //添加新地址
     @POST("api/agent/addAgentAddress")
@@ -283,18 +281,18 @@ public interface Api {
 
     //获取提货单详情
     @GET("api/v2/bill/getBillInfoById")
-    Call<PickUpDetailsResponse> getPickUpDetails(@Query("orderNumber")String orderNumber);
+    Call<PickUpDetailsResponse> getPickUpDetails(@Query("orderNumber") String orderNumber);
 
     //获取提货篮以及商品库存
     @GET("api/v2/bill/getBillRepository")
-    Call<PickUpAndCommodityResponse> getPickUpCommodity(@Query("userId")String userId,
-                                                        @Query("repositoryId")int repositoryId);
+    Call<PickUpAndCommodityResponse> getPickUpCommodity(@Query("userId") String userId,
+                                                        @Query("repositoryId") int repositoryId);
 
     //意见反馈
     @POST("api/v2/call/callBack")
     Call<BaseBenTwo> requestFeedBack(@Body FeedBackRequest requestBody);
 
-   //删除订单
+    //删除订单
     @POST("api/v2/order/delOrder")
     Call<BaseBenTwo> requestDeleteOrder(@Body DeleteOrderRequest requestBody);
 
@@ -304,33 +302,33 @@ public interface Api {
 
     //获取购物车是否商品
     @GET("api/v2/order/getCartNumber")
-    Call<CartWhetherNullResponse> getCartWhetherIsNull(@Query("userId")int userId);
+    Call<CartWhetherNullResponse> getCartWhetherIsNull(@Query("userId") int userId);
 
     //获取上级代理列表
     @GET("api/v2/agent/findAgentByParentCode")
-    Call<AgencyQueryResponse> getAgencyList(@Query("parentCode")String parentCode,
-                                            @Query("pageIndex")int pageIndex,
-                                            @Query("countPerPage")int countPerPage,
-                                            @Query("userId")String userId);
+    Call<AgencyQueryResponse> getAgencyList(@Query("parentCode") String parentCode,
+                                            @Query("pageIndex") int pageIndex,
+                                            @Query("countPerPage") int countPerPage,
+                                            @Query("userId") String userId);
 
     //获取下级代理
     @GET("api/v2/agent/findAgentByUserId")
-    Call<AgencyQueryResponse> getLowerAgency(@Query("userId")String userId,
-                                              @Query("pageIndex")int pageIndex,
-                                              @Query("countPerPage")int countPerPage);
+    Call<AgencyQueryResponse> getLowerAgency(@Query("userId") String userId,
+                                             @Query("pageIndex") int pageIndex,
+                                             @Query("countPerPage") int countPerPage);
 
     //搜索代理
     @GET("api/v2/agent/searchAgent")
-    Call<AgencyQueryResponse> getSearchAgency(@Query("keyword")String keyword,
-                                              @Query("pageIndex")int pageIndex,
-                                              @Query("countPerPage")int countPerPage,
-                                              @Query("userId")String userId);
+    Call<AgencyQueryResponse> getSearchAgency(@Query("keyword") String keyword,
+                                              @Query("pageIndex") int pageIndex,
+                                              @Query("countPerPage") int countPerPage,
+                                              @Query("userId") String userId);
 
     //查自己
     @GET("api/v2/agent/findSelf")
     Call<AgencyQueryResponse> getMeAgency(@Query("userId") String userId,
-                                          @Query("pageIndex")int pageIndex,
-                                          @Query("countPerPage")int countPerPage);
+                                          @Query("pageIndex") int pageIndex,
+                                          @Query("countPerPage") int countPerPage);
 
     //销售管理
     @GET("api/sales/getSalesOrderList")
@@ -371,7 +369,7 @@ public interface Api {
     //获取圈子列表
     @GET("api/circle/getCircleList")
     Call<CircleResponse> getCircleList(@Query("userId") int userId,
-                                       @Query("type")int type,
+                                       @Query("type") int type,
                                        @Query("countPerPage") int countPerPage,
                                        @Query("pageIndex") int pageIndex);
 
@@ -397,11 +395,11 @@ public interface Api {
 
     //获取二维码
     @GET("api/agent/getCode")
-    Call<QRCodeResponse> getQRCode (@Query("userId")int userId);
+    Call<QRCodeResponse> getQRCode(@Query("userId") int userId);
 
     //获取自己的收款信息
     @GET("api/v2/order/getMyPayPrompt")
-    Call<MyPayContentResponse> getMyPay(@Query("userId")int userId);
+    Call<MyPayContentResponse> getMyPay(@Query("userId") int userId);
 
     //设置自己的收款信息
     @POST("api/v2/order/setMyPayPrompt")
@@ -409,14 +407,14 @@ public interface Api {
 
     //获取上级的收款信息
     @GET("api/v2/order/getOrderPayPrompt")
-    Call<MyPayContentResponse> getSuperiorPayContent(@Query("userId")int userId);
+    Call<MyPayContentResponse> getSuperiorPayContent(@Query("userId") int userId);
 
     //获取新闻评论
     @GET("api/newsComment/getCommentList")
-    Call<NewsCommentResponse> getNewsComment(@Query("userId")int userId,
-                                             @Query("textId")int textId,
-                                             @Query("countPerPage")int countPerPage,
-                                             @Query("pageIndex")int pageIndex);
+    Call<NewsCommentResponse> getNewsComment(@Query("userId") int userId,
+                                             @Query("textId") int textId,
+                                             @Query("countPerPage") int countPerPage,
+                                             @Query("pageIndex") int pageIndex);
 
     //发表评论
     @POST("api/newsComment/publishComment")
@@ -428,9 +426,9 @@ public interface Api {
 
     //获取指定圈子评论
     @GET("api/circle/getCommentCircleById")
-    Call<LookCommentResponse> getCircleComment(@Query("circleId")int circleId,
-                                               @Query("countPerPage")int countPerPage,
-                                               @Query("pageIndex")int pageIndex);
+    Call<LookCommentResponse> getCircleComment(@Query("circleId") int circleId,
+                                               @Query("countPerPage") int countPerPage,
+                                               @Query("pageIndex") int pageIndex);
 
     //新增评论
     @POST("api/circle/addComment")
@@ -442,18 +440,18 @@ public interface Api {
 
     //获取余额
     @GET("api/balance/getAgentBalance")
-    Call<BalanceResponse> getMyBalance(@Query("agentId")int agentId);
+    Call<BalanceResponse> getMyBalance(@Query("agentId") int agentId);
 
     //获取余额明细
     @GET("api/balance/getAgentBalanceDetail")
-    Call<BalanceDetailResponse> getBalanceDetail(@Query("agentId")int agentId,
-                                                 @Query("month")int month,
-                                                 @Query("year")int year,
+    Call<BalanceDetailResponse> getBalanceDetail(@Query("agentId") int agentId,
+                                                 @Query("month") int month,
+                                                 @Query("year") int year,
                                                  @Query("type") int type);
 
     //获取银行卡列表
     @GET("api/balance/getAgentBankCard")
-    Call<BankCardListResponse> getBankCard(@Query("agentId")int agentId);
+    Call<BankCardListResponse> getBankCard(@Query("agentId") int agentId);
 
     //添加银行卡
     @POST("api/balance/addBankCard")
@@ -477,8 +475,8 @@ public interface Api {
 
     //查看账户余额收支明细
     @GET("api/balance/getInsideDetail")
-    Call<AccountBalanceDetailResponse> getAccountBalance(@Query("id")int id,
-                                                         @Query("type")int type);
+    Call<AccountBalanceDetailResponse> getAccountBalance(@Query("id") int id,
+                                                         @Query("type") int type);
 
     //修改支付密码
     @POST("api/balance/modifyPassword")
@@ -493,17 +491,18 @@ public interface Api {
     Call<BaseBenTwo> requestLoginOut(@Body LoginOutRequest requestBody);
 
     //获取可用的支付方式
-    @GET("api/order/getChd")// 正式服是 getPayMode ******
-    Call<PayTypeResponse> getUsablePayType(@Query("agentId")int agentId,
-                                           @Query("orderNo")String orderNo);
+    @GET("api/order/getChd")
+// 正式服是 getPayMode ******
+    Call<PayTypeResponse> getUsablePayType(@Query("agentId") int agentId,
+                                           @Query("orderNo") String orderNo);
 
     //建行支付
     @GET("api/pay/getCCBPay")
-    Call<CCBPayResponse> getCCBPay(@Query("orderNumber")String orderNumber);
+    Call<CCBPayResponse> getCCBPay(@Query("orderNumber") String orderNumber);
 
     //获取修改手机号验证码
     @GET("api/v2/agent/sendModifyMobilePhoneVerificationCode")
-    Call<AlterVerifyResponse> getAlterPhoneVerifyCode(@Query("mobilephone")String mobilephone);
+    Call<AlterVerifyResponse> getAlterPhoneVerifyCode(@Query("mobilephone") String mobilephone);
 
     //验证旧的手机验证码
     @POST("api/agent/judgeCode")
@@ -515,7 +514,7 @@ public interface Api {
 
     //获取个人信息
     @GET("api/agent/getAgentDetail")
-    Call<AgentDataResponse> getAgentData(@Query("agentId")int agentId);
+    Call<AgentDataResponse> getAgentData(@Query("agentId") int agentId);
 
     //创建京东支付
     @POST("api/pay/createJdPay")
@@ -552,13 +551,13 @@ public interface Api {
 
     //获取代理等级信息
     @GET("api/agent/getGradePowerDetail")
-    Call<AgencyUpDataResponse> getAgencyUpData(@Query("agentId")int agentId);
+    Call<AgencyUpDataResponse> getAgencyUpData(@Query("agentId") int agentId);
 
     //获取升级请求
     @GET("api/agent/getApplyList")
-    Call<UpDataBegResponse>  getUpBeg(@Query("agentId")int agentId,
-                                      @Query("countPerPage")int countPerPage,
-                                      @Query("pageIndex")int pageIndex);
+    Call<UpDataBegResponse> getUpBeg(@Query("agentId") int agentId,
+                                     @Query("countPerPage") int countPerPage,
+                                     @Query("pageIndex") int pageIndex);
 
     //同意升级
     @POST("api/agent/agree")
@@ -596,8 +595,8 @@ public interface Api {
 
     //获取实体仓库单件商品库存
     @GET("api/physicalWarehouse/getProColSize")
-    Call<EntitySingletonStockResponse> getEntitySingletonStock(@Query("productId")int productId,
-                                                      @Query("warehouseId") int warehouseId);
+    Call<EntitySingletonStockResponse> getEntitySingletonStock(@Query("productId") int productId,
+                                                               @Query("warehouseId") int warehouseId);
 
     //新增保存实体仓库商品数量
     @POST("api/physicalWarehouse/addProductPhysicalWarehouse")
@@ -629,7 +628,7 @@ public interface Api {
 
     //获取零售记录
     @GET("api/physicalWarehouse/getOutList")
-    Call<RetailRecordResponse> getRetailRecord(@Query("agentId")int agentId,
+    Call<RetailRecordResponse> getRetailRecord(@Query("agentId") int agentId,
                                                @Query("pageIndex") int pageIndex,
                                                @Query("size") int size);
 
@@ -669,9 +668,9 @@ public interface Api {
 
     //我的团队详情
     @GET("api/achievement/getTeamDetail")
-    Call<MyTeamDetailResponse> getMyTeamDetail(@Query("agentId")int agentId,
-                                               @Query("month")String month,
-                                               @Query("year")String year);
+    Call<MyTeamDetailResponse> getMyTeamDetail(@Query("agentId") int agentId,
+                                               @Query("month") String month,
+                                               @Query("year") String year);
 
     //获取每日团队业绩
     @GET("api/achievement/getDayTeamMoney")
@@ -682,8 +681,8 @@ public interface Api {
     @GET("api/achievement/getSubTeamMoney")
     Call<SubordinateGradeResponse> getSubordinateGrade(@Query("agentId") int agentId,
                                                        @Query("date") String date,
-                                                       @Query("pageIndex")int pageIndex,
-                                                       @Query("countPerPage")int countPerPage);
+                                                       @Query("pageIndex") int pageIndex,
+                                                       @Query("countPerPage") int countPerPage);
 
     //每日招新人数
     @GET("api/achievement/getOwnRecruitNew")
@@ -692,14 +691,14 @@ public interface Api {
 
     //直属下级团队人员状况
     @GET("api/achievement/getSubRecruitNew")
-    Call<SubordinateTeamPeopleResponse>  getSubordinateTeamPeople(@Query("agentId") int agentId,
-                                                                  @Query("date") String date,
-                                                                  @Query("pageIndex")int pageIndex,
-                                                                  @Query("countPerPage")int countPerPage);
+    Call<SubordinateTeamPeopleResponse> getSubordinateTeamPeople(@Query("agentId") int agentId,
+                                                                 @Query("date") String date,
+                                                                 @Query("pageIndex") int pageIndex,
+                                                                 @Query("countPerPage") int countPerPage);
 
     //获取内衣各等级人员分布
     @GET("api/achievement/getRankPersonnel")
-    Call<BraEachLevelPeopleResponse>  getEachLevelPeople(@Query("agentId")int agentId);
+    Call<BraEachLevelPeopleResponse> getEachLevelPeople(@Query("agentId") int agentId);
 
     //获取塑身衣各等级人员分布
     @GET("api/achievement/getIShowRankPersonnel")
@@ -708,14 +707,14 @@ public interface Api {
     //获取下级各等级人员分布
     @GET("api/achievement/getSubRankPersonnel")
     Call<SubordinateTeamPeopleDistributionResponse> getSubordinationTeamDistribution(@Query("agentId") int agentId,
-                                                                                     @Query("pageIndex")int pageIndex,
-                                                                                     @Query("countPerPage")int countPerPage);
+                                                                                     @Query("pageIndex") int pageIndex,
+                                                                                     @Query("countPerPage") int countPerPage);
 
     //获取资金回退订单
     @GET("api/balance/getOrderBalanceIncome")
     Call<OrderFundRollBackResponse> getFundOrderRollBack(@Query("agentId") int agentId,
                                                          @Query("countPerPage") int countPerPage,
-                                                         @Query("pageIndex")int pageIndex);
+                                                         @Query("pageIndex") int pageIndex);
 
     //提现到银行卡
     @POST("api/balance/ConnectBankEnterprise")
@@ -727,7 +726,7 @@ public interface Api {
 
     //获取塑身衣证书
     @GET("api/cert/getAgentIShowCert")
-    Call<ShapeWearCredentialResponse>  getShapeWearCredential(@Query("agentId") int agentId);
+    Call<ShapeWearCredentialResponse> getShapeWearCredential(@Query("agentId") int agentId);
 
     //生成塑身衣证书
     @POST("api/cert/publishIShowCert")
@@ -739,13 +738,13 @@ public interface Api {
 
     //获取下级扫码列表
     @GET("api/agent/order/getAgentOrderList")
-    Call<SubordinateScanResponse> getSubordinateScan(@Query("userId")int userId,
-                                                     @Query("pageIndex")int pageIndex,
-                                                     @Query("countPerPage")int countPerPage);
+    Call<SubordinateScanResponse> getSubordinateScan(@Query("userId") int userId,
+                                                     @Query("pageIndex") int pageIndex,
+                                                     @Query("countPerPage") int countPerPage);
 
     //资金申请是判断是否是台湾代理
     @GET("api/balance/judgeTaiwanAgent")
-    Call<JudgeTaiWanAgentResponse> getTaiWanAgent(@Query("agentId")int agentId);
+    Call<JudgeTaiWanAgentResponse> getTaiWanAgent(@Query("agentId") int agentId);
 
     //出库扫码
     @POST("api/codeRepository/superiorScanCode")
@@ -755,7 +754,7 @@ public interface Api {
      * 查询出库下级信息
      */
     @GET("api/physicalWarehouse/getAgentByCode")
-    Call<QueryOutSubordinateResponse> getOutSubordinate(@Query("agentCode")String agentCode);
+    Call<QueryOutSubordinateResponse> getOutSubordinate(@Query("agentCode") String agentCode);
 
     /**
      * 获取提货提醒
@@ -767,40 +766,40 @@ public interface Api {
      * 获取相册
      */
     @GET("api/album/getAlbumList")
-    Call<CompanyPhotoResponse> getPhotoAlbum(@Query("pageIndex")int pageIndex,
-                                             @Query("countPerPage")int countPerPage);
+    Call<CompanyPhotoResponse> getPhotoAlbum(@Query("pageIndex") int pageIndex,
+                                             @Query("countPerPage") int countPerPage);
 
     /**
      * 获取相册的照片
      */
     @GET("api/album/getPhotosByAlbumId")
-    Call<PhotoAlbumPictureResponse> getPhotoAlbumPicture(@Query("albumId")int albumId,
-                                                         @Query("pageIndex")int pageIndex,
-                                                         @Query("countPerPage")int countPerPage);
+    Call<PhotoAlbumPictureResponse> getPhotoAlbumPicture(@Query("albumId") int albumId,
+                                                         @Query("pageIndex") int pageIndex,
+                                                         @Query("countPerPage") int countPerPage);
 
     /**
      * 获取我的圈子
      */
     @GET("api/circle/getMyCircleList")
-    Call<MyCircleResponse> getMyCircles(@Query("countPerPage")int countPerPage,
-                                        @Query("pageIndex")int pageIndex,
+    Call<MyCircleResponse> getMyCircles(@Query("countPerPage") int countPerPage,
+                                        @Query("pageIndex") int pageIndex,
                                         @Query("type") int type,
-                                        @Query("userId")int userId);
+                                        @Query("userId") int userId);
 
     /**
      * 获取首页新闻
      */
     @GET("api/newsNotice/getNewsNoticeList")
-    Call<HomeNewsResponse> getHomeNews(@Query("pageIndex")int pageIndex,
-                                       @Query("countPerPage")int countPerPage);
+    Call<HomeNewsResponse> getHomeNews(@Query("pageIndex") int pageIndex,
+                                       @Query("countPerPage") int countPerPage);
 
 
     /**
      * 获取首页活动
      */
     @GET("api/activityNotice/getActivityNoticeList")
-    Call<HomeActivityResponse> getHomeNotice(@Query("pageIndex")int pageIndex,
-                                             @Query("countPerPage")int countPerPage);
+    Call<HomeActivityResponse> getHomeNotice(@Query("pageIndex") int pageIndex,
+                                             @Query("countPerPage") int countPerPage);
 
     /**
      * 获取首页圈子
@@ -812,9 +811,9 @@ public interface Api {
      * 获取热门圈子
      */
     @GET("api/circle/getPopularCircleList")
-    Call<MyCircleResponse> getHotCircle(@Query("pageIndex")int pageIndex,
-                                        @Query("countPerPage")int countPerPage,
-                                        @Query("userId")int userId);
+    Call<MyCircleResponse> getHotCircle(@Query("pageIndex") int pageIndex,
+                                        @Query("countPerPage") int countPerPage,
+                                        @Query("userId") int userId);
 
     /**
      * 获取产品轮播
@@ -832,16 +831,16 @@ public interface Api {
      * 获取微信登录的access_token
      */
     @GET("sns/oauth2/access_token")
-    Call<WeChartAccessTokenResponse> getWeChartAccessToken(@Query("appid")String appid,
-                                                           @Query("secret")String secret,
-                                                           @Query("code")String code,
+    Call<WeChartAccessTokenResponse> getWeChartAccessToken(@Query("appid") String appid,
+                                                           @Query("secret") String secret,
+                                                           @Query("code") String code,
                                                            @Query("grant_type") String grant_type);
 
     /**
      * 获取微信登录成功的用户信息
      */
     @GET("sns/userinfo")
-    Call<WeChartLoginUserInfoResponse> getWeChartLoginUserInfo(@Query("access_token")String access_token,
+    Call<WeChartLoginUserInfoResponse> getWeChartLoginUserInfo(@Query("access_token") String access_token,
                                                                @Query("openid") String openid);
 
     /**

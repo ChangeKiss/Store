@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowBackgroundGrey"
@@ -13,13 +12,19 @@
         android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="46dp">
-    </FrameLayout>
+        android:layout_marginBottom="51dp"></FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:background="@color/windowBackgroundGrey" />
 
     <LinearLayout
         android:id="@+id/layout_bottombar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@color/windowBackground"
         android:orientation="horizontal">
@@ -28,16 +33,18 @@
         <TextView
             android:id="@+id/tv_tab_one"
             style="@style/bottomBar"
-            android:text="@string/tab_noe"
+            android:layout_gravity="center"
+            android:drawablePadding="2dp"
             android:drawableTop="@mipmap/home_ok"
-            android:drawablePadding="2dp"/>
+            android:text="@string/tab_noe" />
 
         <TextView
             android:id="@+id/tv_tab_two"
             style="@style/bottomBar"
-            android:text="@string/tab_two"
+            android:layout_gravity="center"
+            android:drawablePadding="2dp"
             android:drawableTop="@mipmap/news_no"
-            android:drawablePadding="2dp"/>
+            android:text="@string/tab_two" />
 
         <RelativeLayout
             android:layout_width="55dp"
@@ -49,47 +56,48 @@
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
                 android:layout_centerHorizontal="true"
-                android:src="@mipmap/service_icon"
-                android:layout_marginBottom="@dimen/drawablePadding_5dp"/>
+                android:layout_marginBottom="@dimen/drawablePadding_5dp"
+                android:src="@mipmap/service_icon" />
 
             <TextView
                 android:id="@+id/tv_message_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:textColor="@color/windowBackground"
-                android:visibility="invisible"
-                android:text=""
-                android:gravity="center"
+                android:layout_marginRight="@dimen/drawablePadding_3dp"
                 android:background="@drawable/shape_home_message_count"
+                android:gravity="center"
+                android:text=""
+                android:textColor="@color/windowBackground"
                 android:textSize="7sp"
-                android:layout_marginRight="@dimen/drawablePadding_3dp"/>
+                android:visibility="invisible" />
 
         </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_tab_five"
             style="@style/bottomBar"
-            android:text="@string/circle"
+            android:drawablePadding="3dp"
             android:drawableTop="@mipmap/circle_no"
-            android:visibility="gone"
-            android:drawablePadding="3dp"/>
+            android:text="@string/circle"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_tab_three"
             style="@style/bottomBar"
-            android:text="@string/tab_three"
+            android:layout_gravity="center"
+            android:drawablePadding="2dp"
             android:drawableTop="@mipmap/product_no"
-            android:drawablePadding="2dp"/>
+            android:text="@string/tab_three" />
 
 
         <TextView
             android:id="@+id/tv_tab_four"
             style="@style/bottomBar"
-            android:text="@string/tab_four"
+            android:layout_gravity="center"
+            android:drawablePadding="2dp"
             android:drawableTop="@mipmap/user_no"
-            android:drawablePadding="2dp"/>
-
+            android:text="@string/tab_four" />
 
 
     </LinearLayout>

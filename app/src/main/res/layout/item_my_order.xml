@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.Store.www.base.CustomRCCircularLayout.RCRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:round_corner="6dp"
+    android:layout_marginLeft="@dimen/divider_10dp"
+    android:layout_margin="@dimen/divider_10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/windowBackground"
         android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:background="@color/resultColor"
-            android:layout_height="@dimen/drawablePadding_5dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,9 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textColor="@color/textColorBlack"
-                android:text="失效时间"
-                />
+                android:textColor="@color/textColorBlack" />
 
             <View
                 style="@style/weight_1"/>
@@ -38,14 +36,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="13sp"
-                android:text=""
                 android:textColor="@color/textColorBlack"
                 android:gravity="center"/>
 
         </LinearLayout>
 
-        <View
-            style="@style/divider_horizontal2"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -60,6 +55,7 @@
                 android:layout_width="@dimen/divider_80dp"
                 android:layout_height="@dimen/divider_80dp"
                 android:adjustViewBounds="true"
+                android:background="@drawable/shape_user_head_background"
                 android:scaleType="fitXY" />
 
             <TextView
@@ -67,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/iv_orders_images"
-                android:text="DD1111111"
+                android:text=""
                 android:textSize="@dimen/small_text_size"
                 android:layout_marginLeft="@dimen/divider_10dp"
                 android:textColor="@color/buttombarText"/>
@@ -78,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/iv_orders_images"
                 android:layout_below="@+id/tv_orders_number"
-                android:text="安航三"
+                android:text=""
                 android:layout_marginTop="3dp"
                 android:textSize="@dimen/small_text_size"
                 android:layout_marginLeft="@dimen/divider_10dp"
@@ -91,7 +87,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_orders_name"
                 android:layout_toRightOf="@+id/iv_orders_images"
-                android:text="1888888888"
                 android:textSize="@dimen/small_text_size"
                 android:layout_marginLeft="@dimen/divider_10dp"
                 android:layout_marginTop="3dp"
@@ -102,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_orders_phone"
-                android:text="你回复接电话"
+                android:text=""
                 android:layout_toRightOf="@+id/iv_orders_images"
                 android:layout_marginLeft="@dimen/divider_10dp"
                 android:layout_marginTop="3dp"
@@ -113,8 +108,6 @@
 
         </RelativeLayout>
 
-        <View
-            style="@style/divider_horizontal2"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -132,20 +125,28 @@
                 android:layout_marginLeft="@dimen/divider_10dp"
                 android:layout_marginTop="@dimen/drawablePadding_5dp"
                 android:textColor="@color/textColorBlack"
-                android:text="33"
                 android:textSize="@dimen/small_text_size"/>
 
 
             <TextView
                 android:id="@+id/tv_pay_order"
-                style="@style/buttonInviteOrangeCircle"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:gravity="center"
+                android:textColor="@color/windowBackground"
+                android:background="@drawable/shape_order_ok_background"
                 android:layout_alignParentRight="true"
-                android:text="@string/pay_order"/>
+                android:textSize="10sp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
+                android:text="@string/pay_order" />
 
             <TextView
                 android:id="@+id/tv_cancel_order"
-                style="@style/buttonInviteOrangeCircle"
+                style="@style/buttonInviteOrder"
                 android:layout_toLeftOf="@+id/tv_pay_order"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
                 android:layout_marginRight="@dimen/divider_10dp"
                 android:text="@string/order_no"/>
 
@@ -155,4 +156,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</com.Store.www.base.CustomRCCircularLayout.RCRelativeLayout>

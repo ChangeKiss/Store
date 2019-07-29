@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/windowBackground"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -15,50 +14,45 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/message_toolbar"
-            android:paddingTop="@dimen/divider_30dp"
-            android:paddingBottom="@dimen/divider_10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/placeholder_top"
+            android:background="@color/top_color"
+            android:paddingBottom="@dimen/divider_10dp"
+            android:paddingTop="@dimen/divider_30dp"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             tools:ignore="Overdraw">
 
 
-
-                <TextView
-                    android:id="@+id/message_my"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/windowBackground"
-                    android:textSize="@dimen/tab_text_size"
-                    android:layout_gravity = "center|left"
-                    android:visibility="gone"
-                    android:text="我的"/>
-
+            <TextView
+                android:id="@+id/message_my"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:text="我的"
+                android:textColor="@color/windowBackground"
+                android:textSize="@dimen/tab_text_size"
+                android:visibility="gone" />
 
 
-                <TextView
-                    android:id="@+id/message_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="讯息"
-                    android:layout_gravity="center"
-                    android:textSize="@dimen/title_text_size"
-                    android:layout_marginLeft="@dimen/divider_20dp"
-                    android:textColor="@color/windowBackground"/>
+            <TextView
+                android:id="@+id/message_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/divider_20dp"
+                android:text="讯息"
+                android:textColor="@color/windowBackground"
+                android:textSize="@dimen/title_text_size" />
 
 
-
-                <ImageView
-                    android:id="@+id/iv_publish_circle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity ="center|right"
-                    android:layout_marginRight="@dimen/divider_20dp"
-                    android:src="@mipmap/top_fb_icon"
-                    android:visibility="gone"/>
-
-
+            <ImageView
+                android:id="@+id/iv_publish_circle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="@dimen/divider_20dp"
+                android:src="@mipmap/top_fb_icon"
+                android:visibility="gone" />
 
 
         </android.support.v7.widget.Toolbar>
@@ -66,11 +60,11 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/message_tab"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/divider_30dp"
+            android:layout_height="@dimen/divider_45dp"
             android:background="@color/windowBackground"
             app:tabIndicatorColor="#ffca93"
-            app:tabTextColor="@color/textColorGrey"
-            app:tabSelectedTextColor="@color/placeholder_top" />
+            app:tabSelectedTextColor="@color/placeholder_top"
+            app:tabTextColor="@color/textColorBlack" />
 
 
     </android.support.design.widget.AppBarLayout>

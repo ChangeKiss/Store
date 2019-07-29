@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
@@ -13,123 +12,104 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
         <LinearLayout
             android:id="@+id/layout_my_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_layout_border"
+            android:background="@color/windowBackgroundWhite"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/layout_my_order"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_item_height"
+                android:orientation="horizontal"
                 android:paddingLeft="@dimen/divider_my_kivie"
-                android:paddingRight="@dimen/gudieview_height"
-                android:orientation="horizontal">
+                android:paddingRight="@dimen/gudieview_height">
 
                 <TextView
                     android:id="@+id/tv_personage_order"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="@color/textColorBlack"
-                    android:textSize="@dimen/large_text_size"
                     android:gravity="center"
-                    android:text="@string/my_order" />
+                    android:text="@string/my_order"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/large_text_size" />
 
-                <View
-                    style="@style/weight_1"/>
+                <View style="@style/weight_1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/look_all_order"
-                    android:gravity="center"
-                    android:textColor="@color/buttombarText"
-                    android:textSize="@dimen/medium_text_size"
-                    android:drawableRight="@mipmap/enter_icon"
                     android:layout_marginRight="7dp"
-                    android:drawablePadding="@dimen/drawablePadding_3dp"/>
-
-
+                    android:drawablePadding="@dimen/drawablePadding_3dp"
+                    android:drawableRight="@mipmap/enter_icon"
+                    android:gravity="center"
+                    android:text="@string/look_all_order"
+                    android:textColor="@color/buttombarText"
+                    android:textSize="@dimen/medium_text_size" />
             </LinearLayout>
 
-
-
-            <View style="@style/divider_horizontal2" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_half_dp"
+                android:background="@color/dividerColorGrey" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
+                android:layout_height="@dimen/dp_72"
+                android:layout_marginLeft="@dimen/divider_25dp"
+                android:layout_marginRight="@dimen/divider_25dp"
                 android:gravity="center"
-                android:layout_height="@dimen/dp_72">
-
-                <View
-                    style="@style/weight_1"/>
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_stay_pay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/small_text_size"
-                    android:textColor="@color/buttombarText"
-                    android:drawableTop="@mipmap/stay_pay"
                     android:drawablePadding="@dimen/drawablePadding_3dp"
-                    android:text="@string/stay_pay"/>
+                    android:drawableTop="@mipmap/stay_pay"
+                    android:text="@string/stay_pay"
+                    android:textColor="@color/buttombarText"
+                    android:textSize="@dimen/small_text_size" />
 
-                <View
-                    style="@style/weight_1"/>
-
+                <View style="@style/weight_1" />
 
                 <TextView
                     android:id="@+id/tv_stay_shipments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/small_text_size"
-                    android:textColor="@color/buttombarText"
-                    android:drawableTop="@mipmap/stay_shipments"
                     android:drawablePadding="@dimen/drawablePadding_3dp"
-                    android:text="@string/stay_shipments"/>
+                    android:drawableTop="@mipmap/stay_shipments"
+                    android:text="@string/stay_shipments"
+                    android:textColor="@color/buttombarText"
+                    android:textSize="@dimen/small_text_size" />
 
-                <View
-                    style="@style/weight_1"/>
-
+                <View style="@style/weight_1" />
 
                 <TextView
                     android:id="@+id/tv_shipments_loading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/small_text_size"
-                    android:textColor="@color/buttombarText"
-                    android:drawableTop="@mipmap/shipments_loading"
                     android:drawablePadding="@dimen/drawablePadding_3dp"
-                    android:text="@string/shipments_loading"/>
+                    android:drawableTop="@mipmap/shipments_loading"
+                    android:text="@string/shipments_loading"
+                    android:textColor="@color/buttombarText"
+                    android:textSize="@dimen/small_text_size" />
 
-                <View
-                    style="@style/weight_1"/>
+                <View style="@style/weight_1" />
 
 
                 <TextView
                     android:id="@+id/tv_order_over"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/small_text_size"
-                    android:textColor="@color/buttombarText"
-                    android:drawableTop="@mipmap/order_over"
                     android:drawablePadding="@dimen/drawablePadding_3dp"
-                    android:text="@string/order_over"/>
-
-                <View
-                    style="@style/weight_1"/>
-
+                    android:drawableTop="@mipmap/order_over"
+                    android:text="@string/order_over"
+                    android:textColor="@color/buttombarText"
+                    android:textSize="@dimen/small_text_size" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/drawablePadding_3dp"
-                android:background="@color/windowBackgroundLightGrey"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,29 +127,26 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:text="@string/my_shape_wear_lv"
-                        android:textSize="@dimen/large_text_size"
                         android:textColor="@color/textColorBlack"
-                        android:gravity="center"/>
+                        android:textSize="@dimen/large_text_size" />
 
-                    <View
-                        style="@style/weight_1"/>
+                    <View style="@style/weight_1" />
 
                     <TextView
                         android:id="@+id/tv_grade_rule"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@mipmap/grade_rule_icon"
-                        android:textSize="@dimen/medium_text_size"
-                        android:text="等级规则"
                         android:layout_gravity="center"
-                        android:drawablePadding="@dimen/drawablePadding_5dp"/>
+                        android:drawableLeft="@mipmap/grade_rule_icon"
+                        android:drawablePadding="@dimen/drawablePadding_5dp"
+                        android:text="等级规则"
+                        android:textSize="@dimen/medium_text_size" />
 
                 </LinearLayout>
 
-
-                <View
-                    style="@style/divider_horizontal2"/>
+                <View style="@style/divider_horizontal3" />
 
                 <LinearLayout
                     android:id="@+id/layout_shape_wear_grade_hint"
@@ -181,45 +158,44 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingTop="@dimen/divider_10dp"
+                        android:paddingLeft="14dp"
                         android:paddingRight="@dimen/divider_15dp"
-                        android:paddingLeft="14dp">
+                        android:paddingTop="@dimen/divider_10dp">
 
                         <TextView
                             android:id="@+id/tv_now_grade"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="当前等级: 暂无"
                             android:layout_gravity="center"
                             android:gravity="center"
-                            android:textSize="@dimen/medium_text_size"/>
+                            android:text="当前等级: 暂无"
+                            android:textSize="@dimen/medium_text_size" />
 
                         <TextView
                             android:id="@+id/tv_margin_hint_tag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/shape_margin_background"
+                            android:layout_gravity="center"
                             android:layout_marginLeft="@dimen/drawablePadding_5dp"
+                            android:background="@drawable/shape_margin_background"
                             android:drawableLeft="@mipmap/margin_icon"
                             android:drawablePadding="2dp"
-                            android:text="0"
-                            android:textColor="@color/windowBackground"
-                            android:textSize="10sp"
+                            android:gravity="center"
                             android:paddingLeft="2dp"
                             android:paddingRight="2dp"
-                            android:gravity="center"
-                            android:layout_gravity="center" />
+                            android:text="0"
+                            android:textColor="@color/windowBackground"
+                            android:textSize="10sp" />
 
-                        <View
-                            style="@style/weight_1"/>
+                        <View style="@style/weight_1" />
 
                         <TextView
                             android:id="@+id/tv_next_grade"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="还差0套达到下一级"
                             android:textSize="@dimen/medium_text_size"
-                            android:visibility="gone"
-                            android:text="还差0套达到下一级"/>
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
@@ -228,33 +204,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        app:bb_arrowDirection = "Down"
+                        android:layout_marginLeft="@dimen/drawablePadding_5dp"
+                        android:layout_marginTop="@dimen/divider_6dp"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:paddingTop="1dp"
+                        android:text="666666"
+                        android:textColor="@color/windowBackground"
+                        android:textSize="@dimen/smaller_text_size"
+                        android:visibility="invisible"
+                        app:bb_arrowDirection="Down"
                         app:bb_arrowHeight="2dp"
                         app:bb_arrowWidth="5dp"
                         app:bb_borderColor="@color/placeholder_top"
                         app:bb_borderWidth="1dp"
                         app:bb_cornerRadius="2dp"
-                        app:bb_fillColor="@color/placeholder_top"
-                        android:textColor="@color/windowBackground"
-                        android:textSize="@dimen/smaller_text_size"
-                        android:text="666666"
-                        android:layout_marginLeft="@dimen/drawablePadding_5dp"
-                        android:layout_marginTop="@dimen/divider_6dp"
-                        android:paddingLeft="3dp"
-                        android:paddingRight="3dp"
-                        android:paddingTop="1dp"
-                        android:visibility="invisible"
-                        android:paddingBottom="2dp" />
+                        app:bb_fillColor="@color/placeholder_top" />
 
                     <LinearLayout
                         android:id="@+id/layout_lv_progressBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:paddingBottom="@dimen/drawablePadding_5dp"
                         android:paddingLeft="@dimen/divider_30dp"
                         android:paddingRight="@dimen/divider_30dp"
-                        android:paddingTop="@dimen/drawablePadding_5dp"
-                        android:paddingBottom="@dimen/drawablePadding_5dp">
+                        android:paddingTop="@dimen/drawablePadding_5dp">
 
                     </LinearLayout>
 
@@ -281,9 +257,9 @@
                         android:id="@+id/layout_cultivate_message"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/divider_10dp"
                         android:paddingLeft="14dp"
                         android:paddingRight="@dimen/divider_15dp"
-                        android:layout_marginBottom="@dimen/divider_10dp"
                         android:visibility="gone">
 
                         <LinearLayout
@@ -296,22 +272,21 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/small_text_size"
-                                android:text="培训截止天数: "/>
+                                android:text="培训截止天数: "
+                                android:textSize="@dimen/small_text_size" />
 
                             <TextView
                                 android:id="@+id/tv_cut_off_day"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/small_text_size"
+                                android:text=""
                                 android:textColor="@color/placeholder_top"
-                                android:text=""/>
+                                android:textSize="@dimen/small_text_size" />
 
                         </LinearLayout>
 
 
-                        <View
-                            style="@style/weight_1"/>
+                        <View style="@style/weight_1" />
 
                         <LinearLayout
                             android:id="@+id/layout_cut_off_month"
@@ -323,36 +298,28 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/small_text_size"
-                                android:text="补货截止月份: "/>
+                                android:text="补货截止月份: "
+                                android:textSize="@dimen/small_text_size" />
 
                             <TextView
                                 android:id="@+id/tv_cut_off_month"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="@dimen/small_text_size"
+                                android:text=""
                                 android:textColor="@color/placeholder_top"
-                                android:text=""/>
+                                android:textSize="@dimen/small_text_size" />
 
                         </LinearLayout>
-
-
                     </LinearLayout>
-
                 </LinearLayout>
-
-
-
-
-
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/drawablePadding_3dp"
-                android:background="@color/windowBackgroundLightGrey"/>
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/drawablePadding_3dp"-->
+                <!--android:background="@color/windowBackground" />-->
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/layout_my_balance"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/login_item_height"
@@ -387,7 +354,7 @@
 
             </LinearLayout>
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_address"
@@ -395,16 +362,16 @@
                 android:drawableLeft="@mipmap/location"
                 android:text="地址管理" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
 
-           <!-- <TextView
+           &lt;!&ndash; <TextView
                 android:id="@+id/tv_personage_password"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/password"
                 android:text="@string/change_password" />
 
-            <View style="@style/divider_horizontal2" />-->
+            <View style="@style/divider_horizontal3" />&ndash;&gt;
 
             <TextView
                 android:id="@+id/tv_personage_bankCard"
@@ -412,14 +379,14 @@
                 android:drawableLeft="@mipmap/bank_card_icon"
                 android:text="银行卡号管理" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_apply"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/apply_for"
                 android:text="@string/agency_apply"
-                android:visibility="gone" />
+                android:visibility="gone" />-->
 
 
         </LinearLayout>
@@ -428,8 +395,8 @@
             android:id="@+id/layout_my_two"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/shape_layout_border"
+            android:paddingTop="3dp"
+            android:background="@color/windowBackgroundWhite"
             android:orientation="vertical">
 
             <TextView
@@ -437,10 +404,11 @@
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/scan_icon"
                 android:text="@string/scan"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
-            <View style="@style/divider_horizontal2"
-                android:visibility="gone"/>
+            <View
+                style="@style/divider_horizontal3"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/layout_personage_apply_for_beg"
@@ -454,37 +422,37 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textSize="@dimen/large_text_size"
-                    android:textColor="@color/textColorBlack"
-                    android:gravity="center"
-                    android:drawablePadding="@dimen/dp_14"
                     android:drawableLeft="@mipmap/up_data_beg"
-                    android:text="@string/apply_for_beg"/>
+                    android:drawablePadding="@dimen/dp_14"
+                    android:gravity="center"
+                    android:text="@string/apply_for_beg"
+                    android:textColor="@color/textColorBlack"
+                    android:textSize="@dimen/large_text_size" />
 
-                <View
-                    style="@style/weight_1"/>
+                <View style="@style/weight_1" />
 
                 <TextView
                     android:id="@+id/tv_apply_for_hint_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_marginRight="@dimen/drawablePadding_5dp"
                     android:background="@drawable/shape_home_message_count"
-                    android:visibility="invisible"
-                    android:layout_marginRight="@dimen/drawablePadding_5dp"/>
+                    android:gravity="center"
+                    android:visibility="invisible" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@mipmap/enter_icon"/>
+                    android:src="@mipmap/enter_icon" />
 
 
             </LinearLayout>
 
 
-            <View style="@style/divider_horizontal2"
-                android:visibility="gone"/>
+            <View
+                style="@style/divider_horizontal3"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_personage_sell_manager"
@@ -492,7 +460,7 @@
                 android:drawableLeft="@mipmap/xsgl_icon"
                 android:text="@string/market_manage" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_warehouse"
@@ -500,7 +468,7 @@
                 android:drawableLeft="@mipmap/warehouse"
                 android:text="@string/store_management" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_pickup"
@@ -508,18 +476,19 @@
                 android:drawableLeft="@mipmap/pick_up"
                 android:text="@string/pick_up" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_size"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/adjust_size"
                 android:text="@string/size_adjust"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
 
-            <View style="@style/divider_horizontal2"
-                android:visibility="gone"/>
+            <View
+                style="@style/divider_horizontal3"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_personage_certificate"
@@ -527,7 +496,7 @@
                 android:drawableLeft="@mipmap/credential"
                 android:text="@string/my_certificate" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_performance"
@@ -535,32 +504,35 @@
                 android:drawableLeft="@mipmap/my_performance"
                 android:text="@string/my_performance" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_retail_recort"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/retail_record_icon"
                 android:text="@string/retail_record"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
-            <View style="@style/divider_horizontal2"
-                android:visibility="gone"/>
+            <View
+                style="@style/divider_horizontal3"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_personage_agency_query"
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/agency_query_icon"
                 android:text="@string/agency_query" />
-
-
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@color/windowBackgroundLightGrey" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/shape_layout_border"
+            android:background="@color/windowBackgroundWhite"
             android:orientation="vertical">
 
             <TextView
@@ -568,10 +540,11 @@
                 style="@style/personalInformationText"
                 android:drawableLeft="@mipmap/system"
                 android:text="@string/company_system"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
-            <View style="@style/divider_horizontal2"
-                android:visibility="gone"/>
+            <View
+                style="@style/divider_horizontal3"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_personage_feedback"
@@ -579,7 +552,7 @@
                 android:drawableLeft="@mipmap/feedback"
                 android:text="@string/feedback" />
 
-            <View style="@style/divider_horizontal2" />
+            <View style="@style/divider_horizontal3" />
 
             <TextView
                 android:id="@+id/tv_personage_centre"
@@ -588,9 +561,5 @@
                 android:text="@string/help_centre" />
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-
 </android.support.v4.widget.NestedScrollView>

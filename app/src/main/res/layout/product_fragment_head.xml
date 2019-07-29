@@ -23,21 +23,28 @@
 
     <View
         android:id="@+id/vw_ten_height"
-        style="@style/weight_10"
+        style="@style/divider_horizontal2"
         app:layout_constraintTop_toBottomOf="@+id/xb_product"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/divider_40dp"
-        android:textSize="@dimen/tab_text_size"
-        android:textColor="@color/textColorBlack"
-        android:text="全部产品"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/vw_ten_height"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/divider_40dp"
+            android:textSize="@dimen/tab_text_size"
+            android:textColor="@color/textColorBlack"
+            android:text="全部产品"
+            android:drawableLeft="@mipmap/all_product_left"
+            android:drawableRight="@mipmap/all_product_right"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/vw_ten_height"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+
 
 
 </android.support.constraint.ConstraintLayout>

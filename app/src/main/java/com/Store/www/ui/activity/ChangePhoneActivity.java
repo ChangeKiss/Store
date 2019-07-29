@@ -221,11 +221,11 @@ public class ChangePhoneActivity extends BaseToolbarActivity implements TextWatc
         uiCustomization.titleBackgroundResId = R.color.placeholder_top;  //设置顶部标题栏背景颜色
         uiCustomization.topTipBarTextColor = R.color.windowBackground;  //设置顶部标题栏字体颜色
         if (UserPrefs.getInstance().getIcon()==null){
-            uiCustomization.rightAvatar = "http://jwbucket.oss-cn-shanghai.aliyuncs.com/mrtx.png";
+            uiCustomization.rightAvatar = "http://fuatee.oss-cn-hangzhou.aliyuncs.com/mrtx.png";
         }else {
             uiCustomization.rightAvatar = UserPrefs.getInstance().getIcon();
         }
-        uiCustomization.leftAvatar = "http://jwbucket.oss-cn-shanghai.aliyuncs.com/kf.png";
+        uiCustomization.leftAvatar = "http://fuatee.oss-cn-hangzhou.aliyuncs.com/kf.png";
         uiCustomization.titleCenter = true;
         options.uiCustomization = uiCustomization;
         //options.statusBarNotificationConfig = new StatusBarNotificationConfig();

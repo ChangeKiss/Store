@@ -1,181 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowBackground"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context="com.Store.www.ui.fragment.HomeFragment">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/placeholder_top"
-            android:paddingTop="@dimen/divider_30dp"
-            android:paddingBottom="@dimen/divider_10dp">
+    <com.Store.www.base.CustomScrollView.RefreshScrollView
+        android:id="@+id/refresh_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/head_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.Store.www.base.CustomScrollView.RefreshHeadbgView
+                    android:id="@+id/head_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/head_view_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text=""
+                    android:textColor="@color/guide_no_select"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/top_color"
+                android:paddingBottom="@dimen/divider_10dp"
+                android:paddingTop="@dimen/divider_30dp">
 
                 <TextView
                     android:id="@+id/tv_home_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tab_noe"
-                    android:gravity="center"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/windowBackground"
-                    android:textSize="@dimen/title_text_size"/>
+                    android:gravity="center"
+                    android:text="@string/tab_noe"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/title_text_size" />
 
                 <ImageView
                     android:id="@+id/iv_ke_fu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/divider_10dp"
                     android:src="@mipmap/ke_fu_icon"
-                    android:visibility="gone"
-                    android:layout_marginRight="@dimen/divider_10dp"/>
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_message_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textColor="@color/windowBackground"
-                    android:visibility="invisible"
-                    android:text="66"
-                    android:gravity="center"
+                    android:layout_marginRight="2dp"
                     android:background="@drawable/shape_home_message_count"
+                    android:gravity="center"
+                    android:text="66"
+                    android:textColor="@color/windowBackground"
                     android:textSize="9sp"
-                    android:layout_marginRight="2dp"/>
+                    android:visibility="invisible" />
 
-        </RelativeLayout>
+            </RelativeLayout>
 
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_gravity="center"
+                app:image_scale_type="center_crop" />
 
-       <com.Store.www.base.CustomScrollView.RefreshScrollView
-           android:id="@+id/refresh_sv"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_4"
+                android:background="@drawable/banner_top"
+                android:visibility="gone" />
 
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/divider_13dp"
+                android:layout_marginTop="@dimen/dp_4"
+                android:orientation="horizontal">
 
-                       <RelativeLayout
-                           android:id="@+id/head_view"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="热门圈子"
+                    android:textColor="@color/buttombarTextYellow"
+                    android:textSize="@dimen/ysf_text_size_23" />
 
-                               <com.Store.www.base.CustomScrollView.RefreshHeadbgView
-                                   android:id="@+id/head_bg"
-                                   android:layout_width="match_parent"
-                                   android:layout_height="match_parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textColor="@color/guideLightGreyColor"
+                    android:textSize="@dimen/ysf_text_size_24" />
 
-                               <TextView
-                                   android:id="@+id/head_view_tv"
-                                   android:layout_height="wrap_content"
-                                   android:layout_width="wrap_content"
-                                   android:text=""
-                                   android:layout_centerInParent="true"
-                                   android:textColor="@color/guide_no_select"
-                                   android:textSize="16sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="探索有趣的时髦生活"
+                    android:textColor="@color/guideLightGreyColor"
+                    android:textSize="@dimen/ysf_text_size_16" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="”"
+                    android:textColor="@color/guideLightGreyColor"
+                    android:textSize="@dimen/ysf_text_size_24" />
+            </LinearLayout>
 
-                       </RelativeLayout>
-
-
-                       <!--自定义轮播图控件-->
-                       <com.stx.xhb.xbanner.XBanner
-                           android:id="@+id/banner"
-                           android:layout_width="match_parent"
-                           android:layout_height="210dp"
-                           app:pointSelect="@drawable/shape_indicator_orange"
-                           app:pointNormal="@drawable/shape_indicator_white"
-                           app:AutoPlayTime="4000"
-                           app:isClipChildrenMode="true"
-                           app:clipChildrenLeftRightMargin="@dimen/divider_30dp"/>
-
-                       <View
-                           style="@style/divider_horizontal2"
-                           android:layout_marginTop="@dimen/drawablePadding_5dp"/>
-
-                       <com.stx.xhb.xbanner.XBanner
-                           android:id="@+id/home_banners_news"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           app:pointSelect="@drawable/shape_indicator_orange"
-                           app:pointNormal="@drawable/shape_indicator_white"
-                           app:AutoPlayTime="8000"
-                           app:clipChildrenLeftRightMargin="@dimen/divider_30dp"
-                           app:layout_constraintTop_toTopOf="parent"
-                           app:layout_constraintLeft_toLeftOf="parent"
-                           app:layout_constraintRight_toRightOf="parent"
-                           android:layout_marginTop="@dimen/drawablePadding_5dp"/>
-
-                       <TextView
-                           android:id="@+id/tv_home_hint_news"
-                           android:layout_width="match_parent"
-                           android:layout_height="@dimen/divider_40dp"
-                           app:layout_constraintTop_toBottomOf="@+id/home_banners"
-                           app:layout_constraintLeft_toLeftOf="parent"
-                           app:layout_constraintRight_toRightOf="parent"
-                           android:gravity="center"
-                           android:textColor="@color/textColorBlack"
-                           android:textSize="@dimen/tab_text_size"
-                           android:text="" />
-
-                       <com.stx.xhb.xbanner.XBanner
-                           android:id="@+id/home_activity"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           app:pointSelect="@drawable/shape_indicator_orange"
-                           app:pointNormal="@drawable/shape_indicator_white"
-                           app:AutoPlayTime="8000"
-                           app:clipChildrenLeftRightMargin="@dimen/divider_30dp"
-                           app:layout_constraintTop_toTopOf="parent"
-                           app:layout_constraintLeft_toLeftOf="parent"
-                           app:layout_constraintRight_toRightOf="parent"/>
-
-                       <TextView
-                           android:id="@+id/tv_home_hint_activity"
-                           android:layout_width="match_parent"
-                           android:layout_height="@dimen/divider_40dp"
-                           app:layout_constraintTop_toBottomOf="@+id/home_banners"
-                           app:layout_constraintLeft_toLeftOf="parent"
-                           app:layout_constraintRight_toRightOf="parent"
-                           android:gravity="center"
-                           android:textColor="@color/textColorBlack"
-                           android:textSize="@dimen/tab_text_size"
-                           android:text="" />
-
-                       <com.stx.xhb.xbanner.XBanner
-                           android:id="@+id/home_circle"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           app:pointSelect="@drawable/shape_indicator_orange"
-                           app:pointNormal="@drawable/shape_indicator_white"
-                           app:AutoPlayTime="8000"
-                           />
-
-                       <TextView
-                           android:id="@+id/tv_home_hint_circle"
-                           android:layout_width="match_parent"
-                           android:layout_height="@dimen/divider_40dp"
-                           app:layout_constraintTop_toBottomOf="@+id/home_banners"
-                           app:layout_constraintLeft_toLeftOf="parent"
-                           app:layout_constraintRight_toRightOf="parent"
-                           android:gravity="center"
-                           android:textColor="@color/textColorBlack"
-                           android:textSize="@dimen/tab_text_size"
-                           android:text="" />
-
-
-               </LinearLayout>
-
-
-       </com.Store.www.base.CustomScrollView.RefreshScrollView>
-
+            <com.youth.banner.Banner
+                android:id="@+id/banner_recent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/divider_13dp"
+                android:layout_marginLeft="@dimen/divider_15dp"
+                android:layout_marginRight="@dimen/divider_15dp"
+                android:layout_marginTop="@dimen/dp_6"
+                app:image_scale_type="fit_center" />
+        </LinearLayout>
+    </com.Store.www.base.CustomScrollView.RefreshScrollView>
 
 
 </LinearLayout>

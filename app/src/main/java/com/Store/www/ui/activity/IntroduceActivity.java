@@ -54,7 +54,10 @@ public class IntroduceActivity extends BaseToolbarActivity {
     private CommonFooter commonFooter;  //尾布局
     CommodityDetailAdapter mAdapter;  //适配器
     LRecyclerViewAdapter viewAdapter;
+    RelativeLayout mRlTitle;  //顶部的布局
+    LinearLayout mLayoutDescribe;  //中部布局
     private ImageView mCommodityImage;  //商品图片
+    TextView mCommodityName;  //商品名称
     private TextView mClassify;  //分类
     private TextView mStyle;  //款式
     private TextView mPrice;  //价格
@@ -63,7 +66,8 @@ public class IntroduceActivity extends BaseToolbarActivity {
     private String titlePicture;
     List<IntroduceResponse.DataBean.ImagesBean> imagesBean = new ArrayList<>();
     IntroduceResponse.DataBean.ImagesBean mBean;
-    private LinearLayout mPlaceAnOrder;  //下单按钮
+    TextView mPlaceAnOrder;  //下单按钮
+    RelativeLayout.LayoutParams paramsTwo;
 
 
     private int productId;//商品ID
@@ -107,15 +111,18 @@ public class IntroduceActivity extends BaseToolbarActivity {
     private void initHeadView(){
         commonHeader = new CommonHeader(mContext,R.layout.layout_commodity_detail_head);  //头布局
         commonFooter = new CommonFooter(mContext,R.layout.layout_commodity_detail_footer);  //尾布局
-        mCommodityImage = (ImageView) commonHeader.findViewById(R.id.iv_introduce_image);  //商品图片
-        mClassify = (TextView) commonHeader.findViewById(R.id.tv_classify);  //分类
-        mStyle = (TextView) commonHeader.findViewById(R.id.tv_style);  //款式
-        mPrice = (TextView) commonHeader.findViewById(R.id.tv_introduce_price);  //价格
-        mDetail = (LinearLayout) commonHeader.findViewById(R.id.layout_commodity_detail);  //图文详情的布局
-        mPlaceAnOrder = (LinearLayout) commonHeader.findViewById(R.id.layout_place_an_order);  //下单按钮
-        params = (RelativeLayout.LayoutParams) mPlaceAnOrder.getLayoutParams();
-        params.width = UserPrefs.getInstance().getWidth()/2-30;
-        mPlaceAnOrder.setLayoutParams(params);
+        mRlTitle = commonHeader.findViewById(R.id.rl_title);  //头布局 图片跟名称
+        mLayoutDescribe = commonHeader.findViewById(R.id.layout_describe);  //中间布局 分类跟款式
+        mCommodityImage =  commonHeader.findViewById(R.id.iv_introduce_image);  //商品图片
+        mCommodityName = commonHeader.findViewById(R.id.commodity_name);
+        mClassify =  commonHeader.findViewById(R.id.tv_classify);  //分类
+        mStyle =  commonHeader.findViewById(R.id.tv_style);  //款式
+        mPrice =  commonHeader.findViewById(R.id.tv_introduce_price);  //价格
+        mDetail =  commonHeader.findViewById(R.id.layout_commodity_detail);  //图文详情的布局
+        mPlaceAnOrder =  commonHeader.findViewById(R.id.tv_place_an_order);  //下单按钮
+        paramsTwo = (RelativeLayout.LayoutParams) mCommodityImage.getLayoutParams();
+        paramsTwo.height = UserPrefs.getInstance().getHeight()/3;
+        mCommodityImage.setLayoutParams(paramsTwo);
         mPlaceAnOrder.setOnClickListener(this);  //注册点击事件
         mTvIntroduceContent = (TextView) commonFooter.findViewById(R.id.tv_introduce_content);  //商品介绍
         initAdapter();  //初始化适配器
@@ -151,9 +158,9 @@ public class IntroduceActivity extends BaseToolbarActivity {
                             aviHide();
                             mLrCommodityDetail.setVisibility(View.VISIBLE);  //数据请求成功把详情列表展示出来
                             toolbarTitle = bean.getData().getName();  //下单时传到下一个界面的商品名称
-                            mClassify.setText("分类：" + bean.getData().getTypeName());
-                            mStyle.setText("款式：" + bean.getData().getName());
-                            mPrice.setText("价格:"+bean.getData().getCurrency() + ActivityUtils.changeMoneys(bean.getData().getPrice()));
+                            mClassify.setText("" + bean.getData().getTypeName());
+                            mStyle.setText("" + bean.getData().getName());
+                            mPrice.setText(""+bean.getData().getCurrency() + ActivityUtils.changeMoneys(bean.getData().getPrice()));
                             mTvIntroduceContent.setText(bean.getData().getContent());
                             if (bean.getData().getImages().size()!= 0){
                                 titlePicture = bean.getData().getImages().get(0).getUrl();
@@ -163,7 +170,7 @@ public class IntroduceActivity extends BaseToolbarActivity {
                                     imagesBean.add(mBean);
                                 }
                             }
-                            LogUtils.d("图片集合长度="+bean.getData().getImages().size()+"");
+                            //LogUtils.d("图片集合长度="+bean.getData().getImages().size()+"");
                             Glide.with(IntroduceActivity.this)
                                     .load(titlePicture)
                                     .priority(Priority.HIGH)  //设置加载优先级 高
@@ -171,10 +178,13 @@ public class IntroduceActivity extends BaseToolbarActivity {
                                     .thumbnail(0.5f)
                                     .error(R.mipmap.jzz_img)
                                     .into(mCommodityImage);
+                            mCommodityName.setText(bean.getData().getName());
                             mAdapter.addAll(imagesBean);  //添加数据
                             mAdapter.notifyDataSetChanged();  //通知刷新数据
                             mIvToolbarRight.setVisibility(View.VISIBLE);
                             mPlaceAnOrder.setVisibility(View.VISIBLE);
+                            mRlTitle.setVisibility(View.VISIBLE);
+                            mLayoutDescribe.setVisibility(View.VISIBLE);
                             mDetail.setVisibility(View.VISIBLE);
                         }
                         break;
@@ -256,7 +266,7 @@ public class IntroduceActivity extends BaseToolbarActivity {
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.layout_place_an_order:  //下单
+            case R.id.tv_place_an_order:  //下单
                 Intent intent = new Intent(this,OrdersActivity.class);
                 intent.putExtra("toolbarTitle",toolbarTitle);
                 intent.putExtra("productId",productId);

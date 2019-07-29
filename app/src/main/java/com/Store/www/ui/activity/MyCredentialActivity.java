@@ -393,16 +393,14 @@ public class MyCredentialActivity extends BaseToolbarActivity implements DialogH
         OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(accessKeyId, accessKeySecret);
         OSS oss = new OSSClient(getApplicationContext(), endpoint, credentialProvider);
         // 构造上传请求
-        PutObjectRequest put = new PutObjectRequest(bucketName, mObjectId + "", path);
+        PutObjectRequest put = new PutObjectRequest(bucketName, mObjectId + ".jpg", path);
 
         OSSAsyncTask task = oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
             @Override
             public void onSuccess(PutObjectRequest request, PutObjectResult result) {
                 LogUtils.d("UploadSuccess");
-                LogUtils.d("图片=="+"http://jwbucket.oss-cn-shanghai.aliyuncs.com/"+mObjectId );
-                /*postIconChange("http://jwbucket.oss-cn-shanghai.aliyuncs.com/"+mObjectId);*/
-                mCredential = "http://jwbucket.oss-cn-shanghai.aliyuncs.com/"+mObjectId;
-
+                LogUtils.d("图片=="+"http://fuatee.oss-cn-hangzhou.aliyuncs.com/"+mObjectId );
+                mCredential = "http://fuatee.oss-cn-hangzhou.aliyuncs.com/"+mObjectId+".jpg";
             }
 
             @Override

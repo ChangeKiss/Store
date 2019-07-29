@@ -35,13 +35,15 @@ import butterknife.BindView;
  * 我的仓库界面
  */
 public class MyWarehouseActivity extends BaseToolbarActivity implements WarehouseAdapter.OnItemClickListener,
-    WarehouseHeadAdapter.OnItemClickListener,BaseToolbarActivity.OnToolBarRightClickListener{
+    WarehouseHeadAdapter.OnItemClickListener{
     @BindView(R.id.iv_toolbar_right)
     TextView mTvToolbarRight;  //右上角的添加按钮
     @BindView(R.id.ry_warehouse)
     LRecyclerView mRy;
     @BindView(R.id.nodata)
     RelativeLayout mNodata;
+    @BindView(R.id.tv_add_warehouse)
+    TextView mTvAddWareHouse; //添加仓库按钮
     RecyclerView mRvHead;  //仓库的头布局列表
     LinearLayout mLayoutAddWarehouse;  //添加仓库按钮布局
     TextView mTvUserWarehouseName;  //用户仓库名
@@ -67,10 +69,9 @@ public class MyWarehouseActivity extends BaseToolbarActivity implements Warehous
     @Override
     public void initView() {
         ActivityCollector.addActivity(this);
-        initToolbar(this,true,R.string.my_warehouse,this);
+        initToolbar(this,true,R.string.my_warehouse);
         mTvToolbarRight.setVisibility(View.VISIBLE);
-        mTvToolbarRight.setText("添加");
-        mTvToolbarRight.setOnClickListener(this);
+        mTvAddWareHouse.setOnClickListener(this);
         initHead();
     }
 
@@ -270,9 +271,14 @@ public class MyWarehouseActivity extends BaseToolbarActivity implements Warehous
         });
     }
 
-    //右上角添加的点击事件
     @Override
-    public void setOnToolBarRightClickListener() {
-        mActivityUtils.startActivity(AddWarehouseActivity.class);
+    public void onClick(View view) {
+        super.onClick(view);
+        switch (view.getId()){
+            case R.id.tv_add_warehouse:
+                mActivityUtils.startActivity(AddWarehouseActivity.class);
+                break;
+        }
     }
+
 }

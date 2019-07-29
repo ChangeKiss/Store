@@ -43,7 +43,7 @@ public class RefreshHeadbgView extends View {
 
         paint.setStyle(Paint.Style.FILL);
 
-        paint.setColor(Color.rgb(255,202,147));
+        paint.setColor(Color.rgb(27,26,32));
 
 
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <View style="@style/divider_horizontal2"></View>
 
@@ -12,20 +13,17 @@
         <ImageView
             android:id="@+id/iv_news_image"
             style="@style/shopNewsPhoto"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/tv_content_title"
-            style="@style/shopNewsTitle"/>
+            style="@style/shopNewsTitle" />
 
         <TextView
             android:id="@+id/tv_content_author"
             style="@style/shopNewsDate"
             android:layout_below="@+id/tv_content_title"
-            android:layout_marginTop="@dimen/drawablePadding_5dp"/>
+            android:layout_marginTop="@dimen/drawablePadding_5dp" />
 
     </RelativeLayout>
-
-    <View style="@style/divider_horizontal2"></View>
-
 </LinearLayout>

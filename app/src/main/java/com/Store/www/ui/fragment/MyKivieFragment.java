@@ -112,8 +112,6 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
     ImageView mIvQrCode;  //二维码按钮
     @BindView(R.id.tv_personage_feedback)
     TextView mTvPersonageFeedBack;  //意见发反馈
-    @BindView(R.id.tv_balance_money)
-    TextView mTvBalanceMoney;  //余额
     @BindView(R.id.tv_apply_for_hint_number)
     TextView mTvApplyForHintNumber;  //升级请求数量
     @BindView(R.id.tv_settings)
@@ -146,7 +144,8 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
     TextView mTvCupOffMonth;  //补货截止月份
     @BindView(R.id.tv_margin_hint_tag)
     TextView mTvMarginHintTag;  //保证金提示标志
-    TableView mTableView;
+    @BindView(R.id.layout_location_bank)
+    LinearLayout mLayoutLocationBank;  //地址和银行卡管理布局 未登录隐藏 登录显示
 
     private String IsPayBound;
     private int mPayType =0;  //保证金支付类型
@@ -289,18 +288,18 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
             //根据偏移百分比 计算透明值
             float scale2 = (float) offset / (scrollRange / 2);
             int alpha2 = (int) (255 * scale2);
-            bgToolbarOpen.setBackgroundColor(Color.argb(alpha2, 255, 202, 147));
+            bgToolbarOpen.setBackgroundColor(Color.argb(alpha2, 27, 26, 32));
         } else {//当滑动超过一半，收缩状态下toolbar显示内容，根据收缩位置，改变透明值
             toolbarClose.setVisibility(View.VISIBLE);
             toolbarOpen.setVisibility(View.GONE);
             float scale3 = (float) (scrollRange  - offset) / (scrollRange / 2);
             int alpha3 = (int) (255 * scale3);
-            bgToolbarClose.setBackgroundColor(Color.argb(alpha3, 255, 202, 147));
+            bgToolbarClose.setBackgroundColor(Color.argb(alpha3, 27, 26, 32));
         }
         //根据偏移百分比计算头像布局的透明度值
         float scale = (float) offset / scrollRange;
         int alpha = (int) (255 * scale);
-        bgContent.setBackgroundColor(Color.argb(alpha, 255, 202, 147));
+        bgContent.setBackgroundColor(Color.argb(alpha, 27, 26, 32));
     }
 
     /**
@@ -555,6 +554,7 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
             mIvQrCode.setVisibility(View.INVISIBLE);
             mTvPersonageFeedBack.setVisibility(View.GONE);
             mIvMineIcon.setEnabled(false);
+            mLayoutLocationBank.setVisibility(View.GONE);
             Glide.with(mContext).load(R.mipmap.program_icon).error(R.mipmap.program_icon).into(mIvMineIcon);
         }else { //登录过
             getAgentData(mUserId);     //获取代理信息
@@ -569,15 +569,16 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
             mIvQrCode.setVisibility(View.VISIBLE);
             mTvPersonageFeedBack.setVisibility(View.VISIBLE);
             mIvMineIcon.setEnabled(true);
+            mLayoutLocationBank.setVisibility(View.VISIBLE);
             Glide.with(mContext).load(UserPrefs.getInstance().getIcon()).error(R.mipmap.default_head).into(mIvMineIcon);
-            getMyBalance(mUserId); //获取我的余额
+            //getMyBalance(mUserId); //获取我的余额
         }
     }
 
     //点击事件
-    @OnClick({R.id.tv_click_login,R.id.tv_set,R.id.tv_settings,R.id.iv_mine_icon, R.id.tv_personage_grade, R.id.tv_personage_address,
-            R.id.tv_stay_pay,R.id.tv_stay_shipments,R.id.tv_shipments_loading,R.id.tv_order_over,R.id.tv_personage_bankCard,
-            R.id.tv_personage_apply, R.id.layout_my_order,R.id.layout_my_balance,
+    @OnClick({R.id.tv_click_login,R.id.tv_set,R.id.tv_settings,R.id.iv_mine_icon, R.id.tv_personage_grade, R.id.tv_location_manager,
+            R.id.tv_stay_pay,R.id.tv_stay_shipments,R.id.tv_shipments_loading,R.id.tv_order_over,R.id.tv_bank_manager,
+            R.id.layout_my_order,R.id.tv_my_bonus,
             R.id.tv_personage_sell_manager,R.id.tv_personage_performance, R.id.tv_personage_warehouse, R.id.tv_personage_pickup,
             R.id.tv_personage_size, R.id.tv_personage_certificate, R.id.iv_qr_code,R.id.layout_personage_apply_for_beg,
             R.id.tv_personage_centre,R.id.tv_personage_company, R.id.tv_personage_feedback,R.id.tv_personage_retail_recort,
@@ -603,16 +604,16 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
             case R.id.tv_click_login: //登录
                 mActivityUtils.startActivity(LoginActivity.class);
                 break;
-            case R.id.layout_my_balance:  //我的余额
+            case R.id.tv_my_bonus:  //我的奖金
                 mActivityUtils.startActivity(MyBalanceActivity.class);
                 break;
-            case R.id.tv_personage_address: //收货地址
+            case R.id.tv_location_manager: //收货地址
                 mActivityUtils.startActivity(LocationManagerActivity.class);
                 break;
            /* case R.id.tv_personage_password: //修改密码
                 mActivityUtils.startActivity(SelectAlterPasswordActivity.class);  //***可以选择修改支付密码还是登录密码
                 break;*/
-            case R.id.tv_personage_bankCard:  //我的银行卡
+            case R.id.tv_bank_manager:  //我的银行卡
                 mActivityUtils.startActivity(SelectBankCardActivity.class,"type","no");
                 break;
             /*case R.id.tv_personage_apply:  //代理商申请
@@ -633,18 +634,7 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
             case R.id.tv_order_over:  //已完成
                 mActivityUtils.startActivity(MyOrderActivity.class,"style","stayOver");
                 break;
-            case R.id.tv_margin_hint_tag:  //保证金提示弹窗
-//                if (!TextUtils.isEmpty(marginHintMoney)&&!TextUtils.isEmpty(marginHintContent)){
-//                    showMarginHintDialog(mContext,marginHintMoney,marginHintContent);
-//                }
-                break;
-            case R.id.tv_grade_rule:  //塑身衣等级规则
-//                if (dataBeen.getSsyLevelList()!=null){  //如果请求到数据 展示有数据的弹窗
-//                    showDialogGradeRule(mContext,dataBeen.getSsyLevelList().size());
-//                }else {
-//                    showDialogGradeRule(mContext,0);  //否则展示没有数据的弹窗
-//                }
-                break;
+
             case R.id.tv_personage_scan:  //扫一扫
                 mActivityUtils.startActivity(ScanEntranceActivity.class);
                 break;
@@ -665,7 +655,6 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
                 break;
             case R.id.tv_personage_certificate:  //我的证书
                 judgeBraCredential(mUserId);
-                //mActivityUtils.startActivity(SelectCredentialActivity.class);
                 break;
             case R.id.tv_personage_performance:  //我的业绩
                 mActivityUtils.startActivity(MyResultsActivity.class);
@@ -936,7 +925,7 @@ public class MyKivieFragment extends BaseFragment implements AppBarLayout.OnOffs
 
                 switch (bean.getReturnValue()){
                     case 1:
-                        if (mIsTopShow)mTvBalanceMoney.setText(ActivityUtils.changeMoneys(bean.getData().getCurrentBalance())+"元");
+                        //if (mIsTopShow)mTvBalanceMoney.setText(ActivityUtils.changeMoneys(bean.getData().getCurrentBalance())+"元");
                         break;
                     default:
 

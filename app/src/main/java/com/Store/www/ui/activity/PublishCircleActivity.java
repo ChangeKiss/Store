@@ -213,13 +213,13 @@ public class PublishCircleActivity extends BaseToolbarActivity implements BaseTo
         OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(accessKeyId, accessKeySecret);
         OSS oss = new OSSClient(getApplicationContext(), endpoint, credentialProvider);
         // 构造上传请求
-        PutObjectRequest put = new PutObjectRequest(bucketName, mObjectId + "", path);
+        PutObjectRequest put = new PutObjectRequest(bucketName, mObjectId + ".jpg", path);
 
         OSSAsyncTask task = oss.asyncPutObject(put, new OSSCompletedCallback<PutObjectRequest, PutObjectResult>() {
             @Override
             public void onSuccess(PutObjectRequest request, PutObjectResult result) {
                 LogUtils.e("UploadSuccess");
-                mImagePostData.add("http://jwbucket.oss-cn-shanghai.aliyuncs.com/" + mObjectId + "");
+                mImagePostData.add("http://fuatee.oss-cn-hangzhou.aliyuncs.com/" + mObjectId + ".jpg");
                 LogUtils.e("mObjectId" + mObjectId);
                 LogUtils.d("本地图片集合长度==" + mImageData.size());
                 LogUtils.d("OSS图片集合长度==" + mImagePostData.size());

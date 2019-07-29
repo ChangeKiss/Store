@@ -20,7 +20,7 @@ import butterknife.OnClick;
 /**
  * 我的余额界面
  */
-public class MyBalanceActivity extends BaseToolbarActivity implements BaseToolbarActivity.OnToolBarRightClickListener{
+public class MyBalanceActivity extends BaseToolbarActivity{
     @BindView(R.id.iv_toolbar_right)
     TextView mTvToolbarRight;  //顶部导航栏 右侧的提现
     @BindView(R.id.tv_balance_money)
@@ -50,10 +50,8 @@ public class MyBalanceActivity extends BaseToolbarActivity implements BaseToolba
     @Override
     public void initView() {
         ActivityCollector.addActivity(this);  //将次界面添加至界面管理器中
-        initToolbar(this,true,R.string.balance,this);  //初始化顶部标题栏
+        initToolbar(this,true,R.string.balance);  //初始化顶部标题栏
         mTvToolbarRight.setVisibility(View.VISIBLE);
-        mTvToolbarRight.setText(R.string.withdraw_deposit);
-        mTvToolbarRight.setOnClickListener(this);
     }
 
     @Override
@@ -113,7 +111,7 @@ public class MyBalanceActivity extends BaseToolbarActivity implements BaseToolba
     }
 
     //查看明细的点击事件
-    @OnClick({R.id.tv_income, R.id.tv_expend})
+    @OnClick({R.id.tv_income, R.id.tv_expend,R.id.tv_deposit})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_income:  //查看收入
@@ -122,12 +120,10 @@ public class MyBalanceActivity extends BaseToolbarActivity implements BaseToolba
             case R.id.tv_expend:  //查看支出
                 mActivityUtils.startActivity(BalanceDetailActivity.class,"type",0);
                 break;
+            case R.id.tv_deposit:
+                mActivityUtils.startActivity(WithdrawMoneyInputActivity.class,"balance",BalanceMoney);
+                break;
         }
-    }
-
-    @Override
-    public void setOnToolBarRightClickListener() {
-        mActivityUtils.startActivity(WithdrawMoneyInputActivity.class,"balance",BalanceMoney);
     }
 
 

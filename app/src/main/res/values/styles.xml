@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/placeholder_top</item>
-        <item name="colorPrimaryDark">@color/placeholder_top</item>
-        <item name="colorAccent">@color/placeholder_top</item>
+        <item name="colorPrimary">@color/top_color</item>
+        <item name="colorPrimaryDark">@color/top_color</item>
+        <item name="colorAccent">@color/top_color</item>
     </style>
 
     <style name="space_10dp">
@@ -20,8 +20,8 @@
         <item name="android:gravity">center</item>
         <item name="android:padding">@dimen/drawablePadding_3dp</item>
         <item name="android:layout_gravity">bottom</item>
-        <item name="android:textSize">@dimen/smaller_text_size</item>
-        <item name="android:textColor">@color/buttombarText</item>
+        <item name="android:textSize">@dimen/mediums_text_size</item>
+        <item name="android:textColor">@color/buttombarTextGary</item>
     </style>
 
     <style name="ClubToolbar" parent="Widget.AppCompat.Toolbar">
@@ -78,6 +78,14 @@
     </style>
 
     <style name="divider_horizontal2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_half_dp</item>
+        <item name="android:background">@color/dividerColorGrey</item>
+    </style>
+
+    <style name="divider_horizontal3">
+        <item name="android:layout_marginLeft">@dimen/divider_50dp</item>
+        <item name="android:layout_marginRight">@dimen/divider_10dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/divider_half_dp</item>
         <item name="android:background">@color/dividerColorGrey</item>
@@ -168,7 +176,7 @@
         <item name="android:maxLines">3</item>
         <item name="android:text">@string/text_temp</item>
         <item name="android:textColor">@color/textColorBlack</item>
-        <item name="android:textSize">@dimen/mediums_text_size</item>
+        <item name="android:textSize">@dimen/tab_text_size</item>
     </style>
 
     <style name="buttonBig">
@@ -192,6 +200,14 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <style name="buttonInviteOrder">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:background">@drawable/selector_order_button_status</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/new_text_color</item>
+        <item name="android:textSize">10sp</item>
+    </style>
 
 
     <!--用户协议复选框-->
@@ -244,7 +260,6 @@
         <item name="android:layout_marginTop">@dimen/drawablePadding_5dp</item>
         <item name="android:background">@color/personage_background</item>
     </style>
-
 
 
     <style name="scrollTextView">

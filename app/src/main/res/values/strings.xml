@@ -2,7 +2,7 @@
 
     <!--导航栏-->
     <string name="app_name">Fuatee</string>
-    <string name="tab_noe">首页</string>
+    <string name="tab_noe">花田故事</string>
     <string name="tab_two">讯息</string>
     <string name="tab_three">产品</string>
     <string name="tab_four">我的</string>
@@ -103,7 +103,7 @@
     <string name="clean">清除缓存</string>
     <string name="app_update">版本更新</string>
     <string name="quit_login">退出当前账号</string>
-    <string name="introduce">下单</string>
+    <string name="introduce">立即下单</string>
     <string name="plus_shopping_cart">加入购物车</string>
     <string name="plus_pick_up_cart">保存</string>
     <string name="plus_adjust_cart">提交</string>
@@ -243,7 +243,7 @@
     <string name="phones">手机号码:</string>
     <string name="search">搜索</string>
     <string name="toolbar_search">请输入代理编号</string>
-    <string name="weXin">微&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;信:</string>
+    <string name="weXin">微&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;信:</string>
     <string name="look_over">查看上级</string>
     <string name="look_lower">查看下级</string>
     <string name="you_have_no_right">你没有权限查看</string>
@@ -283,7 +283,7 @@
     <string name="total_results">总业绩</string>
     <string name="no_audited_results">未审核业绩</string>
     <string name="look_all_order">查看全部订单</string>
-    <string name="balance">奖金</string>
+    <string name="balance">我的奖金</string>
     <string name="withdraw_deposit">奖金提取</string>
     <string name="income">收入</string>
     <string name="expend">支出</string>

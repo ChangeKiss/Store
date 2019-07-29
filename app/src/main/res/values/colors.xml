@@ -6,6 +6,7 @@
     <color name="colorTabLayout">#fe6e09</color>
 
     <color name="colorLucency">#01000000</color>
+    <color name="transparent">#00000000</color>
     <color name="transparent_black">#4D000000</color>
     <color name="windowBackgroundWhite">#fff</color><!--白色-->
     <color name="windowBackgroundCream">#fffaf0</color>
@@ -19,6 +20,9 @@
     <color name="agency_lv_btn_no">#e6e6e6</color>
     <color name="home_text_no_select">#898989</color>
     <color name="home_text_select">#FFCA93</color>
+    <color name="top_color">#1B1A20</color> <!--最新的导航栏色值-->
+    <color name="commodity_price_text_color">#DE1F7D</color>
+    <color name="new_text_color">#CEA76E</color>
 
     <color name="windowBackground">#ffffff</color>
     <color name="textColorWhite">#fff</color>
@@ -53,6 +57,8 @@
     <color name="expend_money_color">#EE2D1B</color>
 
     <color name="buttombarText">#666666</color>
+    <color name="buttombarTextGary">#878B98</color>
+    <color name="buttombarTextYellow">#CEA76E</color>
     <color name="nearbySearchBackground">#fea86b</color>
     <color name="textColorSort">#444444</color>
     <color name="redColorBackground">#f72d2d</color>

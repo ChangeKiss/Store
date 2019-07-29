@@ -129,13 +129,6 @@ public class SubmitOrderActivity extends BaseToolbarActivity implements TextWatc
         initData();
         getLocation();
         mIsShow = getIntent().getIntExtra("isShow",0);  //是否显示存入云库布局
-        /*if (mIsShow !=1){
-            mLayoutCloud.setVisibility(View.VISIBLE);
-            mVwCloud.setVisibility(View.VISIBLE);
-        }else {
-            mLayoutCloud.setVisibility(View.GONE);
-
-        }*/
         IntentFilter intentFilter = new IntentFilter(); // 注册广播接收器
         intentFilter.addAction("lock");
         network = new Network();
@@ -335,11 +328,11 @@ public class SubmitOrderActivity extends BaseToolbarActivity implements TextWatc
             city = mSelectCity;
             area = mSelectArea;
             province = mSelectProvince;
-            mTvOrderPeople.setText("收货人：" + name);
+            mTvOrderPeople.setText("" + name);
             mTvOrderPhoneNumber.setText(phone);
             mTvNoAddressHint.setVisibility(View.INVISIBLE);
             mTvOrderAdders.setVisibility(View.VISIBLE);
-            mTvOrderAdders.setText("收货地址：" +mSelectProvince+mSelectCity+mSelectArea+address);
+            mTvOrderAdders.setText("" +mSelectProvince+mSelectCity+mSelectArea+address);
         }else if (mSelectAddressId ==0){
             getLocation();
         }
@@ -377,11 +370,11 @@ public class SubmitOrderActivity extends BaseToolbarActivity implements TextWatc
                                     LogUtils.d("地址" + address);*/
                                     mTvOrderPeople.setVisibility(View.VISIBLE);
                                     mTvOrderPhoneNumber.setVisibility(View.VISIBLE);
-                                    mTvOrderPeople.setText("收货人：" + name);
+                                    mTvOrderPeople.setText("" + name);
                                     mTvOrderPhoneNumber.setText(phone);
                                     mTvNoAddressHint.setVisibility(View.INVISIBLE);
                                     mTvOrderAdders.setVisibility(View.VISIBLE);
-                                    mTvOrderAdders.setText("收货地址：" + province+city+area+address);
+                                    mTvOrderAdders.setText("" + province+city+area+address);
                                     return;
                                 }else if (bean.getData().size()<1){
                                     mTvOrderAdders.setVisibility(View.INVISIBLE);

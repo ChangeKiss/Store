@@ -35,13 +35,13 @@ import zlc.season.rxdownload3.extension.ApkOpenExtension;
  * 初始化
  */
 
-public class MyApplication extends Application{
+public class MyApplication extends Application {
     private static Context mContext;
     private static boolean mAppIsTop = false;
     private List<Activity> mActivityList = new ArrayList<>();
     private static MyApplication instance;
     //微信开发平台的AppId
-    public final static String APP_ID  = "wx9b0e1d8112423f5e";
+    public final static String APP_ID = "wx9b0e1d8112423f5e";
     //IWXAPI 是第三方app和微信通信的openApi接口
     public static IWXAPI mWxApi;
 
@@ -68,6 +68,7 @@ public class MyApplication extends Application{
         }
         return instance;
     }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -89,7 +90,7 @@ public class MyApplication extends Application{
                 .addExtension(ApkInstallExtension.class)
                 .addExtension(ApkOpenExtension.class);
         DownloadConfig.INSTANCE.init(builder);
-        CrashReport.initCrashReport(getApplicationContext(),"774422dd40",true);  //初始化BugLy
+        CrashReport.initCrashReport(getApplicationContext(), "774422dd40", true);  //初始化BugLy
     }
 
     @Override
@@ -100,8 +101,8 @@ public class MyApplication extends Application{
     }
 
     //注册微信登录
-    private void registerWx(){
-        mWxApi = WXAPIFactory.createWXAPI(this,APP_ID,true);
+    private void registerWx() {
+        mWxApi = WXAPIFactory.createWXAPI(this, APP_ID, true);
         mWxApi.registerApp(APP_ID);
         //建议动态监听微信启动广播进行注册到微信
         registerReceiver(new BroadcastReceiver() {
@@ -116,16 +117,16 @@ public class MyApplication extends Application{
 
 
     //监听APP Activity的生命周期  用于检测PP是否在前台运行
-    class activityLifecycleListener implements Application.ActivityLifecycleCallbacks{
+    class activityLifecycleListener implements Application.ActivityLifecycleCallbacks {
 
         private int refCount = 0;
 
         @Override
         public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-            if(refCount == 0){
+            if (refCount == 0) {
                 mAppIsTop = true;
                 //LogUtils.d("01是否在前台=="+mAppIsTop);
-            }else {
+            } else {
                 mAppIsTop = false;
                 //LogUtils.d("02是否在前台=="+mAppIsTop);
             }
@@ -133,12 +134,12 @@ public class MyApplication extends Application{
 
         @Override
         public void onActivityStarted(Activity activity) {
-            refCount ++;
+            refCount++;
             //LogUtils.d("Started + refCount==  0是后台 其他是前台"+refCount);
-            if(refCount == 0){
+            if (refCount == 0) {
                 mAppIsTop = true;
                 //LogUtils.d("01是否在前台=="+mAppIsTop);
-            }else {
+            } else {
                 mAppIsTop = false;
                 //LogUtils.d("02是否在前台=="+mAppIsTop);
             }
@@ -146,10 +147,10 @@ public class MyApplication extends Application{
 
         @Override
         public void onActivityResumed(Activity activity) {
-            if(refCount == 0){
+            if (refCount == 0) {
                 mAppIsTop = true;
                 //LogUtils.d("01是否在前台=="+mAppIsTop);
-            }else {
+            } else {
                 mAppIsTop = false;
                 //LogUtils.d("02是否在前台=="+mAppIsTop);
             }
@@ -164,10 +165,10 @@ public class MyApplication extends Application{
         public void onActivityStopped(Activity activity) {
             refCount--;
             //LogUtils.d("Stopped + refCount==  0是后台 其他是前台"+refCount);
-            if(refCount == 0){
+            if (refCount == 0) {
                 mAppIsTop = true;
                 //LogUtils.d("03是否在前台=="+mAppIsTop);
-            }else {
+            } else {
                 mAppIsTop = false;
                 //LogUtils.d("04是否在前台=="+mAppIsTop);
             }

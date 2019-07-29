@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.Store.www.base.CustomRCCircularLayout.RCRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/drawablePadding_5dp"
+    android:background="@color/windowBackground"
+    app:round_corner="3dp"
+    app:stroke_color="@color/dividerColorGrey"
+    app:stroke_widths="0.6dp"
     android:id="@+id/rl_ramble">
 
-    <LinearLayout
-        android:id="@+id/layout_item_commodity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:background="@color/windowBackground">
+
 
         <ImageView
             android:id="@+id/iv_item_commodity"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"/>
@@ -27,7 +26,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/textColorBlack"
             android:layout_marginTop="@dimen/divider_10dp"
-            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/divider_6dp"
+            android:layout_below="@+id/iv_item_commodity"
             android:text="@string/text_temp"/>
 
 
@@ -37,15 +37,23 @@
             android:layout_height="wrap_content"
             android:text="666"
             android:textColor="@color/redColorBackground"
-            android:layout_gravity="center"
-            android:layout_marginTop="2dp"
+            android:layout_below="@+id/tv_item_name"
+            android:layout_marginLeft="@dimen/divider_6dp"
+            android:layout_marginTop="3dp"
             android:textSize="15sp"/>
 
 
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/add_cart_icon"
+        android:layout_below="@+id/tv_item_name"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/divider_20dp"
+        android:visibility="invisible"/>
 
 
 
-    </LinearLayout>
 
 
-</LinearLayout>
+</com.Store.www.base.CustomRCCircularLayout.RCRelativeLayout>

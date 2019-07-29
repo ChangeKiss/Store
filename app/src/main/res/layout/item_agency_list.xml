@@ -24,14 +24,30 @@
             android:background="@drawable/shape_agent_item_top"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/divider_30dp">
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cv_agency_head"
+                    android:layout_width="@dimen/preview_image"
+                    android:layout_height="@dimen/preview_image"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/default_head"
+                    app:civ_border_color="#4b4640"
+                    app:civ_border_width="0dp" />
 
+            </LinearLayout>
+
+            <View
+                style="@style/weight_1"/>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/divider_20dp"
+                android:layout_marginRight="@dimen/divider_30dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -107,7 +123,29 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/drawablePadding_5dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/agency_lv"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/textColorBlack"/>
+
+                    <TextView
+                        android:id="@+id/tv_agency_lv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/divider_10dp"
+                        android:text="12345678912"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/textColorBlack"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,51 +172,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/drawablePadding_5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/agency_lv"
-                        android:textSize="@dimen/small_text_size"
-                        android:textColor="@color/textColorBlack"/>
-
-                    <TextView
-                        android:id="@+id/tv_agency_lv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/divider_10dp"
-                        android:text="12345678912"
-                        android:textSize="@dimen/small_text_size"
-                        android:textColor="@color/textColorBlack"/>
-
-                </LinearLayout>
-
             </LinearLayout>
-
-            <View
-                style="@style/weight_1"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/divider_30dp">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/cv_agency_head"
-                    android:layout_width="@dimen/preview_image"
-                    android:layout_height="@dimen/preview_image"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/default_head"
-                    app:civ_border_color="#4b4640"
-                    app:civ_border_width="0dp" />
-
-            </LinearLayout>
-
 
         </LinearLayout>
 
@@ -196,7 +190,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/new_text_color"
                 android:layout_marginRight="@dimen/divider_1dp"
                 android:text="@string/look_over"/>
 
@@ -212,7 +206,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_marginLeft="@dimen/divider_1dp"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/new_text_color"
                 android:text="@string/look_lower"/>
 
 

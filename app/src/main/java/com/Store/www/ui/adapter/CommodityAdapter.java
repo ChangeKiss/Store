@@ -61,7 +61,7 @@ public class CommodityAdapter extends BaseRecyclerViewAdapter<CommodityManagerRe
 
         holder.mTvItemName.setText(dataBean.getName());
         holder.mTvCommodityMoney.setText(dataBean.getCurrency()+ActivityUtils.changeMoneys(dataBean.getPrice()));
-        holder.mLayoutItemCommodity.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LogUtils.d("商品ID=01="+dataBean.getProductId());
@@ -81,9 +81,6 @@ public class CommodityAdapter extends BaseRecyclerViewAdapter<CommodityManagerRe
         TextView mTvItemName;
         @BindView(R.id.tv_commodity_money)
         TextView mTvCommodityMoney;
-        @BindView(R.id.layout_item_commodity)
-        LinearLayout mLayoutItemCommodity;
-
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

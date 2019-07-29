@@ -16,10 +16,10 @@
             android:id="@+id/tab_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/windowBackground"
-            app:tabIndicatorColor="@color/itemNewColor"
-            app:tabSelectedTextColor="@color/itemNewColor"
-            app:tabTextColor="#555555"/>
+            android:background="@color/top_color"
+            app:tabIndicatorColor="@color/new_text_color"
+            app:tabSelectedTextColor="@color/new_text_color"
+            app:tabTextColor="@color/windowBackground"/>
 
         <View
             style="@style/divider_horizontal2"/>
@@ -29,6 +29,7 @@
         <com.github.jdsjlzx.recyclerview.LRecyclerView
             android:id="@+id/ry_order"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/resultColor"/>
 
 </LinearLayout>

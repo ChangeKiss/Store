@@ -4,17 +4,24 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.Store.www.MyApplication;
 import com.Store.www.base.CustomScrollView.RefreshHeadbgView;
@@ -26,6 +33,8 @@ import com.Store.www.entity.HomeNewsResponse;
 import com.Store.www.net.Api;
 import com.Store.www.ui.activity.MyCircleActivity;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -63,8 +72,15 @@ import com.qiyukf.unicorn.api.UnreadCountChangeListener;
 import com.qiyukf.unicorn.api.YSFOptions;
 import com.qiyukf.unicorn.api.YSFUserInfo;
 import com.stx.xhb.xbanner.XBanner;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.loader.ImageLoader;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -73,6 +89,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import butterknife.internal.Utils;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.BiFunction;
@@ -88,12 +105,14 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static net.bither.util.FileUtil.runOnUiThread;
+
 /**
  * 首页碎片
  */
 
-public class HomeFragment extends BaseFragment implements RefreshListener ,HomeNewArrivalAdapter.OnNewArrivalClickListener,
-        View.OnClickListener {
+public class HomeFragment extends BaseFragment implements RefreshListener, HomeNewArrivalAdapter.OnNewArrivalClickListener,
+        View.OnClickListener, OnBannerListener {
 
 
     @BindView(R.id.iv_ke_fu)
@@ -101,24 +120,24 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
     @BindView(R.id.tv_message_count)
     TextView mTvMessageCount;  //未读消息数
     RefreshScrollView mScrollView;
-    XBanner mBanner,mBannerNews,mBannerActivity,mBannerCircle;
-    TextView mTvHintNews,mTvHintActivity,mTvHintCircle,mTvHeadHint;
+    Banner mBanner;
+    TextView mTvHeadHint;
     RefreshHeadbgView mHeadbgViwe;
     RelativeLayout mHeadView;
 
     Unbinder unbinder;
     List<String> mBannerUrl = new ArrayList<>();
-    List<String> mNewsBannerUrl = new ArrayList<>();
-    List<String> mActivityBannerUrl = new ArrayList<>();
-    List<String> mCircleBannerUrl = new ArrayList<>();
     private ActivityUtils mActivityUtils;
-    List<HomeCircleResponse.DataBean.PhotosBean> photosBeans = new ArrayList<>();
-    HomeCircleResponse.DataBean.PhotosBean photosBean = new HomeCircleResponse.DataBean.PhotosBean();
-    List<HomeActivityResponse.DataBean.PhotosBean> activityBeans = new ArrayList<>();
-    HomeActivityResponse.DataBean.PhotosBean activityBean = new HomeActivityResponse.DataBean.PhotosBean();
+    List<HomeCircleResponse.DataBean> photosBeans = new ArrayList<>();
+    List<BannerResponse.DataBean> photosBeansBanner = new ArrayList<>();
     private int token = 2;
     public int screenWidth, screenHeight; //屏幕宽，屏幕高
-    private boolean isLoad= false;  //全部数据是否加载完
+    private boolean isLoad = false;  //全部数据是否加载完
+    private Banner banner_recent;
+    List imageList = new ArrayList();
+    List titleList = new ArrayList();
+    List imageList2 = new ArrayList();
+    List titleList2 = new ArrayList();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -126,20 +145,77 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
         unbinder = ButterKnife.bind(this, view);
         mActivityUtils = new ActivityUtils(this);
         mScrollView = view.findViewById(R.id.refresh_sv);
-        mBanner =  view.findViewById(R.id.banner);
-        mBannerNews = view.findViewById(R.id.home_banners_news);
-        mBannerActivity = view.findViewById(R.id.home_activity);
-        mBannerCircle = view.findViewById(R.id.home_circle);
-        mTvHintNews = view.findViewById(R.id.tv_home_hint_news);
-        mTvHintActivity = view.findViewById(R.id.tv_home_hint_activity);
-        mTvHintCircle = view.findViewById(R.id.tv_home_hint_circle);
+        banner_recent = view.findViewById(R.id.banner_recent);
+        mBanner = view.findViewById(R.id.banner);
         mHeadView = view.findViewById(R.id.head_view);
         mTvHeadHint = view.findViewById(R.id.head_view_tv);
         mHeadbgViwe = view.findViewById(R.id.head_bg);
         mScrollView.setListsner(this);
         mScrollView.setHeadView(mHeadView);
         getBannerData();
+        getCircleData();
         getShielding();
+        // 设置加载器
+        banner_recent.setImageLoader(new ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                Glide.with(context)
+                        .load(path)
+                        .asBitmap()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL) //设置缓存
+                        .into(new BitmapImageViewTarget(imageView) {
+                            @Override
+                            protected void setResource(Bitmap resource) {
+                                super.setResource(resource);
+                                RoundedBitmapDrawable circularBitmapDrawable =
+                                        RoundedBitmapDrawableFactory.create(mContext.getResources(), resource);
+                                circularBitmapDrawable.setCornerRadius(13); //设置圆角弧度
+                                imageView.setImageDrawable(circularBitmapDrawable);
+                            }
+                        });
+            }
+        });
+        // 设置加载器
+        mBanner.setImageLoader(new ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                Glide.with(context)
+                        .load(path)
+                        .asBitmap()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL) //设置缓存
+                        .into(new BitmapImageViewTarget(imageView) {
+                            @Override
+                            protected void setResource(Bitmap resource) {
+                                super.setResource(resource);
+                                RoundedBitmapDrawable circularBitmapDrawable =
+                                        RoundedBitmapDrawableFactory.create(mContext.getResources(), resource);
+                                circularBitmapDrawable.setCornerRadius(13); //设置圆角弧度
+                                imageView.setImageDrawable(circularBitmapDrawable);
+                            }
+                        });
+            }
+        });
+        banner_recent.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                Intent intent = new Intent(getActivity(), MyCircleActivity.class);
+                intent.putExtra("type", "HotCircle");
+                intent.putExtra("id", photosBeans.get(position).getId());
+                startActivity(intent);
+            }
+        });// 让主活动实现OnBannerListener接口
+        mBanner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                Intent intent = new Intent(getActivity(), NewsWebActivity.class);
+                intent.putExtra("bigtitle", "公司新闻"); //大标题
+                intent.putExtra("title", photosBeansBanner.get(position).getTitle()); //标题
+                intent.putExtra("infoid", photosBeansBanner.get(position).getInfoid());
+                intent.putExtra("author", photosBeansBanner.get(position).getAutor());  //作者
+                LogUtils.d("infoid" + photosBeansBanner.get(position).getInfoid());
+                startActivity(intent);
+            }
+        });// 让主活动实现OnBannerListener接口
         IntentFilter filter = new IntentFilter();
         filter.addAction("homePage");
         getActivity().registerReceiver(new HomeNetWork(), filter);
@@ -179,7 +255,6 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
         mHeadbgViwe.setWidthX(x);
     }
 
-
     class HomeNetWork extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -191,6 +266,7 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
     }
 
     //初始化七鱼云客服
+
     private void initQiYuService() {
         String title = "客服";
         /**
@@ -203,11 +279,11 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
         uiCustomization.titleBackgroundResId = R.color.placeholder_top;  //设置顶部标题栏背景颜色
         uiCustomization.topTipBarTextColor = R.color.windowBackground;  //设置顶部标题栏字体颜色
         if (UserPrefs.getInstance().getIcon() == null) {
-            uiCustomization.rightAvatar = "http://jwbucket.oss-cn-shanghai.aliyuncs.com/mrtx.png";
+            uiCustomization.rightAvatar = "http://fuatee.oss-cn-hangzhou.aliyuncs.com/mrtx.png";
         } else {
             uiCustomization.rightAvatar = UserPrefs.getInstance().getIcon();
         }
-        uiCustomization.leftAvatar = "http://jwbucket.oss-cn-shanghai.aliyuncs.com/kf.png";
+        uiCustomization.leftAvatar = "http://fuatee.oss-cn-hangzhou.aliyuncs.com/kf.png";
         uiCustomization.titleCenter = true;
         options.uiCustomization = uiCustomization;
         //options.statusBarNotificationConfig = new StatusBarNotificationConfig();  //已经初始化过此处不能加否则会出现重复启动APP的BUG
@@ -278,24 +354,28 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
         super.onResume();
         mIsTopShow = true;
         mBanner.startAutoPlay();
-        mBannerNews.startAutoPlay();
-        mBannerActivity.startAutoPlay();
-        mBannerCircle.startAutoPlay();
         mScrollView.stopRefresh();
         LogUtils.d("onResume");
-        LogUtils.d("isLoad=="+isLoad);
-        if (isLoad = false){
+        LogUtils.d("isLoad==" + isLoad);
+        if (isLoad = false) {
             getBannerData();
         }
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        //开始轮播
+        banner_recent.startAutoPlay();
+        mBanner.startAutoPlay();
+    }
+
+    @Override
     public void onStop() {
         super.onStop();
+        //结束轮播
         mBanner.stopAutoPlay();
-        mBannerNews.stopAutoPlay();
-        mBannerActivity.stopAutoPlay();
-        mBannerCircle.stopAutoPlay();
+        banner_recent.stopAutoPlay();
     }
 
 
@@ -304,9 +384,8 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
         RetrofitClient.getInstances().getShopBanner().enqueue(new UICallBack<BannerResponse>() {
             @Override
             public void OnRequestFail(String msg) {
-                if (mIsTopShow){
+                if (mIsTopShow) {
                     checkNet();
-                    getNewsData();
                 }
             }
 
@@ -314,12 +393,23 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
             public void OnRequestSuccess(BannerResponse bean) {
                 switch (bean.getReturnValue()) {
                     case 1:
-                        initBanner(bean.getData());
-                        getNewsData();
+//                        initBanner(bean.getData());
+                        photosBeansBanner = bean.getData();
+                        imageList2.clear();
+                        titleList2.clear();
+                        for (int i = 0; i < bean.getData().size(); i++) {
+                            imageList2.add(TextUtils.isEmpty(bean.getData().get(i).getPictueUrl()) ? "" : bean.getData().get(i).getPictueUrl());
+                            titleList2.add(TextUtils.isEmpty(bean.getData().get(i).getTitle()) ? "" : bean.getData().get(i).getTitle());
+                        }
+                        // 设置相关属性
+                        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);//设置页码与标题
+                        mBanner.setDelayTime(3000);//设置轮播时间
+                        mBanner.setImages(imageList2);//设置图片源
+                        mBanner.setBannerTitles(titleList2);
+                        mBanner.start();
                         break;
                     default:
                         showToast(bean.getErrMsg());
-                        getNewsData();
                         break;
                 }
             }
@@ -327,173 +417,76 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
     }
 
     /**
-     * 加载首页顶部轮播图
-     * @param dataBeen
+     * 获取首页圈子轮播图
      */
-    private void initBanner(final List<BannerResponse.DataBean> dataBeen) {
-        mBannerUrl.clear();
-        for (int i = 0; i < dataBeen.size(); i++) {
-            mBannerUrl.add(dataBeen.get(i).getPictueUrl());
-        }
-        ViewGroup.LayoutParams params;
-        params = mBanner.getLayoutParams();
-        params.height = (int) (screenWidth / 1080.0 * 642);
-        mBanner.setLayoutParams(params);
-        mBanner.setData(mBannerUrl, null);
-        mBanner.loadImage((banner, model, view, position) ->{
-            Glide.with(mContext).load((String) model).into((ImageView) view);
-        });
-        //添加图片加载框架
-        mBanner.setOnItemClickListener(new XBanner.OnItemClickListener() {
-            @Override
-            public void onItemClick(XBanner banner, Object model, View view, int position) {
-                Intent intent = new Intent(getActivity(), NewsWebActivity.class);
-                intent.putExtra("bigtitle", "公司新闻"); //大标题
-                intent.putExtra("title", dataBeen.get(position).getTitle()); //标题
-                intent.putExtra("infoid", dataBeen.get(position).getInfoid());
-                intent.putExtra("author", dataBeen.get(position).getAutor());  //作者
-                LogUtils.d("infoid" + dataBeen.get(position).getInfoid());
-                startActivity(intent);
-            }
-        });
-    }
-
-    /**
-     * 获取新闻轮播
-     */
-    private void getNewsData(){
-        RetrofitClient.getInstances().getHomeNews(mPageIndex,mCountPerPage).enqueue(new UICallBack<HomeNewsResponse>() {
+    private void getCircleData() {
+        RetrofitClient.getInstances().getHomeCircle().enqueue(new UICallBack<HomeCircleResponse>() {
             @Override
             public void OnRequestFail(String msg) {
                 if (mIsTopShow) {
                     checkNet();
-                    getActivityData();
-                }
-            }
-
-            @Override
-            public void OnRequestSuccess(HomeNewsResponse bean) {
-                if (mIsTopShow){
-                    switch (bean.getReturnValue()){
-                        case 1:
-                            if (bean.getData().size()!=0){
-                                initNewsBanner(bean.getData());
-                                mTvHintNews.setText("新闻公告");
-                            }
-                            getActivityData();
-                            break;
-                        default:
-                            getActivityData();
-                            break;
-                    }
-                }
-            }
-        });
-    }
-
-    /**
-     * 加载首页新闻轮播图
-     */
-    private void initNewsBanner(List<HomeNewsResponse.DataBean> beans){
-        mNewsBannerUrl.clear();
-        for (int i=0;i<beans.size();i++){
-            mNewsBannerUrl.add(beans.get(i).getPhotos().get(i).getPhoto());
-        }
-        ViewGroup.LayoutParams params = mBannerNews.getLayoutParams();
-        params.height = UserPrefs.getInstance().getWidth()*184/414;
-        mBannerNews.setLayoutParams(params);
-        mBannerNews.setData(mNewsBannerUrl,null);
-        mBannerNews.loadImage((banner, model, view, position) -> {
-            Glide.with(mContext).load(model).into((ImageView) view);
-        });
-        mBannerNews.setOnItemClickListener((banner, model, view, position) -> {
-            Intent intent = new Intent(getActivity(),NewsWebActivity.class);
-            intent.putExtra("infoid",beans.get(position).getPhotos().get(position).getId());
-            intent.putExtra("title",beans.get(position).getTitle());
-            intent.putExtra("author","Fuatee");
-            intent.putExtra("bigtitle","公司新闻"); //大标题
-            startActivity(intent);
-        });
-    }
-
-    /**
-     * 获取活动商品轮播图
-     */
-    private void getActivityData(){
-        RetrofitClient.getInstances().getHomeNotice(mPageIndex,mCountPerPage).enqueue(new UICallBack<HomeActivityResponse>() {
-            @Override
-            public void OnRequestFail(String msg) {
-                if (mIsTopShow){
-                    checkNet();
-                    getCircleData();
-                }
-            }
-
-            @Override
-            public void OnRequestSuccess(HomeActivityResponse bean) {
-                if (mIsTopShow){
-                    switch (bean.getReturnValue()){
-                        case 1:
-                            if (bean.getData().size()!=0){
-                                initActivityBanner(bean.getData());
-                                mTvHintActivity.setText("活动商品");
-                            }
-                            getCircleData();
-
-                            break;
-                        default:
-                            getCircleData();
-                            break;
-                    }
-                }
-            }
-        });
-    }
-
-    /**
-     *加载首页活动商品轮播图
-     */
-    private void initActivityBanner(List<HomeActivityResponse.DataBean> bean){
-        mActivityBannerUrl.clear();
-        for (int i=0;i<bean.size();i++){
-            for (int k=0;k<bean.get(i).getPhotos().size();k++){
-                mActivityBannerUrl.add(bean.get(i).getPhotos().get(k).getPhoto());
-                activityBean.setId(bean.get(i).getPhotos().get(k).getId());
-                activityBeans.add(activityBean);
-            }
-        }
-        ViewGroup.LayoutParams params = mBannerActivity.getLayoutParams();
-        params.height = UserPrefs.getInstance().getWidth()*184/414;
-        mBannerActivity.setLayoutParams(params);
-        mBannerActivity.setData(mActivityBannerUrl,null);
-        mBannerActivity.loadImage((banner, model, view, position) -> {
-            Glide.with(mContext).load(model).into((ImageView) view);
-        });
-        mBannerActivity.setOnItemClickListener((banner, model, view, position) -> {
-            mActivityUtils.startActivity(IntroduceActivity.class,"productId",activityBeans.get(position).getId());
-        });
-    }
-
-
-    /**
-     *获取首页圈子轮播图
-     */
-    private void getCircleData(){
-        RetrofitClient.getInstances().getHomeCircle().enqueue(new UICallBack<HomeCircleResponse>() {
-            @Override
-            public void OnRequestFail(String msg) {
-                if (mIsTopShow){
-                    checkNet();
                     mScrollView.stopRefresh();
                 }
             }
+
             @Override
             public void OnRequestSuccess(HomeCircleResponse bean) {
-                switch (bean.getReturnValue()){
+                switch (bean.getReturnValue()) {
                     case 1:
-                        if (bean.getData().size()!=0){
-                            initCircleBanner(bean.getData());
-                            mTvHintCircle.setText("热门圈子");
+                        if (bean.getData().size() != 0) {
+                            photosBeans = bean.getData();
+                            imageList.clear();
+                            titleList.clear();
+                            for (int i = 0; i < bean.getData().size(); i++) {
+                                for (int a = 0; a < bean.getData().get(i).getPhotos().size(); a++) {
+                                    imageList.add(TextUtils.isEmpty(bean.getData().get(i).getPhotos().get(a).getPhoto()) ? "" : bean.getData().get(i).getPhotos().get(a).getPhoto());
+                                    titleList.add(TextUtils.isEmpty(bean.getData().get(i).getTitle()) ? "" : bean.getData().get(i).getTitle());
+                                }
+                            }
+                            LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) banner_recent.getLayoutParams();
+                            WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+                            int width = wm.getDefaultDisplay().getWidth();    //获取屏幕的宽度
+                            int height = wm.getDefaultDisplay().getHeight();    //获取屏幕的宽度
+                            linearParams.width = width - 40;
+                            linearParams.height = height - 280;
+                            banner_recent.setLayoutParams(linearParams); //使设置好的布局参数应用到控件
+                            // 设置相关属性
+                            banner_recent.setBannerStyle(BannerConfig.NOT_INDICATOR);//设置页码与标题
+                            banner_recent.setDelayTime(3000);//设置轮播时间
+                            banner_recent.setImages(imageList);//设置图片源
+                            banner_recent.setBannerTitles(titleList);
+                            banner_recent.start();
+//                            new Thread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    try {
+//                                        if (imageList.size() != 0) {
+//                                            int[] imgWH = getImgWH(imageList.get(0).toString());
+//                                            runOnUiThread(new Runnable() {
+//                                                @Override
+//                                                public void run() {
+////                                                    //此时已在主线程中，更新UI
+//                                                    LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) banner_recent.getLayoutParams();
+//                                                    WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+//                                                    int width = wm.getDefaultDisplay().getWidth();    //获取屏幕的宽度
+//                                                    int height = wm.getDefaultDisplay().getHeight();    //获取屏幕的宽度
+//                                                    linearParams.width = width - 40;
+//                                                    linearParams.height = height - 300;
+//                                                    banner_recent.setLayoutParams(linearParams); //使设置好的布局参数应用到控件
+//                                                    // 设置相关属性
+//                                                    banner_recent.setBannerStyle(BannerConfig.NOT_INDICATOR);//设置页码与标题
+//                                                    banner_recent.setDelayTime(3000);//设置轮播时间
+//                                                    banner_recent.setImages(imageList);//设置图片源
+//                                                    banner_recent.setBannerTitles(titleList);
+//                                                    banner_recent.start();
+//                                                }
+//                                            });
+//                                        }
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                }
+//                            }).start();
                         }
                         mScrollView.stopRefresh();
                         isLoad = true;
@@ -507,31 +500,33 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
         });
     }
 
+    @Override
+    public void OnBannerClick(int position) {
+
+    }
+
     /**
-     *加载首页圈子轮播图
+     * 获取服务器上的图片尺寸
      */
-    private void initCircleBanner(List<HomeCircleResponse.DataBean> bean){
-        mCircleBannerUrl.clear();
-        for (int i=0; i<bean.size(); i++){
-            for (int k=0;k<bean.get(i).getPhotos().size();k++){
-                mCircleBannerUrl.add(bean.get(i).getPhotos().get(k).getPhoto());
-                photosBean.setId(bean.get(i).getPhotos().get(k).getId());
-                photosBeans.add(photosBean);
-            }
-        }
-        ViewGroup.LayoutParams params = mBannerCircle.getLayoutParams();
-        params.height = UserPrefs.getInstance().getWidth()*184/414;
-        mBannerCircle.setLayoutParams(params);
-        mBannerCircle.setData(mCircleBannerUrl,null);
-        mBannerCircle.loadImage((banner, model, view, position) -> {
-            Glide.with(mContext).load(model).into((ImageView) view);
-        });
-        mBannerCircle.setOnItemClickListener((banner, model, view, position) -> {
-            Intent intent = new Intent(getActivity(), MyCircleActivity.class);
-            intent.putExtra("type","HotCircle");
-            intent.putExtra("id",photosBeans.get(position).getId());
-            startActivity(intent);
-        });
+    public static int[] getImgWH(String urls) throws Exception {
+
+        URL url = new URL(urls);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setDoInput(true);
+        conn.connect();
+        InputStream is = conn.getInputStream();
+        Bitmap image = BitmapFactory.decodeStream(is);
+
+        int srcWidth = image.getWidth();      // 源图宽度
+        int srcHeight = image.getHeight();    // 源图高度
+        int[] imgSize = new int[2];
+        imgSize[0] = srcWidth;
+        imgSize[1] = srcHeight;
+        //释放资源
+        image.recycle();
+        is.close();
+        conn.disconnect();
+        return imgSize;
     }
 
     //Item的点击事件
@@ -551,62 +546,62 @@ public class HomeFragment extends BaseFragment implements RefreshListener ,HomeN
     @Override
     public void onClick(View v) {
 
-             //商品管理
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    mActivityUtils.startActivity(CommodityActivity.class);
-                }
+        //商品管理
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            mActivityUtils.startActivity(CommodityActivity.class);
+        }
 
-             //我的订单
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    mActivityUtils.startActivity(MyOrderActivity.class);
-                }
+        //我的订单
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            mActivityUtils.startActivity(MyOrderActivity.class);
+        }
 
-             //分红查询
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    mActivityUtils.startActivity(BonusQueryActivity.class);
-                }
+        //分红查询
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            mActivityUtils.startActivity(BonusQueryActivity.class);
+        }
 
-             //提货管理
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    mActivityUtils.startActivity(PickUpGoodsActivity.class);
-                }
+        //提货管理
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            mActivityUtils.startActivity(PickUpGoodsActivity.class);
+        }
 
-             //销售管理
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    mActivityUtils.startActivity(SellManageActivity.class);
-                }
+        //销售管理
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            mActivityUtils.startActivity(SellManageActivity.class);
+        }
 
-             //团队业绩
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    mActivityUtils.startActivity(ResultsActivity.class);
-                }
+        //团队业绩
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            mActivityUtils.startActivity(ResultsActivity.class);
+        }
 
-             //代理查询
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    mActivityUtils.startActivity(AgencyListActivity.class);
-                }
+        //代理查询
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            mActivityUtils.startActivity(AgencyListActivity.class);
+        }
 
-             //我的二维码
-                if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
-                    mActivityUtils.startActivity(LoginActivity.class, "login", "login");
-                } else {
-                    //mActivityUtils.startActivity(SellManageActivity.class);
-                    getQRCode(mUserId);
-                }
+        //我的二维码
+        if (TextUtils.isEmpty(UserPrefs.getInstance().getUserId())) {
+            mActivityUtils.startActivity(LoginActivity.class, "login", "login");
+        } else {
+            //mActivityUtils.startActivity(SellManageActivity.class);
+            getQRCode(mUserId);
+        }
 
 
     }
